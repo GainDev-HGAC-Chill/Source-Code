@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FCS", "FCS.vcproj", "{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Lib MD|Win32 = Lib MD|Win32
+		Lib MDd|Win32 = Lib MDd|Win32
+		Lib MDo|Win32 = Lib MDo|Win32
+		Lib MT|Win32 = Lib MT|Win32
+		Lib MTd|Win32 = Lib MTd|Win32
+		Lib MTo|Win32 = Lib MTo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MD|Win32.ActiveCfg = Lib MD|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MD|Win32.Build.0 = Lib MD|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MDd|Win32.ActiveCfg = Lib MDd|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MDd|Win32.Build.0 = Lib MDd|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MDo|Win32.ActiveCfg = Lib MDo|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MDo|Win32.Build.0 = Lib MDo|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MT|Win32.ActiveCfg = Lib MT|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MT|Win32.Build.0 = Lib MT|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MTd|Win32.ActiveCfg = Lib MTd|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MTd|Win32.Build.0 = Lib MTd|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MTo|Win32.ActiveCfg = Lib MTo|Win32
+		{4563CFB6-4E68-497D-BDD1-54E34BA3ABE9}.Lib MTo|Win32.Build.0 = Lib MTo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,1015 @@
+#ifndef WEAPON_VARIANT_DATABASE_PGDBCACHE_H
+#define WEAPON_VARIANT_DATABASE_PGDBCACHE_H
+
+#include <vector>
+#include <map>
+#include <list>
+#include <string>
+
+#include "CEL/CEL.h"
+#include "CEL/CoreCenter.h"
+#include "Loki/Singleton.h"
+#include "Loki/Threads.h"
+
+namespace DBCacheUtil
+{
+	typedef enum eAddResult
+	{
+		E_ADD_SUCCESS			= 0,
+		E_ADD_FAIL_DUPLICATE	= 1,
+		E_ADD_FAIL_NATION		= 2,
+	}EAddResult;
+
+	extern int iForceNationCode;
+
+	bool IsDefaultNation(std::wstring const& rkNationCodeStr);
+
+	template< typename _T_KEY, typename _T_TO_FUNC, typename _T_MSG_FUNC >
+	bool IsCanNation(std::wstring const& rkNationCodeStr, _T_KEY const& _KeyVal, wchar_t const* szFunc, size_t const iLine)
+	{
+		if( rkNationCodeStr.empty() )
+		{
+			_T_MSG_FUNC()( BM::vstring() << __FL2__(szFunc, iLine) << L"[Key Val: " << _T_TO_FUNC(_KeyVal).operator std::wstring const&() << L"], Nation code is empty" );
+			return true;
+		}
+
+		int const iServiceRegion = (0 < iForceNationCode)? iForceNationCode: g_kLocal.ServiceRegion();
+
+		VEC_WSTRING kVec;
+		PgStringUtil::BreakSep(rkNationCodeStr, kVec, L"/");
+		std::sort(kVec.begin(), kVec.end());
+		VEC_WSTRING::iterator nation_pos = std::unique(kVec.begin(), kVec.end());
+		if(nation_pos != kVec.end())
+		{
+			do {
+				_T_MSG_FUNC()( BM::vstring() << __FL2__(szFunc, iLine) << L"[Key Val: " << _T_TO_FUNC(_KeyVal).operator std::wstring const&() << L"], Nation code not unique : " << *nation_pos);
+				++nation_pos;
+			} while(nation_pos != kVec.end());
+			return false;
+		}
+
+		VEC_WSTRING::const_iterator iter = kVec.begin();
+		while( kVec.end() != iter )
+		{
+			int const iCurCode = PgStringUtil::SafeAtoi( (*iter) );
+			if( 0 == iCurCode ) // 0 이 포함되면 -_-;;
+			{
+				_T_MSG_FUNC()( BM::vstring() << __FL2__(szFunc, iLine) << L"[Key Val: " << _T_TO_FUNC(_KeyVal).operator std::wstring const&() << L"], Can't use '0' with in other nation code" );
+				return false;
+			}
+			if( iServiceRegion == iCurCode )
+			{
+				return true;
+			}
+			++iter;
+		}
+		return false;
+	}
+
+	#define DBCACHE_KEY_PRIFIX	L"$KEY_VALUE$"
+	extern std::wstring const kKeyPrifix;
+
+	template< typename _T_KEY, typename _T_ELEMENT, typename _T_CONT >
+	struct MapContainerInsert
+	{
+		bool operator()(_T_CONT& rkOutCont, _T_KEY const& rkKey, _T_ELEMENT const& rkElement)
+		{
+			return rkOutCont.insert( std::make_pair(rkKey, rkElement) ).second;
+		}
+		void Merge(_T_CONT& lhs, _T_CONT const& rhs)
+		{
+			lhs.insert( rhs.begin(), rhs.end() );
+		}
+	};
+	template< typename _T_KEY, typename _T_ELEMENT, typename _T_CONT >
+	struct VectorContainerInsert
+	{
+		bool operator()(_T_CONT& rkOutCont, _T_KEY const& rkKey, _T_ELEMENT const& rkElement)
+		{
+			rkOutCont.push_back( rkElement );
+			return true;
+		}
+		void Merge(_T_CONT& lhs, _T_CONT const& rhs)
+		{
+			_T_CONT::const_iterator iter = rhs.begin();
+			while( rhs.end() != iter )
+			{
+				if( lhs.end() == std::find(lhs.begin(), lhs.end(), (*iter)) )
+				{
+					lhs.push_back( *iter );
+				}
+				++iter;
+			}
+		}
+	};
+	
+	//
+	template< typename _T_KEY, typename _T_ELEMENT, typename _T_CONT, typename _T_TO_FUNC = BM::vstring, typename _T_MSG_FUNC = DBCacheUtil::AddError, template < class, class, class > class _T_INSERT_FUNC = DBCacheUtil::MapContainerInsert>
+	class PgNationCodeHelper
+	{
+		typedef std::set< _T_KEY > ContKey;
+	public:
+		PgNationCodeHelper(std::wstring const& rkDuplicateMsg, bool const bUseMsgFunc = true)
+			: m_kContResult(), m_kContDefault(), m_kDuplicateMsg(rkDuplicateMsg), m_bUseMsgFunc(bUseMsgFunc)
+		{
+		}
+		~PgNationCodeHelper()
+		{
+		}
+
+		EAddResult Add(std::wstring const& rkNationCodeStr, _T_KEY const& rkKey, _T_ELEMENT const& rkNewElement, wchar_t const* szFunc, size_t const iLine)
+		{
+			if( IsDefaultNation(rkNationCodeStr) )
+			{
+				if( _T_INSERT_FUNC< _T_KEY, _T_ELEMENT, _T_CONT >()(m_kContDefault, rkKey, rkNewElement) )
+				{
+					return E_ADD_SUCCESS;
+				}
+				else
+				{
+					if( IsUseMsgFunc() )
+					{
+						m_kDuplicateMsg.Replace( kKeyPrifix, _T_TO_FUNC(rkKey).operator std::wstring const&() );
+						_T_MSG_FUNC()( BM::vstring() << __FL2__(szFunc, iLine) << m_kDuplicateMsg );
+						return E_ADD_FAIL_DUPLICATE;
+					}
+				}
+			}
+			else
+			{
+				if( IsCanNation< _T_KEY, _T_TO_FUNC, _T_MSG_FUNC >(rkNationCodeStr, rkKey, szFunc, iLine) )
+				{
+					if( m_kContKey.end() == m_kContKey.find(rkKey) ) // 번호 중복 체크
+					{
+						m_kContKey.insert( rkKey );
+						_T_INSERT_FUNC< _T_KEY, _T_ELEMENT, _T_CONT >()(m_kContResult, rkKey, rkNewElement);
+						return E_ADD_SUCCESS;
+					}
+					else
+					{
+						if( IsUseMsgFunc() )
+						{
+							m_kDuplicateMsg.Replace( kKeyPrifix, _T_TO_FUNC(rkKey).operator std::wstring const&() );
+							_T_MSG_FUNC()( BM::vstring() << __FL2__(szFunc, iLine) << m_kDuplicateMsg );
+							return E_ADD_FAIL_DUPLICATE;
+						}
+					}
+				}
+			}
+			return E_ADD_FAIL_NATION;
+		}
+		bool IsEmpty() const
+		{
+			return m_kContResult.empty() && m_kContDefault.empty();
+		}
+		_T_CONT& GetResult()
+		{
+			Build();
+			return m_kContResult;
+		}
+		bool IsUseMsgFunc()
+		{
+			return m_bUseMsgFunc;
+		}
+
+	protected:
+		void Build()
+		{
+			_T_INSERT_FUNC< _T_KEY, _T_ELEMENT, _T_CONT >().Merge(m_kContResult, m_kContDefault);
+			m_kContDefault.clear();
+		}
+
+	private:
+		_T_CONT m_kContResult; // 결과용
+		_T_CONT m_kContDefault; // 기본 값
+		BM::vstring m_kDuplicateMsg;
+		ContKey m_kContKey;
+		bool m_bUseMsgFunc;
+	};
+};
+
+typedef enum eDBQueryType
+{
+	DQT_INIT_START = 1,
+	DQT_SERVER_LIST = 1,
+	DQT_NO_OP, // 아무 동작도 하지 않는다
+	DQT_MAP_SERVER_CONFIG,
+	DQT_TRY_LOGIN,
+	DQT_TRY_GMLOGIN,
+	DQT_TRY_AUTH,
+	DQT_DISCONNECT_OLDLOGIN,
+
+	DQT_GET_PLAYER_LIST,
+	DQT_SELECT_PLAYER_DATA,//캐릭 선택 쿼리
+
+	DQT_UPDATE_LOGOUT = 10,//접속 시간 업데이트
+	DQT_UPDATE_CONNECTION_CHANNEL,	//유저 접속 채널 저장
+	DQT_CLEAR_CONNECTION_CHANNEL,	//모든 유저 접속 채널 초기화
+
+	//		DQT_MEMBER_EXTERIOR,
+	//		DQT_CHARACTER_INV,
+
+	DQT_DEFCLASS_NATIONCODE,
+	DQT_DEFCLASS_ABIL_NATIONCODE,
+	DQT_DEFCLASS_PET,
+	DQT_DEFCLASS_PET_LEVEL,
+	DQT_DEFCLASS_PET_SKILL,
+	DQT_DEFCLASS_PET_ITEMOPTION,
+	DQT_DEFCLASS_PET_ABIL,
+
+	DQT_DEFITEMBAG,
+	DQT_DEF_DROP_MONEY_CONTROL,
+	DQT_DEF_ABIL_TYPE,
+
+	DQT_DEF_BASE_CHARACTER,
+
+	DQT_DEF_ITEM_BAG_GROUP,
+	DQT_DEF_MAP_ITEM_BAG,
+
+	DQT_DEF_FIVE_ELEMENT_INFO,
+	DQT_DEF_MAP_STONE_CONTROL,
+
+	DQT_DEFITEM,
+	DQT_DEFITEMABIL,
+	DQT_DEFITEMRARE,
+	DQT_DEFITEMRAREGROUP,
+	DQT_DEFITEMCONTAINER,
+	DQT_DEFITEM_RES_CONVERT,
+
+	DQT_DEFMAP,
+	DQT_DEFMAPABIL,
+	DQT_DEFMAPEFFECT,
+	DQT_DEFMAPENTETY,
+	DQT_DEFMAPITEM,
+	DQT_DEFMAPMONSTERREGEN,
+
+	DQT_DEFMONSTER,
+	DQT_DEFMONSTERABIL,
+	DQT_DEFMONSTERTUNNING,
+
+	DQT_DEFNPC,
+	DQT_DEFNPCABIL,
+
+	DQT_DEFDYNAMICABILRATE,
+	DQT_DEFDYNAMICABILRATE_BAG,
+
+	DQT_DEFSKILL,
+	DQT_DEFSKILL_NATIONCODE,
+	DQT_DEFSKILLABIL,
+	DQT_DEFSKILLABIL_NATIONCODE,
+	DQT_DEFSKILLSET,
+
+	DQT_DEFRES,
+	DQT_LOAD_DEF_CHANNEL_EFFECT,
+	DQT_DEFSTRINGS,
+	DQT_DEFSTRINGS_NATIONCODE,
+
+	DQT_DEF_FILTER_UNICODE,
+
+	DQT_DEFITEMMAKING,
+	DQT_DEFCOOKING,
+	DQT_DEFRESULTCONTROL,
+
+	//DQT_DEFLVEXP,
+
+	DQT_SAVECHARACTER,
+	DQT_SAVECHARACTER_EXTERN,
+	DQT_SAVECHARACTER_POINT,
+	DQT_SAVECHARACTER_MAPINFO,
+	DQT_SAVE_CLIENTOPTION,
+	DQT_DEL_SKILLSET,
+	DQT_SAVE_SKILLSET,
+	//DQT_GETUSERQUEST,
+
+	DQT_GET_MYPETDATA,		// 소유한 모든 펫의 정보
+	DQT_SAVEMYPETDATA,
+	DQT_DELETEMYPETDATA,
+
+	DQT_DEFEFFECT,
+	DQT_DEFEFFECT_NATIONCODE,
+	DQT_DEFEFFECTABIL,
+	DQT_DEFEFFECTABIL_NATIONCODE,
+	DQT_DEFUPGRADECLASS,
+	DQT_UPDATE_MEMBER_PW,
+	DQT_DEFITEMENCHANT,
+
+	DQT_DEFCHARACTER_BASEWEAR,// 캐릭터생성시 선택하는 기본복장
+	DQT_KICKUSER,
+	DQT_CREATECHARACTER,// 캐릭터생성
+	DQT_DELETECHARACTER,// 캐릭터삭제
+	DQT_REALMMERGE,// 캐릭터이름변경(생성창에서)
+	DQT_CHECK_CHARACTERNAME_OVERLAP,
+
+	DQT_DEF_ITEM_PLUS_UPGRADE,// 아이템 + 업글
+	DQT_DEF_ITEM_PLUS_UPGRADE_NATIONCODE, // 아이템 + 업글(국가코드 추가)
+	DQT_DEF_ITEM_RARITY_UPGRADE,// 아이템 + 업글
+	DQT_DEF_ITEM_RARITY_CONTROL,//레어리티 뽑는거.
+	DQT_DEF_ITEM_DISASSEMBLE,
+	DQT_DEF_ITEM_ENCHANT_SHIFT,//인챈트 전이
+	DQT_DEF_SUCCESS_RATE_CONTROL, //성공률테이블
+	DQT_DEFMONSTERBAG, // 몬스터 Bag 테이블
+	DQT_DEFGMCMD,	// GM Command 목록
+
+	DQT_DEF_ITEM_PLUSUP_CONTROL,//PlusUp 뽑는거
+	DQT_DEF_COUNT_CONTROL,
+	DQT_DEF_ITEM_BAG_ELEMENTS,
+	DQT_DEF_MONSTER_BAG_ELEMENTS,
+	DQT_DEF_MONSTER_BAG_CONTROL,
+
+	DQT_DEF_ITEM_BY_LEVEL,
+
+	// Break Object
+	DQT_DEF_OBJECT,
+	DQT_DEF_OBJECTABIL,
+	DQT_DEF_OBJECT_BAG,
+	DQT_DEF_OBJECT_BAG_ELEMENTS,
+
+	//DQT_DEF_GUILD_EXP,//길드 경험치 테이블
+
+	DQT_DEF_QUEST_REWARD,//퀘스트
+	DQT_DEF_QUEST_RANDOM,
+	DQT_DEF_QUEST_RANDOM_EXP,
+	DQT_DEF_QUEST_RANDOM_TACTICS_EXP,
+	DQT_DEF_QUEST_RESET_SCHEDULE,
+	DQT_DEF_QUEST_MIGRATION,
+	DQT_UPDATE_QUEST_CLEAR_COUNT, // 퀘스트 클리어 카운트
+	DQT_INIT_QUEST_CLEAR_COUNT,	 // 현상수배 퀘스트 클리어 카운트 초기화
+
+	DQT_FRIENDLIST_ADD_BYGUID,
+	DQT_FRIENDLIST_DEL,
+	DQT_FRIENDLIST_UPDATE,
+	DQT_FRIENDLIST_SELECT,
+	DQT_FRIENDLIST_UPDATE_CHATSTATUS,
+	DQT_FRIENDLIST_UPDATE_GROUP,
+	DQT_FRIENDLIST_MODIFY,
+
+	DQT_GUILD_PROC,//Guild Create,Delete
+	DQT_GUILD_SELECT_BASIC_INFO,
+	//DQT_GUILD_SELECT_EXTERN_INFO,
+	//DQT_GUILD_SELECT_MEMBER_GRADE,
+	//DQT_GUILD_SELECT_MEMBER,
+	DQT_GUILD_SELECT_OWNER_LAST_LOGIN_DAY,
+	DQT_GUILD_INIT_OWNER_LAST_LOGIN_DAY,
+	DQT_GUILD_SELECT_NEXT_OWNER,
+	DQT_GUILD_MEMBER_PROC,
+	DQT_GUILD_UPDATE_MEMBER_GRADE,
+	//DQT_GUILD_UPDATE_TAX_RATE,
+	DQT_GUILD_UPDATE_NOTICE,
+	DQT_GUILD_UPDATE_EXP_LEVEL,
+	DQT_GUILD_INVENTORY_CREATE,
+	DQT_GUILD_INVENTORY_LOAD,
+	DQT_GUILD_INVENTORY_LOG_INSERT,
+	DQT_GUILD_INVENTORY_LOG_SELECT,
+	DQT_GUILD_INVENTORY_LOG_DELETE,
+	DQT_GUILD_INVENTORY_EXTEND,
+
+	DQT_GUILD_CHECK_NAME,//중복 체크
+	DQT_GUILD_RENAME,//이름 변경(캐쉬템 or GM Command)
+	DQT_GUILD_CHANGE_OWNER,	//마스터 변경
+	DQT_GUILD_SENDMAIL,
+	DQT_GUILD_COMMON,	// 쿼리 결과 처리 없음
+	DQT_GUILD_MERCENARY_SAVE,
+	DQT_GUILD_ENTRANCEOPEN_SAVE, // 길드가입 설정 저장
+	DQT_GUILD_ENTRANCEOPEN_LIST, // 길드가입 신청을 허용한 길드 목록
+	DQT_GUILD_APPLICANT_LIST, // 길드가입 신청자
+	DQT_GUILD_REQ_ENTRANCE,		 // 길드가입 신청
+	DQT_GUILD_REQ_ENTRANCE_CANCEL,// 길드가입 신청 취소
+	
+	DQT_GUILD_ENTRANCE_PROCESS,
+	DQT_GUILD_INV_AUTHORITY, //길드금고 권한설정
+
+	DQT_DEF_GUILD_LEVEL,
+	DQT_DEF_GUILD_SKILL,
+	DQT_DEF_TACTICS_LEVEL,
+	DQT_DEF_TACTICS_QUEST_PSEUDO,
+
+	DQT_DEF_MONSTER_KILL_COUNT_REWARD,
+
+	// Emporia
+	DQT_DEF_EMPORIA,
+	DQT_LOAD_EMPORIA,
+	DQT_CREATE_EMPORIA,
+	DQT_SAVE_EMPORIA,
+	DQT_SAVE_EMPORIA_PACK,
+	DQT_SWAP_EMPORIA,
+
+	DQT_SAVE_EMPORIA_RESERVE,
+	DQT_SAVE_EMPORIA_THROW,
+	DQT_SAVE_EMPORIA_DELETE,
+	DQT_SAVE_EMPORIA_BATTLE_STATE,
+
+	DQT_CREATE_EMPORIA_TOURNAMENT,
+	DQT_SAVE_EMPORIA_TOURNAMENT,
+	DQT_SAVE_EMPORIA_MERCENARY,
+
+	DQT_SAVE_EMPORIA_FUNCTION,
+	DQT_UPDATE_EMPORIA_FUNCTION,
+
+	// 커플
+	DQT_COUPLE_INFO_SELECT,
+	DQT_COUPLE_UPDATE,
+
+	DQT_DEF_MISSION_RESULT,
+	DQT_DEF_MISSION_CANDIDATE,
+	DQT_DEF_MISSION_ROOT,
+	DQT_DEF_MISSION_QUEST,//미션 퀘스트
+
+	DQT_LOAD_MISSION_REPORT,
+	DQT_SAVE_MISSION_REPORT,
+	DQT_LOAD_MISSION_RANK,
+	DQT_SAVE_MISSION_RANK,
+
+	DQT_DEF_DEFENCE_ADD_MONSTER,
+
+	//GM커맨드 등등
+	DQT_GETCHARACTERTOTALCOUNT,
+	DQT_CHANGE_PASSWORD,
+	DQT_USER_CREATE_ACCOUNT,
+	DQT_GM_FREEZE_ACCOUNT,
+	DQT_GM_ADD_CASH,
+	DQT_GM_GET_CASH,
+	DQT_GM_CHANGE_BIRTHDAY,
+	DQT_GM_CHARACTER_INFO,
+	DQT_GM_CHARACTER_LIST1,
+	DQT_GM_CHARACTER_LIST2,
+	DQT_GM_CHECK_NAME,
+	DQT_GM_SELECT_ALL_GM_MEMBER,
+    DQT_DEF_SHOP_IN_EMPORIA,
+	DQT_DEF_SHOP_IN_GAME,
+	DQT_DEF_SHOP_IN_STOCK,
+
+	// AP
+	DQT_AP_CHECK_ACCOUNT,
+	DQT_AP_CREATE_ACCOUNT,
+	DQT_AP_GET_CASH,
+	DQT_AP_ADD_CASH,
+	DQT_AP_MODIFY_PASSWORD,
+	DQT_AP_CREATE_COUPON,
+	DQT_AP_MODIFY_MOBILELOCK,
+	DQT_AP_TABLE_CONTROL,
+
+	DQT_DEF_ITEM_OPTION,
+	DQT_DEF_ITEM_OPTION_ABIL,
+
+	DQT_DEF_ITEM_SET,
+
+	DQT_PLAYER_MONEY_AND_INV_LOAD,
+	DQT_PLAYER_EXTERN_DATA_LOAD,
+
+	DQT_UPDATE_USER_ITEM,
+	DQT_UPDATE_USER_FIELD,
+	DQT_SELECT_EXTERIOR_INFO,
+	DQT_UPDATE_ING_QUEST,
+	DQT_UPDATE_END_QUEST,
+
+	// 날자 컨텐츠
+	DQT_UPDATE_DATE_CONTENTS,
+
+	//진정관련
+	DQT_RECEIPT_PETITION,
+	DQT_SELECT_PETITION_STATE,
+	DQT_REMAINDER_PETITION,
+	DQT_SELECT_PETITION_DATA,
+	DQT_MODIFY_PETITION_DATA,
+
+	//WebTool
+	DQT_CHANGE_CHARACTER_NAME,
+	DQT_CHANGE_CHARACTER_STATE,
+	DQT_CHANGE_CHARACTER_POS,
+	DQT_CHANGE_SKILL_INFO,
+	DQT_CHANGE_QUEST_INFO,
+	DQT_CHANGE_GM_LEVEL,
+	DQT_ITEM_PROCESS_CREATE,
+	DQT_ITEM_PROCESS_MODIFY,
+	DQT_ITEM_PROCESS_DELETE,	
+	DQT_CHANGE_CHARACTER_FACE,
+	DQT_CHANGE_CP,
+	DQT_CHANGE_QUEST_ENDED,
+
+	//PvP
+	DQT_DEF_PVP_GROUNDMODE,
+	DQT_DEF_PVP_REWARD,
+	DQT_DEF_PVP_TIME,
+	DQT_DEF_PVP_RANK,
+	DQT_PVP_RANK_UPDATE,
+	DQT_PVP_RANK,
+
+	DQT_DEF_SPEND_MONEY,
+
+	DQT_CREATE_NC_ACCOUNT,
+	DQT_CREATE_GRAVITY_ACCOUNT,
+	DQT_TRY_LOGIN_NC,
+	DQT_CREATE_ACCOUNT,
+
+	//IB연동
+	DQT_IB_GET_MEMBER_UID,
+	DQT_USER_EVENT,
+
+	DQT_INIT_END,
+
+	DQT_POST_ADD_MAIL,
+	DQT_POST_GET_MAIL,
+	DQT_POST_MODIFY_MAIL,
+	DQT_POST_GET_MAIL_ITEM_RESERVE,
+	DQT_POST_GET_MAIL_ITEM,
+	DQT_POST_GET_MAIL_MIN,
+	DQT_POST_CHECK_EANBLE_SEND,
+
+	DQT_UM_ARTICLE_REG,
+	DQT_UM_ARTICLE_DEREG,
+	DQT_UM_ARTICLE_QUERY,
+	DQT_UM_ARTICLE_ITEM_RESERVE,
+	DQT_UM_ARTICLE_BUY,
+	DQT_UM_DEALING_QUERY,
+	DQT_UM_DEALING_DELETE,
+	DQT_UM_DEALING_ITEM_RESERVE,
+	DQT_UM_DEALING_READ,
+	DQT_UM_GET_MINIMUM_COST,
+	DQT_UM_GO_TIME_PROC,
+	DQT_UM_MY_ARTICLE_QUERY,
+	DQT_POST_NEW_MAIL_NOTY,
+	DQT_UM_MARKET_OPEN,
+	DQT_UM_LOAD_MARKET,
+	DQT_UM_MODIFY_MARKET,
+	DQT_UM_MARKET_REMOVE,
+	DQT_UM_CASH_QUERY,		//캐쉬 받는 동작
+	DQT_UM_DEV_SET_ARTICLE_STATE,	//테스트 코드
+
+	DQT_DEF_PROPERTY,
+	DQT_DEF_MAPEFFECT,
+	DQT_DEF_MAPENTITY,
+
+	// Rank 관련
+	DQT_RECORD_LEVELUP,
+
+	DQT_DEF_ITEM_RARITY_UPGRADE_COST_RATE,
+
+	DQT_DEF_CASH_ITEM_SHOP,
+
+	DQT_CS_CASH_QUERY,	// 맴버 디비에서 캐쉬 금액 쿼리 
+	DQT_CS_CASH_MODIFY,	// 맴버 디비에 캐쉬 금액 수정 (캐쉬 수정과 함께 추가적인 동작이 있음)
+	DQT_CS_ADD_GIFT,	// 선물 보내기 처리
+	DQT_CS_CASHSHOP,	// 캐릭터 선물 쿼리 + 캐쉬 소비 랭킹 정보 쿼리
+	DQT_CS_GIFT_QUEYR,	// 선물 정보 한개 쿼리
+	DQT_CS_RECV_GIFT,	// 선물 받기
+	DQT_CS_MODIFY_VISABLE_RANK,// 랭킹 정보 수정
+	DQT_CS_CASH_LIMIT_ITEM_QUERY,	// Local에 한정판매 갯수 쿼리
+	DQT_CS_CASH_LIMIT_ITEM_UPDATE_QUERY,	// Local에 한정판매 갯수 업데이트
+
+	DQT_TAKE_COUPON_REWARD,
+	DQT_DEF_ACHIEVEMENTS,// 업적 테이블 
+
+	DQT_DEF_LOAD_COUPONEVENT,
+	DQT_UM_MODIFY_MARKET_STATE,
+	DQT_DEF_LOAD_RECOMMENDATIONITEM,
+	DQT_SAVE_MEMBER_1ST_LOGINED,	// 최초 Login 한 정보 기록하기
+
+	DQT_DEF_GROUND_RARE_MONSTER,	// 희귀 몬스터 리젠 테이블
+	DQT_DEF_RARE_MONSTER_SPEECH,	// 희귀 몬스터 대사 테이블
+	DQT_CLEAN_DELETE_CHARACTER,
+	DQT_CHANGE_ACHIEVEMENT,
+
+	DQT_SELECT_CHARA_SKILL,			// 캐릭터 스킬 정보만 가져 오기
+	DQT_CHAR_RESET_SKILL,			// 캐릭터 스킬 초기화 처리
+
+	DQT_OXQUIZ_EVENT,				// OX 퀴즈 이벤트 정보
+	DQT_OXQUIZ_UPDATE_STATE,		// 이벤트 상태 수정
+
+	DQT_GET_EVENT_COUPON,			// 디비에서 남은 이벤트 쿠폰키를 가지고 온다.
+	DQT_LOAD_MACROCHECKTABLE,		// 매크로 체크 테이블 30초마다 갱신된다.
+	DQT_GET_LAST_RECVED_GIFT,		// 클라이언트에 통보해주기 위한 캐시 선물 정보
+
+	DQT_DEF_LOAD_CARDABIL,			// 캐릭터 카드 어빌 테이블 로드
+	DQT_SAVE_PLAYER_EFFECT,			// Player Effect 정보 저장
+	DQT_LOAD_CARD_LOCAL,			// 캐릭터 카드 지역 정보 
+	DQT_LOAD_DEF_CARD_KEY_STRING,	// 캐릭터 카드 키 스트링 정보
+
+	DQT_GEMSTORE,					// 보석 교환기 로드..
+	DQT_GEMSTORE2,					// 통합 버전, 잼스토어
+	DQT_USER_CREATE_ACCOUNT_GALA,	// GALA용 CreateMember
+	DQT_DEF_MONSTERCARD,			// 몬스터 카드 <-> 아이템 링크 정보
+	DQT_DEF_EMOTION,				// 이모티콘, 이모션, 풍선 이모티콘 정보
+	DQT_DEF_CASHITEMABILFILTER,		// 캐시 아이템에 생성되지 말아야 할 어빌 필터
+	DQT_DEF_GAMBLE,					// 겜블 아이템 테이블
+	DQT_GMORDER_SELECT_MEMBER_GMLEVEL,		// Offline 유저의 GMLevel 얻기
+	DQT_PCROOM,						// 피씨방 아이피 리스트 얻기
+	DQT_PCCAFE,						// 피씨방 아이피 리스트 얻기 최신
+	DQT_PCCAFE_ABIL,				// 피씨방 등급별 어빌
+	DQT_DEF_CONVERTITEM,			// 아이템 변환
+	DQT_LOAD_LOCAL_LIMITED_ITEM,	
+	DQT_SYNC_LOCAL_LIMITED_ITEM,	
+	DQT_LOAD_LOCAL_LIMITED_ITEM_CONTROL,
+	DQT_DEFGEMSTORE,				// 보석 교환기(장신구)
+
+	//DQT_CHECK_SAFE_LIMITED_ITEM_RECORD,
+	DQT_CHECK_LIMIT_LIMITED_ITEM_RECORD,
+	DQT_UPDATE_SAFE_LIMITED_ITEM_RECORD,//창고 채우기(1번에 설정된 만큼
+	DQT_UPDATE_LIMIT_LIMITED_ITEM_RECORD,//물채우기(1번에 한개씩)
+	DQT_UPDATE_LIMIT_LIMITED_ITEM_RECORD_POP,//실제 빼기
+
+	DQT_SAVE_PENALTY,
+	DQT_CHECK_PENALTY,
+	DQT_CHANGE_DELETED_CHARACTER_NAME,
+
+	DQT_HATCH_PET,
+	DQT_REMOVE_PET,
+	DQT_RENAME_PET,
+	DQT_SETABIL_PET,
+	DQT_LOAD_PET_ITEM,
+	DQT_DEF_PET_HATCH,
+	DQT_DEF_PET_BONUSSTATUS,
+	//		DQT_DEF_PET_BONUSSTATUSVALUE,
+	DQT_OXQUIZ_EVENT_STATE,		// OX 퀴즈 상태
+	DQT_TRY_AUTH_CHECKPW,
+	DQT_TRY_AUTH_CHECKPW_AP,
+
+	DQT_LOAD_CREATE_CHARACTER_EVENT_REWARD,	// 캐릭 생성 이벤트 보상
+	DQT_TRY_AUTH_CHECKPW_OLDLOGIN,
+	DQT_CASH_TRAN_COMMIT,
+	DQT_CASH_TRANSACTION,		// Cash Transaction begin/end
+	DQT_LOAD_DEFREALTYDEALER,	// 마이홈 상점? (이것도 집 종류별로 가격을 줄수 있도록 만들어 놓자)
+	DQT_SELECT_MYHOME_BASE,		// 마이홈 기본 정보 로드
+	DQT_LOAD_DEF_RARE_OPT_MAGIC,
+	DQT_LOAD_DEF_RARE_OPT_SKILL,
+	DQT_LOAD_DEF_SKILLIDX_TO_SKILLNO,
+
+	DQT_LOAD_DEF_MIXUPITEM,
+
+	DQT_LOAD_MYHOME_AUCTION,	// 마이홈 경매 정보 로드
+	DQT_LOAD_MYHOME_INFO,
+
+	DQT_VISITLOG_ADD,
+	DQT_VISITLOG_DELETE,
+	DQT_VISITLOG_LIST,
+
+	DQT_CHECK_ENABLE_VISIT_OPTION,
+
+	DQT_VISITFLAG_MODIFY,
+	DQT_MYHOME_MODIFY,
+
+	DQT_INVITATION_CREATE,
+	DQT_INVITATION_SELECT,
+
+	DQT_VISITORS_SELECT,
+
+	DQT_DEF_MARRYTEXT,
+
+	DQT_DEF_HIDDENREWORDITEM,
+	DQT_DEF_HIDDENREWORDBAG,
+
+	DQT_DEF_MYHOME_DEFAULT_ITEM,
+
+	// Event Quest
+	DQT_LOAD_EVENT_QUEST,
+	DQT_LOAD_EVENT_QUEST_COMPLETESTATUS,
+	DQT_INSERT_EVENT_QUEST_COMPLETESTATUS,
+	DQT_DELETE_EVENT_QUEST_COMPLETESTATUS,
+	DQT_UPDATE_EVENT_QUEST_STATUS,
+	DQT_INIT_EVENT_QUEST_STATUS,
+	// Realm Quest
+	DQT_LOAD_REALM_QUEST,
+	DQT_UPDATE_REALM_QUEST,
+
+	DQT_LOAD_DEF_MYHOME_TEX,
+	DQT_LOAD_DEF_HOMETOWNTOMAPCOST,
+	DQT_LOAD_DEF_GAMBLEMACHINE,
+
+	DQT_LOAD_BS_GAME,
+	DQT_UPDATE_BS_STATUS,
+	DQT_INIT_BS_STATUS,
+
+	DQT_LUCKYSTAR_LOAD_EVENT,
+	DQT_LUCKYSTAR_LOAD_EVENT_SUB,
+	DQT_LUCKYSTAR_LOAD_JOINEDUSER,
+    DQT_LUCKYSTAR_UPDATE_LASTEVENT,
+	DQT_LUCKYSTAR_UPDATE_EVENT_SUB,			// 이벤트 상태 수정
+	DQT_LUCKYSTAR_UPDATE_JOINEDUSER,
+	DQT_LUCKYSTAR_UPDATE_JOINEDUSER_READED,
+
+	DQT_GMCMD_CASHITEMGIFT_INSERT,
+	DQT_GMCMD_CASHITEMGIFT_DELETE,
+
+	DQT_EVENT_CASHITEM_GIFT1,	// 하루에 한번 로그인한 계정의 캐릭터에게 캐쉬아이템 지급
+
+	DQT_DEF_TRANSTOWER,
+	DQT_DEF_PARTY_INFO,
+
+	DQT_UPDATE_ACHIEVEMENT_FIST,// 업적 최초 달성 저장
+
+	DQT_SELECT_ACHIEVEMENT_RANK,// 업적 랭크 쿼리
+
+	DQT_DEF_MISSION_CLASS_REWARD,
+	DQT_DEF_MISSION_RANK_REWARD,
+
+	DQT_LOAD_EVENT_ITEM_REWARD,	// 퍼블리셔가 수정 가능한 아이템 지급 아이템 상자
+	DQT_LOAD_TREASURE_CHEST, //잠긴 보물 상자
+
+	DQT_DEF_MISSION_DEFENCE_STAGE,
+	DQT_DEF_MISSION_DEFENCE_WAVE,
+
+	DQT_DEF_MISSION_DEFENCE7_MISSION,
+	DQT_DEF_MISSION_DEFENCE7_STAGE,
+	DQT_DEF_MISSION_DEFENCE7_WAVE,
+	DQT_DEF_MISSION_DEFENCE7_GUARDIAN,
+
+	DQT_DEF_MISSION_BONUSMAP,
+
+	DQT_LOAD_DEF_PLAYERPLAYTIME,//피로도 시스템 정의
+	DQT_UPDATE_RESETPLAYERPLAYTIME,//전체유저 피로도 초기화
+	DQT_PROCESS_SETPLAYERPLAYTIME,//특정유저 검색
+	DQT_UPDATE_SETPLAYERPLAYTIME,//특정유저 검색후 접속 정보 수정
+	DQT_UPDATE_SETPLAYERPLAYTIMEBYID,////특정유저 검색(ID로)후 접속 정보 수정
+	DQT_UPDATE_MEMBERDATA,
+
+	DQT_POST_GROUP_MAIL,	// 그룹 메일 발송
+	DQT_LOAD_DEF_CHARCARDEFFECT,
+	DQT_LOAD_DEF_SIDEJOBRATE,	// 아르바이트 수치 테이블
+	DQT_MYHOME_SIDEJOB_ENTER,	// 아르바이트 장소로 이동
+	DQT_LOAD_DEF_EVENTITEMSET,	// 파티 이벤트 아이템 Set
+	DQT_LOAD_DEF_REDICEOPTIONCOST,// 아이템 옵션 재설정 비용 테이블
+	DQT_LOAD_DEF_MYHOMESIDEJOBTIME,// 마이홈 등급별 아르바이트 시간
+	DQT_LOAD_DEF_MONSTER_ENCHANT_GRADE,
+	DQT_LOAD_DEF_MONSTER_GRADE_PROBABILITY,
+	DQT_LOAD_DEF_SUPER_GROUND,
+
+	DQT_LOAD_DEF_MYHOMEBUILDINGS,// 마을에 배치될 마이홈 건물 정보
+	DQT_ADD_MYHOME,				// 마이홈 추가
+	DQT_LOAD_DEF_BASICOPTIONAMP,// 소울크래프트 옵션 증가 테이블
+	DQT_LOAD_DEF_ITEM_AMP_SPECIFIC,//개별 옵션증폭
+	// Alram Mission
+	DQT_LOAD_DEF_ALRAM_MISSION,
+	DQT_LOAD_DEF_DEATHPENALTY,
+
+	DQT_LOAD_DEF_SKILLEXTENDITEM,// 스킬확장 셋트
+
+	DQT_MYHOME_REMOVE,			// 마이홈 삭제
+	DQT_LOAD_DEF_NPC_TALK_MAP_MOVE,
+
+	DQT_ADMIN_LOAD_DEFLOGITEMCOUNT, // 주기적으로 아이템 수량 기록
+
+	DQT_ADMIN_GM_COPYTHAT,
+
+	DQT_NONE_RESULT_PROCESS,
+
+	// PvP League
+	DQT_LOAD_DEF_PVPLEAGUE_TIME,
+	DQT_LOAD_DEF_PVPLEAGUE_SESSION,
+	DQT_LOAD_DEF_PVPLEAGUE_REWARD,
+
+	DQT_LOAD_PVPLEAGUE,
+	DQT_LOAD_PVPLEAGUE_SUB,
+	DQT_INSERT_PVPLEAGUE,
+
+	DQT_INSERT_PVPLEAGUE_TEAM,
+	DQT_DELETE_PVPLEAGUE_TEAM,
+
+	DQT_INSERT_PVPLEAGUE_TOURNAMENT,
+	DQT_INSERT_PVPLEAGUE_BATTLE,
+
+	DQT_SET_PVPLEAGUE_BATTLE,
+	DQT_SET_PVPLEAGUE_STATE,
+	DQT_SET_PVPLEAGUE_TEAM,
+	DQT_SET_PVPLEAGUE_TEAM_INDEX,
+
+	DQT_UPDATE_SPECIFIC_REWARD,
+	DQT_LOAD_DEF_SPECIFIC_REWARD,
+	DQT_LOAD_DEF_SPECIFIC_REWARD_EVENT,
+
+	//JobSkill
+	DQT_LOAD_DEF_JOBSKILL_ITEMUPGRADE,
+	DQT_LOAD_DEF_JOBSKILL_LOCATIONITEM,
+	DQT_LOAD_DEF_JOBSKILL_PROBABILITY,
+	DQT_LOAD_DEF_JOBSKILL_RECIPE,
+	DQT_LOAD_DEF_JOBSKILL_SAVEIDX,
+	DQT_LOAD_DEF_JOBSKILL_SKILL,
+	DQT_LOAD_DEF_JOBSKILL_SKILLEXPERTNESS,
+	DQT_LOAD_DEF_JOBSKILL_TOOL,
+	DQT_LOAD_DEF_JOBSKILL_SHOP,
+
+	DQT_SELECT_MEMBERID,
+
+	DQT_UPDATE_USER_JOBSKILL_INFO_NO_OP, //no operator
+	DQT_UPDATE_USER_JOBSKILL_HISTORYITEM,
+
+	//JobSkill 영력전이 - 추출/삽입
+	DQT_LOAD_DEF_JOBSKILL_ITEMSOULEXTRACT,
+	DQT_LOAD_DEF_JOBSKILL_ITEMSOULTRANSITION,
+	
+	DQT_LOAD_DEF_SOULTRADE,
+	DQT_LOAD_DEF_SOCKET_ITEM,
+
+	DQT_SAVE_CHARACTOR_SLOT,
+	DQT_FIND_CHARACTOR_EXTEND_SLOT,
+
+	DQT_LOAD_DEF_EXPEDITION_NPC,
+	
+	DQT_LOAD_DEF_EVENTGROUP,
+	DQT_LOAD_DEF_EVENTMONSTERGROUP,
+	DQT_LOAD_DEF_EVENTREWARDITEMGROUP,
+	DQT_LOAD_DEF_EVENT_BOSSBATTLE,
+	DQT_LOAD_DEF_EVENT_RACE,
+	DQT_LOAD_DEF_EVENTSCHEDULE,
+
+	DQT_SELECT_TOP1_EMPORIA_FOR_CHECK,
+
+	DQT_PREMIUM_SERVICE,
+	DQT_PREMIUM_ARTICLE,
+	DQT_UPDATE_PREMIUM_SERVICE,
+	DQT_GET_MEMBER_PREMIUM_SERVICE,
+	DQT_UPDATE_PREMIUM_CUSTOM_DATA,
+	
+	DQT_SELECT_CASHITEM_FOR_SOUL_LEVEL_DEC,
+	DQT_EVENT_STORE,					// 이벤트 아이템 교환기
+	DQT_LOAD_JUMPINGCHAREVENT,
+
+	//레벨별 퀘스트 보상 시스템
+	DQT_LOAD_QUEST_LEVEL_REWARD,		// 레벨별 퀘스트 보상 시스템
+
+	DQT_LOAD_JOBSKILL_EVENT_LOCATION,	// 직업생산 채집 이벤트
+
+	DQT_SELECT_USER_QUEST_COMPLETE,			// 퀘스트 완료유무
+	DQT_UPDATE_USER_QUEST_COMPLETE,			// 퀘스트 완료유무
+}EDBQueryType;
+
+class PgDBCache
+{
+	friend struct ::Loki::CreateStatic< PgDBCache >;
+private:
+	PgDBCache(void);
+	virtual ~PgDBCache(void);
+
+public://! ! 쿼리 관련 함수 Q_ 를 붙인다.
+	bool Init();
+
+	static bool Q_DQT_DEFCLASS_NATIONCODE( CEL::DB_RESULT & Result );
+	static bool Q_DQT_DEFCLASS_ABIL_NATIONCODE(CEL::DB_RESULT & Result);
+	static bool Q_DQT_DEFCLASS_PET( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFCLASS_PET_LEVEL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFCLASS_PET_SKILL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFCLASS_PET_ITEMOPTION(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEFCLASS_PET_ABIL(CEL::DB_RESULT& rkResult);	
+	static bool Q_DQT_DEFITEMBAG( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEF_DROP_MONEY_CONTROL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEF_ABIL_TYPE( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFITEMCONTAINER( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFITEM( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFITEMABIL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFITEMRARE( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFITEMRAREGROUP( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFMAP( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFMAPABIL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFMAPITEM( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFMAPMONSTERREGEN( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFMONSTER( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFMONSTERABIL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFMONSTERTUNNING( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFNPC( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFNPCABIL( CEL::DB_RESULT &rkResult );	
+	static bool Q_DQT_DEFSKILL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFSKILL_NATIONCODE( CEL::DB_RESULT & Result );
+	static bool Q_DQT_DEFSKILLABIL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFSKILLABIL_NATIONCODE( CEL::DB_RESULT & Result );
+	static bool Q_DQT_DEFSKILLSET( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFRES( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_LOAD_DEF_CHANNEL_EFFECT( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFSTRINGS( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFSTRINGS_NATIONCODE( CEL::DB_RESULT & Result );
+	static bool Q_DQT_DEFEFFECT(CEL::DB_RESULT& rkResult );
+	static bool Q_DQT_DEFEFFECT_NATIONCODE( CEL::DB_RESULT & Result );
+	static bool Q_DQT_DEFEFFECTABIL(CEL::DB_RESULT& rkResult );
+	static bool Q_DQT_DEFEFFECTABIL_NATIONCODE( CEL::DB_RESULT & Result);
+	static bool Q_DQT_DEFUPGRADECLASS(CEL::DB_RESULT& rkResult );
+	static bool Q_DQT_DEFITEMENCHANT( CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEFCHARACTER_BASEWEAR(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_ITEM_PLUS_UPGRADE(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_ITEM_PLUS_UPGRADE_NATIONCODE(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_ITEM_ENCHANT_SHIFT(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_SUCCESS_RATE_CONTROL(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEFMONSTERBAG(CEL::DB_RESULT& rkResult);	
+	static bool Q_DQT_DEF_COUNT_CONTROL(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_ITEM_BAG_ELEMENTS(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_MONSTER_BAG_ELEMENTS(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_MONSTER_BAG_CONTROL(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_OBJECT(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_OBJECTABIL(CEL::DB_RESULT& rkResult);	
+	static bool Q_DQT_DEF_ITEM_BY_LEVEL(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_MISSION_CANDIDATE(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_MISSION_ROOT(CEL::DB_RESULT& rkResult);	
+	static bool Q_DQT_DEF_DEFENCE_ADD_MONSTER(CEL::DB_RESULT& rkResult);
+	static bool Q_DEF_MISSION_DEFENCE_STAGE(CEL::DB_RESULT& rkResult);	
+	static bool Q_DEF_MISSION_DEFENCE_WAVE(CEL::DB_RESULT& rkResult);	
+	static bool Q_DEF_MISSION_DEFENCE7_MISSION(CEL::DB_RESULT& rkResult);	
+	static bool Q_DEF_MISSION_DEFENCE7_STAGE(CEL::DB_RESULT& rkResult);
+	static bool Q_DEF_MISSION_DEFENCE7_WAVE(CEL::DB_RESULT& rkResult);
+	static bool Q_DEF_MISSION_DEFENCE7_GUARDIAN(CEL::DB_RESULT& rkResult);
+	static bool Q_DEF_MISSION_BONUSMAP(CEL::DB_RESULT& rkResult);
+	static bool Q_LOAD_DEF_JOBSKILL_LOCATIONITEM(CEL::DB_RESULT& rkResult);
+	static bool Q_LOAD_DEF_JOBSKILL_SKILL(CEL::DB_RESULT& rkResult);
+	static bool Q_LOAD_DEF_JOBSKILL_SKILLEXPERTNESS(CEL::DB_RESULT& rkResult);
+	static bool Q_LOAD_DEF_JOBSKILL_TOOL(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_LOAD_DEF_JOBSKILL_SHOP(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_ITEM_OPTION(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_ITEM_OPTION_ABIL(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_ITEM_RARITY_UPGRADE(CEL::DB_RESULT& rkResult);	
+	static bool Q_DQT_DEF_ITEM_BAG_GROUP(CEL::DB_RESULT& rkResult);	
+	static bool Q_DQT_DEF_QUEST_REWARD(CEL::DB_RESULT& rkResult);	
+	static bool Q_DQT_DEF_QUEST_RESET_SCHEDULE(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_QUEST_RANDOM_EXP(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_QUEST_RANDOM_TACTICS_EXP(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_QUEST_MIGRATION(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_PVP_GROUNDMODE( CEL::DB_RESULT& rkResult );	
+	static bool Q_DQT_DEFITEMMAKING( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFCOOKING( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEFRESULTCONTROL( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEF_ITEM_SET( CEL::DB_RESULT &rkResult );
+	static bool Q_DQT_DEF_SPEND_MONEY(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_GUILD_LEVEL(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_GUILD_SKILL(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_PROPERTY(CEL::DB_RESULT &rkResult);	
+	static bool Q_DQT_DEF_FIVE_ELEMENT_INFO(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_ITEM_RARITY_UPGRADE_COST_RATE(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_TACTICS_LEVEL(CEL::DB_RESULT &rkResult);	
+	static bool Q_DQT_DEF_EMPORIA(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_MONSTER_KILL_COUNT_REWARD(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_ACHIEVEMENTS(CEL::DB_RESULT &rkResult);	
+	static bool Q_DQT_DEF_FILTER_UNICODE(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_MONSTERCARD(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_MARRYTEXT(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_HIDDENREWORDITEM(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_HIDDENREWORDBAG(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_EMOTION(CEL::DB_RESULT &rkResult);	
+	static bool Q_DQT_DEF_CONVERTITEM(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_PET_HATCH(CEL::DB_RESULT &rkResult);	
+	static bool Q_DQT_DEF_LOAD_RECOMMENDATIONITEM(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_RARE_MONSTER_SPEECH(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_CARD_LOCAL(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_HOMETOWNTOMAPCOST(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_MYHOME_TEX(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_SKILLIDX_TO_SKILLNO(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_LOAD_CARDABIL(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_CARD_KEY_STRING(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_GROUND_RARE_MONSTER(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_TRANSTOWER(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_PARTY_INFO(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_DEF_MAP_ITEM_BAG(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_MISSION_RESULT(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_OBJECT_BAG_ELEMENTS(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_OBJECT_BAG(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_MISSION_CLASS_REWARD(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEF_MISSION_RANK_REWARD(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_LOAD_DEF_CHARCARDEFFECT(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_SIDEJOBRATE(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_EVENTITEMSET(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_REDICEOPTIONCOST(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_MYHOMESIDEJOBTIME(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_MONSTER_ENCHANT_GRADE(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_MYHOMEBUILDINGS(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_BASICOPTIONAMP(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_ITEM_AMP_SPECIFIC(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_ALRAM_MISSION(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_DEATHPENALTY(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_LOAD_DEF_SKILLEXTENDITEM(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_LOAD_DEF_NPC_TALK_MAP_MOVE(CEL::DB_RESULT& rkResult);
+	static bool Q_DQT_DEFITEM_RES_CONVERT(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_SPECIFIC_REWARD(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_SPECIFIC_REWARD_EVENT(CEL::DB_RESULT & Result);
+	static bool Q_DQT_LOAD_DEF_JOBSKILL_PROBABILITY(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_JOBSKILL_ITEMUPGRADE(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_JOBSKILL_SAVEIDX(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_JOBSKILL_RECIPE(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_JOBSKILL_ITEMSOULEXTRACT(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_JOBSKILL_ITEMSOULTRANSITION(CEL::DB_RESULT &rkResult);
+	static bool Q_LOAD_DEF_SOCKET_ITEM(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_SAVE_CHARACTOR_SLOT(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_EXPEDITION_NPC(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_SELECT_TOP1_EMPORIA_FOR_CHECK(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_DEF_EVENTGROUP(CEL::DB_RESULT & Result);
+	static bool Q_DQT_LOAD_DEF_EVENTMONSTERGROUP(CEL::DB_RESULT & Result);
+	static bool Q_DQT_LOAD_DEF_EVENTREWARDITEMGROUP(CEL::DB_RESULT & Result);
+	static bool Q_DQT_LOAD_DEF_EVENT_BOSSBATTLE(CEL::DB_RESULT & Result);
+	static bool Q_DQT_LOAD_DEF_EVENT_RACE(CEL::DB_RESULT & Result);
+	static bool Q_DQT_LOAD_DEF_EVENTSCHEDULE(CEL::DB_RESULT & Result);
+	
+	static bool Q_DQT_PREMIUM_SERVICE(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_PREMIUM_ARTICLE(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_UPDATE_PREMIUM_SERVICE(CEL::DB_RESULT &rkResult);
+
+	static bool Q_DQT_SELECT_CASHITEM_FOR_SOUL_LEVEL_DEC(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_QUEST_LEVEL_REWARD(CEL::DB_RESULT &rkResult);
+	static bool Q_DQT_LOAD_JOBSKILL_EVENT_LOCATION(CEL::DB_RESULT &rkResult);
+
+	static bool TableDataQuery( bool bReload = false );	
+	static bool OnDBExcute(CEL::DB_RESULT &rkResult);
+
+public:
+	static bool m_bIsForTool;
+	static bool DisplayErrorMsg(); // 에러 메시지를 출력하면서 없으면 false / 있으면 true
+protected:
+	Loki::Mutex m_kMutex;
+private:
+	static void AddErrorMsg(BM::vstring const& rkErrorMsg); // Def 테이블 로드 하면서 쌓이는 에러 메시지
+};
+
+#define g_kDBCache SINGLETON_STATIC(PgDBCache)
+
+#endif // WEAPON_VARIANT_DATABASE_PGDBCACHE_H

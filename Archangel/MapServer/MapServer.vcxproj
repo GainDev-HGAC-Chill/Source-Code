@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Lib MD H_AUTO|Win32">
+      <Configuration>Lib MD H_AUTO</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MDd|Win32">
+      <Configuration>Lib MDd</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MDo H_AUTO|Win32">
+      <Configuration>Lib MDo H_AUTO</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MDo|Win32">
+      <Configuration>Lib MDo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MD|Win32">
+      <Configuration>Lib MD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{12DA0B28-A231-491E-A5E7-E263687AD509}</ProjectGuid>
+    <RootNamespace>MapServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo H_AUTO|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD H_AUTO|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDd|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo H_AUTO|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD H_AUTO|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDd|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28127.55</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDd|Win32'">
+    <OutDir>../../../Dragonica_Exe/Archangel_run/MMC/Patch/Map\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD|Win32'">
+    <OutDir>../../../Dragonica_Exe/Archangel_run/MMC/Patch/Map\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo|Win32'">
+    <OutDir>../../../Dragonica_Exe/Archangel_run/MMC/Patch/Map\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD H_AUTO|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo H_AUTO|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDd|Win32'">
+    <PreBuildEvent>
+      <Command />
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./;../../Cosmos/Include;../Weapons;../../Cosmos/Gamebryo_2.2.2/Include;../../Cosmos/PhysX/Include;./SkillEffectAbilSystem;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_MDd_;NIDEBUG;_CHECK_PUBLIC_MAP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/NODEFAULTLIB:LIBCMTD.Lib %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)d.exe</OutputFile>
+      <AdditionalLibraryDirectories>../../Cosmos/lib;../Weapons/lib;../../Cosmos/Gamebryo_2.2.2/Lib/DebugLib;../../Cosmos/PhysX/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <SubSystem>Console</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <TargetMachine>MachineX86</TargetMachine>
+      <Profile>false</Profile>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>./;../../Cosmos/Include;../Weapons;../../Cosmos/Gamebryo_2.2.2/Include;../../Cosmos/PhysX/Include;./SkillEffectAbilSystem;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_MD_;NIRELEASE;_CHECK_PUBLIC_MAP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName)_Release.exe</OutputFile>
+      <AdditionalLibraryDirectories>../../Cosmos/lib;../Weapons/lib;../../Cosmos/Gamebryo_2.2.2/Lib/ReleaseLib;../../Cosmos/PhysX/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <SubSystem>Console</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration />
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo|Win32'">
+    <ClCompile>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>./;../../Cosmos/Include;../Weapons;../../Cosmos/Gamebryo_2.2.2/Include;../../Cosmos/PhysX/Include;./SkillEffectAbilSystem;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_MDo_;NISHIPPING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../../Cosmos/lib;../Weapons/lib;../../Cosmos/Gamebryo_2.2.2/Lib/ShippingLib;../../Cosmos/PhysX/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <SubSystem>Console</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration />
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD H_AUTO|Win32'">
+    <ClCompile>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>./;../../Cosmos/Include;../Weapons;../../Cosmos/Gamebryo_2.2.2/Include;../../Cosmos/PhysX/Include;./SkillEffectAbilSystem;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_MD_;NIRELEASE;_CHECK_PUBLIC_MAP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName)_Release.exe</OutputFile>
+      <AdditionalLibraryDirectories>../../Cosmos/lib;../Weapons/lib;../../Cosmos/Gamebryo_2.2.2/Lib/ReleaseLib;../../Cosmos/PhysX/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <SubSystem>Console</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration />
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo H_AUTO|Win32'">
+    <ClCompile>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>./;../../Cosmos/Include;../Weapons;../../Cosmos/Gamebryo_2.2.2/Include;../../Cosmos/PhysX/Include;./SkillEffectAbilSystem;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_MDo_;NISHIPPING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../../Cosmos/lib;../Weapons/lib;../../Cosmos/Gamebryo_2.2.2/Lib/ShippingLib;../../Cosmos/PhysX/Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <SubSystem>Console</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration />
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Weapons\Lohengrin\DB.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\LogGroup.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\Lohengrin.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\networkfunc.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\packetstruct.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\packettype.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType2.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType3.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType4.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType5.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType6.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\processconfig.h" />
+    <ClInclude Include="..\Weapons\Lohengrin\ServerType.h" />
+    <ClInclude Include="AI\EnemySelector.h" />
+    <ClInclude Include="AI\PgAIActAround.h" />
+    <ClInclude Include="AI\PgAIActBlowup.h" />
+    <ClInclude Include="AI\PgAIActCallHelp.h" />
+    <ClInclude Include="AI\PgAIActChaseEnemy.h" />
+    <ClInclude Include="AI\PgAIActDelay.h" />
+    <ClInclude Include="AI\PgAIActDmDelay.h" />
+    <ClInclude Include="AI\PgAIActFireSkill.h" />
+    <ClInclude Include="AI\PgAIActFireSkillDelay.h" />
+    <ClInclude Include="AI\PgAIActFollowCaller.h" />
+    <ClInclude Include="AI\PgAIActHide.h" />
+    <ClInclude Include="AI\PgAIActIdle.h" />
+    <ClInclude Include="AI\PgAIAction.h" />
+    <ClInclude Include="AI\PgAIActionManager.h" />
+    <ClInclude Include="AI\PgAIActKeepDistance.h" />
+    <ClInclude Include="AI\PgAIActOpening.h" />
+    <ClInclude Include="AI\PgAIActPatrol.h" />
+    <ClInclude Include="AI\PgAIActRetreat.h" />
+    <ClInclude Include="AI\PgAIActRoad.h" />
+    <ClInclude Include="AI\PgAIActWaitCT.h" />
+    <ClInclude Include="AI\PgAIManager.h" />
+    <ClInclude Include="AI\PgAIPattern.h" />
+    <ClInclude Include="AI\PgAIPatternManager.h" />
+    <ClInclude Include="AI\PgAISkillChooser.h" />
+    <ClInclude Include="AI\PgElitePattenManager.h" />
+    <ClInclude Include="AI\PgElitePattenState.h" />
+    <ClInclude Include="AI\PgTargettingManager.h" />
+    <ClInclude Include="AI\PgWayPoint.h" />
+    <ClInclude Include="AI\PgWayPointMng.h" />
+    <ClInclude Include="constant.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="PgAction.h" />
+    <ClInclude Include="PgActionAchievement.h" />
+    <ClInclude Include="PgActionJobSkill.h" />
+    <ClInclude Include="PgActionPost.h" />
+    <ClInclude Include="PgActionQuest.h" />
+    <ClInclude Include="PgActionUserMarket.h" />
+    <ClInclude Include="PgAction_Pet.h" />
+    <ClInclude Include="PgBattleArea.h" />
+    <ClInclude Include="PgBSMapGame.h" />
+    <ClInclude Include="PgBSTeamMng.h" />
+    <ClInclude Include="PgBSTimeEvent.h" />
+    <ClInclude Include="PgConstellationGround.h" />
+    <ClInclude Include="PgConstellationMgr.h" />
+    <ClInclude Include="PgConstellationResult.h" />
+    <ClInclude Include="PgDBProcess.h" />
+    <ClInclude Include="PgDefencePartyMgr.h" />
+    <ClInclude Include="PgDuelSystem.h" />
+    <ClInclude Include="PgEventItemSet.h" />
+    <ClInclude Include="PgExpeditionGround.h" />
+    <ClInclude Include="PgExpeditionItemRule.h" />
+    <ClInclude Include="PgExpeditionLobby.h" />
+    <ClInclude Include="PgGenPointMgr.h" />
+    <ClInclude Include="PgGround.h" />
+    <ClInclude Include="PgGroundMgr.h" />
+    <ClInclude Include="PgGroundResource.h" />
+    <ClInclude Include="PgGroundTrigger.h" />
+    <ClInclude Include="PgGroundUnitMgr.h" />
+    <ClInclude Include="PgHackDualKeyboard.h" />
+    <ClInclude Include="PgIndun.h" />
+    <ClInclude Include="PgIndunHome.h" />
+    <ClInclude Include="PgItemTradeMgr.h" />
+    <ClInclude Include="PgJobSkillMgr.h" />
+    <ClInclude Include="PgKeyEvent.h" />
+    <ClInclude Include="PgLocalPartyMgr.h" />
+    <ClInclude Include="PgLocalVendorMgr.h" />
+    <ClInclude Include="PgMarryMgr.h" />
+    <ClInclude Include="PgMissionGround.h" />
+    <ClInclude Include="PgMissionMan.h" />
+    <ClInclude Include="PgMonKillCountReward.h" />
+    <ClInclude Include="PgPacketManager.h" />
+    <ClInclude Include="PgPartyItemRule.h" />
+    <ClInclude Include="PgPortal_Emporia.h" />
+    <ClInclude Include="PgPVPEffectSelector.h" />
+    <ClInclude Include="PgQuest.h" />
+    <ClInclude Include="PgRecvFromCenter.h" />
+    <ClInclude Include="PgRecvFromContents.h" />
+    <ClInclude Include="PgRecvFromLog.h" />
+    <ClInclude Include="PgRecvFromSwitch.h" />
+    <ClInclude Include="PgRecvFromUser.h" />
+    <ClInclude Include="PgReqMapMove.h" />
+    <ClInclude Include="PgRequest.h" />
+    <ClInclude Include="PgSendWrapper.h" />
+    <ClInclude Include="PgSkillLinkageInfo.h" />
+    <ClInclude Include="PgSmallArea.h" />
+    <ClInclude Include="PgStaticEventGround.h" />
+    <ClInclude Include="PgStaticRaceGround.h" />
+    <ClInclude Include="PgStoneMgr.h" />
+    <ClInclude Include="PgSuperGround.h" />
+    <ClInclude Include="PgTask_MapServer.h" />
+    <ClInclude Include="PgTimer.h" />
+    <ClInclude Include="PgUserQuestSessionMgr.h" />
+    <ClInclude Include="PgVolatileInven.h" />
+    <ClInclude Include="PgWorldEnvironmentStatus.h" />
+    <ClInclude Include="PublicMap\PgBattleForEmporia.h" />
+    <ClInclude Include="PublicMap\PgBSGround.h" />
+    <ClInclude Include="PublicMap\PgEmporiaGround.h" />
+    <ClInclude Include="PublicMap\PgHardCoreDungeon.h" />
+    <ClInclude Include="PublicMap\PgPvPModeStruct.h" />
+    <ClInclude Include="PublicMap\PgPvPMode_KingOfHill.h" />
+    <ClInclude Include="PublicMap\PgPvPSetting.h" />
+    <ClInclude Include="PublicMap\PgPvPType_AceMatch.h" />
+    <ClInclude Include="PublicMap\PgPvPType_Annihilation.h" />
+    <ClInclude Include="PublicMap\PgPvPType_DeathMatch.h" />
+    <ClInclude Include="PublicMap\PgPvPType_Destroy.h" />
+    <ClInclude Include="PublicMap\PgPvPType_Love.h" />
+    <ClInclude Include="PublicMap\PgPvPType_WinnersMatch.h" />
+    <ClInclude Include="PublicMap\PgPvPType_WinnersTeam.h" />
+    <ClInclude Include="PublicMap\PgWarGround.h" />
+    <ClInclude Include="PublicMap\PgWarMode.h" />
+    <ClInclude Include="PublicMap\PgWarType_DestroyCore.h" />
+    <ClInclude Include="PublicMap\PgWarType_ProtectDragon.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectAbilHandleManager.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectAbilTable.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Archer.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Fighter.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Guild.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Item.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Magician.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_MapEntity.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Monster.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Object.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Pet.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_StatusEffect.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Thief.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillAbilHandleManager.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Action.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Archer.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Fighter.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Guild.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Magician.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Monster.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Pet.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Summoner.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Thief.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillOnFindTarget.h" />
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillOnFindTargetManager.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AI\EnemySelector.cpp" />
+    <ClCompile Include="AI\PgAIActAround.cpp" />
+    <ClCompile Include="AI\PgAIActBlowup.cpp" />
+    <ClCompile Include="AI\PgAIActCallHelp.cpp" />
+    <ClCompile Include="AI\PgAIActChaseEnemy.cpp" />
+    <ClCompile Include="AI\PgAIActDelay.cpp" />
+    <ClCompile Include="AI\PgAIActDmDelay.cpp" />
+    <ClCompile Include="AI\PgAIActFireSkill.cpp" />
+    <ClCompile Include="AI\PgAIActFireSkillDelay.cpp" />
+    <ClCompile Include="AI\PgAIActFollowCaller.cpp" />
+    <ClCompile Include="AI\PgAIActHide.cpp" />
+    <ClCompile Include="AI\PgAIActIdle.cpp" />
+    <ClCompile Include="AI\PgAIAction.cpp" />
+    <ClCompile Include="AI\PgAIActionManager.cpp" />
+    <ClCompile Include="AI\PgAIActKeepDistance.cpp" />
+    <ClCompile Include="AI\PgAIActOpening.cpp" />
+    <ClCompile Include="AI\PgAIActPatrol.cpp" />
+    <ClCompile Include="AI\PgAIActRetreat.cpp" />
+    <ClCompile Include="AI\PgAIActRoad.cpp" />
+    <ClCompile Include="AI\PgAIActWaitCT.cpp" />
+    <ClCompile Include="AI\PgAIManager.cpp" />
+    <ClCompile Include="AI\PgAIPattern.cpp" />
+    <ClCompile Include="AI\PgAIPatternManager.cpp" />
+    <ClCompile Include="AI\PgAISkillChooser.cpp" />
+    <ClCompile Include="AI\PgElitePattenManager.cpp" />
+    <ClCompile Include="AI\PgElitePattenState.cpp" />
+    <ClCompile Include="AI\PgTargettingManager.cpp" />
+    <ClCompile Include="AI\PgWayPoint.cpp" />
+    <ClCompile Include="AI\PgWayPointMng.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="PgAction.cpp" />
+    <ClCompile Include="PgActionAchievement.cpp" />
+    <ClCompile Include="PgActionJobSkill.cpp" />
+    <ClCompile Include="PgActionPost.cpp" />
+    <ClCompile Include="PgActionQuest.cpp" />
+    <ClCompile Include="PgActionUserMarket.cpp" />
+    <ClCompile Include="PgAction_Pet.cpp" />
+    <ClCompile Include="PgBattleArea.cpp" />
+    <ClCompile Include="PgBSMapGame.cpp" />
+    <ClCompile Include="PgBSTeamMng.cpp" />
+    <ClCompile Include="PgBSTimeEvent.cpp" />
+    <ClCompile Include="PgConstellationGround.cpp" />
+    <ClCompile Include="PgConstellationMgr.cpp" />
+    <ClCompile Include="PgConstellationResult.cpp" />
+    <ClCompile Include="PgDBProcess.cpp" />
+    <ClCompile Include="PgDefencePartyMgr.cpp" />
+    <ClCompile Include="PgDuelSystem.cpp" />
+    <ClCompile Include="PgEventItemSet.cpp" />
+    <ClCompile Include="PgExpeditionGround.cpp" />
+    <ClCompile Include="PgExpeditionItemRule.cpp" />
+    <ClCompile Include="PgExpeditionLobby.cpp" />
+    <ClCompile Include="PgGenPointMgr.cpp" />
+    <ClCompile Include="PgGMCommand.cpp" />
+    <ClCompile Include="PgGround.cpp" />
+    <ClCompile Include="PgGround2.cpp" />
+    <ClCompile Include="PgGround3.cpp" />
+    <ClCompile Include="PgGroundMgr.cpp" />
+    <ClCompile Include="PgGroundResource.cpp" />
+    <ClCompile Include="PgGroundTrigger.cpp" />
+    <ClCompile Include="PgGroundUnitMgr.cpp" />
+    <ClCompile Include="PgGround_Packet1.cpp" />
+    <ClCompile Include="PgGround_Packet2.cpp" />
+    <ClCompile Include="PgGround_Packet3.cpp" />
+    <ClCompile Include="PgHackDualKeyboard.cpp" />
+    <ClCompile Include="PgIndun.cpp" />
+    <ClCompile Include="PgIndunHome.cpp" />
+    <ClCompile Include="PgIndun_Packet.cpp" />
+    <ClCompile Include="PgItemMaking.cpp" />
+    <ClCompile Include="PgItemTradeMgr.cpp" />
+    <ClCompile Include="PgItemUpgrade.cpp" />
+    <ClCompile Include="PgJobSkillMgr.cpp" />
+    <ClCompile Include="PgKeyEvent.cpp" />
+    <ClCompile Include="PgLocalPartyMgr.cpp" />
+    <ClCompile Include="PgLocalVendorMgr.cpp" />
+    <ClCompile Include="PgMapServer.cpp" />
+    <ClCompile Include="PgMarryMgr.cpp" />
+    <ClCompile Include="PgMissionGround.cpp" />
+    <ClCompile Include="PgMissionMan.cpp" />
+    <ClCompile Include="PgMission_Packet.cpp" />
+    <ClCompile Include="PgMonKillCountReward.cpp" />
+    <ClCompile Include="PgPacketManager.cpp" />
+    <ClCompile Include="PgPartyItemRule.cpp" />
+    <ClCompile Include="PgPortal_Emporia.cpp" />
+    <ClCompile Include="PgPVPEffectSlector.cpp" />
+    <ClCompile Include="PgQuest.cpp" />
+    <ClCompile Include="PgRecvFromCenter.cpp" />
+    <ClCompile Include="PgRecvFromContents.cpp" />
+    <ClCompile Include="PgRecvFromLog.cpp" />
+    <ClCompile Include="PgRecvFromOBMode.cpp" />
+    <ClCompile Include="PgRecvFromSwitch.cpp" />
+    <ClCompile Include="PgRecvFromUser.cpp" />
+    <ClCompile Include="PgReqMapMove.cpp" />
+    <ClCompile Include="PgRequest.cpp" />
+    <ClCompile Include="PgSendWrapper.cpp" />
+    <ClCompile Include="PgSkillLinkageInfo.cpp" />
+    <ClCompile Include="PgSmallArea.cpp" />
+    <ClCompile Include="PgStaticEventGround.cpp" />
+    <ClCompile Include="PgStaticRaceGround.cpp" />
+    <ClCompile Include="PgStoneMgr.cpp" />
+    <ClCompile Include="PgSuperGround.cpp" />
+    <ClCompile Include="PgTask_MapServer.cpp" />
+    <ClCompile Include="PgTimer.cpp" />
+    <ClCompile Include="PgUserQuestSessionMgr.cpp" />
+    <ClCompile Include="PgVolatileInven.cpp" />
+    <ClCompile Include="PgWorldEnvironmentStatus.cpp" />
+    <ClCompile Include="PublicMap\PgBattleForEmporia.cpp" />
+    <ClCompile Include="PublicMap\PgBSGround.cpp" />
+    <ClCompile Include="PublicMap\PgEmporiaGround.cpp" />
+    <ClCompile Include="PublicMap\PgEmporiaGround_Packet.cpp" />
+    <ClCompile Include="PublicMap\PgHardCoreDungeon.cpp" />
+    <ClCompile Include="PublicMap\PgPvPMode_KingOfHill.cpp" />
+    <ClCompile Include="PublicMap\PgPvPType_AceMatch.cpp" />
+    <ClCompile Include="PublicMap\PgPvPType_Annihilation.cpp" />
+    <ClCompile Include="PublicMap\PgPvPType_DeathMatch.cpp" />
+    <ClCompile Include="PublicMap\PgPvPType_Destroy.cpp" />
+    <ClCompile Include="PublicMap\PgPvPType_Love.cpp" />
+    <ClCompile Include="PublicMap\PgPvPType_WinnersMatch.cpp" />
+    <ClCompile Include="PublicMap\PgPvPType_WinnersTeam.cpp" />
+    <ClCompile Include="PublicMap\PgRecvFromContents_Public2.cpp" />
+    <ClCompile Include="PublicMap\PgWarGround.cpp" />
+    <ClCompile Include="PublicMap\PgWarMode.cpp" />
+    <ClCompile Include="PublicMap\PgWarType_DestroyCore.cpp" />
+    <ClCompile Include="PublicMap\PgWarType_ProtectDragon.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectAbilHandleManager.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectAbilTable.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Archer.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Fighter.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Guild.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Item.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Magician.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_MapEntity.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Monster.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Object.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Pet.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_StatusEffect.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Thief.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillAbilHandleManager.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Action.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Archer.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Fighter.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Guild.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Magician.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Monster.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Pet.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Summoner.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Thief.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillOnFindTarget.cpp" />
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillOnFindTargetManager.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PgActionAchievement.inl" />
+    <None Include="PgGround.inl" />
+    <None Include="PgGroundMgr.inl" />
+    <None Include="PgIndun.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MapServer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Weapons\Collins\Collins.vcxproj">
+      <Project>{de46ddcc-66ed-4713-98e1-629f66e191f5}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Weapons\FCS\FCS.vcxproj">
+      <Project>{4563cfb6-4e68-497d-bdd1-54e34ba3abe9}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Weapons\Lohengrin\Lohengrin.vcxproj">
+      <Project>{77f61351-ad25-4faf-9b3d-e9df557011d7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Weapons\Variant\Variant.vcxproj">
+      <Project>{b70e3b9f-702a-4081-b800-0561ae064326}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

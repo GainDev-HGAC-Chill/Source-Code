@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ETC">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ServerSet">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="MainFrame">
+      <UniqueIdentifier>{23b326a8-3034-480c-8a0f-f8155958ba92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MCtrl">
+      <UniqueIdentifier>{db703903-4d02-4d90-ba58-fd15f110cd00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NC">
+      <UniqueIdentifier>{e6f5c62d-a31b-435d-84e9-7cc86fecc758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{e9a99086-3df1-4430-9d28-b84118b498bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\PvP">
+      <UniqueIdentifier>{0b0437cc-2e08-4d70-b311-c943be3d50ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{ee9447f3-c622-44e2-ab03-1d1e82353071}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PgEventDoc.cpp">
+      <Filter>ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="PgServerSetMgr.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="PgServerSetMgr_Helper.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSwitchAssignMgr.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="PgCenterServer.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgKeyEvent.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgTimer.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromManagementServer.cpp">
+      <Filter>MCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\ChannelChatMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\Global.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgActionT2M.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgGlobalMarryMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgGlobalPartyMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgGlobalPartyMgr_Public.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgInstanceDungeonPlayInfo.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgMission.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgMissionMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPortalMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgRecvFromCenter.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgRecvFromMap.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgResultMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgTask_Contents.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgPvPLobby.cpp">
+      <Filter>Contents\PvP</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgPvPLobby_Base.cpp">
+      <Filter>Contents\PvP</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgPvPLobby_League.cpp">
+      <Filter>Contents\PvP</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgPvPLobbyMgr.cpp">
+      <Filter>Contents\PvP</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgPvPRoom.cpp">
+      <Filter>Contents\PvP</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromContents.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromItem.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromLog.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromServer.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSendWrapper.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgUserWrapper.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PgEventDoc.h">
+      <Filter>ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="PgServerSetMgr.h">
+      <Filter>ServerSet</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSwitchAssignMgr.h">
+      <Filter>ServerSet</Filter>
+    </ClInclude>
+    <ClInclude Include="constant.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgKeyEvent.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgTimer.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromManagementServer.h">
+      <Filter>MCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="NC\IBGameDefine.h">
+      <Filter>NC</Filter>
+    </ClInclude>
+    <ClInclude Include="NC\IBGameInterface.h">
+      <Filter>NC</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\ChannelChatMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\Global.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgActionT2M.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgGlobalMarryMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgGlobalPartyMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgInstanceDungeonPlayInfo.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgMission.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgMissionMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPortalMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgRecvFromCenter.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgRecvFromMap.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgResultMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgTask_Contents.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgUniqueIdxPool.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgPvPLobby.h">
+      <Filter>Contents\PvP</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgPvPLobby_Base.h">
+      <Filter>Contents\PvP</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgPvPLobby_League.h">
+      <Filter>Contents\PvP</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgPvPLobbyMgr.h">
+      <Filter>Contents\PvP</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgPvPRoom.h">
+      <Filter>Contents\PvP</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromContents.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromItem.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromLog.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromServer.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSendWrapper.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgUserWrapper.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CenterServer.rc">
+      <Filter>MainFrame</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

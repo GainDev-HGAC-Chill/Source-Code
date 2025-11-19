@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Basic">
+      <UniqueIdentifier>{94e73df3-0224-4ac1-bb73-99c59c5c4cef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GALA">
+      <UniqueIdentifier>{45d7e23b-ef50-49ae-9fa2-42bdd58e2d6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nival">
+      <UniqueIdentifier>{6fad8cfd-4dbb-4e12-9846-bedc15b4ada0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FPT">
+      <UniqueIdentifier>{5c595970-b710-46e7-8e98-b72cc3079440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NC">
+      <UniqueIdentifier>{0920c5a0-0ba8-4f17-bdae-22cf1d57fda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gravity">
+      <UniqueIdentifier>{8c57b009-a649-4786-ad57-eff28f510409}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="constant.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="GALA_Constant.h">
+      <Filter>GALA</Filter>
+    </ClInclude>
+    <ClInclude Include="nival_constant.h">
+      <Filter>Nival</Filter>
+    </ClInclude>
+    <ClInclude Include="FPT_constant.h">
+      <Filter>FPT</Filter>
+    </ClInclude>
+    <ClInclude Include="NC_Constant.h">
+      <Filter>NC</Filter>
+    </ClInclude>
+    <ClInclude Include="Gravity_Constant.h">
+      <Filter>Gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="AilePack.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="gala_constant.cpp">
+      <Filter>GALA</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

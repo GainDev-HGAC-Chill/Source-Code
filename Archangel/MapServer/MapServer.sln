@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MapServer", "MapServer.vcproj", "{12DA0B28-A231-491E-A5E7-E263687AD509}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Lib MDd|Win32 = Lib MDd|Win32
+		Lib MD|Win32 = Lib MD|Win32
+		Lib MDo|Win32 = Lib MDo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12DA0B28-A231-491E-A5E7-E263687AD509}.Lib MDd|Win32.ActiveCfg = Lib MDd|Win32
+		{12DA0B28-A231-491E-A5E7-E263687AD509}.Lib MDd|Win32.Build.0 = Lib MDd|Win32
+		{12DA0B28-A231-491E-A5E7-E263687AD509}.Lib MD|Win32.ActiveCfg = Lib MD|Win32
+		{12DA0B28-A231-491E-A5E7-E263687AD509}.Lib MD|Win32.Build.0 = Lib MD|Win32
+		{12DA0B28-A231-491E-A5E7-E263687AD509}.Lib MDo|Win32.ActiveCfg = Lib MDo|Win32
+		{12DA0B28-A231-491E-A5E7-E263687AD509}.Lib MDo|Win32.Build.0 = Lib MDo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

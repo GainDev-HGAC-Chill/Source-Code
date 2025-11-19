@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MainFrame">
+      <UniqueIdentifier>{d9db71e0-4e05-4d05-80f1-d6c0cf94861e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{dae8f4ca-8b09-4c9d-9c70-2b0ad6be9346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage">
+      <UniqueIdentifier>{e8c95a4a-960d-48d7-9ae5-bbb366d10131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\Common">
+      <UniqueIdentifier>{fb601ff7-3d24-4810-af9e-1bbec50ac1b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\GALA">
+      <UniqueIdentifier>{5ab274da-d99b-497d-80df-93981869e6dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\GF">
+      <UniqueIdentifier>{a6e2314d-4561-4636-b6bf-99ef2a7633c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\GF\Billing">
+      <UniqueIdentifier>{29be4656-71cc-4583-bf40-073565cb46a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\GF\MobileLock">
+      <UniqueIdentifier>{bdfd6b82-6381-49ee-abc3-29503d51e0fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\Nival">
+      <UniqueIdentifier>{9f310622-761e-49f3-8706-5897a2f5004d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\Nexon">
+      <UniqueIdentifier>{15b7ebe5-d960-4bc6-aecc-a106eded832f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\FPT">
+      <UniqueIdentifier>{e232a833-c299-490c-bb8f-2985ece5854f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\NC">
+      <UniqueIdentifier>{45e12313-ff16-425f-877a-1a348e9564ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linkage\Gravity">
+      <UniqueIdentifier>{67e269e6-d9b5-49fa-84de-bc18c92176f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{705c2c4c-bedc-4c74-98af-d967252719f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ConsentServer.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgKeyEvent.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgTimer.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromMMC.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSiteMemberMgr.cpp">
+      <Filter>Linkage\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="GALA\GALAServer.cpp">
+      <Filter>Linkage\GALA</Filter>
+    </ClCompile>
+    <ClCompile Include="GF\PgGFServer.cpp">
+      <Filter>Linkage\GF</Filter>
+    </ClCompile>
+    <ClCompile Include="GF\PgMsgWorker.cpp">
+      <Filter>Linkage\GF</Filter>
+    </ClCompile>
+    <ClCompile Include="GF\PgBillingAPServer.cpp">
+      <Filter>Linkage\GF\Billing</Filter>
+    </ClCompile>
+    <ClCompile Include="Nival\NivalServer.cpp">
+      <Filter>Linkage\Nival</Filter>
+    </ClCompile>
+    <ClCompile Include="Nexon.cpp">
+      <Filter>Linkage\Nexon</Filter>
+    </ClCompile>
+    <ClCompile Include="NexonAuth.cpp">
+      <Filter>Linkage\Nexon</Filter>
+    </ClCompile>
+    <ClCompile Include="NexonCash.cpp">
+      <Filter>Linkage\Nexon</Filter>
+    </ClCompile>
+    <ClCompile Include="FPT\FPTServer.cpp">
+      <Filter>Linkage\FPT</Filter>
+    </ClCompile>
+    <ClCompile Include="PgNcGSM.cpp">
+      <Filter>Linkage\NC</Filter>
+    </ClCompile>
+    <ClCompile Include="PgNcServer.cpp">
+      <Filter>Linkage\NC</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGravityServer.cpp">
+      <Filter>Linkage\Gravity</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.c">
+      <Filter>Util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Constant.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgTimer.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromMMC.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionMgr.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionMgr.hpp">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSiteMemberMgr.h">
+      <Filter>Linkage\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="GALA\GALAServer.h">
+      <Filter>Linkage\GALA</Filter>
+    </ClInclude>
+    <ClInclude Include="GF\PgGFServer.h">
+      <Filter>Linkage\GF</Filter>
+    </ClInclude>
+    <ClInclude Include="GF\PgMsgWorker.h">
+      <Filter>Linkage\GF</Filter>
+    </ClInclude>
+    <ClInclude Include="GF\GFBillingAPPacketDef.h">
+      <Filter>Linkage\GF\Billing</Filter>
+    </ClInclude>
+    <ClInclude Include="GF\PgBillingAPServer.h">
+      <Filter>Linkage\GF\Billing</Filter>
+    </ClInclude>
+    <ClInclude Include="GF\GFMobileLockPacketDef.h">
+      <Filter>Linkage\GF\MobileLock</Filter>
+    </ClInclude>
+    <ClInclude Include="Nival\NivalServer.h">
+      <Filter>Linkage\Nival</Filter>
+    </ClInclude>
+    <ClInclude Include="Nexon\AuthCheck.h">
+      <Filter>Linkage\Nexon</Filter>
+    </ClInclude>
+    <ClInclude Include="Nexon.h">
+      <Filter>Linkage\Nexon</Filter>
+    </ClInclude>
+    <ClInclude Include="FPT\FPTServer.h">
+      <Filter>Linkage\FPT</Filter>
+    </ClInclude>
+    <ClInclude Include="NC\AdminGateway.h">
+      <Filter>Linkage\NC</Filter>
+    </ClInclude>
+    <ClInclude Include="PgNcGSM.h">
+      <Filter>Linkage\NC</Filter>
+    </ClInclude>
+    <ClInclude Include="PgNcServer.h">
+      <Filter>Linkage\NC</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGravityServer.h">
+      <Filter>Linkage\Gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ConsentServer.rc">
+      <Filter>Linkage\Nexon</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

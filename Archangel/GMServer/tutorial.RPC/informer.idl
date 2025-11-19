@@ -1,0 +1,18 @@
+[
+	uuid(C11502DD-6086-4217-B1BA-02253627D674),
+	version(1.0),
+	pointer_default(unique),
+	endpoint("ncacn_ip_tcp:[12345]")
+]
+interface informer
+{
+	boolean KickUser(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szUserName
+		);
+
+	//Callback function must be invoked in the context of an rpc function
+	[callback] void CBKickUser(
+		[in] int i
+		);
+}

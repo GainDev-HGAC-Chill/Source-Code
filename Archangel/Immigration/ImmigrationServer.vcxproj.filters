@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Network">
+      <UniqueIdentifier>{f05bb550-3e99-45e2-9ef0-a4cdab1704ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainFrame">
+      <UniqueIdentifier>{08ed6f32-d9c6-43e8-95d5-daf6ca2ef83e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainFrame\MainObj">
+      <UniqueIdentifier>{ed590380-9a54-4235-a886-79e652a665fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database">
+      <UniqueIdentifier>{1dfb8f92-b05b-46ff-909a-290202dc1d3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Task">
+      <UniqueIdentifier>{30543a35-89f6-4c85-9ba6-5e2de0ef9c01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Task\Obj">
+      <UniqueIdentifier>{aafe3220-52e8-41ba-9f81-207c67baa475}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PgRecvFromLog.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromMMC.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromServer.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSendWrapper.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="RecvFromConsent.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Immigration.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgKeyEvent.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSiteMgr.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgTimer.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgWaitingLobby.cpp">
+      <Filter>MainFrame\MainObj</Filter>
+    </ClCompile>
+    <ClCompile Include="PgDBProcess.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="ImmTask.cpp">
+      <Filter>Task</Filter>
+    </ClCompile>
+    <ClCompile Include="PgAPProcessMgr.cpp">
+      <Filter>Task\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="PgConsentControl.cpp">
+      <Filter>Task\Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGMProcessMgr.cpp">
+      <Filter>Task\Obj</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PgRecvFromLog.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromMMC.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromServer.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSendWrapper.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="RecvFromConsent.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="constant.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgKeyEvent.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSiteMgr.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgTimer.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgWaitingLobby.h">
+      <Filter>MainFrame\MainObj</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDBProcess.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="ImmTask.h">
+      <Filter>Task</Filter>
+    </ClInclude>
+    <ClInclude Include="PgAPProcessMgr.h">
+      <Filter>Task\Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="PgConsentControl.h">
+      <Filter>Task\Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGMProcessMgr.h">
+      <Filter>Task\Obj</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ImmigrationServer.rc">
+      <Filter>MainFrame</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

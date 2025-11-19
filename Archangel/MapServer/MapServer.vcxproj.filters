@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Lib">
+      <UniqueIdentifier>{a5869891-f980-4a56-962e-28033a63f8ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib\Lohengrin">
+      <UniqueIdentifier>{4277bc36-5789-48c1-a8b0-9b9dffb79f78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{90f7b680-69d8-457f-8005-ed79f26b3aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Ground">
+      <UniqueIdentifier>{537bc31d-2b35-4a7f-ac35-e86830ecf4e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Ground\public">
+      <UniqueIdentifier>{850fbdba-d13d-4e98-a88a-dd966a18397b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Environment">
+      <UniqueIdentifier>{3a8d2452-4b79-430f-8dc4-8b68ff7b26f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{a1d57258-c3a3-43a7-8ebd-9f81cad8753f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\public">
+      <UniqueIdentifier>{07307745-d2cd-4f20-ba8e-15203cb0aee3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{5d4890ca-caab-4dc0-a374-f3d256813bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{c5d37bcc-46da-41b0-9f63-c0f706e2ffab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Item">
+      <UniqueIdentifier>{ef06fdb9-851f-40cb-b074-c942082efbda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Party">
+      <UniqueIdentifier>{ede0228a-592e-437d-a771-f922850475ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\BattleSquare">
+      <UniqueIdentifier>{983708a1-0914-4568-9881-fd58322c6407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\OpenMarket">
+      <UniqueIdentifier>{b6fcc9e3-01b7-4efa-ade2-669c3ceaa74d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Duel">
+      <UniqueIdentifier>{58c6fd9d-70d6-42f6-9bc0-fa98dae1db55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\PvPEffect">
+      <UniqueIdentifier>{dab1177a-df44-4f4e-b51a-3a324ce9f273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action">
+      <UniqueIdentifier>{73ea6711-88d6-44fc-baf1-e46cf4018f26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill">
+      <UniqueIdentifier>{713ee4b5-8785-45f3-acf0-e0be26eb0e73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\MapEntity">
+      <UniqueIdentifier>{a1c069d7-4b80-46f4-9449-4b4b961c8e54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\ItemEffect">
+      <UniqueIdentifier>{aaea3dd2-ad55-4481-8acb-0639e5beaa2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Guild">
+      <UniqueIdentifier>{796ef6f4-e3fd-46a1-bafb-674e36b85971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Fighter">
+      <UniqueIdentifier>{d128fa92-79f1-4231-9fa7-6e0f7fd76341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Archer">
+      <UniqueIdentifier>{3e60abe0-e2d6-4b01-81d9-1fd03a97b23e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Magician">
+      <UniqueIdentifier>{c5e18daf-78b3-49d8-bbb0-8ae30ccf7442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Thief">
+      <UniqueIdentifier>{afd99336-4d00-4bad-adc8-5f539c963937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Default">
+      <UniqueIdentifier>{499fca31-9835-4d64-8f8a-fc24fd68e3f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Monster">
+      <UniqueIdentifier>{9da2ca13-aacc-40af-b116-073d6a5a63c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Action">
+      <UniqueIdentifier>{d9981c25-b7a9-4199-b20f-a5218d834e1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\ObjectUnit">
+      <UniqueIdentifier>{0fe43f53-ec61-47e3-9eff-0481da66349e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Pet">
+      <UniqueIdentifier>{2e84f393-3196-4237-a772-ac66f1465119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Skill\Summoner">
+      <UniqueIdentifier>{d0eb6b8a-a3f7-4b06-8243-dc546a6dfaf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Quest">
+      <UniqueIdentifier>{e5f9a1e3-ef89-4587-8486-83f71c5ea770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\AI">
+      <UniqueIdentifier>{0b45a194-26cc-401e-a8d4-ef599e6fa953}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\AI\Targetting">
+      <UniqueIdentifier>{8e00e5fe-8a1a-4369-abee-db9e065ab05d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Action">
+      <UniqueIdentifier>{83f3170f-1349-49ce-ad08-251120600c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Mission">
+      <UniqueIdentifier>{0ec95924-2262-481d-9f5e-da158d6f6a9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\JobSkill">
+      <UniqueIdentifier>{620659f0-b655-4c35-ad91-119a4f0d5f49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PublicMap">
+      <UniqueIdentifier>{969a9a24-683e-4ed5-9e92-644e4009f0d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PublicMap\PvP/War">
+      <UniqueIdentifier>{53601601-3941-48bf-8509-ec179ddd7365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PublicMap\PvP/War\Mode">
+      <UniqueIdentifier>{0e0dc10b-fd6b-4626-9e1a-16bf5bf6d4bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{3f25a841-32e6-4844-a88d-a656c56224b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{5bafd4c0-1cff-47ec-833f-4008d58c6697}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database">
+      <UniqueIdentifier>{928d59ef-706e-4fcf-8818-e09f7f3012e3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Weapons\Lohengrin\DB.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\LogGroup.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\Lohengrin.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\networkfunc.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\packetstruct.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\packettype.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType2.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType3.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType4.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType5.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\PacketType6.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\processconfig.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Weapons\Lohengrin\ServerType.h">
+      <Filter>Lib\Lohengrin</Filter>
+    </ClInclude>
+    <ClInclude Include="PgConstellationMgr.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGroundMgr.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGroundTrigger.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGroundUnitMgr.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="PgStoneMgr.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="PgConstellationGround.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgExpeditionGround.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgExpeditionLobby.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGround.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGroundResource.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgIndun.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMissionGround.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPortal_Emporia.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSmallArea.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgStaticEventGround.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgStaticRaceGround.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSuperGround.h">
+      <Filter>Map\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgBSGround.h">
+      <Filter>Map\Ground\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PgConstellationResult.h">
+      <Filter>Map\Ground\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgEmporiaGround.h">
+      <Filter>Map\Ground\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgHardCoreDungeon.h">
+      <Filter>Map\Ground\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PgIndunHome.h">
+      <Filter>Map\Ground\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgWarGround.h">
+      <Filter>Map\Ground\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PgWorldEnvironmentStatus.h">
+      <Filter>Map\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPacketManager.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromCenter.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromContents.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromLog.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromSwitch.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromUser.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSendWrapper.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="constant.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgKeyEvent.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgTask_MapServer.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgTimer.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgItemTradeMgr.h">
+      <Filter>Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PgExpeditionItemRule.h">
+      <Filter>Object\Party</Filter>
+    </ClInclude>
+    <ClInclude Include="PgLocalPartyMgr.h">
+      <Filter>Object\Party</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPartyItemRule.h">
+      <Filter>Object\Party</Filter>
+    </ClInclude>
+    <ClInclude Include="PgBSMapGame.h">
+      <Filter>Object\BattleSquare</Filter>
+    </ClInclude>
+    <ClInclude Include="PgBSTeamMng.h">
+      <Filter>Object\BattleSquare</Filter>
+    </ClInclude>
+    <ClInclude Include="PgBSTimeEvent.h">
+      <Filter>Object\BattleSquare</Filter>
+    </ClInclude>
+    <ClInclude Include="PgVolatileInven.h">
+      <Filter>Object\BattleSquare</Filter>
+    </ClInclude>
+    <ClInclude Include="PgLocalVendorMgr.h">
+      <Filter>Object\OpenMarket</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDuelSystem.h">
+      <Filter>Object\Duel</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPVPEffectSelector.h">
+      <Filter>Object\PvPEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGenPointMgr.h">
+      <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMonKillCountReward.h">
+      <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectAbilHandleManager.h">
+      <Filter>Action\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectAbilTable.h">
+      <Filter>Action\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillAbilHandleManager.h">
+      <Filter>Action\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSkillLinkageInfo.h">
+      <Filter>Action\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillOnFindTargetManager.h">
+      <Filter>Action\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_MapEntity.h">
+      <Filter>Action\Skill\MapEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Item.h">
+      <Filter>Action\Skill\ItemEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Guild.h">
+      <Filter>Action\Skill\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Guild.h">
+      <Filter>Action\Skill\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Fighter.h">
+      <Filter>Action\Skill\Fighter</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Fighter.h">
+      <Filter>Action\Skill\Fighter</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Archer.h">
+      <Filter>Action\Skill\Archer</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Archer.h">
+      <Filter>Action\Skill\Archer</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Magician.h">
+      <Filter>Action\Skill\Magician</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Magician.h">
+      <Filter>Action\Skill\Magician</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Thief.h">
+      <Filter>Action\Skill\Thief</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Thief.h">
+      <Filter>Action\Skill\Thief</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction.h">
+      <Filter>Action\Skill\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_StatusEffect.h">
+      <Filter>Action\Skill\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction.h">
+      <Filter>Action\Skill\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillOnFindTarget.h">
+      <Filter>Action\Skill\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Monster.h">
+      <Filter>Action\Skill\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Monster.h">
+      <Filter>Action\Skill\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Action.h">
+      <Filter>Action\Skill\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Object.h">
+      <Filter>Action\Skill\ObjectUnit</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgEffectFunction_Pet.h">
+      <Filter>Action\Skill\Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Pet.h">
+      <Filter>Action\Skill\Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillEffectAbilSystem\PgSkillFunction_Summoner.h">
+      <Filter>Action\Skill\Summoner</Filter>
+    </ClInclude>
+    <ClInclude Include="PgQuest.h">
+      <Filter>Action\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="PgUserQuestSessionMgr.h">
+      <Filter>Action\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\EnemySelector.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActAround.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActBlowup.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActCallHelp.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActChaseEnemy.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActDelay.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActDmDelay.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActFireSkill.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActFireSkillDelay.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActFollowCaller.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActHide.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActIdle.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIAction.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActionManager.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActKeepDistance.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActOpening.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActPatrol.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActRetreat.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActRoad.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIActWaitCT.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIManager.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIPattern.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAIPatternManager.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgAISkillChooser.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgElitePattenManager.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgElitePattenState.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgWayPoint.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgWayPointMng.h">
+      <Filter>Action\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PgTargettingManager.h">
+      <Filter>Action\AI\Targetting</Filter>
+    </ClInclude>
+    <ClInclude Include="PgAction.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgAction_Pet.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgActionAchievement.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgActionJobSkill.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgActionPost.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgActionQuest.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgActionUserMarket.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMarryMgr.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgReqMapMove.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRequest.h">
+      <Filter>Action\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDefencePartyMgr.h">
+      <Filter>Action\Mission</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMissionMan.h">
+      <Filter>Action\Mission</Filter>
+    </ClInclude>
+    <ClInclude Include="PgJobSkillMgr.h">
+      <Filter>Action\JobSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgBattleArea.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgBattleForEmporia.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPMode_KingOfHill.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPModeStruct.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPSetting.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPType_AceMatch.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPType_Annihilation.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPType_DeathMatch.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPType_Destroy.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPType_Love.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPType_WinnersMatch.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgPvPType_WinnersTeam.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgWarMode.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgWarType_DestroyCore.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicMap\PgWarType_ProtectDragon.h">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="PgEventItemSet.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="PgHackDualKeyboard.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDBProcess.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PgConstellationMgr.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGroundMgr.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGroundTrigger.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGroundUnitMgr.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSmallArea.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="PgStoneMgr.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="PgConstellationGround.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgExpeditionGround.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgExpeditionLobby.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGMCommand.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGround.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGround2.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGround3.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGroundResource.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgIndun.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgMissionGround.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPortal_Emporia.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgStaticEventGround.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgStaticRaceGround.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSuperGround.cpp">
+      <Filter>Map\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgBSGround.cpp">
+      <Filter>Map\Ground\public</Filter>
+    </ClCompile>
+    <ClCompile Include="PgConstellationResult.cpp">
+      <Filter>Map\Ground\public</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgEmporiaGround.cpp">
+      <Filter>Map\Ground\public</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgHardCoreDungeon.cpp">
+      <Filter>Map\Ground\public</Filter>
+    </ClCompile>
+    <ClCompile Include="PgIndunHome.cpp">
+      <Filter>Map\Ground\public</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgWarGround.cpp">
+      <Filter>Map\Ground\public</Filter>
+    </ClCompile>
+    <ClCompile Include="PgWorldEnvironmentStatus.cpp">
+      <Filter>Map\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGround_Packet1.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGround_Packet2.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGround_Packet3.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgIndun_Packet.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgMission_Packet.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPacketManager.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromCenter.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromContents.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromLog.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromOBMode.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromSwitch.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromUser.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSendWrapper.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgEmporiaGround_Packet.cpp">
+      <Filter>Network\public</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgRecvFromContents_Public2.cpp">
+      <Filter>Network\public</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgKeyEvent.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgMapServer.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgTask_MapServer.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgTimer.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgItemMaking.cpp">
+      <Filter>Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="PgItemTradeMgr.cpp">
+      <Filter>Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="PgItemUpgrade.cpp">
+      <Filter>Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="PgExpeditionItemRule.cpp">
+      <Filter>Object\Party</Filter>
+    </ClCompile>
+    <ClCompile Include="PgLocalPartyMgr.cpp">
+      <Filter>Object\Party</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPartyItemRule.cpp">
+      <Filter>Object\Party</Filter>
+    </ClCompile>
+    <ClCompile Include="PgBSMapGame.cpp">
+      <Filter>Object\BattleSquare</Filter>
+    </ClCompile>
+    <ClCompile Include="PgBSTeamMng.cpp">
+      <Filter>Object\BattleSquare</Filter>
+    </ClCompile>
+    <ClCompile Include="PgBSTimeEvent.cpp">
+      <Filter>Object\BattleSquare</Filter>
+    </ClCompile>
+    <ClCompile Include="PgVolatileInven.cpp">
+      <Filter>Object\BattleSquare</Filter>
+    </ClCompile>
+    <ClCompile Include="PgLocalVendorMgr.cpp">
+      <Filter>Object\OpenMarket</Filter>
+    </ClCompile>
+    <ClCompile Include="PgDuelSystem.cpp">
+      <Filter>Object\Duel</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPVPEffectSlector.cpp">
+      <Filter>Object\PvPEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGenPointMgr.cpp">
+      <Filter>Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgMonKillCountReward.cpp">
+      <Filter>Action</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectAbilHandleManager.cpp">
+      <Filter>Action\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectAbilTable.cpp">
+      <Filter>Action\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillAbilHandleManager.cpp">
+      <Filter>Action\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSkillLinkageInfo.cpp">
+      <Filter>Action\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillOnFindTargetManager.cpp">
+      <Filter>Action\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_MapEntity.cpp">
+      <Filter>Action\Skill\MapEntity</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Item.cpp">
+      <Filter>Action\Skill\ItemEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Guild.cpp">
+      <Filter>Action\Skill\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Guild.cpp">
+      <Filter>Action\Skill\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Fighter.cpp">
+      <Filter>Action\Skill\Fighter</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Fighter.cpp">
+      <Filter>Action\Skill\Fighter</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Archer.cpp">
+      <Filter>Action\Skill\Archer</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Archer.cpp">
+      <Filter>Action\Skill\Archer</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Magician.cpp">
+      <Filter>Action\Skill\Magician</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Magician.cpp">
+      <Filter>Action\Skill\Magician</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Thief.cpp">
+      <Filter>Action\Skill\Thief</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Thief.cpp">
+      <Filter>Action\Skill\Thief</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction.cpp">
+      <Filter>Action\Skill\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_StatusEffect.cpp">
+      <Filter>Action\Skill\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction.cpp">
+      <Filter>Action\Skill\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillOnFindTarget.cpp">
+      <Filter>Action\Skill\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Monster.cpp">
+      <Filter>Action\Skill\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Monster.cpp">
+      <Filter>Action\Skill\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Action.cpp">
+      <Filter>Action\Skill\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Object.cpp">
+      <Filter>Action\Skill\ObjectUnit</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgEffectFunction_Pet.cpp">
+      <Filter>Action\Skill\Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Pet.cpp">
+      <Filter>Action\Skill\Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillEffectAbilSystem\PgSkillFunction_Summoner.cpp">
+      <Filter>Action\Skill\Summoner</Filter>
+    </ClCompile>
+    <ClCompile Include="PgQuest.cpp">
+      <Filter>Action\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="PgUserQuestSessionMgr.cpp">
+      <Filter>Action\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\EnemySelector.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActAround.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActBlowup.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActCallHelp.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActChaseEnemy.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActDelay.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActDmDelay.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActFireSkill.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActFireSkillDelay.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActFollowCaller.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActHide.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActIdle.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIAction.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActionManager.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActKeepDistance.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActOpening.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActPatrol.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActRetreat.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActRoad.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIActWaitCT.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIManager.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIPattern.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAIPatternManager.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgAISkillChooser.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgElitePattenManager.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgElitePattenState.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgWayPoint.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgWayPointMng.cpp">
+      <Filter>Action\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PgTargettingManager.cpp">
+      <Filter>Action\AI\Targetting</Filter>
+    </ClCompile>
+    <ClCompile Include="PgAction.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgAction_Pet.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgActionAchievement.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgActionJobSkill.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgActionPost.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgActionQuest.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgActionUserMarket.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgMarryMgr.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgReqMapMove.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRequest.cpp">
+      <Filter>Action\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="PgDefencePartyMgr.cpp">
+      <Filter>Action\Mission</Filter>
+    </ClCompile>
+    <ClCompile Include="PgMissionMan.cpp">
+      <Filter>Action\Mission</Filter>
+    </ClCompile>
+    <ClCompile Include="PgJobSkillMgr.cpp">
+      <Filter>Action\JobSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="PgBattleArea.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgBattleForEmporia.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgPvPMode_KingOfHill.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgPvPType_AceMatch.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgPvPType_Annihilation.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgPvPType_DeathMatch.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgPvPType_Destroy.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgPvPType_Love.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgPvPType_WinnersMatch.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgPvPType_WinnersTeam.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgWarMode.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgWarType_DestroyCore.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicMap\PgWarType_ProtectDragon.cpp">
+      <Filter>PublicMap\PvP/War\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="PgEventItemSet.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="PgHackDualKeyboard.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="PgDBProcess.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PgGroundMgr.inl">
+      <Filter>Map</Filter>
+    </None>
+    <None Include="PgGround.inl">
+      <Filter>Map\Ground</Filter>
+    </None>
+    <None Include="PgIndun.inl">
+      <Filter>Map\Ground</Filter>
+    </None>
+    <None Include="PgActionAchievement.inl">
+      <Filter>Action\Action</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MapServer.rc">
+      <Filter>FrameWork</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

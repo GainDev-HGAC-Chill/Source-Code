@@ -1,0 +1,203 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MPPACK DIALOGEX 0, 0, 418, 242
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "MP_PACK"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Target Dest",IDC_STATIC,7,69,41,8
+    LTEXT           "Output",IDC_STATIC,7,103,26,8
+    LTEXT           "Target Sour",IDC_STATIC,7,86,41,8
+    CONTROL         "Diff",IDC_RDO_DIFF,"Button",BS_AUTORADIOBUTTON | WS_GROUP,13,16,26,10
+    CONTROL         "Pack",IDC_RDO_PACK,"Button",BS_AUTORADIOBUTTON,13,27,28,10
+    CONTROL         "All",IDC_RDO_ALL,"Button",BS_AUTORADIOBUTTON,13,38,22,10
+    CONTROL         "Create Header",IDC_RDO_CREATEHEADER,"Button",BS_AUTORADIOBUTTON,13,49,60,10
+    CONTROL         "Header Merge",IDC_RDO_HEADERMERGE,"Button",BS_AUTORADIOBUTTON,172,16,60,10
+    CONTROL         "BindPack",IDC_RDO_BINDPACK,"Button",BS_AUTORADIOBUTTON,172,27,40,10
+    CONTROL         "Series Patch",IDC_RDO_SERIESPATCH,"Button",BS_AUTORADIOBUTTON,172,38,55,10
+    CONTROL         "Pack To Folder",IDC_CHK_DIFFOPTION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,93,24,62,8
+    CONTROL         "FullPack",IDC_CHK_PACKOPTION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,93,47,38,8
+    EDITTEXT        IDC_TXT_ORG_DIR,49,68,310,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_TXT_CRT_DIR,49,84,310,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_TXT_OUT_DIR,49,100,310,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_OPEN_ORG,361,68,50,13
+    PUSHBUTTON      "...",IDC_BTN_OPEN_CRT,361,84,50,13
+    PUSHBUTTON      "...",IDC_BTN_OPEN_OUT,361,100,50,13
+    GROUPBOX        "Process Select",IDC_STATIC,7,7,156,57,BS_CENTER
+    GROUPBOX        "Diff Option",IDC_STATIC,87,15,71,21,BS_CENTER
+    PUSHBUTTON      "Start",IDC_BTN_COMMIT,302,148,102,21
+    LTEXT           "Static",IDC_STATIC_STATE,13,125,392,19
+    GROUPBOX        "Processing State",IDC_STATIC,7,114,404,63,BS_CENTER
+    GROUPBOX        "All Option",IDC_STATIC,87,38,71,21,BS_CENTER
+    GROUPBOX        "Process Etc",IDC_STATIC,167,7,244,57,BS_CENTER
+    EDITTEXT        IDC_TXT_CLIENT_INFO,16,197,40,12,ES_CENTER | ES_AUTOHSCROLL
+    PUSHBUTTON      "Create",IDC_BTN_CREATE_PATCH_ID,12,215,112,15
+    EDITTEXT        IDC_TXT_PATCH_COUNT,66,197,40,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Minor",IDC_STATIC,62,186,48,27,BS_CENTER
+    GROUPBOX        "Major",IDC_STATIC,12,186,48,27,BS_CENTER
+    GROUPBOX        "Patch.ID",IDC_STATIC,7,177,404,58,BS_CENTER
+    EDITTEXT        IDC_TXT_PATCH_LIMIT,116,197,40,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Tiny",IDC_STATIC,112,186,48,27,BS_CENTER
+    PUSHBUTTON      "Dat Ver Update",IDC_BTN_VERSWAP,335,215,72,15
+    EDITTEXT        IDC_TXT_DAT_FOLDERDIR,166,197,220,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_OPEN_DAT,385,197,18,13
+    GROUPBOX        "DAT File Folder Dir",IDC_STATIC,162,186,246,27,BS_CENTER
+    CTEXT           "Select File",IDC_ST_VERSION_PRE,169,218,70,8
+    CTEXT           "->",IDC_STATIC,242,218,15,8
+    CTEXT           "0.0.1",IDC_ST_VERSION_NEX,260,218,70,8
+    PUSHBUTTON      "Apply ->",IDC_BTN_APPLYDATVER,124,215,35,15
+END
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 223, 34
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "MP_Pack 정보"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "확인",IDOK,166,7,50,20
+    LTEXT           "Dragonica Updata Pack Manager",IDC_STATIC,35,7,109,8
+    LTEXT           "Copyright (c) Barunson Interactive. ",IDC_STATIC,35,17,116,10
+    ICON            128,IDC_STATIC,7,7,21,20
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_MPPACK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 411
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 235
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 216
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 27
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,8
+ PRODUCTVERSION 1,0,0,8
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204b0"
+        BEGIN
+            VALUE "CompanyName", "Barunson Interactive"
+            VALUE "FileDescription", "Dragonica Update Pack Manager"
+            VALUE "FileVersion", "1, 0, 0, 8"
+            VALUE "InternalName", "MPPack"
+            VALUE "LegalCopyright", "(c) Barunson Interactive.  All rights reserved."
+            VALUE "OriginalFilename", "MPPack.exe"
+            VALUE "ProductName", "Dragonica Update Pack Manager"
+            VALUE "ProductVersion", "1, 0, 0, 8"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MAINFRAME           ICON                    "res\\ProjectD.ico"
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

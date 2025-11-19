@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsentServer", "ConsentServer.vcproj", "{E2A8A975-3ED3-4DF7-B835-86425FA5F0D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Lib MD|Win32 = Lib MD|Win32
+		Lib MDd|Win32 = Lib MDd|Win32
+		Lib MDo|Win32 = Lib MDo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2A8A975-3ED3-4DF7-B835-86425FA5F0D4}.Lib MD|Win32.ActiveCfg = Lib MD|Win32
+		{E2A8A975-3ED3-4DF7-B835-86425FA5F0D4}.Lib MD|Win32.Build.0 = Lib MD|Win32
+		{E2A8A975-3ED3-4DF7-B835-86425FA5F0D4}.Lib MDd|Win32.ActiveCfg = Lib MDd|Win32
+		{E2A8A975-3ED3-4DF7-B835-86425FA5F0D4}.Lib MDd|Win32.Build.0 = Lib MDd|Win32
+		{E2A8A975-3ED3-4DF7-B835-86425FA5F0D4}.Lib MDo|Win32.ActiveCfg = Lib MDo|Win32
+		{E2A8A975-3ED3-4DF7-B835-86425FA5F0D4}.Lib MDo|Win32.Build.0 = Lib MDo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

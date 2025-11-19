@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MainFrame">
+      <UniqueIdentifier>{950e1f62-7bd9-498b-bba6-850e2e99e1bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AntiHacking">
+      <UniqueIdentifier>{bc3d70af-ad3e-495f-8525-7c39d452e04b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AntiHack.cpp">
+      <Filter>AntiHacking</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="AntiHack.h">
+      <Filter>AntiHacking</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

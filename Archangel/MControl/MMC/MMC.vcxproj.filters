@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="NetWork">
+      <UniqueIdentifier>{cd4dcca3-730d-4d0d-8fee-64b12808e6c0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PgRecvFromImmigration.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromMonTool.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromSMC.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgTimer.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="MMC.cpp" />
+    <ClCompile Include="PgFileCopyMgr.cpp" />
+    <ClCompile Include="PgKeyEvent.cpp" />
+    <ClCompile Include="PgMMCManager.cpp" />
+    <ClCompile Include="PgMMCTask.cpp" />
+    <ClCompile Include="PgSiteControl.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PgRecvFromImmigration.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromMonTool.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromSMC.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgTimer.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgFileCopyMgr.h" />
+    <ClInclude Include="PgKeyEvent.h" />
+    <ClInclude Include="PgMMCManager.h" />
+    <ClInclude Include="PgMMCTask.h" />
+    <ClInclude Include="PgSiteControl.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MMC.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

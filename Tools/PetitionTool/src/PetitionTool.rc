@@ -1,0 +1,302 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\PetitionTool.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""afxres.rc""     // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\PetitionTool.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_LOGIN_FRM DIALOGEX 0, 0, 286, 111
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Dragonica Pettion System"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_ID_EDIT,193,51,83,14,ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        IDC_PW_EDIT,193,72,83,14,ES_PASSWORD
+    DEFPUSHBUTTON   "",ID_OK,163,92,50,16
+    PUSHBUTTON      "",ID_NEW_ACCOUNT,12,92,50,16,NOT WS_VISIBLE
+    PUSHBUTTON      "",ID_CANCEL,226,92,50,16
+    LTEXT           "ID:",IDC_ID_PANEL,147,54,43,8
+    LTEXT           "PassWord:",IDC_PW_PANEL,147,75,43,8
+    LTEXT           "SelectServer:",IDC_SELECT_SERVER_PANEL,147,95,44,8,NOT WS_VISIBLE
+    COMBOBOX        IDC_SELECT_SERVER,193,93,85,12,CBS_DROPDOWN | CBS_UPPERCASE | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ADD_ACCOUNT_FRM DIALOGEX 0, 0, 166, 86
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ACCOUNT"
+FONT 9, "Microsoft Sans Serif", 400, 0, 0x0
+BEGIN
+    PUSHBUTTON      "OK",ID_ADD,18,67,50,14
+    PUSHBUTTON      "CANCEL",ID_ACANCEL,95,67,50,14
+    LTEXT           "ID:",IDC_ACCOUNT_ID_PANEL,21,8,38,8
+    LTEXT           "PassWord:",IDC_ACCOUNT_PW_PANEL,21,27,37,8
+    LTEXT           "GM명:",IDC_ACCOUNT_GMNAME_PANEL,21,47,37,8
+    EDITTEXT        IDC_ID,63,5,79,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PW,63,24,79,14,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_NAME,63,43,79,14,ES_AUTOHSCROLL
+END
+
+IDD_PETITION_FRM DIALOGEX 0, 0, 583, 402
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Dragonica Petition System"
+MENU IDR_MENU1
+FONT 10, "굴림", 400, 0, 0x0
+BEGIN
+    GROUPBOX        "aaaa",IDC_GROUPBOX_ALL_LIST,0,2,284,399
+    GROUPBOX        "aaaa",IDC_GROUPBOX_MY_LIST,285,32,298,166
+    PUSHBUTTON      "Chatting",IDC_CHAT_BTN,288,384,50,14
+    GROUPBOX        "",IDC_STATIC,285,195,298,187
+    LTEXT           "Sender:",IDC_SENDER_PANEL,288,206,40,8
+    LTEXT           "",IDC_NAME_STATIC,331,204,116,11
+    LTEXT           "Title:",IDC_TITLE_PENAL,288,224,26,8
+    LTEXT           "",IDC_TITLE_STATIC,317,223,262,11
+    LTEXT           "Classify",IDC_CLASSIFY_PANEL,460,206,26,8
+    COMBOBOX        IDC_KIND_COMBO,489,204,64,12,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_MY_PETITON_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_TABSTOP,286,44,295,152
+    CONTROL         "",IDC_ALL_PETITION_LIST,"SysListView32",LVS_REPORT | WS_TABSTOP,1,12,282,385
+    EDITTEXT        IDC_EDIT_NOTE,286,239,296,142,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_LEFTSCROLLBAR
+    PUSHBUTTON      "Message",IDC_LETTER_BTN,367,384,50,14,WS_DISABLED
+    PUSHBUTTON      "Exit",IDC_EXIT_BTN,533,384,50,14
+    GROUPBOX        "",IDC_STATIC,285,1,298,30
+    CTEXT           "",IDC_Total_PANEL,376,8,49,8
+    CTEXT           "",IDC_STATIC_TIME,286,7,77,21
+    CTEXT           "/",IDC_STATIC,499,13,8,8
+    CTEXT           "",IDC_ASSIGN_PANEL,444,8,49,8
+    CTEXT           "",IDC_COMPLETE_PANEL,513,8,49,8
+    CTEXT           "",IDC_STATIC_ALL,376,19,49,8
+    CTEXT           "",IDC_STATIC_ASSIGN,444,19,49,8
+    CTEXT           "",IDC_STATIC_COMPLITE,513,19,49,8
+    CTEXT           "/",IDC_STATIC,431,13,8,9
+END
+
+IDD_CHATTING_FRM DIALOGEX 0, 0, 226, 287
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_SEND_EDIT,0,240,200,20,ES_AUTOHSCROLL | ES_WANTRETURN
+    DEFPUSHBUTTON   "Send",IDC_SEND_BTN,201,239,24,22
+    PUSHBUTTON      "Petition Complete",ID_COMPLETE_BTN,83,269,63,14
+    EDITTEXT        IDC_CHAT_EDIT,0,0,225,238,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | NOT WS_TABSTOP
+END
+
+IDD_NOTIC_FRM DIALOGEX 0, 0, 388, 149
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "NoticeDlg"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_NOTIC_EDIT,134,34,251,90,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN,WS_EX_LEFTSCROLLBAR
+    PUSHBUTTON      "확인",ID_SET_BTN,272,128,50,14
+    PUSHBUTTON      "취소",ID_NOTIC_CLOSE,334,128,50,14
+    CONTROL         "",IDC_DATETIMEPICKER1,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,56,42,65,15
+    EDITTEXT        IDC_REPIT_COUNT_EDIT,56,62,65,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_REPIT_TIME_EDIT,86,82,35,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    GROUPBOX        "Static",IDC_GROUP_SETTIM,2,30,129,94
+    LTEXT           "Static",IDC_START_NOTIC_TIME_LABEL,11,46,40,8
+    LTEXT           "Static",IDC_SET_REPIT_COUNT_LABEL,11,65,41,8
+    LTEXT           "Static",IDC_SET_REPIT_TIME_LABEL,12,86,70,9,WS_DISABLED
+    CTEXT           "Static",IDC_NOWTIME_LABEL,212,7,165,22,0,WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_TEXT_TIME_EDIT,86,102,35,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Static",IDC_SET_TEXT_TIME_LABEL,12,106,70,8
+    LTEXT           "Server",IDC_LABEL_NOTICE_SERVERNUM,8,14,27,8
+    COMBOBOX        IDC_COMBO_NOTICE_SERVERNUM,39,11,60,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Static",IDC_LABEL_NOTICE_CHANNELNUM,106,14,25,8
+    COMBOBOX        IDC_COMBO_NOTICE_CHANNELNUM,134,11,72,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,1,6,1
+ PRODUCTVERSION 8,12,2,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "Comments", "080115"
+            VALUE "CompanyName", "Barunson Interactive"
+            VALUE "FileDescription", "Dragonica PetitionTool"
+            VALUE "FileVersion", "1, 1, 6, 1"
+            VALUE "InternalName", "PetitionTool.exe"
+            VALUE "LegalCopyright", "TODO: (c) Barunson Interactive.  All rights reserved."
+            VALUE "OriginalFilename", "PetitionTool.exe"
+            VALUE "ProductName", "TODO: Dragonica PetitionTool"
+            VALUE "ProductVersion", "8, 12, 2, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PETITION_FRM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        VERTGUIDE, 338
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 395
+    END
+
+    IDD_CHATTING_FRM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 219
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 280
+    END
+
+    IDD_NOTIC_FRM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 381
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 142
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU 
+BEGIN
+    POPUP "Config(&C)"
+    BEGIN
+        MENUITEM "ChangeMyInfo(&I)",            ID_MENU_CHANGE_INFO
+        MENUITEM SEPARATOR
+        MENUITEM "Exit(&X)",                    ID_MENU_EXIT
+    END
+    POPUP "Servers(S)"
+    BEGIN
+        MENUITEM "선호서버선택",                      ID_SERVERS_32783
+    END
+END
+
+IDR_MENU2 MENU 
+BEGIN
+    POPUP "선점하기", INACTIVE
+    BEGIN
+        MENUITEM "Assign Me",                   ID_POPUP_ASSING_ME
+        MENUITEM "Assign Gm",                   ID_POPUP_ASSING_YOU, INACTIVE
+    END
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\PetitionTool.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "afxres.rc"     // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

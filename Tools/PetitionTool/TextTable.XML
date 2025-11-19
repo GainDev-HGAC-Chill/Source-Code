@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<TEXT_TABLE>
+	<TEXT ID="10001" Text="Check"/>
+	<TEXT ID="10002" Text="아이디 또는 비밀번호를 입력해 주십시요."/>
+	<TEXT ID="10003" Text="GM명을 입력해 주시기바랍니다."/>
+	<TEXT ID="10004" Text="잘못된 아이디 입니다. 다시 확인해 주시기 바랍니다."/>
+	<TEXT ID="10005" Text="잘못된 비밀번호 입니다. 다시 확인해 주시기 바랍니다."/>
+	<TEXT ID="10006" Text="사용하신 아이디가 접속이 불가능한 레벨입니다. 관리자에게 문의 하시기 바랍니다."/>
+	<TEXT ID="10007" Text="게임에 접속중이지 않습니다."/>
+	<TEXT ID="10008" Text="이미 존재하는 아이디 입니다."/>
+	<TEXT ID="10009" Text="이미 존재하는 GM명 입니다."/>
+	<TEXT ID="10010" Text="입력한 공지 데이터에 문제가 있습니다."/>
+	<TEXT ID="20001" Text="신규가입"/>
+	<TEXT ID="20002" Text="접속"/>
+	<TEXT ID="20003" Text="종료"/>
+	<TEXT ID="20004" Text="아이디:"/>
+	<TEXT ID="20005" Text="패스워드:"/>
+	<TEXT ID="20006" Text="접속서버"/>
+	<TEXT ID="30001" Text="아이디:"/>
+	<TEXT ID="30002" Text="패스워드:"/>
+	<TEXT ID="30003" Text="GM명:"/>
+	<TEXT ID="30004" Text="생성"/>
+	<TEXT ID="30005" Text="취소"/>
+	<TEXT ID="40001" Text="전체 상담"/>
+	<TEXT ID="40002" Text="내 상담"/>
+	<TEXT ID="40003" Text="접수캐릭명"/>
+	<TEXT ID="40004" Text="제목"/>
+	<TEXT ID="40005" Text="분류"/>
+	<TEXT ID="40006" Text="채팅하기"/>
+	<TEXT ID="40007" Text="메시지보내기"/>
+	<TEXT ID="40008" Text="종료"/>
+	<TEXT ID="40101" Text="접수번호"/>
+	<TEXT ID="40102" Text="캐릭명"/>
+	<TEXT ID="40103" Text="제목"/>
+	<TEXT ID="40104" Text="접수시간"/>
+	<TEXT ID="40105" Text="접속여부"/>
+	<TEXT ID="40201" Text="총상담"/>
+	<TEXT ID="40202" Text="내할당"/>
+	<TEXT ID="40203" Text="완료"/>
+	<TEXT ID="40301" Text="아이템"/>
+	<TEXT ID="40302" Text="캐릭터"/>
+	<TEXT ID="40303" Text="맵"/>
+	<TEXT ID="40304" Text="PVP"/>
+	<TEXT ID="40305" Text="비매너"/>
+	<TEXT ID="40306" Text="계정"/>
+	<TEXT ID="40307" Text="결제"/>
+	<TEXT ID="40308" Text="기타"/>
+	<TEXT ID="40401" Text="내게 할당하기"/>
+	<TEXT ID="40402" Text="타GM에게 할당하기"/>
+	<TEXT ID="40501" Text="정보수정"/>
+	<TEXT ID="40502" Text="나가기"/>
+	<TEXT ID="50001" Text="보내기"/>
+	<TEXT ID="50002" Text="상담종료"/>
+	<TEXT ID="60001" Text="시간설정"/>
+	<TEXT ID="60002" Text="시작시간"/>
+	<TEXT ID="60003" Text="반복횟수"/>
+	<TEXT ID="60004" Text="공지반복시간(분)"/>
+	<TEXT ID="60005" Text="문단반복시간(초)"/>
+	<TEXT ID="60006" Text="공지시작"/>
+	<TEXT ID="60007" Text="종료"/>
+	<TEXT ID="60008" Text="공지종료"/>
+</TEXT_TABLE>

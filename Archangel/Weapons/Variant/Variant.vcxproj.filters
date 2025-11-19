@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Database">
+      <UniqueIdentifier>{9cce32f0-361c-40b1-93e5-12812612e424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skill_Effect">
+      <UniqueIdentifier>{0114d5cf-63bd-483a-8e58-8c4fa2158716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Unit">
+      <UniqueIdentifier>{8a9fa5c6-3742-4147-969e-787d466dd68e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Party">
+      <UniqueIdentifier>{22701590-c746-4656-96a6-ecd51b60014c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{ce0496d4-6b0d-4b67-8d05-54702279e473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basic">
+      <UniqueIdentifier>{42cbf425-edc2-4af9-a65f-a0c2ed80f38d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basic\constant">
+      <UniqueIdentifier>{ad56c789-4bd4-4c35-ab38-cb91f793c8da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basic\Ground">
+      <UniqueIdentifier>{b39f071a-13bf-4231-bfd5-78c611ffc2c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basic\Mission">
+      <UniqueIdentifier>{af66ed9b-74ca-4d1f-95b8-f4822592aa55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action">
+      <UniqueIdentifier>{28056df2-6e82-4c26-b484-5d88b042c676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Battle">
+      <UniqueIdentifier>{b04d280f-fbf1-4626-bfd9-997c8e5a152b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Abil">
+      <UniqueIdentifier>{2b35adbb-8990-4d58-949b-7a08e2aa2a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UserInfo">
+      <UniqueIdentifier>{24aae221-0b66-49aa-85a2-f73481d84c40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Guild">
+      <UniqueIdentifier>{0488dc29-43d7-438f-a03b-1bdd7344dba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="War">
+      <UniqueIdentifier>{1f98b384-48c4-479c-b35c-a8321f7e3928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{12476018-8f7f-4e61-8cae-e7b535777f29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork">
+      <UniqueIdentifier>{5f3e539e-5b66-495c-97a1-d5bfb4cef710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WorldEvent">
+      <UniqueIdentifier>{14ed26f6-49f3-4ce4-872f-11bed3443a62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest">
+      <UniqueIdentifier>{9d795775-2f5b-4ff4-9d88-4b660fa92991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest\EventQuest">
+      <UniqueIdentifier>{ebb9fbde-9284-411a-bc06-7ea9a0052ea3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pet">
+      <UniqueIdentifier>{e44b886f-dd9d-4785-a1f4-da7b46da0fe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BattleSquare">
+      <UniqueIdentifier>{df76f72f-4d1d-4048-9093-e1dcb3727fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AlramMission">
+      <UniqueIdentifier>{7730702d-4e04-45c9-bf32-64cd13c8e801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Option">
+      <UniqueIdentifier>{3c0eb728-319b-4f05-8382-57b8929def36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JobSkill">
+      <UniqueIdentifier>{7c4e2cd7-3888-4177-98ea-af0774e7cefb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Expedition">
+      <UniqueIdentifier>{f069e0d2-a274-4db5-96e9-f48f47fb681a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Constellation">
+      <UniqueIdentifier>{1251dd3f-2066-4c01-a21d-5b63e5d68af9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\PgDBCache.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\TableDataManager.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Effect.cpp">
+      <Filter>Skill_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GroundEffect.cpp">
+      <Filter>Skill_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMySkill.cpp">
+      <Filter>Skill_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgSkillFilter.cpp">
+      <Filter>Skill_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgUnitEffectMgr.cpp">
+      <Filter>Skill_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\skill.cpp">
+      <Filter>Skill_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\MonsterDef.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\MonsterDefMgr.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgBoss.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgClassDefMgr.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgClassPetDefMgr.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgControlUnit.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgCustomUnit.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgEntity.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgGroundItemBox.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgGroundItemBoxMgr.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMonster.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMonsterBag.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMyHome.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgNpc.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgObjectMgr.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgObjectMgr2.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgObjectUnit.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgObjectUnitDef.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgObjectUnitDefMgr.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPet.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPlayer.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSubPlayer.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgSummoned.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgTotalObjectMgr.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Unit.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgParty.cpp">
+      <Filter>Party</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\EnchantInfo.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Item.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ItemBag.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ItemBagMgr.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ItemDefMgr.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ItemMakingDefMgr.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ItemSetDefMgr.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemSkillUtil.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgDefRecommendationItemMgr.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgGambleMachine.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\pgitemoptionmgr.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgItemRarityUpgradeFormula.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgStore.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgStoreMgr.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\CashShop.cpp">
+      <Filter>Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Global.cpp">
+      <Filter>Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMCtrl.cpp">
+      <Filter>Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\DefMapMgr.cpp">
+      <Filter>Basic\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPortalAccess.cpp">
+      <Filter>Basic\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgSmallAreaInfo.cpp">
+      <Filter>Basic\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMission.cpp">
+      <Filter>Basic\Mission</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMission_Result.cpp">
+      <Filter>Basic\Mission</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgActionResult.cpp">
+      <Filter>Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgAggroMeter.cpp">
+      <Filter>Action\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgAggroMeterMgr.cpp">
+      <Filter>Action\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgComboCounter.cpp">
+      <Filter>Action\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgComboCounterMgr.cpp">
+      <Filter>Action\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgControlDefMgr.cpp">
+      <Filter>Abil</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgDefPremiumMgr.cpp">
+      <Filter>Abil</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgDefPropertyMgr.cpp">
+      <Filter>Abil</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgDefSpendMoney.cpp">
+      <Filter>Abil</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgDynamicDefMgr.cpp">
+      <Filter>Abil</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPremium.cpp">
+      <Filter>Abil</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\BaseItemContainer.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Inventory.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\InventoryUtil.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\LimitClass.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgAchievements.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgHiddenOpen.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMissionInfo.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMyQuest.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPlayer_MissionReport.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPlayTime.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPremiumMgr.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgQuickInventory.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgSystemInvManager.cpp">
+      <Filter>UserInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\EmporiaTournament.cpp">
+      <Filter>Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgEmporia.cpp">
+      <Filter>Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgEmporiaFunction.cpp">
+      <Filter>Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPvPRanking.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPvPUtil.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgLogUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgMyQuestUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgSocialUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgStringUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgWorldEvent.cpp">
+      <Filter>WorldEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgWorldEventObject.cpp">
+      <Filter>WorldEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgBaseQuestMng.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgQuestInfo.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgQuestResetSchedule.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgEventQuestBase.cpp">
+      <Filter>Quest\EventQuest</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PetSkillDataConverter.cpp">
+      <Filter>Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgPetHatchMgr.cpp">
+      <Filter>Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgBattleSquare.cpp">
+      <Filter>BattleSquare</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AlramMission.cpp">
+      <Filter>AlramMission</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AlramMissionMgr.cpp">
+      <Filter>AlramMission</Filter>
+    </ClCompile>
+    <ClCompile Include="PgJobSkill.cpp">
+      <Filter>JobSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgJobSkillExpertness.cpp">
+      <Filter>JobSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgJobSkillLocationItem.cpp">
+      <Filter>JobSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgJobSkillSaveIdx.cpp">
+      <Filter>JobSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgJobSkillTool.cpp">
+      <Filter>JobSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgProbability.cpp">
+      <Filter>JobSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PgSoulTransfer.cpp">
+      <Filter>JobSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="PgExpedition.cpp">
+      <Filter>Expedition</Filter>
+    </ClCompile>
+    <ClCompile Include="PgConstellation.cpp">
+      <Filter>Constellation</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Emoticon.cpp" />
+    <ClCompile Include="Src\PgCharacterCard.cpp" />
+    <ClCompile Include="PgCheckMacAddress.cpp" />
+    <ClCompile Include="Src\PgCouponEventView.cpp" />
+    <ClCompile Include="Src\PgEventView.cpp" />
+    <ClCompile Include="Src\PgHardCoreDungeonParty.cpp" />
+    <ClCompile Include="Src\PgHiddenRewordItemMgr.cpp" />
+    <ClCompile Include="Src\PgJumpingCharEventMgr.cpp" />
+    <ClCompile Include="Src\PgNoticeAction.cpp" />
+    <ClCompile Include="Src\PgNpcEvent.cpp" />
+    <ClCompile Include="Src\PgRareMonsterSpeech.cpp" />
+    <ClCompile Include="Src\PgSimpleTime.cpp" />
+    <ClCompile Include="Src\PgSocketFormula.cpp" />
+    <ClCompile Include="PgWorldTimeCondition.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PgDBCache.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="tabledatamanager.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>Skill_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundEffect.h">
+      <Filter>Skill_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMySkill.h">
+      <Filter>Skill_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSkillFilter.h">
+      <Filter>Skill_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="PgUnitEffectMgr.h">
+      <Filter>Skill_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="skill.h">
+      <Filter>Skill_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="monsterdef.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterDefMgr.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgBoss.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgClassDefMgr.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgClassPetDefMgr.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgControlUnit.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgCustomUnit.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgEntity.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGroundItemBox.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGroundItemBoxMgr.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMonster.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMonsterBag.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMyHome.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="pgnpc.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgObjcetUnitDefMgr.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgObjectMgr.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgObjectMgr2.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgObjectUnit.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgObjectUnitDef.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPet.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPlayer.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSubPlayer.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSummoned.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgTotalObjectMgr.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="unit.h">
+      <Filter>Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="PgParty.h">
+      <Filter>Party</Filter>
+    </ClInclude>
+    <ClInclude Include="pgpartymgr.h">
+      <Filter>Party</Filter>
+    </ClInclude>
+    <ClInclude Include="EnchantInfo.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBag.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBagMgr.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDefMgr.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemMakingDefMgr.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSetDefMgr.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSkillUtil.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDefRecommendationItemMgr.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGambleMachine.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PgItemOptionMgr.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PgItemRarityUpgradeFormula.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PgStore.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PgStoreMgr.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="CashShop.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="idobject.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="IGObject.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMCtrl.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="PgObjMgr.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="PgObjMgr.hpp">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="PgWaiter.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="TDefMgr.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="constant.h">
+      <Filter>Basic\constant</Filter>
+    </ClInclude>
+    <ClInclude Include="constant_ai.h">
+      <Filter>Basic\constant</Filter>
+    </ClInclude>
+    <ClInclude Include="Def.h">
+      <Filter>Basic\constant</Filter>
+    </ClInclude>
+    <ClInclude Include="DefAbilType.h">
+      <Filter>Basic\constant</Filter>
+    </ClInclude>
+    <ClInclude Include="GM_const.h">
+      <Filter>Basic\constant</Filter>
+    </ClInclude>
+    <ClInclude Include="DefMapMgr.h">
+      <Filter>Basic\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPortalAccess.h">
+      <Filter>Basic\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSmallAreaInfo.h">
+      <Filter>Basic\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PortalAccessInfo.h">
+      <Filter>Basic\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMission.h">
+      <Filter>Basic\Mission</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMission_Report.h">
+      <Filter>Basic\Mission</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMission_Result.h">
+      <Filter>Basic\Mission</Filter>
+    </ClInclude>
+    <ClInclude Include="PgActionResult.h">
+      <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="PgAggroMeter.h">
+      <Filter>Action\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="PgAggroMeterMgr.h">
+      <Filter>Action\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="PgComboCounter.h">
+      <Filter>Action\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="PgComboCounterMgr.h">
+      <Filter>Action\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="PgAddAbilRateDef.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="PgControlDefMgr.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDefControl.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDefPremiumMgr.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDefPropertyMgr.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDefSpendMoney.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDynamicDefMgr.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPremium.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPremiumType.h">
+      <Filter>Abil</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseItemContainer.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryUtil.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="LimitClass.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgAchievements.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgHiddenOpen.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMissionInfo.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMyQuest.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPlayer_MissionReport.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPlayTime.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPremiumMgr.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgQuickInventory.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSystemInvManager.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PgUserMapInfo.h">
+      <Filter>UserInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="EmporiaTournament.h">
+      <Filter>Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="PgEmporia.h">
+      <Filter>Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="PgEmporiaFunction.h">
+      <Filter>Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPvPRanking.h">
+      <Filter>War</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPvPUtil.h">
+      <Filter>War</Filter>
+    </ClInclude>
+    <ClInclude Include="PgLogUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMyQuestUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSocialUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="PgStringUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="PgNetModule.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgNetModule.hpp">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgWorldEvent.h">
+      <Filter>WorldEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="PgWorldEventObject.h">
+      <Filter>WorldEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="PgBaseQuestMng.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="PgQuestInfo.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="PgQuestResetSchedule.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="PgEventQuestBase.h">
+      <Filter>Quest\EventQuest</Filter>
+    </ClInclude>
+    <ClInclude Include="PetSkillDataConverter.h">
+      <Filter>Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPetHatchMgr.h">
+      <Filter>Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="PgBattleSquare.h">
+      <Filter>BattleSquare</Filter>
+    </ClInclude>
+    <ClInclude Include="AlramMission.h">
+      <Filter>AlramMission</Filter>
+    </ClInclude>
+    <ClInclude Include="AlramMissionAction_Traits.h">
+      <Filter>AlramMission</Filter>
+    </ClInclude>
+    <ClInclude Include="AlramMissionActionDef.h">
+      <Filter>AlramMission</Filter>
+    </ClInclude>
+    <ClInclude Include="AlramMissionChecker.h">
+      <Filter>AlramMission</Filter>
+    </ClInclude>
+    <ClInclude Include="AlramMissionMgr.h">
+      <Filter>AlramMission</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientOption.h">
+      <Filter>Option</Filter>
+    </ClInclude>
+    <ClInclude Include="PgJobSkill.h">
+      <Filter>JobSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgJobSkillExpertness.h">
+      <Filter>JobSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgJobSkillLocationItem.h">
+      <Filter>JobSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgJobSkillSaveIdx.h">
+      <Filter>JobSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgJobSkillTool.h">
+      <Filter>JobSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgProbability.h">
+      <Filter>JobSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSoulTransfer.h">
+      <Filter>JobSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="PgExpedition.h">
+      <Filter>Expedition</Filter>
+    </ClInclude>
+    <ClInclude Include="PgExpeditionMgr.h">
+      <Filter>Expedition</Filter>
+    </ClInclude>
+    <ClInclude Include="PgConstellation.h">
+      <Filter>Constellation</Filter>
+    </ClInclude>
+    <ClInclude Include="Emoticon.h" />
+    <ClInclude Include="PgCharacterCard.h" />
+    <ClInclude Include="PgCheckMacAddress.h" />
+    <ClInclude Include="PgCouponEventView.h" />
+    <ClInclude Include="PgEventView.h" />
+    <ClInclude Include="PgHardCoreDungeonParty.h" />
+    <ClInclude Include="PgHiddenRewordItemMgr.h" />
+    <ClInclude Include="PgJumpingCharEventMgr.h" />
+    <ClInclude Include="PgMacroCheckTable.h" />
+    <ClInclude Include="PgNoticeAction.h" />
+    <ClInclude Include="PgNpcEvent.h" />
+    <ClInclude Include="PgPartyContents.h" />
+    <ClInclude Include="PgRareMonsterSpeech.h" />
+    <ClInclude Include="PgSimpleTime.h" />
+    <ClInclude Include="PgSocketFormula.h" />
+    <ClInclude Include="PgWorldTimeCondition.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Global.inl">
+      <Filter>Basic</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,942 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Dragonica_INB_Adept|Win32">
+      <Configuration>Dragonica_INB_Adept</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dragonica_INB_America|Win32">
+      <Configuration>Dragonica_INB_America</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dragonica_INB_G|Win32">
+      <Configuration>Dragonica_INB_G</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dragonica_INB_H_AUTO|Win32">
+      <Configuration>Dragonica_INB_H_AUTO</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dragonica_INB_H_UNAUTO|Win32">
+      <Configuration>Dragonica_INB_H_UNAUTO</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ExternalRelease_America|Win32">
+      <Configuration>ExternalRelease_America</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ExternalRelease_G|Win32">
+      <Configuration>ExternalRelease_G</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ExternalRelease_H_AUTO|Win32">
+      <Configuration>ExternalRelease_H_AUTO</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ExternalRelease_H_UNAUTO|Win32">
+      <Configuration>ExternalRelease_H_UNAUTO</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MD H_AUTO|Win32">
+      <Configuration>Lib MD H_AUTO</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MDd|Win32">
+      <Configuration>Lib MDd</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MDo H_AUTO|Win32">
+      <Configuration>Lib MDo H_AUTO</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MDo|Win32">
+      <Configuration>Lib MDo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MD|Win32">
+      <Configuration>Lib MD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MTd|Win32">
+      <Configuration>Lib MTd</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MTo|Win32">
+      <Configuration>Lib MTo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib MT|Win32">
+      <Configuration>Lib MT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B70E3B9F-702A-4081-B800-0561AE064326}</ProjectGuid>
+    <RootNamespace>Variant</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_America|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_America|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo H_AUTO|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD H_AUTO|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_H_UNAUTO|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_H_AUTO|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_G|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_H_UNAUTO|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_H_AUTO|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_G|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MTd|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MT|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MTo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_Adept|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDd|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_America|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_America|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo H_AUTO|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD H_AUTO|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_H_UNAUTO|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_H_AUTO|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_G|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_H_UNAUTO|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_H_AUTO|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_G|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MTd|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MT|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MTo|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_Adept|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDd|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28127.55</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDd|Win32'">
+    <OutDir>$(ProjectDir)..\Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD|Win32'">
+    <OutDir>$(ProjectDir)..\Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo|Win32'">
+    <OutDir>$(ProjectDir)..\Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_Adept|Win32'">
+    <OutDir>$(ProjectDir)..\Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MTo|Win32'">
+    <OutDir>$(ProjectDir)..\Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MT|Win32'">
+    <OutDir>$(ProjectDir)..\Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MTd|Win32'">
+    <OutDir>$(ProjectDir)..\Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_G|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_H_AUTO|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_H_UNAUTO|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_G|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_H_AUTO|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_H_UNAUTO|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD H_AUTO|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo H_AUTO|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_America|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_America|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDd|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_MDd_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_MDd.lib</OutputFile>
+      <AdditionalLibraryDirectories>../../../cosmos/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MD_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_MD.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:1500000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_Adept|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:1500000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MTo|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MTo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_MTo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MT|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MT_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_MT.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MTd|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MTd_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_MTd.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_G|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:170000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_H_AUTO|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:170000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_H_UNAUTO|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:170000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_G|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:170000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_H_AUTO|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:170000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_H_UNAUTO|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:170000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MD H_AUTO|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MD_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_MD.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib MDo H_AUTO|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/expectedoutputsize:190000000 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ExternalRelease_America|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dragonica_INB_America|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>../;../../../cosmos/include;%(RootDir)%(Directory);../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_MDo_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_MDo.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ItemSkillUtil.cpp" />
+    <ClCompile Include="PgCheckMacAddress.cpp" />
+    <ClCompile Include="PgConstellation.cpp" />
+    <ClCompile Include="PgExpedition.cpp" />
+    <ClCompile Include="PgJobSkill.cpp" />
+    <ClCompile Include="PgSubPlayer.cpp" />
+    <ClCompile Include="PgWorldTimeCondition.cpp" />
+    <ClCompile Include="Src\AlramMission.cpp" />
+    <ClCompile Include="Src\AlramMissionMgr.cpp" />
+    <ClCompile Include="Src\BaseItemContainer.cpp" />
+    <ClCompile Include="Src\CashShop.cpp" />
+    <ClCompile Include="Src\DefMapMgr.cpp" />
+    <ClCompile Include="Src\Effect.cpp" />
+    <ClCompile Include="Src\Emoticon.cpp" />
+    <ClCompile Include="Src\EmporiaTournament.cpp" />
+    <ClCompile Include="Src\EnchantInfo.cpp" />
+    <ClCompile Include="Src\Global.cpp" />
+    <ClCompile Include="Src\GroundEffect.cpp" />
+    <ClCompile Include="Src\Inventory.cpp" />
+    <ClCompile Include="Src\InventoryUtil.cpp" />
+    <ClCompile Include="Src\Item.cpp" />
+    <ClCompile Include="Src\ItemBag.cpp" />
+    <ClCompile Include="Src\ItemBagMgr.cpp" />
+    <ClCompile Include="Src\ItemDefMgr.cpp" />
+    <ClCompile Include="Src\ItemMakingDefMgr.cpp" />
+    <ClCompile Include="Src\ItemSetDefMgr.cpp" />
+    <ClCompile Include="Src\LimitClass.cpp" />
+    <ClCompile Include="Src\MonsterDef.cpp" />
+    <ClCompile Include="Src\MonsterDefMgr.cpp" />
+    <ClCompile Include="Src\PetSkillDataConverter.cpp" />
+    <ClCompile Include="Src\PgAchievements.cpp" />
+    <ClCompile Include="Src\PgActionResult.cpp" />
+    <ClCompile Include="Src\PgAggroMeter.cpp" />
+    <ClCompile Include="Src\PgAggroMeterMgr.cpp" />
+    <ClCompile Include="Src\PgBaseQuestMng.cpp" />
+    <ClCompile Include="Src\PgBattleSquare.cpp" />
+    <ClCompile Include="Src\PgBoss.cpp" />
+    <ClCompile Include="Src\PgCharacterCard.cpp" />
+    <ClCompile Include="Src\PgClassDefMgr.cpp" />
+    <ClCompile Include="Src\PgClassPetDefMgr.cpp" />
+    <ClCompile Include="Src\PgComboCounter.cpp" />
+    <ClCompile Include="Src\PgComboCounterMgr.cpp" />
+    <ClCompile Include="Src\PgControlDefMgr.cpp" />
+    <ClCompile Include="Src\PgControlUnit.cpp" />
+    <ClCompile Include="Src\PgCouponEventView.cpp" />
+    <ClCompile Include="Src\PgCustomUnit.cpp" />
+    <ClCompile Include="Src\PgDBCache.cpp" />
+    <ClCompile Include="Src\PgDefPremiumMgr.cpp" />
+    <ClCompile Include="Src\PgDefPropertyMgr.cpp" />
+    <ClCompile Include="Src\PgDefRecommendationItemMgr.cpp" />
+    <ClCompile Include="Src\PgDefSpendMoney.cpp" />
+    <ClCompile Include="Src\PgDynamicDefMgr.cpp" />
+    <ClCompile Include="Src\PgEmporia.cpp" />
+    <ClCompile Include="Src\PgEmporiaFunction.cpp" />
+    <ClCompile Include="Src\PgEntity.cpp" />
+    <ClCompile Include="Src\PgEventQuestBase.cpp" />
+    <ClCompile Include="Src\PgEventView.cpp" />
+    <ClCompile Include="Src\PgGambleMachine.cpp" />
+    <ClCompile Include="Src\PgGroundItemBox.cpp" />
+    <ClCompile Include="Src\PgGroundItemBoxMgr.cpp" />
+    <ClCompile Include="Src\PgHardCoreDungeonParty.cpp" />
+    <ClCompile Include="Src\PgHiddenOpen.cpp" />
+    <ClCompile Include="Src\PgHiddenRewordItemMgr.cpp" />
+    <ClCompile Include="Src\pgitemoptionmgr.cpp" />
+    <ClCompile Include="Src\PgItemRarityUpgradeFormula.cpp" />
+    <ClCompile Include="Src\PgJobSkillExpertness.cpp" />
+    <ClCompile Include="Src\PgJobSkillLocationItem.cpp" />
+    <ClCompile Include="Src\PgJobSkillSaveIdx.cpp" />
+    <ClCompile Include="Src\PgJobSkillTool.cpp" />
+    <ClCompile Include="Src\PgJumpingCharEventMgr.cpp" />
+    <ClCompile Include="Src\PgLogUtil.cpp" />
+    <ClCompile Include="Src\PgMCtrl.cpp" />
+    <ClCompile Include="Src\PgMission.cpp" />
+    <ClCompile Include="Src\PgMissionInfo.cpp" />
+    <ClCompile Include="Src\PgMission_Result.cpp" />
+    <ClCompile Include="Src\PgMonster.cpp" />
+    <ClCompile Include="Src\PgMonsterBag.cpp" />
+    <ClCompile Include="Src\PgMyHome.cpp" />
+    <ClCompile Include="Src\PgMyQuest.cpp" />
+    <ClCompile Include="Src\PgMyQuestUtil.cpp" />
+    <ClCompile Include="Src\PgMySkill.cpp" />
+    <ClCompile Include="Src\PgNoticeAction.cpp" />
+    <ClCompile Include="Src\PgNpc.cpp" />
+    <ClCompile Include="Src\PgNpcEvent.cpp" />
+    <ClCompile Include="Src\PgObjectMgr.cpp" />
+    <ClCompile Include="Src\PgObjectMgr2.cpp" />
+    <ClCompile Include="Src\PgObjectUnit.cpp" />
+    <ClCompile Include="Src\PgObjectUnitDef.cpp" />
+    <ClCompile Include="Src\PgObjectUnitDefMgr.cpp" />
+    <ClCompile Include="Src\PgParty.cpp" />
+    <ClCompile Include="Src\PgPet.cpp" />
+    <ClCompile Include="Src\PgPetHatchMgr.cpp" />
+    <ClCompile Include="Src\PgPlayer.cpp" />
+    <ClCompile Include="Src\PgPlayer_MissionReport.cpp" />
+    <ClCompile Include="Src\PgPlayTime.cpp" />
+    <ClCompile Include="Src\PgPortalAccess.cpp" />
+    <ClCompile Include="Src\PgPremium.cpp" />
+    <ClCompile Include="Src\PgPremiumMgr.cpp" />
+    <ClCompile Include="Src\PgProbability.cpp" />
+    <ClCompile Include="Src\PgPvPRanking.cpp" />
+    <ClCompile Include="Src\PgPvPUtil.cpp" />
+    <ClCompile Include="Src\PgQuestInfo.cpp" />
+    <ClCompile Include="Src\PgQuestResetSchedule.cpp" />
+    <ClCompile Include="Src\PgQuickInventory.cpp" />
+    <ClCompile Include="Src\PgRareMonsterSpeech.cpp" />
+    <ClCompile Include="Src\PgSimpleTime.cpp" />
+    <ClCompile Include="Src\PgSkillFilter.cpp" />
+    <ClCompile Include="Src\PgSmallAreaInfo.cpp" />
+    <ClCompile Include="Src\PgSocialUtil.cpp" />
+    <ClCompile Include="Src\PgSocketFormula.cpp" />
+    <ClCompile Include="Src\PgSoulTransfer.cpp" />
+    <ClCompile Include="Src\PgStore.cpp" />
+    <ClCompile Include="Src\PgStoreMgr.cpp" />
+    <ClCompile Include="Src\PgStringUtil.cpp" />
+    <ClCompile Include="Src\PgSummoned.cpp" />
+    <ClCompile Include="Src\PgSystemInvManager.cpp" />
+    <ClCompile Include="Src\PgTotalObjectMgr.cpp" />
+    <ClCompile Include="Src\PgUnitEffectMgr.cpp" />
+    <ClCompile Include="Src\PgWorldEvent.cpp" />
+    <ClCompile Include="Src\PgWorldEventObject.cpp" />
+    <ClCompile Include="Src\skill.cpp" />
+    <ClCompile Include="Src\TableDataManager.cpp" />
+    <ClCompile Include="Src\Unit.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlramMission.h" />
+    <ClInclude Include="AlramMissionActionDef.h" />
+    <ClInclude Include="AlramMissionAction_Traits.h" />
+    <ClInclude Include="AlramMissionChecker.h" />
+    <ClInclude Include="AlramMissionMgr.h" />
+    <ClInclude Include="BaseItemContainer.h" />
+    <ClInclude Include="CashShop.h" />
+    <ClInclude Include="ClientOption.h" />
+    <ClInclude Include="constant.h" />
+    <ClInclude Include="constant_ai.h" />
+    <ClInclude Include="Def.h" />
+    <ClInclude Include="DefAbilType.h" />
+    <ClInclude Include="DefMapMgr.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="Emoticon.h" />
+    <ClInclude Include="EmporiaTournament.h" />
+    <ClInclude Include="EnchantInfo.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="GM_const.h" />
+    <ClInclude Include="GroundEffect.h" />
+    <ClInclude Include="idobject.h" />
+    <ClInclude Include="IGObject.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="InventoryUtil.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemBag.h" />
+    <ClInclude Include="ItemBagMgr.h" />
+    <ClInclude Include="ItemDefMgr.h" />
+    <ClInclude Include="ItemMakingDefMgr.h" />
+    <ClInclude Include="ItemSetDefMgr.h" />
+    <ClInclude Include="ItemSkillUtil.h" />
+    <ClInclude Include="LimitClass.h" />
+    <ClInclude Include="monsterdef.h" />
+    <ClInclude Include="MonsterDefMgr.h" />
+    <ClInclude Include="PetSkillDataConverter.h" />
+    <ClInclude Include="PgAchievements.h" />
+    <ClInclude Include="PgActionResult.h" />
+    <ClInclude Include="PgAddAbilRateDef.h" />
+    <ClInclude Include="PgAggroMeter.h" />
+    <ClInclude Include="PgAggroMeterMgr.h" />
+    <ClInclude Include="PgBaseQuestMng.h" />
+    <ClInclude Include="PgBattleSquare.h" />
+    <ClInclude Include="PgBoss.h" />
+    <ClInclude Include="PgCharacterCard.h" />
+    <ClInclude Include="PgCheckMacAddress.h" />
+    <ClInclude Include="PgClassDefMgr.h" />
+    <ClInclude Include="PgClassPetDefMgr.h" />
+    <ClInclude Include="PgComboCounter.h" />
+    <ClInclude Include="PgComboCounterMgr.h" />
+    <ClInclude Include="PgConstellation.h" />
+    <ClInclude Include="PgControlDefMgr.h" />
+    <ClInclude Include="PgControlUnit.h" />
+    <ClInclude Include="PgCouponEventView.h" />
+    <ClInclude Include="PgCustomUnit.h" />
+    <ClInclude Include="PgDBCache.h" />
+    <ClInclude Include="PgDefControl.h" />
+    <ClInclude Include="PgDefPremiumMgr.h" />
+    <ClInclude Include="PgDefPropertyMgr.h" />
+    <ClInclude Include="PgDefRecommendationItemMgr.h" />
+    <ClInclude Include="PgDefSpendMoney.h" />
+    <ClInclude Include="PgDynamicDefMgr.h" />
+    <ClInclude Include="PgEmporia.h" />
+    <ClInclude Include="PgEmporiaFunction.h" />
+    <ClInclude Include="PgEntity.h" />
+    <ClInclude Include="PgEventQuestBase.h" />
+    <ClInclude Include="PgEventView.h" />
+    <ClInclude Include="PgExpedition.h" />
+    <ClInclude Include="PgExpeditionMgr.h" />
+    <ClInclude Include="PgGambleMachine.h" />
+    <ClInclude Include="PgGroundItemBox.h" />
+    <ClInclude Include="PgGroundItemBoxMgr.h" />
+    <ClInclude Include="PgHardCoreDungeonParty.h" />
+    <ClInclude Include="PgHiddenOpen.h" />
+    <ClInclude Include="PgHiddenRewordItemMgr.h" />
+    <ClInclude Include="PgItemOptionMgr.h" />
+    <ClInclude Include="PgItemRarityUpgradeFormula.h" />
+    <ClInclude Include="PgJobSkill.h" />
+    <ClInclude Include="PgJobSkillExpertness.h" />
+    <ClInclude Include="PgJobSkillLocationItem.h" />
+    <ClInclude Include="PgJobSkillSaveIdx.h" />
+    <ClInclude Include="PgJobSkillTool.h" />
+    <ClInclude Include="PgJumpingCharEventMgr.h" />
+    <ClInclude Include="PgLogUtil.h" />
+    <ClInclude Include="PgMacroCheckTable.h" />
+    <ClInclude Include="PgMCtrl.h" />
+    <ClInclude Include="PgMission.h" />
+    <ClInclude Include="PgMissionInfo.h" />
+    <ClInclude Include="PgMission_Report.h" />
+    <ClInclude Include="PgMission_Result.h" />
+    <ClInclude Include="PgMonster.h" />
+    <ClInclude Include="PgMonsterBag.h" />
+    <ClInclude Include="PgMyHome.h" />
+    <ClInclude Include="PgMyQuest.h" />
+    <ClInclude Include="PgMyQuestUtil.h" />
+    <ClInclude Include="PgMySkill.h" />
+    <ClInclude Include="PgNetModule.h" />
+    <ClInclude Include="PgNetModule.hpp" />
+    <ClInclude Include="PgNoticeAction.h" />
+    <ClInclude Include="pgnpc.h" />
+    <ClInclude Include="PgNpcEvent.h" />
+    <ClInclude Include="PgObjcetUnitDefMgr.h" />
+    <ClInclude Include="PgObjectMgr.h" />
+    <ClInclude Include="PgObjectMgr2.h" />
+    <ClInclude Include="PgObjectUnit.h" />
+    <ClInclude Include="PgObjectUnitDef.h" />
+    <ClInclude Include="PgObjMgr.h" />
+    <ClInclude Include="PgObjMgr.hpp" />
+    <ClInclude Include="PgParty.h" />
+    <ClInclude Include="PgPartyContents.h" />
+    <ClInclude Include="pgpartymgr.h" />
+    <ClInclude Include="PgPet.h" />
+    <ClInclude Include="PgPetHatchMgr.h" />
+    <ClInclude Include="PgPlayer.h" />
+    <ClInclude Include="PgPlayer_MissionReport.h" />
+    <ClInclude Include="PgPlayTime.h" />
+    <ClInclude Include="PgPortalAccess.h" />
+    <ClInclude Include="PgPremium.h" />
+    <ClInclude Include="PgPremiumMgr.h" />
+    <ClInclude Include="PgPremiumType.h" />
+    <ClInclude Include="PgProbability.h" />
+    <ClInclude Include="PgPvPRanking.h" />
+    <ClInclude Include="PgPvPUtil.h" />
+    <ClInclude Include="PgQuestInfo.h" />
+    <ClInclude Include="PgQuestResetSchedule.h" />
+    <ClInclude Include="PgQuickInventory.h" />
+    <ClInclude Include="PgRareMonsterSpeech.h" />
+    <ClInclude Include="PgSimpleTime.h" />
+    <ClInclude Include="PgSkillFilter.h" />
+    <ClInclude Include="PgSmallAreaInfo.h" />
+    <ClInclude Include="PgSocialUtil.h" />
+    <ClInclude Include="PgSocketFormula.h" />
+    <ClInclude Include="PgSoulTransfer.h" />
+    <ClInclude Include="PgStore.h" />
+    <ClInclude Include="PgStoreMgr.h" />
+    <ClInclude Include="PgStringUtil.h" />
+    <ClInclude Include="PgSubPlayer.h" />
+    <ClInclude Include="PgSummoned.h" />
+    <ClInclude Include="PgSystemInvManager.h" />
+    <ClInclude Include="PgTotalObjectMgr.h" />
+    <ClInclude Include="PgUnitEffectMgr.h" />
+    <ClInclude Include="PgUserMapInfo.h" />
+    <ClInclude Include="PgWaiter.h" />
+    <ClInclude Include="PgWorldEvent.h" />
+    <ClInclude Include="PgWorldEventObject.h" />
+    <ClInclude Include="PgWorldTimeCondition.h" />
+    <ClInclude Include="PortalAccessInfo.h" />
+    <ClInclude Include="skill.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="tabledatamanager.h" />
+    <ClInclude Include="TDefMgr.h" />
+    <ClInclude Include="unit.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Global.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Collins\Collins.vcxproj">
+      <Project>{de46ddcc-66ed-4713-98e1-629f66e191f5}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Lohengrin\Lohengrin.vcxproj">
+      <Project>{77f61351-ad25-4faf-9b3d-e9df557011d7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

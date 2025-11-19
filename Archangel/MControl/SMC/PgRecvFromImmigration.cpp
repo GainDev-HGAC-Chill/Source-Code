@@ -1,0 +1,7 @@
+#include "stdafx.h"
+#include "PgRecvFromImmigration.h"
+#include "PgSMCMgr.h"
+#include "PgImmigrationServerMgr.h"
+#include "PgRecvFromMMC.h"
+#include "PgRecvFromCenter.h"
+#include "PgSendWrapper.h"

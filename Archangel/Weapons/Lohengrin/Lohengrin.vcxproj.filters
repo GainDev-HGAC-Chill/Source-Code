@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Realm">
+      <UniqueIdentifier>{98da2a71-eaac-445e-9c5a-389991f42388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packet">
+      <UniqueIdentifier>{459fa5d9-28e3-42db-96c2-0a8b571c1114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{e544d2f9-16cc-4acb-bd55-39223eef8757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainFrame">
+      <UniqueIdentifier>{37a908f9-7459-4a75-90b1-f88519979342}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{1f9fe817-2d7b-4a0b-8572-db6d46811bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{a6520a2f-5927-4379-8dec-f73cdb4d0816}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GMCommand">
+      <UniqueIdentifier>{1d6cf7bc-da1c-4d8a-ae67-787e218480d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\PgChannel.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PgRealm.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PgRealmManager.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PgRestrict.cpp">
+      <Filter>Realm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PacketStruct.cpp">
+      <Filter>Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DB.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dbtables.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MemoryTrack.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameTime.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\loggroup.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PgPlayLimiter.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\processconfig.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ProcessConfig_SendFunction.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VariableContainer.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GMCommand.cpp">
+      <Filter>GMCommand</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PgChannel.h">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRealm.h">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRealmManager.h">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRestrict.h">
+      <Filter>Realm</Filter>
+    </ClInclude>
+    <ClInclude Include="packetstruct.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketStruct2.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketStruct4Map.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketStruct_GFAP.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketStructLog.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="packettype.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketType2.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketType3.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketType4.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketType5.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketType6.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="DB.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="dbtables.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="dbtables2.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="dbtables3.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorCode.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryTrack.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="ActArg.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTime.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="LockUtil.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="LogGroup.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet_Util.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPlayLimiter.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="processconfig.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerType.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="VariableContainer.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="GMCommand.h">
+      <Filter>GMCommand</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

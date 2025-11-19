@@ -1,0 +1,62 @@
+USE [DR2_Local]
+GO
+/****** Object:  Table [dbo].[TB_Create_Character_Event_Reward]    Script Date: 06/30/2009 17:04:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TB_Create_Character_Event_Reward](
+	[EventRewardKey] [int] NULL,
+	[Memo] [nvarchar](50) COLLATE Korean_Wansung_CI_AS NULL,
+	[ItemNo01] [int] NULL,
+	[ItemCount01] [smallint] NULL,
+	[TimeType01] [tinyint] NULL,
+	[UseTime01] [int] NULL,
+	[RarityControl01] [int] NULL,
+	[ItemNo02] [int] NULL,
+	[ItemCount02] [smallint] NULL,
+	[TimeType02] [tinyint] NULL,
+	[UseTime02] [int] NULL,
+	[RarityControl02] [int] NULL,
+	[ItemNo03] [int] NULL,
+	[ItemCount03] [smallint] NULL,
+	[TimeType03] [tinyint] NULL,
+	[UseTime03] [int] NULL,
+	[RarityControl03] [int] NULL,
+	[ItemNo04] [int] NULL,
+	[ItemCount04] [smallint] NULL,
+	[TimeType04] [tinyint] NULL,
+	[UseTime04] [int] NULL,
+	[RarityControl04] [int] NULL,
+	[ItemNo05] [int] NULL,
+	[ItemCount05] [smallint] NULL,
+	[TimeType05] [tinyint] NULL,
+	[UseTime05] [int] NULL,
+	[RarityControl05] [int] NULL,
+	[ItemNo06] [int] NULL,
+	[ItemCount06] [smallint] NULL,
+	[TimeType06] [tinyint] NULL,
+	[UseTime06] [int] NULL,
+	[RarityControl06] [int] NULL,
+	[ItemNo07] [int] NULL,
+	[ItemCount07] [smallint] NULL,
+	[TimeType07] [tinyint] NULL,
+	[UseTime07] [int] NULL,
+	[RarityControl07] [int] NULL,
+	[ItemNo08] [int] NULL,
+	[ItemCount08] [smallint] NULL,
+	[TimeType08] [tinyint] NULL,
+	[UseTime08] [int] NULL,
+	[RarityControl08] [int] NULL,
+	[ItemNo09] [int] NULL,
+	[ItemCount09] [smallint] NULL,
+	[TimeType09] [tinyint] NULL,
+	[UseTime09] [int] NULL,
+	[RarityControl09] [int] NULL,
+	[ItemNo010] [int] NULL,
+	[ItemCount010] [smallint] NULL,
+	[TimeType010] [tinyint] NULL,
+	[UseTime010] [int] NULL,
+	[RarityControl010] [int] NULL
+) ON [PRIMARY]
+GO

@@ -1,0 +1,258 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\Pack.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""afxres.rc""     // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Pack.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pack 정보"
+FONT 9, "MS 셸 대화 상자", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Pack 버전 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2007",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDC_EDIT_HEADERMERGE_OUTFILE DIALOGEX 0, 0, 307, 420
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Pack"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_MAKEONEPACK_ORG,44,280,207,12,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "SetDir",IDC_BTN_MAKEONEPACK_ORG,252,280,41,12,WS_DISABLED
+    EDITTEXT        IDC_EDIT_MAKEONEPACK_NEW,44,292,207,12,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "SetDir",IDC_BTN_MAKEONEPACK_NEW,252,292,41,12,WS_DISABLED
+    EDITTEXT        IDC_EDIT_MAKEONEPACK_OUT,44,304,207,12,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "SetDir",IDC_BTN_MAKEONEPACK_OUT,252,304,41,12,WS_DISABLED
+    EDITTEXT        IDC_EDIT_MAKEONEPACK_VERLIST,44,316,207,12,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "SetFile",IDC_BTN_MAKEONEPACK_VERLIST,252,316,41,12,WS_DISABLED
+    EDITTEXT        IDC_EDIT_MAKEONEPACK_VERSION,241,330,52,12,ES_CENTER | ES_AUTOHSCROLL | WS_DISABLED
+    COMBOBOX        IDC_COMBO_MAKEONEPACK_OPTION,201,343,92,30,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Make Version!!",IDC_BTN_MAKEONEPACK_MAKE,124,330,74,25,WS_DISABLED
+    EDITTEXT        IDC_EDT_DIR,44,17,207,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "SetDir",IDC_BTN_SET_TARGET_DIR,252,17,41,12
+    EDITTEXT        IDC_EDT_OUTPUT_DIR,44,29,207,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "SetDir",IDC_BTN_SET_OUTPUT_DIR,252,29,41,12
+    EDITTEXT        IDC_EDT_RESULT_FILENAME,144,53,85,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "OnlyTarget Pack",IDC_BTN_ONLY_TARGET_PACK,230,53,59,12
+    PUSHBUTTON      "Make Recovery Ver",IDC_BTN_MAKE_VER,63,57,74,12
+    EDITTEXT        IDC_EDIT_PACKMERGE_ORG,56,162,195,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "SetFile",IDC_BTN_PACKMERGE_SET_ORGFILE,252,162,41,12
+    EDITTEXT        IDC_EDIT_PACKMERGE_DIR,56,174,195,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "SetDir",IDC_BTN_PACKMERGE_SET_DIR,252,174,41,12
+    EDITTEXT        IDC_EDIT_PACKMERGE_OUT,56,186,195,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "SetFile",IDC_BTN_PACKMERGE_SET_OUTFILE,252,186,41,12
+    COMBOBOX        IDC_COMBO_PACKMERGE_OPTION,154,201,86,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "MergeFile",IDC_BTN_PACKMERGE_MERGE,241,199,52,14
+    PUSHBUTTON      "SubFolderPack",IDC_BTN_RECURSIVE_PACK,226,374,68,33
+    GROUPBOX        "Make one dir to pack",IDC_STATIC,139,42,155,46
+    GROUPBOX        "Recursive Pack",IDC_STATIC,222,362,78,51
+    GROUPBOX        "State",IDC_STATIC,7,362,211,51
+    LTEXT           "Static",IDC_STATIC_PACK_STATE,12,372,200,35
+    LTEXT           "TargetDir",IDC_STATIC,13,18,31,8
+    LTEXT           "OutputDir",IDC_STATIC,12,31,32,8
+    GROUPBOX        "Pack Merge",IDC_STATIC,7,151,293,68
+    LTEXT           "OriginPackFile",IDC_STATIC,12,163,42,8
+    LTEXT           "ToMerge",IDC_STATIC,26,176,28,8
+    GROUPBOX        "Make Recovery Version",IDC_STATIC,7,7,293,88
+    GROUPBOX        "",IDC_STATIC,7,268,293,92,WS_DISABLED
+    LTEXT           "Origin Dir",IDC_STATIC,14,280,29,8,WS_DISABLED
+    LTEXT           "New Dir",IDC_STATIC,17,292,26,8,WS_DISABLED
+    LTEXT           "Out Dir",IDC_STATIC,20,304,23,8,WS_DISABLED
+    LTEXT           "Out Version",IDC_STATIC,202,332,38,8,WS_DISABLED
+    LTEXT           "VerListFile",IDC_STATIC,11,319,32,8,WS_DISABLED
+    LTEXT           "Out File",IDC_STATIC,30,189,24,8
+    CONTROL         "Is Part Pack",IDC_CHECK_PARTPACK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,45,53,10
+    GROUPBOX        "Header Merge",IDC_STATIC,7,96,293,55
+    LTEXT           "TargetDir",IDC_STATIC,17,108,30,8
+    LTEXT           "Output File",IDC_STATIC,11,120,36,8
+    PUSHBUTTON      "Make Header",IDC_BTN_HEADERMERGE_MAKE,243,131,50,14
+    EDITTEXT        IDC_EDIT_HEADERMERGE_TGTDIR,48,106,203,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_HEADERMERGE_OUTFILE,48,118,203,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "SetDir",IDC_BTN_HEADERMERGE_SET_DIR,252,106,41,12
+    PUSHBUTTON      "SetFile",IDC_BTN_HEADERMERGE_SET_FILE,252,118,41,12
+    GROUPBOX        "Update DAT Version",IDC_STATIC,7,221,293,45
+    LTEXT           "DAT File",IDC_STATIC,16,235,27,8
+    EDITTEXT        IDC_EDIT_DATFILEDIR,44,234,207,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "SetFile",IDC_BTN_OPENFILE,252,234,41,12
+    PUSHBUTTON      "SetFile",IDC_BTN_UPDATEFILEVER,241,247,52,14
+    CTEXT           "Select File",IDC_ST_VERSION,79,251,45,8
+    CTEXT           "->",IDC_STATIC,126,250,12,8
+    EDITTEXT        IDC_EDIT_NEW_VERSION,141,249,98,12,ES_CENTER | ES_AUTOHSCROLL
+    LTEXT           "Version Num",IDC_STATIC,145,70,46,10
+    EDITTEXT        IDC_EDIT_VERSION_NUM,187,69,102,12,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,6
+ PRODUCTVERSION 1,0,0,6
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204b0"
+        BEGIN
+            VALUE "CompanyName", "Barunson Interactive"
+            VALUE "FileDescription", "Pack"
+            VALUE "FileVersion", "1, 0, 0, 6"
+            VALUE "InternalName", "Pack"
+            VALUE "LegalCopyright", "Copyright (C) 2008"
+            VALUE "LegalTrademarks", "(c) Barunson Interative.  All rights reserved."
+            VALUE "OriginalFilename", "Pack.exe"
+            VALUE "ProductName", "Pack 응용 프로그램"
+            VALUE "ProductVersion", "1, 0, 0, 6"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDC_EDIT_HEADERMERGE_OUTFILE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 300
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 413
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "Pack 정보(&A)..."
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\Pack.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "afxres.rc"     // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

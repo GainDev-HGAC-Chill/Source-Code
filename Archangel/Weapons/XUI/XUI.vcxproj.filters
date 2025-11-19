@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{aefded65-f4ba-428b-bedd-c77d00b1eb51}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xui_anibar.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Builder.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Button.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_CheckButton.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Config.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Control.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Cursor.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Dialog.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Dummy.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Edit.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Edit_MultiLine.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Font.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Form.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Full_Form.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_HotKeyModifier.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Icon.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Image.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_List.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_List2.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xui_manager.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_MsgBox.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Script.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Scroll.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_StaticForm.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Tab.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Tab_Element.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_ToolTip.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Tree.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XUI_Warning.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xui_wnd.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Iconinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_AniBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_CheckButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Control.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Cursor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Dummy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Edit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Edit_MultiLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Form.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Full_Form.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_HotKeyModifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Icon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Include.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_List2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_MediaPlayer_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_MsgBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xui_renderer_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Resource_Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Script.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Scroll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Stat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_StaticForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Tab_Element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_TextTable_Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_ToolTip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Warning.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XUI_Wnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="XUI_Manager.inl">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

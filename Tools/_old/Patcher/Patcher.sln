@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Patcher", "Patcher.vcproj", "{4CF1471B-BA03-49D4-8181-55489E6DED04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cosmos", "Cosmos", "{A71D6D2B-9547-4A9C-AA34-19EFB55BCB32}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataPack", "..\..\cosmos_src\include\DataPack\DataPack.vcproj", "{2B48E850-C6AE-4408-8C84-C4EBBE5B8162}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BM", "..\..\cosmos_src\include\BM\BM.vcproj", "{E538F866-FFF4-4CA3-B003-275DD38C8EC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CF1471B-BA03-49D4-8181-55489E6DED04}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4CF1471B-BA03-49D4-8181-55489E6DED04}.Debug|Win32.Build.0 = Debug|Win32
+		{4CF1471B-BA03-49D4-8181-55489E6DED04}.Release|Win32.ActiveCfg = Release|Win32
+		{4CF1471B-BA03-49D4-8181-55489E6DED04}.Release|Win32.Build.0 = Release|Win32
+		{2B48E850-C6AE-4408-8C84-C4EBBE5B8162}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2B48E850-C6AE-4408-8C84-C4EBBE5B8162}.Debug|Win32.Build.0 = Debug|Win32
+		{2B48E850-C6AE-4408-8C84-C4EBBE5B8162}.Release|Win32.ActiveCfg = Release|Win32
+		{2B48E850-C6AE-4408-8C84-C4EBBE5B8162}.Release|Win32.Build.0 = Release|Win32
+		{E538F866-FFF4-4CA3-B003-275DD38C8EC2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E538F866-FFF4-4CA3-B003-275DD38C8EC2}.Debug|Win32.Build.0 = Debug|Win32
+		{E538F866-FFF4-4CA3-B003-275DD38C8EC2}.Release|Win32.ActiveCfg = Release|Win32
+		{E538F866-FFF4-4CA3-B003-275DD38C8EC2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2B48E850-C6AE-4408-8C84-C4EBBE5B8162} = {A71D6D2B-9547-4A9C-AA34-19EFB55BCB32}
+		{E538F866-FFF4-4CA3-B003-275DD38C8EC2} = {A71D6D2B-9547-4A9C-AA34-19EFB55BCB32}
+	EndGlobalSection
+EndGlobal

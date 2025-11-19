@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{2B80401B-FA0C-443c-AAFC-385CCBA3F077}") = "Collins", "Collins.vcproj", "{DE46DDCC-66ED-4713-98E1-629F66E191F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Lib MDd|Win32 = Lib MDd|Win32
+		Lib MDo|Win32 = Lib MDo|Win32
+		Lib MD|Win32 = Lib MD|Win32
+		Lib MTd|Win32 = Lib MTd|Win32
+		Lib MT|Win32 = Lib MT|Win32
+		Lib MTo|Win32 = Lib MTo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MDd|Win32.ActiveCfg = Lib MDd|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MDd|Win32.Build.0 = Lib MDd|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MD|Win32.ActiveCfg = Lib MD|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MD|Win32.Build.0 = Lib MD|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MDo|Win32.ActiveCfg = Lib MDo|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MDo|Win32.Build.0 = Lib MDo|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MTd|Win32.ActiveCfg = Lib MTd|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MTd|Win32.Build.0 = Lib MTd|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MT|Win32.ActiveCfg = Lib MT|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MT|Win32.Build.0 = Lib MT|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MTo|Win32.ActiveCfg = Lib MoT|Win32
+		{DE46DDCC-66ED-4713-98E1-629F66E191F5}.Lib MTo|Win32.Build.0 = Lib MTo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

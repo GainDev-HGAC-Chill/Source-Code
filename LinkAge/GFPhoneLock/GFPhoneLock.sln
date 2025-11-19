@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GFPhoneLock", "GFPhoneLock.vcproj", "{C7B696A4-15B7-451B-9317-B58C77DE3568}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Lib MD|Win32 = Lib MD|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7B696A4-15B7-451B-9317-B58C77DE3568}.Lib MD|Win32.ActiveCfg = Lib MD|Win32
+		{C7B696A4-15B7-451B-9317-B58C77DE3568}.Lib MD|Win32.Build.0 = Lib MD|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

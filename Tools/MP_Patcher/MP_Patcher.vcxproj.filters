@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\PatchCode">
+      <UniqueIdentifier>{70ddfd75-00df-40e2-8a3f-5e66ddfe6105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\WinCode">
+      <UniqueIdentifier>{90c25c0c-3aec-4b0b-a6be-b3b694760f26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Browser">
+      <UniqueIdentifier>{27a552a4-5c06-4e92-a0f2-701912236307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\OptionXml">
+      <UniqueIdentifier>{893a5559-dd70-4eb7-ab53-5e0aafd17b3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainManager">
+      <UniqueIdentifier>{f079a8cc-4c76-4f37-b348-6e4cb52a1ae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\FTPManager">
+      <UniqueIdentifier>{e7dc1e44-6064-4881-9c79-9ded6ac90922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\UICode">
+      <UniqueIdentifier>{36be8031-b8fc-4457-9d57-3f7667521349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\XmlParser">
+      <UniqueIdentifier>{7659fbaa-5507-46fc-bd57-b49539880c82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BuildNumber.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="defines.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AmendPatch.h">
+      <Filter>소스 파일\PatchCode</Filter>
+    </ClInclude>
+    <ClInclude Include="OriginalPatch.h">
+      <Filter>소스 파일\PatchCode</Filter>
+    </ClInclude>
+    <ClInclude Include="PatchCommon.h">
+      <Filter>소스 파일\PatchCode</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>소스 파일\WinCode</Filter>
+    </ClInclude>
+    <ClInclude Include="SiteControl.h">
+      <Filter>소스 파일\WinCode</Filter>
+    </ClInclude>
+    <ClInclude Include="PgAXPlay.h">
+      <Filter>소스 파일\Browser</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigDef.h">
+      <Filter>소스 파일\OptionXml</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigXml.h">
+      <Filter>소스 파일\OptionXml</Filter>
+    </ClInclude>
+    <ClInclude Include="PatchProcess.h">
+      <Filter>소스 파일\MainManager</Filter>
+    </ClInclude>
+    <ClInclude Include="FTPMgr.h">
+      <Filter>소스 파일\FTPManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CTButton.h">
+      <Filter>소스 파일\UICode</Filter>
+    </ClInclude>
+    <ClInclude Include="HBitmap.h">
+      <Filter>소스 파일\UICode</Filter>
+    </ClInclude>
+    <ClInclude Include="TEdit.h">
+      <Filter>소스 파일\UICode</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>소스 파일\UICode</Filter>
+    </ClInclude>
+    <ClInclude Include="PgEnvInfoParser.h">
+      <Filter>소스 파일\XmlParser</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AmendPatch.cpp">
+      <Filter>소스 파일\PatchCode</Filter>
+    </ClCompile>
+    <ClCompile Include="OriginalPatch.cpp">
+      <Filter>소스 파일\PatchCode</Filter>
+    </ClCompile>
+    <ClCompile Include="PatchCommon.cpp">
+      <Filter>소스 파일\PatchCode</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrame.cpp">
+      <Filter>소스 파일\WinCode</Filter>
+    </ClCompile>
+    <ClCompile Include="SiteControl.cpp">
+      <Filter>소스 파일\WinCode</Filter>
+    </ClCompile>
+    <ClCompile Include="PgAXPlay.cpp">
+      <Filter>소스 파일\Browser</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigXml.cpp">
+      <Filter>소스 파일\OptionXml</Filter>
+    </ClCompile>
+    <ClCompile Include="PatchProcess.cpp">
+      <Filter>소스 파일\MainManager</Filter>
+    </ClCompile>
+    <ClCompile Include="FTPMgr.cpp">
+      <Filter>소스 파일\FTPManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CTButton.cpp">
+      <Filter>소스 파일\UICode</Filter>
+    </ClCompile>
+    <ClCompile Include="HBitmap.cpp">
+      <Filter>소스 파일\UICode</Filter>
+    </ClCompile>
+    <ClCompile Include="TEdit.cpp">
+      <Filter>소스 파일\UICode</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>소스 파일\UICode</Filter>
+    </ClCompile>
+    <ClCompile Include="PgEnvInfoParser.cpp">
+      <Filter>소스 파일\XmlParser</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Patcher.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\ProjectD.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="MP_Patcher.exe.manifest" />
+  </ItemGroup>
+</Project>

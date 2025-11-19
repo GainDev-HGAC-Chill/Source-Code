@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{BDA3F23A-29C9-48EC-A343-04DC3F7F0A3C}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{AE19BC45-34C9-4A49-89CF-F126591CBD08}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{B236CC6A-9DC4-440A-AD5A-7B18442BA4C6}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="PCH">
+      <UniqueIdentifier>{420f3193-5ef0-4bab-8ee7-caf6c80c3075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NC">
+      <UniqueIdentifier>{cc12acc9-24c1-4441-92db-17a2f9ac9292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GM">
+      <UniqueIdentifier>{a5cfc2fd-ca14-4cc0-8886-70bb4fe9e5e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GM\China">
+      <UniqueIdentifier>{94866bfb-28c1-4235-a752-265fb23dc260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GM\Korea">
+      <UniqueIdentifier>{d9e3f948-d7ca-404e-a9aa-cb33c87f4365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetWork">
+      <UniqueIdentifier>{4c57a9a1-e798-4182-a1f1-1b4a1f5c31d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PgDBProcess.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGMServer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PgKeyEvent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PgMsgHolder.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>PCH</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGmChatMgr.cpp">
+      <Filter>GM</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGMTask.cpp">
+      <Filter>GM</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGMUserMgr.cpp">
+      <Filter>GM</Filter>
+    </ClCompile>
+    <ClCompile Include="PgNoticeMgr.cpp">
+      <Filter>GM</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPetitionDataMgr.cpp">
+      <Filter>GM</Filter>
+    </ClCompile>
+    <ClCompile Include="informer_s.c">
+      <Filter>GM\China</Filter>
+    </ClCompile>
+    <ClCompile Include="PgChnRpcModule.cpp">
+      <Filter>GM\China</Filter>
+    </ClCompile>
+    <ClCompile Include="PgNcGmCommand.cpp">
+      <Filter>GM\Korea</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromGMTool.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromImmigration.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromLogin.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSendWrapper.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PgDBProcess.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PgKeyEvent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMsgHolder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="NC\GSMBridge.h">
+      <Filter>NC</Filter>
+    </ClInclude>
+    <ClInclude Include="IGMLocaleprocess.h">
+      <Filter>GM</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGmChatMgr.h">
+      <Filter>GM</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGMTask.h">
+      <Filter>GM</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGMUserMgr.h">
+      <Filter>GM</Filter>
+    </ClInclude>
+    <ClInclude Include="PgNoticeMgr.h">
+      <Filter>GM</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPetitionDataMgr.h">
+      <Filter>GM</Filter>
+    </ClInclude>
+    <ClInclude Include="informer_h.h">
+      <Filter>GM\China</Filter>
+    </ClInclude>
+    <ClInclude Include="PgChnRpcModule.h">
+      <Filter>GM\China</Filter>
+    </ClInclude>
+    <ClInclude Include="PgNcGmCommand.h">
+      <Filter>GM\Korea</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromGMTool.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromImmigration.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromLogin.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSendWrapper.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="informer.idl">
+      <Filter>GM\China</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

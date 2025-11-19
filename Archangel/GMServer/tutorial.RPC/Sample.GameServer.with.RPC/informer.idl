@@ -1,0 +1,227 @@
+[
+	uuid(C11502DD-6086-4217-B1BA-02253627D674),
+	version(1.0),
+	pointer_default(unique),
+	endpoint("ncacn_ip_tcp:[12345]")
+]
+interface informer
+{
+
+	/* 
+	KickPlayer:
+		Disconnect an online player immediately.
+
+		Parameters
+			hBinding
+				[in] Rpc handler.
+			szAccountID
+				[in, string] Pointer to a null-terminated string that specifies the player's login account. 
+				The length of this string is between 6 and 14 characters.
+
+		Return Values
+			error code
+		[NOTICE]
+		szAccountID is user account id not character id
+		Do you agree ?
+	*/
+	int KickPlayer(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szAccountID
+		);
+
+	/*
+	ChangePassword:
+		Change a player's login password.
+		
+		Parameters
+			hBinding
+				[in] Rpc handler.
+			szAccountID
+				[in, string] Pointer to a null-terminated string that specifies the player's login account. 
+				The length of this string is between 6 and 14 characters.
+			szPassword
+				[in, string] Pointer to a null-terminated string that specifies the player's login password. 
+				The length of this string is between 6 and 14 characters.
+
+		Return Values
+			error code
+		[NOTICE]
+		szAccountID is user account id not character id
+		Do you agree ?
+	*/
+	int ChangePassword(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szAccountID,
+		[in, string] const wchar_t *szPassword
+		);
+
+
+	/*
+	CreateAccount:
+		Create a new account.
+		
+		Parameters
+			hBinding
+				[in] Rpc handler.
+			szAccountID
+				[in, string] Pointer to a null-terminated string that specifies the player's login account. 
+				The length of this string is between 6 and 14 characters.
+			szPassword
+				[in, string] Pointer to a null-terminated string that specifies the player's login password. 
+				The length of this string is between 6 and 14 characters.
+
+		Return Values
+			error code
+		[NOTICE]
+		szAccountID is user account id not character id
+		Do you agree ?
+	*/
+	int CreateAccount(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szAccountID,
+		[in, string] const wchar_t *szPassword
+		);
+
+	/*
+	FreezeAccount:
+		Freeze a player's account.
+		
+		Parameters
+			hBinding
+				[in] Rpc handler.
+			szAccountID
+				[in, string] Pointer to a null-terminated string that specifies the player's login account. 
+				The length of this string is between 6 and 14 characters.
+			iNewState
+				[in] account new state (EAccountState value)
+
+		Return Values
+			error code
+
+		Remarks
+			When the player is online, it will also kick the player immediately.
+		[NOTICE]
+		szAccountID is user account id not character id
+		Do you agree ?
+	*/
+	int FreezeAccount(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szAccountID,
+		[in] int iNewState
+		);
+	
+
+	/*
+	AuxiliaryPassword:
+		Set a player's auxiliary password.
+		
+		Parameters
+			hBinding
+				[in] Rpc handler.
+			szAccountID
+				[in, string] Pointer to a null-terminated string that specifies the player's login account. 
+				The length of this string is between 6 and 14 characters.
+			szAuxiliaryPassword
+				[in, string] Pointer to a null-terminated string that specifies the player's auxiliary password. 
+				The length of this string is between 6 and 14 characters.
+			iSetType
+				[in] Password setting type (EPasswordSetType)
+
+		Return Values
+			error code
+		[NOTICE]
+		szAccountID is user account id not character id
+		Do you agree ?
+	*/
+	int AuxiliaryPassword(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szAccountID,
+		[in, string] const wchar_t *szAuxiliaryPassword,
+		[in] int iSetType
+		);
+
+	/*
+	AddPoint:
+		Add player point
+		
+		Parameters
+			hBinding
+				[in] Rpc handler.
+			szPayId
+				[in, string] Pointer to a null-terminated string that specifies the payment order id.
+				This id need save in storage for check in the future.The maximum length of this string is 20 characters.
+			szAccountID
+				[in, string] Pointer to a null-terminated string that specifies the player's login account. 
+				The length of this string is between 6 and 14 characters.
+				(Character Name, not player ID)
+			iPoints
+				[in] The points need convert to playtime or playpoints. 
+				if iPoint < 0 then Point will be decreased
+
+		Return Values
+			error code
+		[NOTICE]
+		szAccountID is user account id not character id
+		Do you agree ?
+	*/
+	int AddPoint(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szPayId,
+		[in, string] const wchar_t *szAccountID,
+		[in] const int iPoints
+		);
+	/*
+	GiveItem:
+		Give item to player(Character).
+		
+		Parameters
+			hBinding
+				[in] Rpc handler.
+			szUserName
+				[in, string] Pointer to a null-terminated string that specifies the player's login account. 
+				The length of this string is between 6 and 14 characters.
+			szItem
+				[in, string] Pointer to a null-terminated string that specifies the bonus item.
+				The maximum length of this string is 6 characters.
+			iCount
+				[in] The bonus item's count.
+
+		Return Values
+			If the function succeeds, the return value is True.
+			If the function fails, the return value is False.
+		[NOTICE]
+		szCharName is character id not user account id
+		Do you agree ?
+	*/
+	int GiveItem(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szCharName,
+		[in] int iItemID,
+		[in] const int iCount
+		);
+
+	/*
+	GetPoint:
+		Get a player's point
+		
+		Parameters
+			hBinding
+				[in] Rpc handler.
+			szAccountID
+				[in, string] Pointer to a null-terminated string that specifies the player's login account. 
+				The length of this string is between 6 and 14 characters.
+			int* piReturnCode
+				[out] result error code
+
+		Return Values
+			User's Point value
+		[NOTICE]
+		szAccountID is user account id not character id
+		Do you agree ?
+	*/
+	int GetPoint(
+		[in] handle_t hBinding,
+		[in, string] const wchar_t *szAccountID,
+		[out] int* piReturnCode
+		);
+}

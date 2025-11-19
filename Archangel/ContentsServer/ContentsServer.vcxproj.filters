@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ETC">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ServerSet">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="ServerSet\OpenMarket">
+      <UniqueIdentifier>{1be1f3de-8b23-490f-93d1-051b2158854a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainFrame">
+      <UniqueIdentifier>{9972a353-0c67-4ca2-ae9b-6dc6b4066dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NC">
+      <UniqueIdentifier>{f9743d05-9e61-464c-8a89-51ed9f1c3f7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{e6e67092-5d73-48b0-a445-b78a4793b451}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Event">
+      <UniqueIdentifier>{d5e7af11-900a-4b00-b082-4f0a3fee49f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{bc336e6d-1b4b-458e-b119-841d6cb9c5bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database">
+      <UniqueIdentifier>{6d217884-0c18-4d16-b21b-82a7033b00bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{149a5c39-d2c6-4fe0-939b-0dfdac3c5d3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Doc">
+      <UniqueIdentifier>{c31b5548-3320-485d-ae29-0a7375faddcf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PgCouponEventDoc.cpp">
+      <Filter>ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="PgEventDoc.cpp">
+      <Filter>ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSocialDBUtil.cpp">
+      <Filter>ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="JobDispatcher.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="JobWorker.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="PgServerSeteMgr_UserMarket.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="PgServerSetMgr.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="PgServerSetMgr_ActionTask.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="PgServerSetMgr_CharacterCard.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="PgServerSetMgr_Helper.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="Transaction.cpp">
+      <Filter>ServerSet</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenMarket.cpp">
+      <Filter>ServerSet\OpenMarket</Filter>
+    </ClCompile>
+    <ClCompile Include="PgContentsServer.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgKeyEvent.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PgTimer.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\Global.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgAchievement.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgActionEventProcess.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgBSGame.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgCharacterCardMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgCoupleMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgEmporiaMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgEventQuestSystem.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgExpeditionListMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgFriendMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGambleUserMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgGuild.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgGuildMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgGuildMgr_ProcessDB.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgGuildMgr_RecvFromDBResult.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgGuildMgr_RecvFromUser.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgHardCoreDungeonSystem.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgHardCoreDungeonSystemMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgIndunPartyMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgJobSkillChecker.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgLuckyStarEvent.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgMyHomeMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgNotice.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgOXQuizEvent.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPvPLeague.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPvPLeagueMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="PgPvPRankingSceduler.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgQuestMng.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgQuestRandom.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgRankMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgRecvFromMap.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgTask_Contents.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\RealmChatMgr.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Contents\PgRealmEvent.cpp">
+      <Filter>Contents\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromImmigration.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromItem.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromLog.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromManagementServer.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgRecvFromServer.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgSendWrapper.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgUserWrapper.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="PgDBProcess.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="PgDBSaveAction.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGMProcessMgr.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="PgGuildDB.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
+    <ClCompile Include="Item\CashManager.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item\ItemDropControl.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item\PgCashShopManager.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item\PgDBProcess.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item\PgPostManager.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item\PgRecvFromCenter.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\PgDoc.cpp">
+      <Filter>Doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\PgDoc_PetInfo.cpp">
+      <Filter>Doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\PgDoc_Player.cpp">
+      <Filter>Doc</Filter>
+    </ClCompile>
+    <ClCompile Include="doc\PgJobChecker.cpp">
+      <Filter>Doc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PgCouponEventDoc.h">
+      <Filter>ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="PgEventDoc.h">
+      <Filter>ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSocialDBUtil.h">
+      <Filter>ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="JobDispatcher.h">
+      <Filter>ServerSet</Filter>
+    </ClInclude>
+    <ClInclude Include="JobWorker.h">
+      <Filter>ServerSet</Filter>
+    </ClInclude>
+    <ClInclude Include="PgServerSetMgr.h">
+      <Filter>ServerSet</Filter>
+    </ClInclude>
+    <ClInclude Include="Transaction.h">
+      <Filter>ServerSet</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenMarket.h">
+      <Filter>ServerSet\OpenMarket</Filter>
+    </ClInclude>
+    <ClInclude Include="constant.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgKeyEvent.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PgTimer.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="NC\IBGameDefine.h">
+      <Filter>NC</Filter>
+    </ClInclude>
+    <ClInclude Include="NC\IBGameInterface.h">
+      <Filter>NC</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\Global.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgAchievement.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgActionEventProcess.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgBSGame.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgCharacterCardMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgCoupleMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgEmporiaMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgEmporiaPack.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgEmporiaPack.hpp">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgEventQuestSystem.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgExpeditionListMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgFriendMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGambleUserMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgGuild.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgGuildMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgHardCoreDungeonSystem.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgHardCoreDungeonSystemMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgIndunPartyMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgJobSkillChecker.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgLuckyStarEvent.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgMyHomeMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgNotice.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgOXQuizEvent.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPvPLeague.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPvPLeagueMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="PgPvPRankingSceduler.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgQuestMng.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgQuestRandom.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgRankMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgRecvFromMap.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgTask_Contents.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\RealmChatMgr.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Contents\PgRealmEvent.h">
+      <Filter>Contents\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromImmigration.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromItem.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromLog.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromManagementServer.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgRecvFromServer.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgSendWrapper.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgUserWrapper.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDBProcess.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="PgDBSaveAction.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGMProcessMgr.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="PgGuildDB.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\CashManager.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\ItemDropControl.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\PgCashShopManager.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\PgDBProcess.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\PgPostManager.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\PgRecvFromCenter.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\PgDoc.h">
+      <Filter>Doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\PgDoc_PetInfo.h">
+      <Filter>Doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\PgDoc_Player.h">
+      <Filter>Doc</Filter>
+    </ClInclude>
+    <ClInclude Include="doc\PgJobChecker.h">
+      <Filter>Doc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ContentsServer.rc">
+      <Filter>MainFrame</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

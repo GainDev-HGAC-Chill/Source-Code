@@ -1,0 +1,321 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\GMTool.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""afxres.rc""     // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GMTool.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "GMTool 정보"
+FONT 9, "MS 셸 대화 상자", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "GMTool 버전 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2007",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_GENERALDLG DIALOGEX 0, 0, 338, 300
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "대화 상자"
+FONT 9, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "ID :",IDC_STATIC,7,9,12,8
+    EDITTEXT        IDC_GENERAL_ID,23,7,94,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Select Server",IDC_STATIC,170,8,43,8
+    COMBOBOX        IDC_GENERAL_SELECT_SERVER,214,7,96,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_GMTOOL_DIALOG DIALOGEX 0, 0, 186, 76
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Login"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_CHANNEL,47,16,70,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ID,47,33,70,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PW,47,50,70,14,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "확인",IDOK,129,33,50,14
+    PUSHBUTTON      "취소",IDCANCEL,129,50,50,14
+    LTEXT           "ID",IDC_STATIC,11,35,8,8
+    LTEXT           "Password",IDC_STATIC,11,52,32,8
+    LTEXT           "Channel",IDC_STATIC,11,18,27,8
+END
+
+IDD_PAGE_NOTICE DIALOGEX 0, 0, 325, 220
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Notice"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Notice Input",IDC_STATIC,0,0,325,99
+    EDITTEXT        IDC_PAGE_NOTICE_CONTENTS,3,10,318,84,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL
+    CONTROL         "All Server Notice",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,5,108,69,10
+    CONTROL         "Set Notice Timer",IDC_PAGE_NOTICE_TIMERSEND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,123,68,10
+    EDITTEXT        IDC_PAGE_NOTICE_TIMERNUM,75,121,33,14,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "seconds..",IDC_STATIC,116,124,32,8
+    PUSHBUTTON      "Send",IDC_PAGE_NOTICE_SEND,275,107,50,14
+    PUSHBUTTON      "Stop",IDC_PAGE_NOTICE_STOP,275,125,50,14
+    LTEXT           "Remain time : 000000000000",IDC_PAGE_NOTICE_REMAINTIME,173,125,94,8
+    CONTROL         "",IDC_PAGE_NOTICE_COLOR,"Button",BS_OWNERDRAW | NOT WS_VISIBLE | WS_TABSTOP,5,137,7,8
+    LTEXT           "Text Color",IDC_STATIC,16,137,34,8,NOT WS_VISIBLE
+END
+
+IDD_PAGE_CHAT DIALOGEX 0, 0, 325, 220
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Chat"
+FONT 9, "MS Sans Serif, 굴림", 0, 0, 0x0
+BEGIN
+    LTEXT           "Character Name",IDC_STATIC,6,3,53,8
+    COMBOBOX        IDC_COMBO1,65,1,112,30,CBS_DROPDOWN | CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Wispher",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,195,2,42,10
+    EDITTEXT        IDC_PAGE_CHAT_CONTENTS,6,18,286,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "S",IDC_PAGE_CHAT_CHAT_SEND,299,18,19,14
+    GROUPBOX        "History",IDC_STATIC,0,32,325,104
+    EDITTEXT        IDC_EDIT2,5,44,314,72,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_DISABLED | WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "Clear",IDC_BUTTON2,269,119,50,14,WS_DISABLED
+END
+
+IDD_PAGE_CONTROL DIALOGEX 0, 0, 325, 220
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Control"
+FONT 9, "MS Sans Serif, 굴림", 0, 0, 0x0
+BEGIN
+    LTEXT           "Character Name",IDC_STATIC,8,3,53,8
+    COMBOBOX        IDC_COMBO1,69,1,178,30,CBS_DROPDOWN | CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Char List",IDC_STATIC,5,20,86,172
+    GROUPBOX        "Select List",IDC_STATIC,105,20,86,172
+    PUSHBUTTON      "Select",IDC_BUTTON1,255,1,50,14,WS_DISABLED
+    PUSHBUTTON      ">",IDC_BUTTON2,51,199,22,14,WS_DISABLED
+    PUSHBUTTON      ">>",IDC_BUTTON3,75,199,22,14,WS_DISABLED
+    PUSHBUTTON      "<",IDC_BUTTON4,99,199,22,14,WS_DISABLED
+    GROUPBOX        "Action",IDC_STATIC,205,20,109,82
+    GROUPBOX        "Summon",IDC_STATIC,205,103,109,34
+    PUSHBUTTON      "<<",IDC_BUTTON5,123,199,22,14,WS_DISABLED
+    PUSHBUTTON      "Kick",IDC_BUTTON6,219,33,84,14,WS_DISABLED
+    PUSHBUTTON      "Ban Chat",IDC_BUTTON7,219,49,84,14,WS_DISABLED
+    PUSHBUTTON      "Kill",IDC_BUTTON8,219,65,84,14,WS_DISABLED
+    PUSHBUTTON      "Alive",IDC_BUTTON9,219,81,84,14,WS_DISABLED
+    PUSHBUTTON      "Summon",IDC_BUTTON10,219,115,84,14,WS_DISABLED
+    GROUPBOX        "Map Move",IDC_STATIC,205,138,109,79
+    COMBOBOX        IDC_PAGE_CONTROL_MAPMOVE_MAPNO,209,150,101,30,CBS_DROPDOWNLIST | CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_PAGE_CONTROL_MAPMOVE_POSX,209,181,31,14,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_PAGE_CONTROL_MAPMOVE_POSY,244,181,31,14,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "Move",IDC_PAGE_CONTROL_MAPMOVE_MOVE,209,198,101,14,WS_DISABLED
+    EDITTEXT        IDC_PAGE_CONTROL_MAPMOVE_POSZ,279,181,31,14,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_PAGE_CONTROL_MAPMOVE_MAPID,209,165,101,14,ES_CENTER | ES_AUTOHSCROLL | WS_DISABLED
+    CONTROL         "",IDC_CONTROL_LIST_CHAR1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,10,30,76,158
+END
+
+IDD_PAGE_EVENT DIALOGEX 0, 0, 325, 220
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Event"
+FONT 9, "MS Sans Serif, 굴림", 0, 0, 0x0
+BEGIN
+END
+
+IDD_PAGE_EXTRA DIALOGEX 0, 0, 324, 220
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Extra"
+FONT 9, "굴림", 400, 0, 0x81
+BEGIN
+    LTEXT           "Class Change",IDC_STATIC,2,5,50,8
+    COMBOBOX        IDC_PAGE_EXTRA_COMBO_CLASSCHAGE,52,3,65,30,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Apply",IDC_PAGE_EXTRA_BTN_CLASSCHAGE,120,3,54,28,WS_DISABLED
+    LTEXT           "Level",IDC_STATIC,27,21,18,8
+    EDITTEXT        IDC_PAGE_EXTRA_EDT_CLASSCHAGE_LEVEL,52,19,65,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+END
+
+IDD_PAGE_QA DIALOGEX 0, 0, 326, 242
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Petition"
+FONT 8, "굴림", 400, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_LIST_USERLIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,2,12,98,195
+    EDITTEXT        IDC_EDIT_QA_LOG,108,12,202,87,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT_QA_CHAT,108,111,168,15,ES_AUTOHSCROLL
+    PUSHBUTTON      "Refresh",IDC_BTN_QA_REFRESH,2,213,48,14
+    PUSHBUTTON      "&Send",IDC_BTN_QA_CONNECT,284,111,27,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "Barunson Interactive"
+            VALUE "FileDescription", "ProjectD GM Tool"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "GMTool.exe"
+            VALUE "LegalCopyright", "Barunson Interactive.  All rights reserved."
+            VALUE "OriginalFilename", "GMTool.exe"
+            VALUE "ProductName", "ProjectD GM Tool"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_GENERALDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 331
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 292
+    END
+
+    IDD_GMTOOL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+
+    IDD_PAGE_CHAT, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 138
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "GMTool 정보(&A)..."
+    IDS_MAINSHEET_TITLE     "Sheet"
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\GMTool.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "afxres.rc"     // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

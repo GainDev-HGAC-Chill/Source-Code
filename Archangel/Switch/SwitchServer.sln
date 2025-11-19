@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC943}") = "SwitchServer", "SwitchServer.vcproj", "{8B719F13-560A-4B53-8E24-4BEC97FAD755}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Lib MDd|Win32 = Lib MDd|Win32
+		Lib MD|Win32 = Lib MD|Win32
+		Lib MDo|Win32 = Lib MDo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B719F13-560A-4B53-8E24-4BEC97FAD755}.Lib MDd|Win32.ActiveCfg = Lib MDd|Win32
+		{8B719F13-560A-4B53-8E24-4BEC97FAD755}.Lib MDd|Win32.Build.0 = Lib MDd|Win32
+		{8B719F13-560A-4B53-8E24-4BEC97FAD755}.Lib MD|Win32.ActiveCfg = Lib MD|Win32
+		{8B719F13-560A-4B53-8E24-4BEC97FAD755}.Lib MD|Win32.Build.0 = Lib MD|Win32
+		{8B719F13-560A-4B53-8E24-4BEC97FAD755}.Lib MDo|Win32.ActiveCfg = Lib MDo|Win32
+		{8B719F13-560A-4B53-8E24-4BEC97FAD755}.Lib MDo|Win32.Build.0 = Lib MDo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

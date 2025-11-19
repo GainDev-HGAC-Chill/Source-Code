@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SMC", "SMC.vcproj", "{8E09B995-8A1E-46D9-A251-B15E1577343A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Lib MDd|Win32 = Lib MDd|Win32
+		Lib MD|Win32 = Lib MD|Win32
+		Lib MDo|Win32 = Lib MDo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E09B995-8A1E-46D9-A251-B15E1577343A}.Lib MDd|Win32.ActiveCfg = Lib MDd|Win32
+		{8E09B995-8A1E-46D9-A251-B15E1577343A}.Lib MDd|Win32.Build.0 = Lib MDd|Win32
+		{8E09B995-8A1E-46D9-A251-B15E1577343A}.Lib MD|Win32.ActiveCfg = Lib MD|Win32
+		{8E09B995-8A1E-46D9-A251-B15E1577343A}.Lib MD|Win32.Build.0 = Lib MD|Win32
+		{8E09B995-8A1E-46D9-A251-B15E1577343A}.Lib MDo|Win32.ActiveCfg = Lib MDo|Win32
+		{8E09B995-8A1E-46D9-A251-B15E1577343A}.Lib MDo|Win32.Build.0 = Lib MDo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
