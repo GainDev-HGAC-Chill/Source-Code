@@ -20,46 +20,46 @@ class PgPremiumMgr;
 typedef enum 
 {	
 	IT_NONE = 0,
-	//1 ~ 7 ±îÁö´Â DB Å×ÀÌºí ÀÎµ¦½º¿Í ¿¬°üÀÌ ÀÖ±âµµ ÇÏ´Ï. ÇÔºÎ·Î ¹Ù²ÙÁö ¸» °Í.
-	IT_EQUIP =			1,	// Àåºñ ¾ÆÀÌÅÛ
-	IT_CONSUME =		2,	// ¼Òºñ ¾ÆÀÌÅÛ
-	IT_ETC =			3,	// ±âÅ¸ ¾ÆÀÌÅÛ
-	IT_CASH =			4,	// µ·(»ó¿ë ¾ÆÀÌÅÛ)À¸·Î ±¸¸ÅÇÑ ¾ÆÀÌÅÛ
+	//1 ~ 7 ê¹Œì§€ëŠ” DB í…Œì´ë¸” ì¸ë±ìŠ¤ì™€ ì—°ê´€ì´ ìžˆê¸°ë„ í•˜ë‹ˆ. í•¨ë¶€ë¡œ ë°”ê¾¸ì§€ ë§ ê²ƒ.
+	IT_EQUIP =			1,	// ìž¥ë¹„ ì•„ì´í…œ
+	IT_CONSUME =		2,	// ì†Œë¹„ ì•„ì´í…œ
+	IT_ETC =			3,	// ê¸°íƒ€ ì•„ì´í…œ
+	IT_CASH =			4,	// ëˆ(ìƒìš© ì•„ì´í…œ)ìœ¼ë¡œ êµ¬ë§¤í•œ ì•„ì´í…œ
 
-	// ±æµå±Ý°í´Â Ä³¸¯ÅÍ ÀÎº¥Åä¸®¸¦ »ç¿ëÇÑ´Ù.(´Ü, Àåºñ, ¼Òºñ °°Àº ±¸ºÐÀº ¾ø´Ù)
+	// ê¸¸ë“œê¸ˆê³ ëŠ” ìºë¦­í„° ì¸ë²¤í† ë¦¬ë¥¼ ì‚¬ìš©í•œë‹¤.(ë‹¨, ìž¥ë¹„, ì†Œë¹„ ê°™ì€ êµ¬ë¶„ì€ ì—†ë‹¤)
 	IT_GUILD_INVENTORY1 = 1,
 	IT_GUILD_INVENTORY2 = 2,
 	IT_GUILD_INVENTORY3 = 3,
 	IT_GUILD_INVENTORY4 = 4,
 
-	IT_SAFE =			5,	// Ã¢°í
-	IT_CASH_SAFE =		6,	// ±Ý°í(»ó¿ë ¾ÆÀÌÅÛÀ» ÀúÀåÇÏ´Â°÷)
-	IT_FIT =			7,	// ÀåÂøµÈ ¾ÆÀÌÅÛ¸¸ ³ª¿À´Â°÷
+	IT_SAFE =			5,	// ì°½ê³ 
+	IT_CASH_SAFE =		6,	// ê¸ˆê³ (ìƒìš© ì•„ì´í…œì„ ì €ìž¥í•˜ëŠ”ê³³)
+	IT_FIT =			7,	// ìž¥ì°©ëœ ì•„ì´í…œë§Œ ë‚˜ì˜¤ëŠ”ê³³
 	IT_HOME =			8,
-	IT_POST =			9,	// ¿ìÆíÇÔ
-	IT_USER_MARKET =	10,	// °æ¸Å º¸°üÇÔ
-	IT_FIT_CASH =		11,	// Ä³½¬ ¾ÆÀÌÅÛ ÀåÂø
+	IT_POST =			9,	// ìš°íŽ¸í•¨
+	IT_USER_MARKET =	10,	// ê²½ë§¤ ë³´ê´€í•¨
+	IT_FIT_CASH =		11,	// ìºì‰¬ ì•„ì´í…œ ìž¥ì°©
 
-	IT_RENTAL_SAFE1	=	12, // ±â°£Á¦ Ã¢°í1
-	IT_RENTAL_SAFE2	=	13, // ±â°£Á¦ Ã¢°í2
-	IT_RENTAL_SAFE3	=	14, // ±â°£Á¦ Ã¢°í3
+	IT_RENTAL_SAFE1	=	12, // ê¸°ê°„ì œ ì°½ê³ 1
+	IT_RENTAL_SAFE2	=	13, // ê¸°ê°„ì œ ì°½ê³ 2
+	IT_RENTAL_SAFE3	=	14, // ê¸°ê°„ì œ ì°½ê³ 3
 
-	IT_PET =			15,	// Æê ¾ÆÀÌÅÛ ÀÎº¥
+	IT_PET =			15,	// íŽ« ì•„ì´í…œ ì¸ë²¤
 
-	IT_SHARE_RENTAL_SAFE1 = 16, // °èÁ¤ °øÀ¯ ±â°£Á¦ Ã¢°í1
-	IT_SHARE_RENTAL_SAFE2 = 17, // °èÁ¤ °øÀ¯ ±â°£Á¦ Ã¢°í2
-	IT_SHARE_RENTAL_SAFE3 = 18, // °èÁ¤ °øÀ¯ ±â°£Á¦ Ã¢°í3
-	IT_SHARE_RENTAL_SAFE4 = 19, // °èÁ¤ °øÀ¯ ±â°£Á¦ Ã¢°í4
+	IT_SHARE_RENTAL_SAFE1 = 16, // ê³„ì • ê³µìœ  ê¸°ê°„ì œ ì°½ê³ 1
+	IT_SHARE_RENTAL_SAFE2 = 17, // ê³„ì • ê³µìœ  ê¸°ê°„ì œ ì°½ê³ 2
+	IT_SHARE_RENTAL_SAFE3 = 18, // ê³„ì • ê³µìœ  ê¸°ê°„ì œ ì°½ê³ 3
+	IT_SHARE_RENTAL_SAFE4 = 19, // ê³„ì • ê³µìœ  ê¸°ê°„ì œ ì°½ê³ 4
 
-	IT_SOLD_ITEM		= 20,	// »óÁ¡¿¡ ÆÇ¸ÅÇÑ ¾ÆÀÌÅÛ ÀÓ½Ã ÀúÀå ÀÎº¥Åä¸®
+	IT_SOLD_ITEM		= 20,	// ìƒì ì— íŒë§¤í•œ ì•„ì´í…œ ìž„ì‹œ ì €ìž¥ ì¸ë²¤í† ë¦¬
 
-	IT_SAFE_ADDITION	= 25,	// Ãß°¡ ÀÎº¥Åä¸®
+	IT_SAFE_ADDITION	= 25,	// ì¶”ê°€ ì¸ë²¤í† ë¦¬
 }EInvType;
 
 typedef enum eKindUIIconGroup
 {
 	KUIG_NONE				= 0,// default error
-//IT_ ½Ã¸®Áî¿Í ¿¬µ¿ µÇ´Â°ÍÀº ¼öÁ¤ ÇÏ½Ã¿À.
+//IT_ ì‹œë¦¬ì¦ˆì™€ ì—°ë™ ë˜ëŠ”ê²ƒì€ ìˆ˜ì • í•˜ì‹œì˜¤.
 	KUIG_EQUIP				= IT_EQUIP,// = 1,
 	KUIG_CONSUME			= IT_CONSUME,// = 2,
 	KUIG_ETC				= IT_ETC,// = 3,
@@ -71,9 +71,9 @@ typedef enum eKindUIIconGroup
 	KUIG_HOME				= IT_HOME,
 	KUIG_FIT_CASH			= IT_FIT_CASH,
 
-	KUIG_RENTAL_SAFE1		= IT_RENTAL_SAFE1, // ±â°£Á¦ Ã¢°í1
-	KUIG_RENTAL_SAFE2		= IT_RENTAL_SAFE2, // ±â°£Á¦ Ã¢°í2
-	KUIG_RENTAL_SAFE3		= IT_RENTAL_SAFE3, // ±â°£Á¦ Ã¢°í3
+	KUIG_RENTAL_SAFE1		= IT_RENTAL_SAFE1, // ê¸°ê°„ì œ ì°½ê³ 1
+	KUIG_RENTAL_SAFE2		= IT_RENTAL_SAFE2, // ê¸°ê°„ì œ ì°½ê³ 2
+	KUIG_RENTAL_SAFE3		= IT_RENTAL_SAFE3, // ê¸°ê°„ì œ ì°½ê³ 3
 
 	KUIG_PET				= IT_PET,
 	KUIG_SHARE_RENTAL_SAFE1 = IT_SHARE_RENTAL_SAFE1,
@@ -88,8 +88,8 @@ typedef enum eKindUIIconGroup
 
 	KUIG_SAFE_ADDITION		= IT_SAFE_ADDITION,
 
-	KUIG_TREASURE_CHEST_KEY = 90, //º¸¹°»óÀÚ ¿­¼è
-	KUIG_MANUFACTURE_MATERIAL = 91, //Áï¼® °¡°ø (´ë·® »ý»ê Àç·á ¾ÆÀÌÅÛ)
+	KUIG_TREASURE_CHEST_KEY = 90, //ë³´ë¬¼ìƒìž ì—´ì‡ 
+	KUIG_MANUFACTURE_MATERIAL = 91, //ì¦‰ì„ ê°€ê³µ (ëŒ€ëŸ‰ ìƒì‚° ìž¬ë£Œ ì•„ì´í…œ)
 	
 	KUIG_GUILD_INV_VIEW		= 100,
 	KUIG_QUICK_INVEN		= 101,
@@ -97,10 +97,10 @@ typedef enum eKindUIIconGroup
 	KUIG_GBOX				= 103, 
 	KUIG_EFFECT				= 104,
 	KUIG_ITEM_UPGRADE_DEST	= 105, 
-	KUIG_ITEM_REPAIR		= 106, //¼ö¸®
-	KUIG_ITEM_SHINESTONEUP	= 107, //»þÀÎ½ºÅæ ¾÷±×·¹ÀÌµå.
-	KUIG_ITEM_TRADE_MY		= 108, //±³È¯-³»²¨
-	KUIG_ITEM_TRADE_OTHER	= 109, //±³È¯-³²¿¡²¨
+	KUIG_ITEM_REPAIR		= 106, //ìˆ˜ë¦¬
+	KUIG_ITEM_SHINESTONEUP	= 107, //ìƒ¤ì¸ìŠ¤í†¤ ì—…ê·¸ë ˆì´ë“œ.
+	KUIG_ITEM_TRADE_MY		= 108, //êµí™˜-ë‚´êº¼
+	KUIG_ITEM_TRADE_OTHER	= 109, //êµí™˜-ë‚¨ì—êº¼
 	KUIG_ITEM_PLUS_UPGRADE_SRC				= 110,
 	KUIG_ITEM_PLUS_UPGRADE_INSURENCE		= KUIG_ITEM_PLUS_UPGRADE_SRC + 1,
 	KUIG_ITEM_PLUS_UPGRADE_PROBABILITY		= KUIG_ITEM_PLUS_UPGRADE_INSURENCE + 1,
@@ -108,77 +108,77 @@ typedef enum eKindUIIconGroup
 	KUIG_ITEM_RARITY_UPGRADE_INSURENCE		= KUIG_ITEM_RARITY_UPGRADE_SRC + 1,
 	KUIG_ITEM_RARITY_UPGRADE_PROBABILITY	= KUIG_ITEM_RARITY_UPGRADE_INSURENCE + 1,
 
-	KUIG_ITEM_MAKING		= 120, //Á¦Á¶ ÀÎÇ².
-	KUIG_ITEM_MAKING_OUT	= 121, //Á¦Á¶ ¾Æ¿ôÇ².
-	KUIG_ITEM_MAKING_COOK	= 122, //Á¦Á¶, ¿ä¸®.
-	KUIG_ITEM_SHINE_LOTTERY	= 123, //»þÀÎ½ºÅæ »Ì±â
-	KUIG_ITEM_MAKING_MAZE	= 124, //Á¦Á¶ ´ë¹Ì±Ã ¾ÆÀÌÅÛ
-	KUIG_ITEM_UNLOCK_SLOT	= 125, //½ºÆä¼È ±Í¼Ó ÇØÁ¦ ¾ÆÀÌÅÛ
-	KUIG_ITEM_PET_UPGRADE	= 126, //Æê ÀüÁ÷
+	KUIG_ITEM_MAKING		= 120, //ì œì¡° ì¸í’‹.
+	KUIG_ITEM_MAKING_OUT	= 121, //ì œì¡° ì•„ì›ƒí’‹.
+	KUIG_ITEM_MAKING_COOK	= 122, //ì œì¡°, ìš”ë¦¬.
+	KUIG_ITEM_SHINE_LOTTERY	= 123, //ìƒ¤ì¸ìŠ¤í†¤ ë½‘ê¸°
+	KUIG_ITEM_MAKING_MAZE	= 124, //ì œì¡° ëŒ€ë¯¸ê¶ ì•„ì´í…œ
+	KUIG_ITEM_UNLOCK_SLOT	= 125, //ìŠ¤íŽ˜ì…œ ê·€ì† í•´ì œ ì•„ì´í…œ
+	KUIG_ITEM_PET_UPGRADE	= 126, //íŽ« ì „ì§
 
 	KUIG_ITEM_MAIL_RECEIVED	= 130, //
 	KUIG_ITEM_MAIL			= 131, //
 	
-	KUIG_ITEM_BIND			= 140, // ¾ÆÀÌÅÛ ¹ÙÀÎµå
-	KUIG_ITEM_UNBIND		= 141, // ¾ÆÀÌÅÛ ¾ð¹ÙÀÎµå
+	KUIG_ITEM_BIND			= 140, // ì•„ì´í…œ ë°”ì¸ë“œ
+	KUIG_ITEM_UNBIND		= 141, // ì•„ì´í…œ ì–¸ë°”ì¸ë“œ
 
 	KUIG_KEY_SET			= 151,
 
-	KUIG_SOCKET_SYSTEM		= 160,// ¼ÒÄÏ ½Ã½ºÅÛ
-	KUIG_ITEMCONVERT_SYSTEM	= 161,// ¾ÆÀÌÅÛ±³È¯ ½Ã½ºÅÛ
+	KUIG_SOCKET_SYSTEM		= 160,// ì†Œì¼“ ì‹œìŠ¤í…œ
+	KUIG_ITEMCONVERT_SYSTEM	= 161,// ì•„ì´í…œêµí™˜ ì‹œìŠ¤í…œ
 
-	KUIG_ITEM_RARITY_BUILDUP_SRC = 170,// ¿É¼Ç °­È­ 
-	KUIG_ITEM_RARITY_AMPLIFY_SRC = 171,// ¿É¼Ç ÁõÆø 
-	KUIG_ITEM_INFALLIBLE_SELECTION_SRC = 172,// ¹é¹ß¹éÁß
+	KUIG_ITEM_RARITY_BUILDUP_SRC = 170,// ì˜µì…˜ ê°•í™” 
+	KUIG_ITEM_RARITY_AMPLIFY_SRC = 171,// ì˜µì…˜ ì¦í­ 
+	KUIG_ITEM_INFALLIBLE_SELECTION_SRC = 172,// ë°±ë°œë°±ì¤‘
 	KUIG_ITEM_RARITY_METERIAL_SRC = 173,
 
-	KUIG_COMBO_SKILL  = 179,	//Á÷¾÷ ½ºÅ³
-	KUIG_JOB_SKILL  = 180,	//Á÷¾÷ ½ºÅ³
-	KUIG_ITEM_SKILL	= 181,	//¾ÆÀÌÅÛ ½ºÅ³
+	KUIG_COMBO_SKILL  = 179,	//ì§ì—… ìŠ¤í‚¬
+	KUIG_JOB_SKILL  = 180,	//ì§ì—… ìŠ¤í‚¬
+	KUIG_ITEM_SKILL	= 181,	//ì•„ì´í…œ ìŠ¤í‚¬
 	KUIG_JOB_SKILL3_ITEM	= 182,
-	KUIG_JS3_RES_ITEM		= 183, // Ã¤Áý3Â÷ Àç·á¾ÆÀÌÅÛ
-	KUIG_ITEM_COUNT			= 184, // SItem, ¼ö·®¾øÀ¸¸é È¸»öÃ³¸®
+	KUIG_JS3_RES_ITEM		= 183, // ì±„ì§‘3ì°¨ ìž¬ë£Œì•„ì´í…œ
+	KUIG_ITEM_COUNT			= 184, // SItem, ìˆ˜ëŸ‰ì—†ìœ¼ë©´ íšŒìƒ‰ì²˜ë¦¬
 
-	KUIG_EXP_POTION			= 190,	//PC °æÇèÄ¡ Æ÷¼Ç
-	KUIG_EXP_POTION_PET		= 191,	//Æê °æÇèÄ¡ Æ÷¼Ç
-	KUIG_CONSUME_PET		= 192,	//Æê ¼ÒºñÅÛ
-	KUIG_FIT_PET			= 197,	//Æê ÀåÂø
-	KUIG_SKILLTREE_PET		= 198,	//Æê ½ºÅ³
-	KUIG_ITEM_PET_FEED		= 199,	//Æê »ç·á ¾ÆÀÌÄÜ
-	KUIG_INV_VIEW			= 200,//ÀÎº¥Åä¸® º¸±â¿¡ ÀÖ´Â ¾ÆÀÌÄÜµé
+	KUIG_EXP_POTION			= 190,	//PC ê²½í—˜ì¹˜ í¬ì…˜
+	KUIG_EXP_POTION_PET		= 191,	//íŽ« ê²½í—˜ì¹˜ í¬ì…˜
+	KUIG_CONSUME_PET		= 192,	//íŽ« ì†Œë¹„í…œ
+	KUIG_FIT_PET			= 197,	//íŽ« ìž¥ì°©
+	KUIG_SKILLTREE_PET		= 198,	//íŽ« ìŠ¤í‚¬
+	KUIG_ITEM_PET_FEED		= 199,	//íŽ« ì‚¬ë£Œ ì•„ì´ì½˜
+	KUIG_INV_VIEW			= 200,//ì¸ë²¤í† ë¦¬ ë³´ê¸°ì— ìžˆëŠ” ì•„ì´ì½˜ë“¤
 
-	KUIG_VIEW_OTHER_EQUIP	= 201,//³²ÀÇ ÀÎº¥ÀåÂø.
-	KUIG_VIEW_OTHER_EQUIP_CASH	= KUIG_VIEW_OTHER_EQUIP+1,//³²ÀÇ CashÀÎº¥ÀåÂø.
+	KUIG_VIEW_OTHER_EQUIP	= 201,//ë‚¨ì˜ ì¸ë²¤ìž¥ì°©.
+	KUIG_VIEW_OTHER_EQUIP_CASH	= KUIG_VIEW_OTHER_EQUIP+1,//ë‚¨ì˜ Cashì¸ë²¤ìž¥ì°©.
 
-	KUIG_STORE				= 220,//»óÁ¡¿ë ¾ÆÀÌÄÜ.
-	KUIG_STOCK_STORE		= 221,//ÁÖ½Ä»óÁ¡¿ë ¾ÆÀÌÄÜ.
-	KUIG_TRANSTOWER_FREE	= 222,//Àü¼ÛÅ¸¿ö ÀÚÀ¯ÀÌ¿ë±Ç 
-	KUIG_MARKET				= 224,//¸¶ÄÏ µî·Ï¿ë ¾ÆÀÌÄÜ.
+	KUIG_STORE				= 220,//ìƒì ìš© ì•„ì´ì½˜.
+	KUIG_STOCK_STORE		= 221,//ì£¼ì‹ìƒì ìš© ì•„ì´ì½˜.
+	KUIG_TRANSTOWER_FREE	= 222,//ì „ì†¡íƒ€ì›Œ ìžìœ ì´ìš©ê¶Œ 
+	KUIG_MARKET				= 224,//ë§ˆì¼“ ë“±ë¡ìš© ì•„ì´ì½˜.
 	KUIG_MONSTER			= 225,
 	KUIG_SYSTEM_INVEN		= 226,
-	KUIG_VIEW_ONLY_ITEM		= 227,//±×¸®±â, ÅøÆÁ¿¡ SItem
-	KUIG_MONSTER_BIG		= 228,//Á¤¿¹ ¸ó½ºÅÍ ¿¡³ÊÁö °ÔÀÌÁö¿ë
-	KUIG_VIEW_ITEMNO_COUNT	= 229,//¾ÆÀÌÅÛ ¹øÈ£¿Í ¼ö·®À¸·Î ±×¸®±â
-	KUIG_DEFENCE_ITEM		= 230,//µðÆæ½º ¸ðµå ¾ÆÀÌÅÛ
-	KUIG_DEFENCE_GUARDIAN	= 231,//µðÆæ½º ¸ðµå °¡µð¾ð
-	KUIG_DEFENCE_SKILL		= 232,//µðÆæ½º ¸ðµå ½ºÅ³
-	KUIG_ANTIQUE_SRC		= 240,//°ñµ¿Ç°¼öÁý Àç·á ½½·Ô
-	KUIG_ANTIQUE_TGT		= 241,//°ñµ¿Ç°¼öÁý ¸ñÇ¥ ½½·Ô
-	KUIG_ENCHANT_SHIFT_SRC	= 242,//ÀÎÃ¦Æ®ÀüÀÌ Àç·á ½½·Ô
-	KUIG_ENCHANT_SHIFT_TGT	= 243,//ÀÎÃ¦Æ®ÀüÀÌ ¸ñÇ¥ ½½·Ô
+	KUIG_VIEW_ONLY_ITEM		= 227,//ê·¸ë¦¬ê¸°, íˆ´íŒì— SItem
+	KUIG_MONSTER_BIG		= 228,//ì •ì˜ˆ ëª¬ìŠ¤í„° ì—ë„ˆì§€ ê²Œì´ì§€ìš©
+	KUIG_VIEW_ITEMNO_COUNT	= 229,//ì•„ì´í…œ ë²ˆí˜¸ì™€ ìˆ˜ëŸ‰ìœ¼ë¡œ ê·¸ë¦¬ê¸°
+	KUIG_DEFENCE_ITEM		= 230,//ë””íŽœìŠ¤ ëª¨ë“œ ì•„ì´í…œ
+	KUIG_DEFENCE_GUARDIAN	= 231,//ë””íŽœìŠ¤ ëª¨ë“œ ê°€ë””ì–¸
+	KUIG_DEFENCE_SKILL		= 232,//ë””íŽœìŠ¤ ëª¨ë“œ ìŠ¤í‚¬
+	KUIG_ANTIQUE_SRC		= 240,//ê³¨ë™í’ˆìˆ˜ì§‘ ìž¬ë£Œ ìŠ¬ë¡¯
+	KUIG_ANTIQUE_TGT		= 241,//ê³¨ë™í’ˆìˆ˜ì§‘ ëª©í‘œ ìŠ¬ë¡¯
+	KUIG_ENCHANT_SHIFT_SRC	= 242,//ì¸ì±ˆíŠ¸ì „ì´ ìž¬ë£Œ ìŠ¬ë¡¯
+	KUIG_ENCHANT_SHIFT_TGT	= 243,//ì¸ì±ˆíŠ¸ì „ì´ ëª©í‘œ ìŠ¬ë¡¯
 	KUIG_SKILLSET_BASIC		= 245,
 	KUIG_SKILLSET_JUMPICON	= 246,
 	KUIG_SKILLSET_SKILLICON	= 247,
 	KUIG_SKILLSET_SETICON	= 248,
-	KUIG_REDICE_PET_OPT		= 249,//Æê ¿É¼Ç º¯°æ
-	KUIG_REDICE_CRAFT_OPT	= 250,//Å©·¡ÇÁÆ® ¿É¼Ç
-	KUIG_BOOK_RECOMMEND		= 251,//ºÏ,ÃßÃµÀåºñ
+	KUIG_REDICE_PET_OPT		= 249,//íŽ« ì˜µì…˜ ë³€ê²½
+	KUIG_REDICE_CRAFT_OPT	= 250,//í¬ëž˜í”„íŠ¸ ì˜µì…˜
+	KUIG_BOOK_RECOMMEND		= 251,//ë¶,ì¶”ì²œìž¥ë¹„
 	KUIG_COMMON_GUID_TO_GRAY= 252,
 	KUIG_COMMON_INV_POS		= 253,
-	KUIG_COMMON_ITEMNO		= 254,//¾ÆÀÌÅÛ ³Ñ¹ö·Î ±×¸®±â
-	KUIG_ANY				= 255,// ±×·ì¾Æ´Ô
+	KUIG_COMMON_ITEMNO		= 254,//ì•„ì´í…œ ë„˜ë²„ë¡œ ê·¸ë¦¬ê¸°
+	KUIG_ANY				= 255,// ê·¸ë£¹ì•„ë‹˜
 
-	//ÀÌ °ªÀº 0~255 »çÀÌÀÇ °ªÀÌ¾î¾ß ÇÑ´Ù.
+	//ì´ ê°’ì€ 0~255 ì‚¬ì´ì˜ ê°’ì´ì–´ì•¼ í•œë‹¤.
 
 }EKindUIIconGroup;
 
@@ -186,30 +186,30 @@ typedef enum tagGuildInvTradeType
 {
 	EGIT_NONE = 0,
 
-	EGIT_MONEY_IN		= 1, // °ñµå ÀÔ±Ý
-	EGIT_MONEY_OUT		= 2, // °ñµå Ãâ±Ý
-	EGIT_ITEM_IN		= 3, // ¾ÆÀÌÅÛ º¸°ü
-	EGIT_ITEM_OUT		= 4, // ¾ÆÀÌÅÛ ²¨³»±â
-	EGIT_ITEM_MOVE		= 5, // ±æµå±Ý°í³» ¾ÆÀÌÅÛ ÀÌµ¿
-	EGIT_ITEM_DESTROY	= 6, // ±æµå±Ý°í ¾ÆÀÌÅÛ ÆÄ±«
-    EGIT_EMPORIA_RESERVE    = 7, //¿¥Æ÷¸®¾Æ µµÀü
-    EGIT_EMPORIA_THROW      = 8, //¿¥Æ÷¸®¾Æ Æ÷±â
-    EGIT_EMPORIA_REWARD     = 9, //¿¥Æ÷¸®¾Æ ¿ì½Â
-	EGIT_GM_ORDER			= 10, //Áö¿¥ ¸í·É
+	EGIT_MONEY_IN		= 1, // ê³¨ë“œ ìž…ê¸ˆ
+	EGIT_MONEY_OUT		= 2, // ê³¨ë“œ ì¶œê¸ˆ
+	EGIT_ITEM_IN		= 3, // ì•„ì´í…œ ë³´ê´€
+	EGIT_ITEM_OUT		= 4, // ì•„ì´í…œ êº¼ë‚´ê¸°
+	EGIT_ITEM_MOVE		= 5, // ê¸¸ë“œê¸ˆê³ ë‚´ ì•„ì´í…œ ì´ë™
+	EGIT_ITEM_DESTROY	= 6, // ê¸¸ë“œê¸ˆê³  ì•„ì´í…œ íŒŒê´´
+    EGIT_EMPORIA_RESERVE    = 7, //ì— í¬ë¦¬ì•„ ë„ì „
+    EGIT_EMPORIA_THROW      = 8, //ì— í¬ë¦¬ì•„ í¬ê¸°
+    EGIT_EMPORIA_REWARD     = 9, //ì— í¬ë¦¬ì•„ ìš°ìŠ¹
+	EGIT_GM_ORDER			= 10, //ì§€ì—  ëª…ë ¹
 } EGuildInvTradeType;
 
 typedef enum E_ITEM_EXTEND_DATA_TYPE : WORD
 {
 	IEDT_NONE		= 0,
-	IEDT_EXPCARD	= 1,	// °æÇèÄ¡ Ä«µå Ãß°¡ Á¤º¸
-	IEDT_UNBIND		= 2,	// ¾ÆÀÌÅÛ ¹ÙÀÎµå Á¤º¸ (ÀÌ°Å ¾ðÁ¦ ¼öÁ¤ ÇÏÁö ¤Ð¤Ð)
-	IEDT_HOME		= 3,	// ¸¶ÀÌÈ¨ ¾ÆÀÌÅÛ Ãß°¡ Á¤º¸
-	IEDT_MONSTERCARD= 4,	// ±â°£Á¦ ¸ó½ºÅÍ Ä«µå Á¤º¸
+	IEDT_EXPCARD	= 1,	// ê²½í—˜ì¹˜ ì¹´ë“œ ì¶”ê°€ ì •ë³´
+	IEDT_UNBIND		= 2,	// ì•„ì´í…œ ë°”ì¸ë“œ ì •ë³´ (ì´ê±° ì–¸ì œ ìˆ˜ì • í•˜ì§€ ã… ã… )
+	IEDT_HOME		= 3,	// ë§ˆì´í™ˆ ì•„ì´í…œ ì¶”ê°€ ì •ë³´
+	IEDT_MONSTERCARD= 4,	// ê¸°ê°„ì œ ëª¬ìŠ¤í„° ì¹´ë“œ ì •ë³´
 }EItemExtendDataType;
 
 #pragma pack(1)
 
-typedef struct tagExpCard	// °æÇèÄ¡ Ä«µå È®Àå Á¤º¸
+typedef struct tagExpCard	// ê²½í—˜ì¹˜ ì¹´ë“œ í™•ìž¥ ì •ë³´
 {
 	tagExpCard():m_kType(IEDT_EXPCARD),m_kExpPer(ABILITY_RATE_VALUE),m_kCurExp(0),m_kMaxExp(0){}
 	CLASS_DECLARATION_S(EItemExtendDataType,Type);
@@ -228,7 +228,7 @@ typedef struct tagExpCard	// °æÇèÄ¡ Ä«µå È®Àå Á¤º¸
 	DEFAULT_TBL_PACKET_FUNC();
 }SExpCard;
 
-typedef struct tagHomeItem	// °æÇèÄ¡ Ä«µå È®Àå Á¤º¸
+typedef struct tagHomeItem	// ê²½í—˜ì¹˜ ì¹´ë“œ í™•ìž¥ ì •ë³´
 {
 	tagHomeItem():m_kType(IEDT_HOME),m_kPos(POINT3(1,1,1)),m_kDir(360){}
 	CLASS_DECLARATION_S(EItemExtendDataType,Type);
@@ -248,7 +248,7 @@ typedef struct tagHomeItem	// °æÇèÄ¡ Ä«µå È®Àå Á¤º¸
 	DEFAULT_TBL_PACKET_FUNC();
 }SHomeItem;
 
-typedef struct tagMonsterCardTimeLimit	// °æÇèÄ¡ Ä«µå È®Àå Á¤º¸
+typedef struct tagMonsterCardTimeLimit	// ê²½í—˜ì¹˜ ì¹´ë“œ í™•ìž¥ ì •ë³´
 {
 	tagMonsterCardTimeLimit():m_kType(IEDT_MONSTERCARD){}
 	explicit tagMonsterCardTimeLimit(int const iUseTime):m_kType(IEDT_MONSTERCARD)
@@ -299,7 +299,7 @@ typedef enum E_USE_ITEM_TYPE
 	UIT_MIN		= 0,
 	UIT_HOUR	= 1,
 	UIT_DAY		= 2,
-	UIT_NOLIMIT = 3,// itsÆÀ¿¡¼­ »ç¿ëÁßÀÌ´Ù. ÇÁ·Î±×·¥¿¡¼± ¹«±âÇÑ ±¸ºÐÀº »ç¿ë ½Ã°£ÀÌ 0 ÀÎ°ÍÀº ¸ðµÎ ¹«±âÇÑÀ¸·Î Ã³¸®µÈ´Ù.
+	UIT_NOLIMIT = 3,// itsíŒ€ì—ì„œ ì‚¬ìš©ì¤‘ì´ë‹¤. í”„ë¡œê·¸ëž¨ì—ì„  ë¬´ê¸°í•œ êµ¬ë¶„ì€ ì‚¬ìš© ì‹œê°„ì´ 0 ì¸ê²ƒì€ ëª¨ë‘ ë¬´ê¸°í•œìœ¼ë¡œ ì²˜ë¦¬ëœë‹¤.
 	UIT_COUNT	= 4,
 	UIT_NUM
 }EUseItemType;
@@ -458,7 +458,7 @@ public:
 	virtual ~PgItem_ExtInfo(void)
 	{}
 
-	virtual BYTE GetType()const = 0;//E_ITEM_EXTINFO_TYPE»ç¿ë
+	virtual BYTE GetType()const = 0;//E_ITEM_EXTINFO_TYPEì‚¬ìš©
 
 	virtual void WriteToPacket( BM::Stream & )const = 0;
 	virtual bool ReadFromPacket( BM::Stream & ) = 0;
@@ -481,7 +481,7 @@ public:
 
 		bool IsUseTimeOut( __int64 const i64TimeType )const;
 
-		CLASS_DECLARATION_S_BIT( unsigned int, Time, 25 );	// »ç¿ë½Ã°£(½Ã°£)
+		CLASS_DECLARATION_S_BIT( unsigned int, Time, 25 );	// ì‚¬ìš©ì‹œê°„(ì‹œê°„)
 		CLASS_DECLARATION_S_BIT( unsigned int, Value, 7 );			// 1~100
 	};
 
@@ -496,7 +496,7 @@ public:
 
 	// Skill
 	static size_t const MAX_SKILL_SIZE = 3;
-	static __int64 const SKILL_BASE_TIME = 215242560i64;// 20100401 ±âº»½ÃÀÛ½Ã°£
+	static __int64 const SKILL_BASE_TIME = 215242560i64;// 20100401 ê¸°ë³¸ì‹œìž‘ì‹œê°„
 
 public:
 	PgItem_PetInfo(void);
@@ -505,7 +505,7 @@ public:
 	explicit PgItem_PetInfo( PgItem_PetInfo const &rhs );
 	PgItem_PetInfo& operator = ( PgItem_PetInfo const &rhs );
 
-	virtual BYTE GetType()const{return UIT_STATE_PET;}//E_ITEM_STATE»ç¿ë
+	virtual BYTE GetType()const{return UIT_STATE_PET;}//E_ITEM_STATEì‚¬ìš©
 
 	virtual void WriteToPacket( BM::Stream &kPacket )const;
 	virtual bool ReadFromPacket( BM::Stream &KPacket );
@@ -540,7 +540,7 @@ private:
 	SStateValue		m_kMental;
 	int				m_iMP;
 	char			m_cColorIndex;
-	SStateValue		m_kSkill[MAX_SKILL_SIZE];//ÀÌ°ÍÀÇ TimeÀº ºÐ´ÜÀ§ÀÌ´Ù. Time¿¡ SKILL_BASE_TIME¸¦ ´õÇØ¼­ »ç¿ëÇØ¾ß ÇÑ´Ù. 2073³â±îÁö ¹öÅßÁØ´Ù.
+	SStateValue		m_kSkill[MAX_SKILL_SIZE];//ì´ê²ƒì˜ Timeì€ ë¶„ë‹¨ìœ„ì´ë‹¤. Timeì— SKILL_BASE_TIMEë¥¼ ë”í•´ì„œ ì‚¬ìš©í•´ì•¼ í•œë‹¤. 2073ë…„ê¹Œì§€ ë²„í…¨ì¤€ë‹¤.
 };
 
 class PgBase_Item;
@@ -559,12 +559,12 @@ typedef struct tagItemWriteFlag
 
 	tagItemWriteFlag(PgBase_Item const &kItem);
 	
-	CLASS_DECLARATION_S_BIT(BYTE, HasEnchant, 1);	//ÀÎÃ¦Æ® Á¤º¸°¡ ÀÖ³ª?
-	CLASS_DECLARATION_S_BIT(BYTE, HasExtend, 1);	//È®Àå Á¤º¸¸¦ °¡Áö°í ÀÖ´Â°¡?
-	CLASS_DECLARATION_S_BIT(BYTE, HasName, 1);		//ÀÌ¸§ Á¤º¸(°æÇèÄ¡ Ä«µå) ÀÖ³ª?
-	CLASS_DECLARATION_S_BIT(BYTE, HasMemo, 1);		//¸Þ¸ð Á¤º¸ ÀÖ³ª?
-	CLASS_DECLARATION_S_BIT(BYTE, HasPetUnit, 1);	//Æê Á¤º¸ ÀÖ³ª?
-	CLASS_DECLARATION_S_BIT(BYTE, Pad, 3);	//¹ÙÀÎµå Á¤º¸ ÀÖ³ª?
+	CLASS_DECLARATION_S_BIT(BYTE, HasEnchant, 1);	//ì¸ì±ˆíŠ¸ ì •ë³´ê°€ ìžˆë‚˜?
+	CLASS_DECLARATION_S_BIT(BYTE, HasExtend, 1);	//í™•ìž¥ ì •ë³´ë¥¼ ê°€ì§€ê³  ìžˆëŠ”ê°€?
+	CLASS_DECLARATION_S_BIT(BYTE, HasName, 1);		//ì´ë¦„ ì •ë³´(ê²½í—˜ì¹˜ ì¹´ë“œ) ìžˆë‚˜?
+	CLASS_DECLARATION_S_BIT(BYTE, HasMemo, 1);		//ë©”ëª¨ ì •ë³´ ìžˆë‚˜?
+	CLASS_DECLARATION_S_BIT(BYTE, HasPetUnit, 1);	//íŽ« ì •ë³´ ìžˆë‚˜?
+	CLASS_DECLARATION_S_BIT(BYTE, Pad, 3);	//ë°”ì¸ë“œ ì •ë³´ ìžˆë‚˜?
 
 	void WriteToPacket(PgBase_Item const &kItem, BM::Stream &kPacket)const;
 	bool ReadFromPacket(PgBase_Item &kItem, BM::Stream &kPacket);
@@ -579,9 +579,9 @@ typedef struct tagItemWriteFlag
 	}
 }SItemWriteFlag;
 
-//typedef struct tagItem//Å©±â´Â 39 ¹ÙÀÌÆ®
+//typedef struct tagItem//í¬ê¸°ëŠ” 39 ë°”ì´íŠ¸
 class PgBase_Item
-	:	public PgItemExtendDataMgr//Å©±â´Â 39 ¹ÙÀÌÆ®
+	:	public PgItemExtendDataMgr//í¬ê¸°ëŠ” 39 ë°”ì´íŠ¸
 {
 	friend struct tagItemWriteFlag;
 public:
@@ -589,10 +589,10 @@ public:
 		:	m_pkExtInfo(NULL)
 	{
 		Clear();
-		Guid(BM::GUID::Create());//Null¾ÆÀÌÅÛÀÌ µÇ´Â°Í ¹æÁö.
+		Guid(BM::GUID::Create());//Nullì•„ì´í…œì´ ë˜ëŠ”ê²ƒ ë°©ì§€.
 		BM::DBTIMESTAMP_EX kLocalTime;
 		g_kEventView.GetLocalTime(kLocalTime);
-		CreateDate(static_cast<BM::PgPackedTime>(kLocalTime));//»ý¼º½Ã°£ ¿³µÇ´Â°Å ¹æÁö.
+		CreateDate(static_cast<BM::PgPackedTime>(kLocalTime));//ìƒì„±ì‹œê°„ ì—¿ë˜ëŠ”ê±° ë°©ì§€.
 	}
 
 	PgBase_Item( PgBase_Item const &rhs );
@@ -603,10 +603,10 @@ public:
 	{
 		m_kGuid.Clear();
 		ItemNo(0);		//4	20
-		Count(0);		//2	22	°¹¼ö
-		m_kEnchantInfo.Clear();	//8 30	ÀÎÃ¾Æ® Á¤º¸
-		State(UIT_STATE_NORMAL);	//1	31»óÅÂ E_ITEM_STATE »ç¿ë
-		m_kCreateDate.Clear();//4 35	»ý¼º³¯Â¥
+		Count(0);		//2	22	ê°¯ìˆ˜
+		m_kEnchantInfo.Clear();	//8 30	ì¸ì²¸íŠ¸ ì •ë³´
+		State(UIT_STATE_NORMAL);	//1	31ìƒíƒœ E_ITEM_STATE ì‚¬ìš©
+		m_kCreateDate.Clear();//4 35	ìƒì„±ë‚ ì§œ
 		SAFE_DELETE(m_pkExtInfo);
 		PgItemExtendDataMgr::Clear();
 	}
@@ -616,10 +616,10 @@ public:
 		size_t iSize = 
 			sizeof(Guid())+//16
 			sizeof(ItemNo())+		//4	20
-			sizeof(Count())+		//2	22	°¹¼ö
-//			sizeof(EnchantInfo())+	//8 30	ÀÎÃ¾Æ® Á¤º¸
-			sizeof(State())+		//1	31»óÅÂ
-			sizeof(CreateDate());//4 35	»ý¼º³¯Â¥
+			sizeof(Count())+		//2	22	ê°¯ìˆ˜
+//			sizeof(EnchantInfo())+	//8 30	ì¸ì²¸íŠ¸ ì •ë³´
+			sizeof(State())+		//1	31ìƒíƒœ
+			sizeof(CreateDate());//4 35	ìƒì„±ë‚ ì§œ
 //			PgItemExtendDataMgr::min_size();
 
 		if ( m_pkExtInfo )
@@ -634,10 +634,10 @@ public:
 		size_t iSize = 
 			sizeof(Guid())+//16
 			sizeof(ItemNo())+		//4	20
-			sizeof(Count())+		//2	22	°¹¼ö
-			sizeof(EnchantInfo())+	//8 30	ÀÎÃ¾Æ® Á¤º¸
-			sizeof(State())+		//1	31»óÅÂ
-			sizeof(CreateDate())+	//4 35	»ý¼º³¯Â¥
+			sizeof(Count())+		//2	22	ê°¯ìˆ˜
+			sizeof(EnchantInfo())+	//8 30	ì¸ì²¸íŠ¸ ì •ë³´
+			sizeof(State())+		//1	31ìƒíƒœ
+			sizeof(CreateDate())+	//4 35	ìƒì„±ë‚ ì§œ
 			PgItemExtendDataMgr::min_size();
 
 			if ( m_pkExtInfo )
@@ -688,7 +688,7 @@ public:
 
 		BM::DBTIMESTAMP_EX kLocalTime;
 		g_kEventView.GetLocalTime(kLocalTime);
-		CreateDate(static_cast<BM::PgPackedTime>(kLocalTime));//»ý¼º½Ã°£ ¿³µÇ´Â°Å ¹æÁö.
+		CreateDate(static_cast<BM::PgPackedTime>(kLocalTime));//ìƒì„±ì‹œê°„ ì—¿ë˜ëŠ”ê±° ë°©ì§€.
 		return true;
 	}
 
@@ -703,7 +703,7 @@ public:
 		{
 			BM::DBTIMESTAMP_EX kLocalTime;
 			g_kEventView.GetLocalTime(kLocalTime);
-			CreateDate(static_cast<BM::PgPackedTime>(kLocalTime));//»ý¼º½Ã°£ ¿³µÇ´Â°Å ¹æÁö.
+			CreateDate(static_cast<BM::PgPackedTime>(kLocalTime));//ìƒì„±ì‹œê°„ ì—¿ë˜ëŠ”ê±° ë°©ì§€.
 		}
 
 		m_kEnchantInfo.UseTime(i64UseTime + m_kEnchantInfo.UseTime());
@@ -735,12 +735,12 @@ public:
 		return 0i64;
 	}
 
-	bool IsTimeOuted() const	// ÀÌ¹Ì Å¸ÀÓ ¾Æ¿ôÀÌ µÈ°ÍÀÎÁö °Ë»ç
+	bool IsTimeOuted() const	// ì´ë¯¸ íƒ€ìž„ ì•„ì›ƒì´ ëœê²ƒì¸ì§€ ê²€ì‚¬
 	{
 		return 	m_kEnchantInfo.IsTimeOuted();
 	}
 
-	bool IsUseTimeOut() const	// »ç¿ë ±â°£À» °Ë»çÇÏ¿© Å¸ÀÓ ¾Æ¿ô µÇ¾ú´ÂÁö °Ë»ç.
+	bool IsUseTimeOut() const	// ì‚¬ìš© ê¸°ê°„ì„ ê²€ì‚¬í•˜ì—¬ íƒ€ìž„ ì•„ì›ƒ ë˜ì—ˆëŠ”ì§€ ê²€ì‚¬.
 	{
 		if(!m_kEnchantInfo.IsTimeLimit())
 		{
@@ -800,9 +800,9 @@ public:
 
 	CLASS_DECLARATION_S(BM::GUID, Guid);				//16
 	CLASS_DECLARATION_S(DWORD, ItemNo);					//4	20
-	CLASS_DECLARATION_S(WORD, Count);					//2	22	°¹¼ö
-	CLASS_DECLARATION_S(SEnchantInfo, EnchantInfo);		//8 30	ÀÎÃ¾Æ® Á¤º¸	
-	CLASS_DECLARATION_S(BM::PgPackedTime, CreateDate);	//4 34	»ý¼º³¯Â¥
+	CLASS_DECLARATION_S(WORD, Count);					//2	22	ê°¯ìˆ˜
+	CLASS_DECLARATION_S(SEnchantInfo, EnchantInfo);		//8 30	ì¸ì²¸íŠ¸ ì •ë³´	
+	CLASS_DECLARATION_S(BM::PgPackedTime, CreateDate);	//4 34	ìƒì„±ë‚ ì§œ
 
 	template< typename T_EXTINFO >
 	bool GetExtInfo( T_EXTINFO *&pOutInfo )const
@@ -817,7 +817,7 @@ public:
 	void Swap( PgBase_Item & rkItem );
 
 private:
-	BYTE	m_kState;//1	35»óÅÂ
+	BYTE	m_kState;//1	35ìƒíƒœ
 	PgItem_ExtInfo *m_pkExtInfo;
 };
 
@@ -1189,7 +1189,7 @@ typedef struct tagPT_M_C_UM_ANS_MARKET_ARTICLE_QUERY
 /*
 typedef enum : WORD
 {
-	// Item ´É·ÂÄ¡
+	// Item ëŠ¥ë ¥ì¹˜
 	EItem_A_Base = 0x000F,
 	EItem_A_Normal = 0x0000,	// noraml
 	EItem_A_ADegree = 0x0001,	// A Degree
@@ -1224,7 +1224,7 @@ typedef struct tagSItemGrade
 } SItemGrade;
 */
 typedef struct tagPlayerModifyOrderData_Add_Any// IMET_DELETE_ANY		=100
-{//¾Æ¹«²¨³ª »èÁ¦.
+{//ì•„ë¬´êº¼ë‚˜ ì‚­ì œ.
 	tagPlayerModifyOrderData_Add_Any()
 	{
 		ItemNo(0);
@@ -1233,17 +1233,17 @@ typedef struct tagPlayerModifyOrderData_Add_Any// IMET_DELETE_ANY		=100
 
 	tagPlayerModifyOrderData_Add_Any(int const iInItemNo, int const iInAddCount)
 	{
-		ItemNo(iInItemNo);//´ë»ó ¾ÆÀÌÅÛ
+		ItemNo(iInItemNo);//ëŒ€ìƒ ì•„ì´í…œ
 		AddCount(iInAddCount);
 	}
-	CLASS_DECLARATION_S(int, ItemNo);//´ë»ó ¾ÆÀÌÅÛ
+	CLASS_DECLARATION_S(int, ItemNo);//ëŒ€ìƒ ì•„ì´í…œ
 	CLASS_DECLARATION_S(int, AddCount);
 
 	DEFAULT_TBL_PACKET_FUNC();
 }SPMOD_Add_Any;
 
 typedef struct tagPlayerModifyOrderData_Add_Fixed// IMET_DELETE_ANY		=100
-{//¾Æ¹«²¨³ª »èÁ¦.
+{//ì•„ë¬´êº¼ë‚˜ ì‚­ì œ.
 	tagPlayerModifyOrderData_Add_Fixed()
 	{
 		ItemNo(0);
@@ -1253,14 +1253,14 @@ typedef struct tagPlayerModifyOrderData_Add_Fixed// IMET_DELETE_ANY		=100
 
 	tagPlayerModifyOrderData_Add_Fixed(int const iInItemNo, int const iInAddCount, SItemPos const & kItemPos)
 	{
-		ItemNo(iInItemNo);//´ë»ó ¾ÆÀÌÅÛ
-		AddCount(iInAddCount);//º¯°æµÉ ÀÎÃ¾Æ®
+		ItemNo(iInItemNo);//ëŒ€ìƒ ì•„ì´í…œ
+		AddCount(iInAddCount);//ë³€ê²½ë  ì¸ì²¸íŠ¸
 		Pos(kItemPos);
 	}
 
-	CLASS_DECLARATION_S(int, ItemNo);//´ë»ó ¾ÆÀÌÅÛ
+	CLASS_DECLARATION_S(int, ItemNo);//ëŒ€ìƒ ì•„ì´í…œ
 	CLASS_DECLARATION_S(int, AddCount);
-	CLASS_DECLARATION_S(SItemPos,Pos);//ÀúÀåÀ§Ä¡
+	CLASS_DECLARATION_S(SItemPos,Pos);//ì €ìž¥ìœ„ì¹˜
 
 	DEFAULT_TBL_PACKET_FUNC();
 }SPMOD_Add_Fixed;
@@ -1274,25 +1274,25 @@ typedef struct tagPlayerModifyOrderData_Enchant//	IMET_MODIFY_ENCHANT	=200
 	explicit tagPlayerModifyOrderData_Enchant(PgBase_Item const &kItem, SItemPos const &kInItemPos, SEnchantInfo const &kInNewEnchantInfo)
 	{
 		Pos(kInItemPos);
-		Item(kItem);//´ë»ó ¾ÆÀÌÅÛ -> ÀÌ°Ç °ËÁõ¿ë
+		Item(kItem);//ëŒ€ìƒ ì•„ì´í…œ -> ì´ê±´ ê²€ì¦ìš©
 
-		NewEnchantInfo(kInNewEnchantInfo);//º¯°æµÉ ÀÎÃ¾Æ®
-		NewGenDate(kItem.CreateDate());// º¯°æµÉ »ý¼º ³¯Â¥
+		NewEnchantInfo(kInNewEnchantInfo);//ë³€ê²½ë  ì¸ì²¸íŠ¸
+		NewGenDate(kItem.CreateDate());// ë³€ê²½ë  ìƒì„± ë‚ ì§œ
 	}
 
 	explicit tagPlayerModifyOrderData_Enchant(PgBase_Item const &kItem, SItemPos const &kInItemPos, SEnchantInfo const &kInNewEnchantInfo,BM::PgPackedTime const & kInNewGenDate)
 	{
 		Pos(kInItemPos);
-		Item(kItem);//´ë»ó ¾ÆÀÌÅÛ -> ÀÌ°Ç °ËÁõ¿ë
+		Item(kItem);//ëŒ€ìƒ ì•„ì´í…œ -> ì´ê±´ ê²€ì¦ìš©
 
-		NewEnchantInfo(kInNewEnchantInfo);//º¯°æµÉ ÀÎÃ¾Æ®
-		NewGenDate(kInNewGenDate);// º¯°æµÉ »ý¼º ³¯Â¥
+		NewEnchantInfo(kInNewEnchantInfo);//ë³€ê²½ë  ì¸ì²¸íŠ¸
+		NewGenDate(kInNewGenDate);// ë³€ê²½ë  ìƒì„± ë‚ ì§œ
 	}
 
 	CLASS_DECLARATION_S(PgBase_Item, Item);
 	CLASS_DECLARATION_S(SItemPos, Pos);
-	CLASS_DECLARATION_S(SEnchantInfo, NewEnchantInfo);//º¯°æµÉ ÀÎÃ¾Æ®
-	CLASS_DECLARATION_S(BM::PgPackedTime, NewGenDate);//º¯°æµÉ »ý¼º³¯Â¥
+	CLASS_DECLARATION_S(SEnchantInfo, NewEnchantInfo);//ë³€ê²½ë  ì¸ì²¸íŠ¸
+	CLASS_DECLARATION_S(BM::PgPackedTime, NewGenDate);//ë³€ê²½ë  ìƒì„±ë‚ ì§œ
 	
 	void WriteToPacket(BM::Stream &kPacket)const 
 	{
@@ -1319,10 +1319,10 @@ typedef struct tagPlayerModifyOrderData_ExtendData
 	}
 
 	template<typename T>
-	explicit tagPlayerModifyOrderData_ExtendData(PgBase_Item const &kItem, SItemPos const &kInItemPos,T const & kExtendData,bool const kRemove = false/*ÀÌ ¿É¼ÇÀº °­Á¦·Î È®Àå Á¤º¸¸¦ Áö¿ï ¶§ »ç¿ëÇÑ´Ù.*/)
+	explicit tagPlayerModifyOrderData_ExtendData(PgBase_Item const &kItem, SItemPos const &kInItemPos,T const & kExtendData,bool const kRemove = false/*ì´ ì˜µì…˜ì€ ê°•ì œë¡œ í™•ìž¥ ì •ë³´ë¥¼ ì§€ìš¸ ë•Œ ì‚¬ìš©í•œë‹¤.*/)
 	{
 		Pos(kInItemPos);
-		Item(kItem);//´ë»ó ¾ÆÀÌÅÛ -> ÀÌ°Ç °ËÁõ¿ë
+		Item(kItem);//ëŒ€ìƒ ì•„ì´í…œ -> ì´ê±´ ê²€ì¦ìš©
 		Type(kExtendData.Type());
 		Remove(kRemove);
 		m_kExtendData.Set(kExtendData);
@@ -1356,27 +1356,27 @@ typedef struct tagPlayerModifyOrderData_ExtendData
 }SPMOD_ExtendData;
 
 typedef struct tagPlayerModifyOrderData_Modify_Count//	IMET_MODIFY_COUNT	=201
-{//ÁöÁ¤µÈ 
+{//ì§€ì •ëœ 
 	tagPlayerModifyOrderData_Modify_Count()
 	{
-		AddCount(0);//º¯°æµÉ °¹¼ö -> Áö¿ì·Á¸é À½¼ö¸¦ ³ÖÀ¸¸é µÊ.
+		AddCount(0);//ë³€ê²½ë  ê°¯ìˆ˜ -> ì§€ìš°ë ¤ë©´ ìŒìˆ˜ë¥¼ ë„£ìœ¼ë©´ ë¨.
 		DoRemove(false);
 	}
 
 	tagPlayerModifyOrderData_Modify_Count(PgBase_Item const &kItem, SItemPos const &kInItemPos, int const iInAddCount, bool const bDoRemove = false)
 	{//
-		Item(kItem);//´ë»ó ¾ÆÀÌÅÛ
+		Item(kItem);//ëŒ€ìƒ ì•„ì´í…œ
 		Pos(kInItemPos);
 
-		AddCount(iInAddCount);//±îÀÏ Ä«¿îÆ®
-		DoRemove(bDoRemove);//Áö¿ì³Ä? -> Ä«¿îÆ® ¹«½ÃµÊ.
+		AddCount(iInAddCount);//ê¹Œì¼ ì¹´ìš´íŠ¸
+		DoRemove(bDoRemove);//ì§€ìš°ëƒ? -> ì¹´ìš´íŠ¸ ë¬´ì‹œë¨.
 	}
 
-	CLASS_DECLARATION_S(PgBase_Item, Item);//´ë»ó ¾ÆÀÌÅÛ
-	CLASS_DECLARATION_S(SItemPos, Pos);//À§Ä¡
+	CLASS_DECLARATION_S(PgBase_Item, Item);//ëŒ€ìƒ ì•„ì´í…œ
+	CLASS_DECLARATION_S(SItemPos, Pos);//ìœ„ì¹˜
 
-	CLASS_DECLARATION_S(int, AddCount);//¼öÁ¤µÉ ¾ç
-	CLASS_DECLARATION_S(bool, DoRemove);//¼ö·® ¹«°ü. ¹Ù·Î Áö¿ì±â.
+	CLASS_DECLARATION_S(int, AddCount);//ìˆ˜ì •ë  ì–‘
+	CLASS_DECLARATION_S(bool, DoRemove);//ìˆ˜ëŸ‰ ë¬´ê´€. ë°”ë¡œ ì§€ìš°ê¸°.
 
 	void WriteToPacket(BM::Stream &kPacket)const 
 	{
@@ -1407,10 +1407,10 @@ typedef struct tagPlayerModifyOrderData_Modify_Count_Pet
 	{//
 	}
 
-	CLASS_DECLARATION_S(BM::GUID, PetID);//´ë»ó ¾ÆÀÌÅÛ
+	CLASS_DECLARATION_S(BM::GUID, PetID);//ëŒ€ìƒ ì•„ì´í…œ
 
 	void WriteToPacket(BM::Stream &kPacket)const 
-	{// ¼ø¼­ ¹Ù²ÙÁö ¸¶½Ã¿À, ÇÔºÎ·Î ¹Ù²Ù½Ã ¸¶½Ã¿À.
+	{// ìˆœì„œ ë°”ê¾¸ì§€ ë§ˆì‹œì˜¤, í•¨ë¶€ë¡œ ë°”ê¾¸ì‹œ ë§ˆì‹œì˜¤.
 		kPacket.Push(PetID());
 		tagPlayerModifyOrderData_Modify_Count::WriteToPacket(kPacket);
 	}
@@ -1423,11 +1423,11 @@ typedef struct tagPlayerModifyOrderData_Modify_Count_Pet
 }SPMOD_Modify_Count_Pet;
 
 typedef struct tagPlayerModifyOrderData_Modify_Pos//IMET_MODIFY_POS
-{//µ·À»±î°í ¹º°¡ ÇØ¾ßÇÒ ÀÏÀÌ ÀÖÀ»°æ¿ì.
+{//ëˆì„ê¹Œê³  ë­”ê°€ í•´ì•¼í•  ì¼ì´ ìžˆì„ê²½ìš°.
 	tagPlayerModifyOrderData_Modify_Pos()
 	{
 	}
-/*	ÇØÅ· ¹æ¾î°¡ ¾ÈµÇ´Ï »ç¿ëÇÏÁö ¸øÇÏ°Ô ÇÏÀÚ..
+/*	í•´í‚¹ ë°©ì–´ê°€ ì•ˆë˜ë‹ˆ ì‚¬ìš©í•˜ì§€ ëª»í•˜ê²Œ í•˜ìž..
 	explicit tagPlayerModifyOrderData_Modify_Pos( SItemPos const &kOrgPos, SItemPos const &kTgtPos )
 		:	m_kOrgPos( kOrgPos )
 		,	m_kTgtPos( kTgtPos )
@@ -1480,8 +1480,8 @@ typedef struct tagPlayerModifyOrderData_Modify_Pos_Pet//IMET_MODIFY_POS
 
 }SPMOD_Modify_Pos_Pet;
 
-typedef struct tagPlayerModifyOrderData_Insert_Fixed//	IMET_INSERT_FIXED	=202	//Æ¯Á¤À§Ä¡¿¡ Æ¯Á¤¾ÆÀÌÅÛ ³ÖÀ½
-{//ÁöÁ¤µÈ ´ë»ó »èÁ¦.
+typedef struct tagPlayerModifyOrderData_Insert_Fixed//	IMET_INSERT_FIXED	=202	//íŠ¹ì •ìœ„ì¹˜ì— íŠ¹ì •ì•„ì´í…œ ë„£ìŒ
+{//ì§€ì •ëœ ëŒ€ìƒ ì‚­ì œ.
 	tagPlayerModifyOrderData_Insert_Fixed()
 	{
 		IsAnyPos(false);
@@ -1494,9 +1494,9 @@ typedef struct tagPlayerModifyOrderData_Insert_Fixed//	IMET_INSERT_FIXED	=202	//
 		IsAnyPos(bIsAnyPos);
 	}
 
-	CLASS_DECLARATION_S(PgBase_Item, Item);//´ë»ó ¾ÆÀÌÅÛ
-	CLASS_DECLARATION_S(SItemPos, Pos);//À§Ä¡
-	CLASS_DECLARATION_S(bool, IsAnyPos);//À§Ä¡
+	CLASS_DECLARATION_S(PgBase_Item, Item);//ëŒ€ìƒ ì•„ì´í…œ
+	CLASS_DECLARATION_S(SItemPos, Pos);//ìœ„ì¹˜
+	CLASS_DECLARATION_S(bool, IsAnyPos);//ìœ„ì¹˜
 
 	void WriteToPacket(BM::Stream &kPacket)const 
 	{
@@ -1513,8 +1513,8 @@ typedef struct tagPlayerModifyOrderData_Insert_Fixed//	IMET_INSERT_FIXED	=202	//
 	}
 }SPMOD_Insert_Fixed;
 
-typedef struct tagPlayerModifyOrderData_DB2Inv//	IMET_INSERT_FIXED	=202	//Æ¯Á¤À§Ä¡¿¡ Æ¯Á¤¾ÆÀÌÅÛ ³ÖÀ½
-{//ÁöÁ¤µÈ ´ë»ó »èÁ¦.
+typedef struct tagPlayerModifyOrderData_DB2Inv//	IMET_INSERT_FIXED	=202	//íŠ¹ì •ìœ„ì¹˜ì— íŠ¹ì •ì•„ì´í…œ ë„£ìŒ
+{//ì§€ì •ëœ ëŒ€ìƒ ì‚­ì œ.
 	tagPlayerModifyOrderData_DB2Inv()
 	{
 	}
@@ -1525,8 +1525,8 @@ typedef struct tagPlayerModifyOrderData_DB2Inv//	IMET_INSERT_FIXED	=202	//Æ¯Á¤À§
 		OrgPos(kOrgPos);
 	}
 
-	CLASS_DECLARATION_S(PgBase_Item, Item);//´ë»ó ¾ÆÀÌÅÛ
-	CLASS_DECLARATION_S(SItemPos, OrgPos);//À§Ä¡
+	CLASS_DECLARATION_S(PgBase_Item, Item);//ëŒ€ìƒ ì•„ì´í…œ
+	CLASS_DECLARATION_S(SItemPos, OrgPos);//ìœ„ì¹˜
 
 	void WriteToPacket(BM::Stream &kPacket)const 
 	{
@@ -1541,8 +1541,8 @@ typedef struct tagPlayerModifyOrderData_DB2Inv//	IMET_INSERT_FIXED	=202	//Æ¯Á¤À§
 	}
 }SPMOD_DB2Inv;
 
-typedef struct tagPlayerModifyOrderData_Add_Money//µ· ¾²´Â°Íµµ ÀÌº¥Æ®È­ µÊ.
-{//µ·À»±î°í ¹º°¡ ÇØ¾ßÇÒ ÀÏÀÌ ÀÖÀ»°æ¿ì.
+typedef struct tagPlayerModifyOrderData_Add_Money//ëˆ ì“°ëŠ”ê²ƒë„ ì´ë²¤íŠ¸í™” ë¨.
+{//ëˆì„ê¹Œê³  ë­”ê°€ í•´ì•¼í•  ì¼ì´ ìžˆì„ê²½ìš°.
 	tagPlayerModifyOrderData_Add_Money()
 	{
 		AddMoney(0);
@@ -1588,8 +1588,8 @@ typedef struct tagPlayerModifyOrderData_StrategySkillTabChange
 	void ReadFromPacket(BM::Stream & rkPacket);
 }SPMOD_ADD_StrategySkillTabChange;
 
-typedef struct tagPlayerModifyOrderData_Sys2Inv//	½Ã½ºÅÛ ÀÎº¥¿¡¼­ ÀÎº¥Åä¸®·Î ¿Å±â±â
-{//ÁöÁ¤µÈ ´ë»ó »èÁ¦.
+typedef struct tagPlayerModifyOrderData_Sys2Inv//	ì‹œìŠ¤í…œ ì¸ë²¤ì—ì„œ ì¸ë²¤í† ë¦¬ë¡œ ì˜®ê¸°ê¸°
+{//ì§€ì •ëœ ëŒ€ìƒ ì‚­ì œ.
 	tagPlayerModifyOrderData_Sys2Inv()
 	{
 	}
@@ -1601,9 +1601,9 @@ typedef struct tagPlayerModifyOrderData_Sys2Inv//	½Ã½ºÅÛ ÀÎº¥¿¡¼­ ÀÎº¥Åä¸®·Î ¿Å±
 		AnyPos(bAnyPos);
 	}
 
-	CLASS_DECLARATION_S(BM::GUID,ItemGuid);//´ë»ó ¾ÆÀÌÅÛ
-	CLASS_DECLARATION_S(SItemPos, Pos);//À§Ä¡
-	CLASS_DECLARATION_S(bool, AnyPos);//À§Ä¡
+	CLASS_DECLARATION_S(BM::GUID,ItemGuid);//ëŒ€ìƒ ì•„ì´í…œ
+	CLASS_DECLARATION_S(SItemPos, Pos);//ìœ„ì¹˜
+	CLASS_DECLARATION_S(bool, AnyPos);//ìœ„ì¹˜
 
 	DEFAULT_TBL_PACKET_FUNC();
 }SPMOD_Sys2Inv;
@@ -1615,7 +1615,7 @@ typedef struct tagPlayerModifyOrderData_SysItemRemove
 	{
 		ItemGuid(kItemGuid);
 	}
-	CLASS_DECLARATION_S(BM::GUID,ItemGuid);//´ë»ó ¾ÆÀÌÅÛ
+	CLASS_DECLARATION_S(BM::GUID,ItemGuid);//ëŒ€ìƒ ì•„ì´í…œ
 
 	DEFAULT_TBL_PACKET_FUNC();
 }SPMOD_SysItemRemove;
@@ -2598,8 +2598,8 @@ typedef struct tagPlayerModifyOrderData_Gamble_Insert
 {
 	tagPlayerModifyOrderData_Gamble_Insert():m_kRouletteCount(0),m_kMixPoint(0){}
 	tagPlayerModifyOrderData_Gamble_Insert(int const __roulettecount, int const __mixpoint = 0):m_kRouletteCount(__roulettecount),m_kMixPoint(__mixpoint){}
-	CLASS_DECLARATION_S(int, RouletteCount);//´ë»ó ¾ÆÀÌÅÛ
-	CLASS_DECLARATION_S(int, MixPoint);//´ë»ó ¾ÆÀÌÅÛ
+	CLASS_DECLARATION_S(int, RouletteCount);//ëŒ€ìƒ ì•„ì´í…œ
+	CLASS_DECLARATION_S(int, MixPoint);//ëŒ€ìƒ ì•„ì´í…œ
 	DEFAULT_TBL_PACKET_FUNC();
 }SPMOD_Gamble_Insert;
 
@@ -2758,7 +2758,7 @@ typedef struct tagPlayerModifyOrder
 
 	template< typename T >
 	bool Write(T const &t)
-	{//ÇÑ¹ø¸¸ ¾²°í.
+	{//í•œë²ˆë§Œ ì“°ê³ .
 		if(!m_kPacket.Size())
 		{
 			t.WriteToPacket(m_kPacket);
@@ -2766,21 +2766,21 @@ typedef struct tagPlayerModifyOrder
 			return true;
 		}
 
-		__asm int 3;//µé¾î¿À¸é ¾ÈµÊ
+		__asm int 3;//ë“¤ì–´ì˜¤ë©´ ì•ˆë¨
 		return false;
 	}
 
 	template< typename T >
 	bool Read(T &t)const
-	{//ÀÐ±â´Â ¿©·¯¹ø.
+	{//ì½ê¸°ëŠ” ì—¬ëŸ¬ë²ˆ.
 		t.ReadFromPacket(m_kPacket);
 //		if(m_kPacket.Pop(t))
 		{
-			m_kPacket.PosAdjust();//¶Ç ²¨³¾ ¼ö ÀÖ°Ô.
+			m_kPacket.PosAdjust();//ë˜ êº¼ë‚¼ ìˆ˜ ìžˆê²Œ.
 			return true;
 		}
 
-		__asm int 3;//µé¾î¿À¸é ¾ÈµÊ
+		__asm int 3;//ë“¤ì–´ì˜¤ë©´ ì•ˆë¨
 		return false;
 	}
 
@@ -2815,9 +2815,9 @@ typedef struct tagPlayerModifyOrder
 		m_kModifyOwner.eOwnerType = eType;
 	}
 
-	CLASS_DECLARATION_S(__int64, Cause);					//EItemModifyEventType ???(S·Î ½ÃÀÛÇÏÁö¸¸ enumÀÓ -_-;)
-	CLASS_DECLARATION_S(SModifyOrderOwner, ModifyOwner);	// ¼ÒÀ¯ÀÚ
-	mutable BM::Stream m_kPacket;							//µ¥ÀÌÅÍ. Read ½Ã¿¡ ¿øº» À¯Áö µÇ¹Ç·Î. mutable ¿¹¿Ü¸¦ Àû¿ë
+	CLASS_DECLARATION_S(__int64, Cause);					//EItemModifyEventType ???(Së¡œ ì‹œìž‘í•˜ì§€ë§Œ enumìž„ -_-;)
+	CLASS_DECLARATION_S(SModifyOrderOwner, ModifyOwner);	// ì†Œìœ ìž
+	mutable BM::Stream m_kPacket;							//ë°ì´í„°. Read ì‹œì— ì›ë³¸ ìœ ì§€ ë˜ë¯€ë¡œ. mutable ì˜ˆì™¸ë¥¼ ì ìš©
 }SPMO;
 
 //
@@ -2837,40 +2837,40 @@ typedef struct tagCONT_PLAYER_MODIFY_ORDER : public std::list< SPMO >
 typedef enum
 {
 	ITEM_TYPE_UNKNOWN	= 0x0001,
-	ITEM_TYPE_EQUIP		= 0x0002,	// Àåºñ ¾ÆÀÌÅÛ
-	ITEM_TYPE_CONSUME	= 0x0004,	// ¼Òºñ ¾ÆÀÌÅÛ
-	ITEM_TYPE_ETC		= 0x0008,	// ±âÅ¸ ¾ÆÀÌÅÛ
-	ITEM_TYPE_QUEST		= 0x0010,	// Äù½ºÆ® ¾ÆÀÌÅÛ
-	ITEM_TYPE_AIDS		= 0x0020,	// Ä³½¬ ¾ÆÀÌÅÛ
-	ITEM_TYPE_ENCHANT	= 0x0040,	// ÀÎÃ¾Æ® ¾ÆÀÌÅÛ
-	ITEM_TYPE_MATIRIAL	= 0x0080,	// Á¶ÇÕ ¾ÆÀÌÅÛ
-	ITEM_TYPE_COOK		= 0x0100,	// ¿ä¸® ¾ÆÀÌÅÛ
-	ITEM_TYPE_PET		= 0x0200,	// Æê ¾ÆÀÌÅÛ
-	ITEM_TYPE_MYHOME_IN	= 0x0400,	// ¸¶ÀÌÈ¨ ¾ÆÀÌÅÛ(³»ºÎ)
-	ITEM_TYPE_EVENT		= 0x0800,	// ÀÌº¥Æ® ¾ÆÀÌÅÛ
-	ITEM_TYPE_NATURE	= 0x1000,	// °íÀ¯ ¾ÆÀÌÅÛ
-	ITEM_TYPE_MYHOME_OUT= 0x2000,	// ¸¶ÀÌÈ¨ ¾ÆÀÌÅÛ(¿ÜºÎ)
-	ITEM_TYPE_USE_UI	= 0x4000,	// Æ¯Á¤ UI¸¦ ÅëÇØ¼­¸¸ »ç¿ë°¡´ÉÇÑ ¾ÆÀÌÅÛ(Äü½½·Ô µî·Ï ºÒ°¡, ÀÎº¥Åä¸®¿¡¼­ »ç¿ë ºÒ°¡).
+	ITEM_TYPE_EQUIP		= 0x0002,	// ìž¥ë¹„ ì•„ì´í…œ
+	ITEM_TYPE_CONSUME	= 0x0004,	// ì†Œë¹„ ì•„ì´í…œ
+	ITEM_TYPE_ETC		= 0x0008,	// ê¸°íƒ€ ì•„ì´í…œ
+	ITEM_TYPE_QUEST		= 0x0010,	// í€˜ìŠ¤íŠ¸ ì•„ì´í…œ
+	ITEM_TYPE_AIDS		= 0x0020,	// ìºì‰¬ ì•„ì´í…œ
+	ITEM_TYPE_ENCHANT	= 0x0040,	// ì¸ì²¸íŠ¸ ì•„ì´í…œ
+	ITEM_TYPE_MATIRIAL	= 0x0080,	// ì¡°í•© ì•„ì´í…œ
+	ITEM_TYPE_COOK		= 0x0100,	// ìš”ë¦¬ ì•„ì´í…œ
+	ITEM_TYPE_PET		= 0x0200,	// íŽ« ì•„ì´í…œ
+	ITEM_TYPE_MYHOME_IN	= 0x0400,	// ë§ˆì´í™ˆ ì•„ì´í…œ(ë‚´ë¶€)
+	ITEM_TYPE_EVENT		= 0x0800,	// ì´ë²¤íŠ¸ ì•„ì´í…œ
+	ITEM_TYPE_NATURE	= 0x1000,	// ê³ ìœ  ì•„ì´í…œ
+	ITEM_TYPE_MYHOME_OUT= 0x2000,	// ë§ˆì´í™ˆ ì•„ì´í…œ(ì™¸ë¶€)
+	ITEM_TYPE_USE_UI	= 0x4000,	// íŠ¹ì • UIë¥¼ í†µí•´ì„œë§Œ ì‚¬ìš©ê°€ëŠ¥í•œ ì•„ì´í…œ(í€µìŠ¬ë¡¯ ë“±ë¡ ë¶ˆê°€, ì¸ë²¤í† ë¦¬ì—ì„œ ì‚¬ìš© ë¶ˆê°€).
 }EItemType;
 
-typedef enum eItemCantModifyEventType//AT_ITEM_CANT_EVENT °¡ °¡Áú ¼ö ÀÖ´Â °ª
+typedef enum eItemCantModifyEventType//AT_ITEM_CANT_EVENT ê°€ ê°€ì§ˆ ìˆ˜ ìžˆëŠ” ê°’
 {
 	ICMET_None					= 0,
-	ICMET_Cant_ShopSell			= 0x00000001,		//»óÁ¡¿¡ ÆÈ ¼ö ¾øÀ½
-	ICMET_Cant_PlayerTrade		= 0x00000002,		//ÇÃ·¹ÀÌ¾î ³¢¸® °Å·¡ ¾ÈµÊ
-	ICMET_Cant_MoveItemBox		= 0x00000004,		//Ã¢°í¿¡ ³ÖÀ» ¼ö ¾øÀ½
-	ICMET_Cant_SendMail			= 0x00000008,		//¸ÞÀÏ·Î ½ò ¼ö ¾øÀ½
-	ICMET_Cant_DropItem			= 0x00000010,		//¹ö¸®±â(=ÆÄ±«) ÇÒ ¼ö ¾øÀ½
-	ICMET_Cant_Auction			= 0x00000020,		//°æ¸ÅÀå¿¡ ¿Ã¸± ¼ö ¾øÀ½
-	ICMET_Cant_UsePVP			= 0x00000040,		//PVP ¿¡¼­ »ç¿ë ÇÒ ¼ö ¾øÀ½.
-	ICMET_Cant_Enchant			= 0x00000080,		//ÀÎÃ¾Æ® ±ÝÁö
-	ICMET_Cant_SoulCraft		= 0x00000100,		//¼Ò¿ï Å©·¹ÇÁÆ® ±ÝÁö
-	ICMET_Cant_GenSocket		= 0x00000200,		//¼ÒÄ¹ »ý¼º ±ÝÁö
-	ICMET_Cant_SelfUse			= 0x00000400,		//À¯Àú°¡ ¸¶¿ì½º ¿À¸¥ÂÊ Å¬¸¯À¸·Î »ç¿ë ¸øÇÑ´Ù.(½Ã½ºÅÛ¿¡¼­ ÀÚµ¿ »ç¿ë ¿ëµµ ¼­¹ö¿¡¼­´Â µüÈ÷ µû·Î ±¸ºÐ ÇÒ ÇÊ¿ä°¡ ÀÖÀ»Áö °í¹ÎÁß...ÀÏ´ÜÀº Å¬¶óÀÌ¾ðÆ® Àü¿ë)
-	ICMET_Cant_Seal				= 0x00000800,		//¿ª ºÀÀÎ ºÒ°¡
-	ICMET_Cant_Rollback			= 0x00001000,		//¼Ò¿ï Å©·¡ÇÁÆ® Çà¿î±Ç »ç¿ë ±ÝÁö
-	ICMET_Cant_Repair			= 0x00002000,		//¼ö¸® ºÒ°¡
-	ICMET_Cant_UseShareRental	= 0x00004000,		// °èÁ¤ ±Ý°í »ç¿ë ºÒ°¡
+	ICMET_Cant_ShopSell			= 0x00000001,		//ìƒì ì— íŒ” ìˆ˜ ì—†ìŒ
+	ICMET_Cant_PlayerTrade		= 0x00000002,		//í”Œë ˆì´ì–´ ë¼ë¦¬ ê±°ëž˜ ì•ˆë¨
+	ICMET_Cant_MoveItemBox		= 0x00000004,		//ì°½ê³ ì— ë„£ì„ ìˆ˜ ì—†ìŒ
+	ICMET_Cant_SendMail			= 0x00000008,		//ë©”ì¼ë¡œ ì  ìˆ˜ ì—†ìŒ
+	ICMET_Cant_DropItem			= 0x00000010,		//ë²„ë¦¬ê¸°(=íŒŒê´´) í•  ìˆ˜ ì—†ìŒ
+	ICMET_Cant_Auction			= 0x00000020,		//ê²½ë§¤ìž¥ì— ì˜¬ë¦´ ìˆ˜ ì—†ìŒ
+	ICMET_Cant_UsePVP			= 0x00000040,		//PVP ì—ì„œ ì‚¬ìš© í•  ìˆ˜ ì—†ìŒ.
+	ICMET_Cant_Enchant			= 0x00000080,		//ì¸ì²¸íŠ¸ ê¸ˆì§€
+	ICMET_Cant_SoulCraft		= 0x00000100,		//ì†Œìš¸ í¬ë ˆí”„íŠ¸ ê¸ˆì§€
+	ICMET_Cant_GenSocket		= 0x00000200,		//ì†Œìº£ ìƒì„± ê¸ˆì§€
+	ICMET_Cant_SelfUse			= 0x00000400,		//ìœ ì €ê°€ ë§ˆìš°ìŠ¤ ì˜¤ë¥¸ìª½ í´ë¦­ìœ¼ë¡œ ì‚¬ìš© ëª»í•œë‹¤.(ì‹œìŠ¤í…œì—ì„œ ìžë™ ì‚¬ìš© ìš©ë„ ì„œë²„ì—ì„œëŠ” ë”±ížˆ ë”°ë¡œ êµ¬ë¶„ í•  í•„ìš”ê°€ ìžˆì„ì§€ ê³ ë¯¼ì¤‘...ì¼ë‹¨ì€ í´ë¼ì´ì–¸íŠ¸ ì „ìš©)
+	ICMET_Cant_Seal				= 0x00000800,		//ì—­ ë´‰ì¸ ë¶ˆê°€
+	ICMET_Cant_Rollback			= 0x00001000,		//ì†Œìš¸ í¬ëž˜í”„íŠ¸ í–‰ìš´ê¶Œ ì‚¬ìš© ê¸ˆì§€
+	ICMET_Cant_Repair			= 0x00002000,		//ìˆ˜ë¦¬ ë¶ˆê°€
+	ICMET_Cant_UseShareRental	= 0x00004000,		// ê³„ì • ê¸ˆê³  ì‚¬ìš© ë¶ˆê°€
 	ICMET_Cant_UseQuickSlot		= 0x00008000,		// Prevents item from being placed in quickslot
 } EItemCantModifyEventType;
 
@@ -2879,65 +2879,65 @@ typedef enum
 {
 	EQUIP_POS_NONE			= 0,
 	EQUIP_POS_HAIR_COLOR	= 0,
-	EQUIP_POS_HAIR			= 1,	// ¸Ó¸®Ä«¶ô	2
-	EQUIP_POS_FACE			= 2,	// ¾ó±¼		4
-	EQUIP_POS_SHOULDER		= 3,	// ¾î±ú		8
-	EQUIP_POS_CLOAK			= 4,	// ¸ÁÅä		16
-	EQUIP_POS_GLASS			= 5,	// ¾È°æ		32
-	EQUIP_POS_WEAPON		= 6,	// ¹«±â		64
-	EQUIP_POS_SHEILD		= 7,	// ¹æÆÐ		128
-	EQUIP_POS_NECKLACE		= 8,	// ¸ñ°ÉÀÌ	256
-	EQUIP_POS_EARRING		= 9,	// ±Í°ÉÀÌ	512
+	EQUIP_POS_HAIR			= 1,	// ë¨¸ë¦¬ì¹´ë½	2
+	EQUIP_POS_FACE			= 2,	// ì–¼êµ´		4
+	EQUIP_POS_SHOULDER		= 3,	// ì–´ê¹¨		8
+	EQUIP_POS_CLOAK			= 4,	// ë§í† 		16
+	EQUIP_POS_GLASS			= 5,	// ì•ˆê²½		32
+	EQUIP_POS_WEAPON		= 6,	// ë¬´ê¸°		64
+	EQUIP_POS_SHEILD		= 7,	// ë°©íŒ¨		128
+	EQUIP_POS_NECKLACE		= 8,	// ëª©ê±¸ì´	256
+	EQUIP_POS_EARRING		= 9,	// ê·€ê±¸ì´	512
 	//EQUIP_POS_EARRING_L		= 9,
 	//EQUIP_POS_EARRING_R		= 29,
-	EQUIP_POS_RING			= 10,	// ¹ÝÁö		1024
+	EQUIP_POS_RING			= 10,	// ë°˜ì§€		1024
 	EQUIP_POS_RING_L		= 10,
 	EQUIP_POS_RING_R		= 30,
-	EQUIP_POS_BELT			= 11,	// º§Æ®		2048
-	EQUIP_POS_ATTSTONE		= 12,	// ¼Ó¼º¼®	4096
-	EQUIP_POS_MEDAL			= 13,	// ÈÆÀå		8192
-	EQUIP_POS_HELMET		= 20,	// Åõ±¸		1048576	
-	EQUIP_POS_SHIRTS		= 21,	// »óÀÇ		2097152
-	EQUIP_POS_PANTS			= 22,	// ÇÏÀÇ		4194304
-	EQUIP_POS_BOOTS			= 23,	// ºÎÃ÷		8388608
-	EQUIP_POS_GLOVE			= 24,	// Àå°©		16777216
-	EQUIP_POS_ARM			= 25,	// ÆÈ(Áö±ÝÀº SHEILD¿Í °°Àº À§Ä¡)
+	EQUIP_POS_BELT			= 11,	// ë²¨íŠ¸		2048
+	EQUIP_POS_ATTSTONE		= 12,	// ì†ì„±ì„	4096
+	EQUIP_POS_MEDAL			= 13,	// í›ˆìž¥		8192
+	EQUIP_POS_HELMET		= 20,	// íˆ¬êµ¬		1048576	
+	EQUIP_POS_SHIRTS		= 21,	// ìƒì˜		2097152
+	EQUIP_POS_PANTS			= 22,	// í•˜ì˜		4194304
+	EQUIP_POS_BOOTS			= 23,	// ë¶€ì¸ 		8388608
+	EQUIP_POS_GLOVE			= 24,	// ìž¥ê°‘		16777216
+	EQUIP_POS_ARM			= 25,	// íŒ”(ì§€ê¸ˆì€ SHEILDì™€ ê°™ì€ ìœ„ì¹˜)
 	EQUIP_POS_PET			= 26,
-	EQUIP_POS_KICKBALL		= 27,	//Å±º¼( == Ç²ºê·¹ÀÌÄ¿)
+	EQUIP_POS_KICKBALL		= 27,	//í‚¥ë³¼( == í’‹ë¸Œë ˆì´ì»¤)
 	EQUIP_POS_MAX			= 31,
 
-//	EQUIP_POS_TWO_HAND		= 32, //¿¹¿ÜÀû Ã³¸®.(¾ç¼Õ°Ë
+//	EQUIP_POS_TWO_HAND		= 32, //ì˜ˆì™¸ì  ì²˜ë¦¬.(ì–‘ì†ê²€
 
 
 //==============================================================================================
-//	¸¶ÀÌÈ¨ ¿ÜÇü Á¤º¸¿ë ±âº» ¾ÆÀÌÅÛ ÀåÂø À§Ä¡ Á¤º¸ ÇÑ¹ø º¯°æµÇ¸é µÇµ¹¸±¼ö ¾øÀ½
+//	ë§ˆì´í™ˆ ì™¸í˜• ì •ë³´ìš© ê¸°ë³¸ ì•„ì´í…œ ìž¥ì°© ìœ„ì¹˜ ì •ë³´ í•œë²ˆ ë³€ê²½ë˜ë©´ ë˜ëŒë¦´ìˆ˜ ì—†ìŒ
 //==============================================================================================
 
-	EQUIP_POS_HOME_COLOR	= EQUIP_POS_HAIR_COLOR, // È¨ »ö»ó(ÅØ½ºÃÄ?)
-	EQUIP_POS_HOME_STYLE	= EQUIP_POS_HAIR,		// È¨ ¿ÜÇü 
-	EQUIP_POS_HOME_FENCE	= EQUIP_POS_FACE,		// È¨ ¿ïÅ¸¸®
-	EQUIP_POS_HOME_GARDEN	= EQUIP_POS_SHIRTS,		// È¨ ¸¶´ç
-	EQUIP_POS_ROOM_WALL		= EQUIP_POS_PANTS,		// È¨ ³»ºÎ º®
-	EQUIP_POS_ROOM_FLOOR	= EQUIP_POS_BOOTS,		// È¨ ³»ºÎ ¹Ù´Ú
+	EQUIP_POS_HOME_COLOR	= EQUIP_POS_HAIR_COLOR, // í™ˆ ìƒ‰ìƒ(í…ìŠ¤ì³?)
+	EQUIP_POS_HOME_STYLE	= EQUIP_POS_HAIR,		// í™ˆ ì™¸í˜• 
+	EQUIP_POS_HOME_FENCE	= EQUIP_POS_FACE,		// í™ˆ ìš¸íƒ€ë¦¬
+	EQUIP_POS_HOME_GARDEN	= EQUIP_POS_SHIRTS,		// í™ˆ ë§ˆë‹¹
+	EQUIP_POS_ROOM_WALL		= EQUIP_POS_PANTS,		// í™ˆ ë‚´ë¶€ ë²½
+	EQUIP_POS_ROOM_FLOOR	= EQUIP_POS_BOOTS,		// í™ˆ ë‚´ë¶€ ë°”ë‹¥
 
 //==============================================================================================
-//	Æê ÀåÂø¿ë ¾ÆÀÌÅÛ À§Ä¡´Â ±âÁ¸ ¹øÈ£¸¦ ÂüÁ¶.
+//	íŽ« ìž¥ì°©ìš© ì•„ì´í…œ ìœ„ì¹˜ëŠ” ê¸°ì¡´ ë²ˆí˜¸ë¥¼ ì°¸ì¡°.
 //==============================================================================================
-	EQUIP_POS_PET_ACC		= EQUIP_POS_HELMET,		//1048576	//¾Ç¼¼¼­¸®. ³ë½ºÅ°´×À¸·Î ºÙ¾î¾ß ÇÏ±â¶§¹®¿¡ Åõ±¸¿Í °°Àº ¹øÈ£¸¦ »ç¿ëÇßÀ½
-	EQUIP_POS_PET_HEAD		= EQUIP_POS_SHIRTS,		//2097152	//¸Ó¸®
-	EQUIP_POS_PET_BODY		= EQUIP_POS_PANTS,		//4194304	//¸öÅë
-	EQUIP_POS_PET_HELEM		= EQUIP_POS_BOOTS,		//8388608	//¸ðÀÚ
-	EQUIP_POS_PET_SHIRTS	= EQUIP_POS_GLOVE,		//16777216//»óÀÇ
-	EQUIP_POS_PET_TRAIN		= EQUIP_POS_ARM,		// ÈÆ·Ã¾ÆÀÌÅÛ
+	EQUIP_POS_PET_ACC		= EQUIP_POS_HELMET,		//1048576	//ì•…ì„¸ì„œë¦¬. ë…¸ìŠ¤í‚¤ë‹ìœ¼ë¡œ ë¶™ì–´ì•¼ í•˜ê¸°ë•Œë¬¸ì— íˆ¬êµ¬ì™€ ê°™ì€ ë²ˆí˜¸ë¥¼ ì‚¬ìš©í–ˆìŒ
+	EQUIP_POS_PET_HEAD		= EQUIP_POS_SHIRTS,		//2097152	//ë¨¸ë¦¬
+	EQUIP_POS_PET_BODY		= EQUIP_POS_PANTS,		//4194304	//ëª¸í†µ
+	EQUIP_POS_PET_HELEM		= EQUIP_POS_BOOTS,		//8388608	//ëª¨ìž
+	EQUIP_POS_PET_SHIRTS	= EQUIP_POS_GLOVE,		//16777216//ìƒì˜
+	EQUIP_POS_PET_TRAIN		= EQUIP_POS_ARM,		// í›ˆë ¨ì•„ì´í…œ
 
-	EQUIP_POS_PET_WEAPON	= EQUIP_POS_WEAPON,		//¹«±â
-	EQUIP_POS_PET_RING		= EQUIP_POS_RING,		//¹ÝÁö
-	EQUIP_POS_PET_NECKLACE	= EQUIP_POS_NECKLACE,	//¸ñ°ÉÀÌ
-	EQUIP_POS_PET_EARRING	= EQUIP_POS_EARRING,	//±Í°ÉÀÌ
+	EQUIP_POS_PET_WEAPON	= EQUIP_POS_WEAPON,		//ë¬´ê¸°
+	EQUIP_POS_PET_RING		= EQUIP_POS_RING,		//ë°˜ì§€
+	EQUIP_POS_PET_NECKLACE	= EQUIP_POS_NECKLACE,	//ëª©ê±¸ì´
+	EQUIP_POS_PET_EARRING	= EQUIP_POS_EARRING,	//ê·€ê±¸ì´
 
-// ¿¹¾à....
+// ì˜ˆì•½....
 
-	EQUIP_POS_HOME_RESERVE5	= EQUIP_POS_GLOVE,		// È¨ ¿¹¾à5
+	EQUIP_POS_HOME_RESERVE5	= EQUIP_POS_GLOVE,		// í™ˆ ì˜ˆì•½5
 }EEquipPos;
 
 typedef enum 
@@ -2966,22 +2966,22 @@ typedef enum
 	EQUIP_LIMIT_KICKBALL		=(0x00000001 << EQUIP_POS_KICKBALL),
 	EQUIP_LIMIT_PET				=(0x00000001 << EQUIP_POS_PET),
 
-	EQUIP_LIMIT_PET_ACC			= EQUIP_LIMIT_HELMET,	// Åõ±¸		1048576	//¾Ç¼¼¼­¸®. ³ë½ºÅ°´×À¸·Î ºÙ¾î¾ß ÇÏ±â¶§¹®¿¡ Åõ±¸¿Í °°Àº ¹øÈ£¸¦ »ç¿ëÇßÀ½
-	EQUIP_LIMIT_PET_HEAD		= EQUIP_LIMIT_SHIRTS,	//2097152	//¸Ó¸®
-	EQUIP_LIMIT_PET_BODY		= EQUIP_LIMIT_PANTS,	//4194304	//¸öÅë
-	EQUIP_LIMIT_PET_HELEM		= EQUIP_LIMIT_BOOTS,	//8388608	//¸ðÀÚ
-	EQUIP_LIMIT_PET_SHIRTS		= EQUIP_LIMIT_GLOVE,	//16777216//»óÀÇ
-	EQUIP_LIMIT_PET_TRAIN		= EQUIP_LIMIT_ARM,		// ÈÆ·Ã¾ÆÀÌÅÛ
+	EQUIP_LIMIT_PET_ACC			= EQUIP_LIMIT_HELMET,	// íˆ¬êµ¬		1048576	//ì•…ì„¸ì„œë¦¬. ë…¸ìŠ¤í‚¤ë‹ìœ¼ë¡œ ë¶™ì–´ì•¼ í•˜ê¸°ë•Œë¬¸ì— íˆ¬êµ¬ì™€ ê°™ì€ ë²ˆí˜¸ë¥¼ ì‚¬ìš©í–ˆìŒ
+	EQUIP_LIMIT_PET_HEAD		= EQUIP_LIMIT_SHIRTS,	//2097152	//ë¨¸ë¦¬
+	EQUIP_LIMIT_PET_BODY		= EQUIP_LIMIT_PANTS,	//4194304	//ëª¸í†µ
+	EQUIP_LIMIT_PET_HELEM		= EQUIP_LIMIT_BOOTS,	//8388608	//ëª¨ìž
+	EQUIP_LIMIT_PET_SHIRTS		= EQUIP_LIMIT_GLOVE,	//16777216//ìƒì˜
+	EQUIP_LIMIT_PET_TRAIN		= EQUIP_LIMIT_ARM,		// í›ˆë ¨ì•„ì´í…œ
 
-	EQUIP_LIMIT_PET_WEAPON		= EQUIP_LIMIT_WEAPON,	//¹«±â
-	EQUIP_LIMIT_PET_RING		= EQUIP_LIMIT_RING,		//¹ÝÁö
-	EQUIP_LIMIT_PET_NECKLACE	= EQUIP_LIMIT_NECKLACE,	//¸ñ°ÉÀÌ
-	EQUIP_LIMIT_PET_EARRING		= EQUIP_LIMIT_EARRING,	//±Í°ÉÀÌ
+	EQUIP_LIMIT_PET_WEAPON		= EQUIP_LIMIT_WEAPON,	//ë¬´ê¸°
+	EQUIP_LIMIT_PET_RING		= EQUIP_LIMIT_RING,		//ë°˜ì§€
+	EQUIP_LIMIT_PET_NECKLACE	= EQUIP_LIMIT_NECKLACE,	//ëª©ê±¸ì´
+	EQUIP_LIMIT_PET_EARRING		= EQUIP_LIMIT_EARRING,	//ê·€ê±¸ì´
 
 	EQUIP_INCHANT_POSSIBLE_BUNDLE = EQUIP_LIMIT_SHOULDER | EQUIP_LIMIT_CLOAK | EQUIP_LIMIT_WEAPON | EQUIP_LIMIT_SHEILD 
 									| EQUIP_LIMIT_BELT | EQUIP_LIMIT_HELMET | EQUIP_LIMIT_SHIRTS | EQUIP_LIMIT_PANTS | EQUIP_LIMIT_BOOTS
 									| EQUIP_LIMIT_GLOVE | EQUIP_LIMIT_GLASS | EQUIP_LIMIT_MEDAL | EQUIP_LIMIT_KICKBALL
-									/*| EQUIP_LIMIT_NECKLACE| EQUIP_LIMIT_EARRING | EQUIP_LIMIT_RING*/ , // ¾Ç¼¼»ç¸®´Â ÀÎÃ¦Æ® ¾ÈµÊ
+									/*| EQUIP_LIMIT_NECKLACE| EQUIP_LIMIT_EARRING | EQUIP_LIMIT_RING*/ , // ì•…ì„¸ì‚¬ë¦¬ëŠ” ì¸ì±ˆíŠ¸ ì•ˆë¨
 
 	EQUIP_WEAPON_TYPE			= EQUIP_LIMIT_WEAPON,
 	EQUIP_ARMOR_TYPE			= EQUIP_LIMIT_SHOULDER | EQUIP_LIMIT_CLOAK | EQUIP_LIMIT_SHEILD | EQUIP_LIMIT_BELT | EQUIP_LIMIT_HELMET | EQUIP_LIMIT_SHIRTS | EQUIP_LIMIT_PANTS | EQUIP_LIMIT_BOOTS | EQUIP_LIMIT_GLOVE | EQUIP_LIMIT_ARM | EQUIP_LIMIT_KICKBALL,
@@ -2992,8 +2992,8 @@ typedef enum
 typedef enum
 {
 	EWEAPON_NONE		= 0x0000,
-	EWEAPON_SWORD		= 0x0001,	// ÇÑ¼Õ°Ë
-	EWEAPON_BIHANDSWORD	= 0x0002,	// ¾ç¼Õ°Ë
+	EWEAPON_SWORD		= 0x0001,	// í•œì†ê²€
+	EWEAPON_BIHANDSWORD	= 0x0002,	// ì–‘ì†ê²€
 	EWEAPON_STAFF		= 0x0004,
 	EWEAPON_SPEAR		= 0x0008,
 	EWEAPON_BOW			= 0x0010,
@@ -3002,53 +3002,53 @@ typedef enum
 	EWEAPON_KATTAR		= 0x0080,
 	EWEAPON_SPECIAL		= 0x0100,
 
-	EWEAPON_JOB_TOOL	= 0x0200,//µµ±¸ÀÇ Å¸ÀÔÀº AT_JOBSKILL_TOOL_TYPE ¾îºô¿¡ ¼ÂÆÃµÊ, Å¸ÀÔÀº ¾Æ·¡ EToolType ¿¡ Á¤ÀÇ
+	EWEAPON_JOB_TOOL	= 0x0200,//ë„êµ¬ì˜ íƒ€ìž…ì€ AT_JOBSKILL_TOOL_TYPE ì–´ë¹Œì— ì…‹íŒ…ë¨, íƒ€ìž…ì€ ì•„ëž˜ EToolType ì— ì •ì˜
 
-	EWEAPON_GUN_STAFF	= 0x0400,	//¼ÒÈ¯»ç ¹«±â
-	EWEAPON_GLOVE		= 0x0800,	//½ÖµÕÀÌ ¹«±â
+	EWEAPON_GUN_STAFF	= 0x0400,	//ì†Œí™˜ì‚¬ ë¬´ê¸°
+	EWEAPON_GLOVE		= 0x0800,	//ìŒë‘¥ì´ ë¬´ê¸°
 } EWeaponType;
 
 typedef enum
 {
 	EEQUIP_NONE			= 0,
-	EEQUIP_WEAPON		= 1,	//¹«±â
-	EEQUIP_ARMOR		= 2,	//¹æ¾î±¸
-	EEQUIP_ACC			= 3,	//¾Ç¼¼¼­¸®(Accessory)
+	EEQUIP_WEAPON		= 1,	//ë¬´ê¸°
+	EEQUIP_ARMOR		= 2,	//ë°©ì–´êµ¬
+	EEQUIP_ACC			= 3,	//ì•…ì„¸ì„œë¦¬(Accessory)
 } EEquipType;
 
 typedef enum
 {
 	ETOOL_NONE					= 0,
-	ETOOL_AXE					= 1,	// µµ³¢
-	ETOOL_PICKAX				= 2,	// °î±ªÀÌ
-	ETOOL_HOE					= 3,	// È£¹Ì
-	ETOOL_FISHINGROD			= 4,	// ³¬½Ã´ë
+	ETOOL_AXE					= 1,	// ë„ë¼
+	ETOOL_PICKAX				= 2,	// ê³¡ê´­ì´
+	ETOOL_HOE					= 3,	// í˜¸ë¯¸
+	ETOOL_FISHINGROD			= 4,	// ë‚šì‹œëŒ€
 
-	ETOOL_ALL					= 10,	//¸¸´É µµ±¸
+	ETOOL_ALL					= 10,	//ë§ŒëŠ¥ ë„êµ¬
 
-	ETOOL_CHAINSAW				= 11,	// Àü±âÅé
-	ETOOL_DRILL					= 12,	// µå¸±
-	ETOOL_GRASSELIMINATOR		= 13,	// ¿¹ÃÊ±â
-	ETOOL_NET					= 14,	// ±×¹°
+	ETOOL_CHAINSAW				= 11,	// ì „ê¸°í†±
+	ETOOL_DRILL					= 12,	// ë“œë¦´
+	ETOOL_GRASSELIMINATOR		= 13,	// ì˜ˆì´ˆê¸°
+	ETOOL_NET					= 14,	// ê·¸ë¬¼
 
-	ETOOL_ALL_SUB				= 20,	//¸¸´É º¸Á¶ µµ±¸
+	ETOOL_ALL_SUB				= 20,	//ë§ŒëŠ¥ ë³´ì¡° ë„êµ¬
 } EToolType;
 
-// Making Type definition	(Á¦Á¶ Å¸ÀÔ)
+// Making Type definition	(ì œì¡° íƒ€ìž…)
 typedef enum
 {
 	EMAKING_TYPE_NONE				= 0,
-	EMAKING_TYPE_COOKING			= 0x0001, // ¿ä¸® ¾ÆÀÌÅÛ
-	EMAKING_TYPE_LOTTERY			= 0x0002, // »Ì±â ¾ÆÀÌÅÛ
-	EMAKING_TYPE_COIN				= 0x0004, // 100¸¶¸® ÀâÀ¸¸é ³ª¿À´Â ÄÚÀÎ ÀÚÆÇ±â¿ë ¾ÆÀÌÅÛ
-	EMAKING_TYPE_ETC				= 0x0008, // ±âÅ¸ ¾ÆÀÌÅÛ
-	EMAKING_TYPE_UNSEALING			= 0x0010, // ºÀÀÎÇØÁ¦ ÁÖ¹®¼­ ±³È¯
-	EMAKING_TYPE_SOULSTONE			= 0x0020, // ¿µÈ¥¼®À¸·Î °¢Á¾ ¾ÆÀÌÅÛ ±³È¯(È÷µç/Ä«¿À½º)
-	EMAKING_TYPE_MAZE_ITEM			= 0x0040, // ´ë¹Ì±Ã Á¶ÇÕ ¾ÆÀÌÅÛ
+	EMAKING_TYPE_COOKING			= 0x0001, // ìš”ë¦¬ ì•„ì´í…œ
+	EMAKING_TYPE_LOTTERY			= 0x0002, // ë½‘ê¸° ì•„ì´í…œ
+	EMAKING_TYPE_COIN				= 0x0004, // 100ë§ˆë¦¬ ìž¡ìœ¼ë©´ ë‚˜ì˜¤ëŠ” ì½”ì¸ ìžíŒê¸°ìš© ì•„ì´í…œ
+	EMAKING_TYPE_ETC				= 0x0008, // ê¸°íƒ€ ì•„ì´í…œ
+	EMAKING_TYPE_UNSEALING			= 0x0010, // ë´‰ì¸í•´ì œ ì£¼ë¬¸ì„œ êµí™˜
+	EMAKING_TYPE_SOULSTONE			= 0x0020, // ì˜í˜¼ì„ìœ¼ë¡œ ê°ì¢… ì•„ì´í…œ êµí™˜(ížˆë“ /ì¹´ì˜¤ìŠ¤)
+	EMAKING_TYPE_MAZE_ITEM			= 0x0040, // ëŒ€ë¯¸ê¶ ì¡°í•© ì•„ì´í…œ
 	EMAKING_TYPE_MONSTER_CARD		= 0x0080,
 	EMAKING_TYPE_COMPOSITE			= 0x0100,
 	EMAKING_TYPE_MONSTER_CARD_TYPE2 = 0x0200,
-	EMAKING_TYPE_NEW_COOKING		= 0x0400 | EMAKING_TYPE_COOKING, // ¿ä¸® ¾ÆÀÌÅÛ(TB_DefCooking È°¿ë)
+	EMAKING_TYPE_NEW_COOKING		= 0x0400 | EMAKING_TYPE_COOKING, // ìš”ë¦¬ ì•„ì´í…œ(TB_DefCooking í™œìš©)
 }EMakingType;
 
 typedef enum eMissionQuestCardGrade//AT_ITEM_QUEST_CARD_GRADE
@@ -3065,10 +3065,10 @@ typedef enum eMissionQuestCardGrade//AT_ITEM_QUEST_CARD_GRADE
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
  /*
-	PgItemWrapper ¿Í PgItemWrapperÀÌ °°Àº ÀÇ¹Ì·Î ¾²¿©¾ß ÇÑ´Ù.
-	¹Ú½º ¾ÆÀÌÅÛÀº ¾î¶»°Ô µÇ³ª??->¸Ê¿¡¼­ ¹Ú½º¸¦ »Ñ¸®°í. ¹Ú½º¿¡¼­ ¾ÆÀÌÅÛ ¾òÀ»¶§ °¡Á®°¡µµ·Ï ÇØ¾ß°Ú´Ù.
-	¸Ê¼­¹ö¿¡¼­ Àß¸øÇÏ¸é ¹Ú½º¾ÆÀÌÅÛÀ¸·Î ÀÎÇÑ º¹»ç(?) °°ÀÌ º¸ÀÌ´Â Çö»óÀÌ ÀÖÀ» ¼öµµ ÀÖ°Ú´Ù.
-	-> ¹Ú½º¿¡ µé¾î°¥ ¾ÆÀÌÅÛÀ» Create ¸í·ÉÀ¸·Î ¸¸µé¾î³õ°í ¹Ú½º¸¦ º¸¿©ÁÖ´Â °Íµµ ¹æ¹ý.
+	PgItemWrapper ì™€ PgItemWrapperì´ ê°™ì€ ì˜ë¯¸ë¡œ ì“°ì—¬ì•¼ í•œë‹¤.
+	ë°•ìŠ¤ ì•„ì´í…œì€ ì–´ë–»ê²Œ ë˜ë‚˜??->ë§µì—ì„œ ë°•ìŠ¤ë¥¼ ë¿Œë¦¬ê³ . ë°•ìŠ¤ì—ì„œ ì•„ì´í…œ ì–»ì„ë•Œ ê°€ì ¸ê°€ë„ë¡ í•´ì•¼ê² ë‹¤.
+	ë§µì„œë²„ì—ì„œ ìž˜ëª»í•˜ë©´ ë°•ìŠ¤ì•„ì´í…œìœ¼ë¡œ ì¸í•œ ë³µì‚¬(?) ê°™ì´ ë³´ì´ëŠ” í˜„ìƒì´ ìžˆì„ ìˆ˜ë„ ìžˆê² ë‹¤.
+	-> ë°•ìŠ¤ì— ë“¤ì–´ê°ˆ ì•„ì´í…œì„ Create ëª…ë ¹ìœ¼ë¡œ ë§Œë“¤ì–´ë†“ê³  ë°•ìŠ¤ë¥¼ ë³´ì—¬ì£¼ëŠ” ê²ƒë„ ë°©ë²•.
 */
 class PgItemWrapper
 	:	public PgBase_Item
@@ -3088,36 +3088,36 @@ public:
 //	CLASS_DECLARATION_S(PgBase_Item, Item);
 	CLASS_DECLARATION_S(SItemPos, Pos);
 
-	CLASS_DECLARATION_S(bool, IsCreated);//»ý¼ºµÇ¾ú´À³Ä(DBÀúÀåÀÌ ¾ÈµÇ¾ú´Ù) -> ÃÖ¿ì¼±.
-	CLASS_DECLARATION_S(bool, IsModify);//Á¤º¸°¡ º¯°æ µÇ¾ú´Â°¡
-	CLASS_DECLARATION_S(bool, IsRemove);//Áö¿öÁ³´Â°¡ -> Áö¿öÁø°Ç ´Ù¸¥ ¾×¼ÇÀ» Àý´ë ÇÏÁö ¾Êµµ·Ï.
+	CLASS_DECLARATION_S(bool, IsCreated);//ìƒì„±ë˜ì—ˆëŠëƒ(DBì €ìž¥ì´ ì•ˆë˜ì—ˆë‹¤) -> ìµœìš°ì„ .
+	CLASS_DECLARATION_S(bool, IsModify);//ì •ë³´ê°€ ë³€ê²½ ë˜ì—ˆëŠ”ê°€
+	CLASS_DECLARATION_S(bool, IsRemove);//ì§€ì›Œì¡ŒëŠ”ê°€ -> ì§€ì›Œì§„ê±´ ë‹¤ë¥¸ ì•¡ì…˜ì„ ì ˆëŒ€ í•˜ì§€ ì•Šë„ë¡.
 
 	size_t min_size()const
 	{
 		return 
 			PgBase_Item::min_size()+
 			sizeof(m_kPos)+
-			sizeof(m_kIsCreated)+//»ý¼ºµÇ¾ú´À³Ä(DBÀúÀåÀÌ ¾ÈµÇ¾ú´Ù) -> ÃÖ¿ì¼±.
-			sizeof(m_kIsModify)+//Á¤º¸°¡ º¯°æ µÇ¾ú´Â°¡
-			sizeof(m_kIsRemove);//Áö¿öÁ³´Â°¡ -> Áö¿öÁø°Ç ´Ù¸¥ ¾×¼ÇÀ» Àý´ë ÇÏÁö ¾Êµµ·Ï.
+			sizeof(m_kIsCreated)+//ìƒì„±ë˜ì—ˆëŠëƒ(DBì €ìž¥ì´ ì•ˆë˜ì—ˆë‹¤) -> ìµœìš°ì„ .
+			sizeof(m_kIsModify)+//ì •ë³´ê°€ ë³€ê²½ ë˜ì—ˆëŠ”ê°€
+			sizeof(m_kIsRemove);//ì§€ì›Œì¡ŒëŠ”ê°€ -> ì§€ì›Œì§„ê±´ ë‹¤ë¥¸ ì•¡ì…˜ì„ ì ˆëŒ€ í•˜ì§€ ì•Šë„ë¡.
 	}
 
 	void WriteToPacket(BM::Stream & kPacket) const
 	{
 		PgBase_Item::WriteToPacket(kPacket);
 		kPacket.Push(m_kPos);
-		kPacket.Push(m_kIsCreated);//»ý¼ºµÇ¾ú´À³Ä(DBÀúÀåÀÌ ¾ÈµÇ¾ú´Ù) -> ÃÖ¿ì¼±.
-		kPacket.Push(m_kIsModify);//Á¤º¸°¡ º¯°æ µÇ¾ú´Â°¡
-		kPacket.Push(m_kIsRemove);//Áö¿öÁ³´Â°¡ -> Áö¿öÁø°Ç ´Ù¸¥ ¾×¼ÇÀ» Àý´ë ÇÏÁö ¾Êµµ·Ï.
+		kPacket.Push(m_kIsCreated);//ìƒì„±ë˜ì—ˆëŠëƒ(DBì €ìž¥ì´ ì•ˆë˜ì—ˆë‹¤) -> ìµœìš°ì„ .
+		kPacket.Push(m_kIsModify);//ì •ë³´ê°€ ë³€ê²½ ë˜ì—ˆëŠ”ê°€
+		kPacket.Push(m_kIsRemove);//ì§€ì›Œì¡ŒëŠ”ê°€ -> ì§€ì›Œì§„ê±´ ë‹¤ë¥¸ ì•¡ì…˜ì„ ì ˆëŒ€ í•˜ì§€ ì•Šë„ë¡.
 	}
 
 	void ReadFromPacket(BM::Stream & kPacket)
 	{
 		PgBase_Item::ReadFromPacket(kPacket);
 		kPacket.Pop(m_kPos);
-		kPacket.Pop(m_kIsCreated);//»ý¼ºµÇ¾ú´À³Ä(DBÀúÀåÀÌ ¾ÈµÇ¾ú´Ù) -> ÃÖ¿ì¼±.
-		kPacket.Pop(m_kIsModify);//Á¤º¸°¡ º¯°æ µÇ¾ú´Â°¡
-		kPacket.Pop(m_kIsRemove);//Áö¿öÁ³´Â°¡ -> Áö¿öÁø°Ç ´Ù¸¥ ¾×¼ÇÀ» Àý´ë ÇÏÁö ¾Êµµ·Ï.
+		kPacket.Pop(m_kIsCreated);//ìƒì„±ë˜ì—ˆëŠëƒ(DBì €ìž¥ì´ ì•ˆë˜ì—ˆë‹¤) -> ìµœìš°ì„ .
+		kPacket.Pop(m_kIsModify);//ì •ë³´ê°€ ë³€ê²½ ë˜ì—ˆëŠ”ê°€
+		kPacket.Pop(m_kIsRemove);//ì§€ì›Œì¡ŒëŠ”ê°€ -> ì§€ì›Œì§„ê±´ ë‹¤ë¥¸ ì•¡ì…˜ì„ ì ˆëŒ€ í•˜ì§€ ì•Šë„ë¡.
 	}
 };
 
@@ -3144,19 +3144,19 @@ typedef struct tagItemDropDesc
 	BM::GUID kHighPriorityUnitGuid;
 }PgItemDropDesc;
 
-typedef enum ePlusItemUpgradeResult // ·Î±×DB¿¡¼­µµ »ç¿ëÇÔÀ¸·Î ¼ýÀÚ ¼ø¼­ ¹Ù²ÙÁö ¸»°Í
+typedef enum ePlusItemUpgradeResult // ë¡œê·¸DBì—ì„œë„ ì‚¬ìš©í•¨ìœ¼ë¡œ ìˆ«ìž ìˆœì„œ ë°”ê¾¸ì§€ ë§ê²ƒ
 {
 	PIUR_NONE	= 0,
 	PIUR_SUCCESS	= 1,
-	PIUR_NOT_ENOUGH_RES	= 2,//Àç·á ºÎÁ·
-	PIUR_CANT_DELETE_RES	= 3,//Àç·á ºÎÁ·
-	PIUR_NORMAL_FAILED	= 4,//°Á ½ÇÆÐ(ÃÊ±Þ)
-	PIUR_PANALTY_FAILED	= 5,//µî±ÞÀÌ ±ðÀÌ´Â ½ÇÆÐ(Áß±Þ)
-	PIUR_NOT_ENOUGH_MONEY	= 6,//Àç·á ºÎÁ·
-	PIUR_NOT_FOUND_ITEM = 7,// °¡°ø ¾ÆÀÌÅÛ Ã£À»¼ö ¾øÀ½
-	PIUR_OVER_LEVELLIMIT = 8,// ÀÎÃ¾Æ® Á¦ÇÑ ·¹º§¿¡ µµ´ÞÇß´Ù?
-	PIUR_CAN_NOT_ENCHANT = 9,// ÀÎÃ¾Æ® ÇÒ¼ö ¾ø´Â ¾ÆÀÌÅÛÀÌ´Ù.
-	PIUR_DESTROY_FAILED = 10,// ¾ÆÀÌÅÛ ÆÄ±« ½ÇÆÐ(9±ÞºÎÅÍ)
+	PIUR_NOT_ENOUGH_RES	= 2,//ìž¬ë£Œ ë¶€ì¡±
+	PIUR_CANT_DELETE_RES	= 3,//ìž¬ë£Œ ë¶€ì¡±
+	PIUR_NORMAL_FAILED	= 4,//ê± ì‹¤íŒ¨(ì´ˆê¸‰)
+	PIUR_PANALTY_FAILED	= 5,//ë“±ê¸‰ì´ ê¹Žì´ëŠ” ì‹¤íŒ¨(ì¤‘ê¸‰)
+	PIUR_NOT_ENOUGH_MONEY	= 6,//ìž¬ë£Œ ë¶€ì¡±
+	PIUR_NOT_FOUND_ITEM = 7,// ê°€ê³µ ì•„ì´í…œ ì°¾ì„ìˆ˜ ì—†ìŒ
+	PIUR_OVER_LEVELLIMIT = 8,// ì¸ì²¸íŠ¸ ì œí•œ ë ˆë²¨ì— ë„ë‹¬í–ˆë‹¤?
+	PIUR_CAN_NOT_ENCHANT = 9,// ì¸ì²¸íŠ¸ í• ìˆ˜ ì—†ëŠ” ì•„ì´í…œì´ë‹¤.
+	PIUR_DESTROY_FAILED = 10,// ì•„ì´í…œ íŒŒê´´ ì‹¤íŒ¨(9ê¸‰ë¶€í„°)
 }EPlusItemUpgradeResult;
 
 typedef struct tagPlusItemUpgradeResult
@@ -3165,21 +3165,21 @@ typedef struct tagPlusItemUpgradeResult
 	{
 		eResult = PIUR_NONE;
 	}
-	EPlusItemUpgradeResult eResult;//S_OK°¡ ¼º°ø
+	EPlusItemUpgradeResult eResult;//S_OKê°€ ì„±ê³µ
 }PLUS_ITEM_UPGRADE_RESULT;
 
-typedef enum eDBItemStateChangeType//ÀÌ°Ç ÇÃ·¡±× ÇÏ¸é¾ÈµÊ.
+typedef enum eDBItemStateChangeType//ì´ê±´ í”Œëž˜ê·¸ í•˜ë©´ì•ˆë¨.
 {
 	DISCT_NONE = 0,
 //	DISCT_CMP_BASE				= 0x000F,
 	DISCT_CREATE				= 1,
 	DISCT_MODIFY				= 2,
-	DISCT_REMOVE				= 3, //³»±¸µµ°¡ 0ÀÌ¸é Remove·Î ÆÇ´Ü ÇÕ½Ã´Ù. -> ¿Ö ÀÌ·¨À»±î?
+	DISCT_REMOVE				= 3, //ë‚´êµ¬ë„ê°€ 0ì´ë©´ Removeë¡œ íŒë‹¨ í•©ì‹œë‹¤. -> ì™œ ì´ëž¬ì„ê¹Œ?
 	DISCT_MODIFY_MONEY			= 4,
 	
-	DISCT_REMOVE_IMAGE			= 5, //Áö¿ì±âÀÎµ¥. DB¾÷µ¥ÀÌÆ®´Â ¾ÈÇÔ.
+	DISCT_REMOVE_IMAGE			= 5, //ì§€ìš°ê¸°ì¸ë°. DBì—…ë°ì´íŠ¸ëŠ” ì•ˆí•¨.
 	DISCT_MODIFY_CP				= 6,
-	DISCT_REMOVE_SYSTEM			= 7, //Áö¿ì±â DB ÀúÀå ¾øÀ½
+	DISCT_REMOVE_SYSTEM			= 7, //ì§€ìš°ê¸° DB ì €ìž¥ ì—†ìŒ
 
 	DISCT_MODIFY_VALUE			= 8,
 	DISCT_MODIFY_SKILL			= 9,
@@ -3198,8 +3198,8 @@ typedef enum eDBItemStateChangeType//ÀÌ°Ç ÇÃ·¡±× ÇÏ¸é¾ÈµÊ.
 	DISCT_REMOVE_DEALING		= 20,
 	DISCT_REMOVE_MARKET			= 21,
 
-	DISCT_COMPLETE_ACHIEVEMENT	= 22,	// ¾÷Àû ´Þ¼º
-	DISCT_ACHIEVEMENT2INV		= 23,	// ÈÆÀåÀ» ¾ÆÀÌÅÛÀ¸·Î º¯È¯
+	DISCT_COMPLETE_ACHIEVEMENT	= 22,	// ì—…ì  ë‹¬ì„±
+	DISCT_ACHIEVEMENT2INV		= 23,	// í›ˆìž¥ì„ ì•„ì´í…œìœ¼ë¡œ ë³€í™˜
 	DISCT_SET_ACHIEVEMENT		= 24,
 	DISCT_SET_RENTALSAFETIME	= 25,
 
@@ -3211,7 +3211,7 @@ typedef enum eDBItemStateChangeType//ÀÌ°Ç ÇÃ·¡±× ÇÏ¸é¾ÈµÊ.
 	DISCT_MODIFY_MARKET_INFO	= 32,
 	DISCT_MODIFY_MARKET_STATE	= 33,
 
-	DISCT_INV2ACHIEVEMENT		= 34,	// ¾ÆÀÌÅÛ -> ÈÆÀå º¯È¯
+	DISCT_INV2ACHIEVEMENT		= 34,	// ì•„ì´í…œ -> í›ˆìž¥ ë³€í™˜
 
 	DISCT_ADD_UNBIND_DATE		= 35,
 	DISCT_DEL_UNBIND_DATE		= 36,
@@ -3267,7 +3267,7 @@ typedef enum eDBItemStateChangeType//ÀÌ°Ç ÇÃ·¡±× ÇÏ¸é¾ÈµÊ.
 
 	DISCT_TRANSTOWER_SAVE_RECENT	= 68,
 
-	DISCT_MODIFY_ACHIEVEMENT_RANK = 69,	// ¾÷Àû ·©Å· Á¤º¸ °»½Å
+	DISCT_MODIFY_ACHIEVEMENT_RANK = 69,	// ì—…ì  ëž­í‚¹ ì •ë³´ ê°±ì‹ 
 
 	DISCT_MODIFY_QUEST_EXT			= 70,
 	DISCT_MODIFY_SET_DATE_CONTENTS	= 71,
@@ -3275,7 +3275,7 @@ typedef enum eDBItemStateChangeType//ÀÌ°Ç ÇÃ·¡±× ÇÏ¸é¾ÈµÊ.
 	DISCT_COMPLETE_HIDDEN_OPEN		= 72,
 	DISCT_SET_HIDDEN_OPEN			= 73,
 	
-	DISCT_MODIFY_VALUEEX			= 74,// ÈÞ½Ä °æÇèÄ¡ Àû¿ëµÈ ¾îºô º¯°æ ÀúÀå
+	DISCT_MODIFY_VALUEEX			= 74,// íœ´ì‹ ê²½í—˜ì¹˜ ì ìš©ëœ ì–´ë¹Œ ë³€ê²½ ì €ìž¥
 
 	DISCT_SIDEJOB_INSERT			= 75,
 	DISCT_SIDEJOB_REMOVE			= 76,
@@ -3322,153 +3322,153 @@ typedef enum eDBItemStateChangeType//ÀÌ°Ç ÇÃ·¡±× ÇÏ¸é¾ÈµÊ.
 	DISCT_PREMIUM_SERVICE_REMOVE		= 109,
 }EDBItemStateChangeType;
 
-// ÇÑ°³ÀÇ Item Action (¼Ò¸ð,ÀÌµ¿,°Å·¡ µî)¿¡ ´ëÇÑ Á¤ÀÇ °ª
-// WebGmTool ·Î±×È®ÀÎ Åø°ú ¿¬°èµÇ¾î ÀÖ±â ¶§¹®¿¡ Áß°£ »ðÀÔ±ÝÁö..
-// »õ·Î¿î °ªÀ» Ãß°¡ÇÑ °æ¿ì doc/programming/logÆ÷¸Ë/ItemCause Á¤¸®Ç¥.xlsx¿¡ ¼öÁ¤ÇÏ°í
-// ITS´ã´çÀÚ¿¡°Ô ²À ¾Ë·ÁÁà¾ßÇÔ.
+// í•œê°œì˜ Item Action (ì†Œëª¨,ì´ë™,ê±°ëž˜ ë“±)ì— ëŒ€í•œ ì •ì˜ ê°’
+// WebGmTool ë¡œê·¸í™•ì¸ íˆ´ê³¼ ì—°ê³„ë˜ì–´ ìžˆê¸° ë•Œë¬¸ì— ì¤‘ê°„ ì‚½ìž…ê¸ˆì§€..
+// ìƒˆë¡œìš´ ê°’ì„ ì¶”ê°€í•œ ê²½ìš° doc/programming/logí¬ë§·/ItemCause ì •ë¦¬í‘œ.xlsxì— ìˆ˜ì •í•˜ê³ 
+// ITSë‹´ë‹¹ìžì—ê²Œ ê¼­ ì•Œë ¤ì¤˜ì•¼í•¨.
 typedef enum eItemModifyParentEventType
 {
 	IMEPT_NONE = 0,
-	//IMEPT_QUEST_REWARD,		//Äù½ºÆ® º¸»óÀ¸·Î
+	//IMEPT_QUEST_REWARD,		//í€˜ìŠ¤íŠ¸ ë³´ìƒìœ¼ë¡œ
 	IMEPT_QUEST_DIALOG,
-	IMEPT_QUEST_DIALOG_Accept,		//Äù½ºÆ® ´ëÈ­Áß¿¡
+	IMEPT_QUEST_DIALOG_Accept,		//í€˜ìŠ¤íŠ¸ ëŒ€í™”ì¤‘ì—
 	IMEPT_QUEST_DIALOG_End,
-	IMEPT_QUEST_DROP,		//Äù½ºÆ® Æ÷±â·Î
-	IMEPT_QUEST,			//Äù½ºÆ® »óÅÂ°ª º¯°æ
+	IMEPT_QUEST_DROP,		//í€˜ìŠ¤íŠ¸ í¬ê¸°ë¡œ
+	IMEPT_QUEST,			//í€˜ìŠ¤íŠ¸ ìƒíƒœê°’ ë³€ê²½
 	IMEPT_EVENT_TW_EFFECTQUEST,	//
-	IMEPT_QUEST_SHARE,		//Äù½ºÆ® °øÀ¯
-	IMEPT_QUEST_REMOTE_COMPLETE, // ¿ø°Ý ¿Ï·á
+	IMEPT_QUEST_SHARE,		//í€˜ìŠ¤íŠ¸ ê³µìœ 
+	IMEPT_QUEST_REMOTE_COMPLETE, // ì›ê²© ì™„ë£Œ
 	IMEPT_QUEST_BUILD_RANDOM,
 	IMEPT_QUEST_BUILD_RANDOM_BY_ITEM,
 	IMEPT_QUEST_BUILD_TACTICS_RANDOM_BY_ITEM,
 
-	IMEPT_COUPLE,			//Ä¿ÇÃ »ý¼º/ÇØÁ¦ ½Ã
-	IMEPT_GUILD,			//±æµå »ý¼º/°¡ÀÔ/Å»Åð/Ãß¹æ ½Ã
+	IMEPT_COUPLE,			//ì»¤í”Œ ìƒì„±/í•´ì œ ì‹œ
+	IMEPT_GUILD,			//ê¸¸ë“œ ìƒì„±/ê°€ìž…/íƒˆí‡´/ì¶”ë°© ì‹œ
 	IMEPT_PVP,
-	IMEPT_EVENTQUEST,		//ÀÌº¥Æ® Äù½ºÆ® ¾ÆÀÌÅÛ È¸¼ö ÇØ°¥ ¶§
+	IMEPT_EVENTQUEST,		//ì´ë²¤íŠ¸ í€˜ìŠ¤íŠ¸ ì•„ì´í…œ íšŒìˆ˜ í•´ê°ˆ ë•Œ
 
 	IMEPT_GODCMD,			//
 	IMEPT_DEATHPENALTY,
 	IMEPT_MISSIONBONUS,
 	IMEPT_LEARNSKILL,		// PgAction_LearnSkill
 
-	IMEPT_BATTLESQUARE_REWARD,	// ¹èÆ² ½ºÄù¾î º¸»ó
+	IMEPT_BATTLESQUARE_REWARD,	// ë°°í‹€ ìŠ¤í€˜ì–´ ë³´ìƒ
 
-	MIE_AddItem,			//½Àµæ (Create)
-	MIE_UseItem,			//»ç¿ë
-	MIE_Move,				//ÀÌµ¿ (ÀåÂø/ÇØÁ¦/ÀÚ¸®¹Ù²Þ)
-	MIE_Modify,				//¼öÁ¤ (¼ö·® ¼öÁ¤/ÆÄ±â)
-	//Å¬¶óÀÌ¾ðÆ®
-	MIE_Destroy,			//ÆÄ±â
-	MIE_Equip,				//ÀåÂø
-	MIE_UnEquip,			//ÇØÁ¦
+	MIE_AddItem,			//ìŠµë“ (Create)
+	MIE_UseItem,			//ì‚¬ìš©
+	MIE_Move,				//ì´ë™ (ìž¥ì°©/í•´ì œ/ìžë¦¬ë°”ê¿ˆ)
+	MIE_Modify,				//ìˆ˜ì • (ìˆ˜ëŸ‰ ìˆ˜ì •/íŒŒê¸°)
+	//í´ë¼ì´ì–¸íŠ¸
+	MIE_Destroy,			//íŒŒê¸°
+	MIE_Equip,				//ìž¥ì°©
+	MIE_UnEquip,			//í•´ì œ
 
-	//µ·
-	MCE_Loot,				//¸ó½ºÅÍ·Î ºÎÅÍ ½Àµæ
-	MCE_BuyItem,			//¾ÆÀÌÅÛ ±¸¸Å
-	MCE_SellItem,			//¾ÆÀÌÅÛ ÆÇ¸Å·Î Áõ°¡
-	//MCE_Reward,				//Äù½ºÆ® º¸»ó
-	MCE_ShareParty,			//¸ó½ºÅÍ+ÆÄÆ¼ ³ª´©±â
-	MCE_Skill,				// ½ºÅ³·Î º¸³Ê½º °ñµå¸¦ ¾ò´Â °æ¿ì
-	MCE_CreateGuild,		//±æµå »ý¼º ½Ã
+	//ëˆ
+	MCE_Loot,				//ëª¬ìŠ¤í„°ë¡œ ë¶€í„° ìŠµë“
+	MCE_BuyItem,			//ì•„ì´í…œ êµ¬ë§¤
+	MCE_SellItem,			//ì•„ì´í…œ íŒë§¤ë¡œ ì¦ê°€
+	//MCE_Reward,				//í€˜ìŠ¤íŠ¸ ë³´ìƒ
+	MCE_ShareParty,			//ëª¬ìŠ¤í„°+íŒŒí‹° ë‚˜ëˆ„ê¸°
+	MCE_Skill,				// ìŠ¤í‚¬ë¡œ ë³´ë„ˆìŠ¤ ê³¨ë“œë¥¼ ì–»ëŠ” ê²½ìš°
+	MCE_CreateGuild,		//ê¸¸ë“œ ìƒì„± ì‹œ
 	MCE_GodCmd,
-	MCE_Script,				//(»ç¿ë¾ÈÇÔ)
-	MCE_FailCreateGuild,	//±æµå »ý¼º ½ÇÆÐ½Ã
-	MCE_Fran,				// Çª·£ °æÇèÄ¡ ±³È¯
-	MCE_EmporiaContribute,	//¿¥Æ÷¸®¾Æ ±âºÎÇÔ
-	MCE_MarryMoney,			//°áÈ¥ ±âºÎ
+	MCE_Script,				//(ì‚¬ìš©ì•ˆí•¨)
+	MCE_FailCreateGuild,	//ê¸¸ë“œ ìƒì„± ì‹¤íŒ¨ì‹œ
+	MCE_Fran,				// í‘¸ëžœ ê²½í—˜ì¹˜ êµí™˜
+	MCE_EmporiaContribute,	//ì— í¬ë¦¬ì•„ ê¸°ë¶€í•¨
+	MCE_MarryMoney,			//ê²°í˜¼ ê¸°ë¶€
 	MCE_EffectControl,		// PgAction_EffectControl
 	MCE_SpendMoney,			// PgAction_SpendMoney
-	MCE_LuckyStar_CostMoney,	// LuckyStar ÀÌº¥Æ® Âü¿© ºñ¿ë
+	MCE_LuckyStar_CostMoney,	// LuckyStar ì´ë²¤íŠ¸ ì°¸ì—¬ ë¹„ìš©
 
 	MCE_EXP,
 
-	//¾ÆÀÌÅÛ
-	CIE_Loot,				//¶¥¿¡¼­ ÁÝ±â
-	CIE_BuyItem,			//¾ÆÀÌÅÛ ±¸¸Å
-	CIE_Make,				//Á¦Á¶
-	CIE_Party,				//ÆÄÆ¼ ¿É¼Ç¿¡ µû¸¥ Áö±Þ(³²ÀÌ ¸Ô¾ú´Âµ¥ ±×³ðÀÌ ½Àµæ)	
-	CIE_PVP,				//PvPº¸»ó
-	//CIE_Reward,			//Äù½ºÆ® º¸»ó
-	CIE_QuestItem,			//Äù½ºÆ® ÁøÇà ¾ÆÀÌÅÛ
-	CIE_ShineStone,			//»þÀÎ½ºÅæ
-	CIE_GodCmd,				//GM¸í·É¾î µî¿¡ ÀÇÇØ¼­
-	CIE_Event,				//Event Çà»ç µî
-	CIE_EnchantLvUp,		//ÀÎÃ¦Æ®
-	CIE_SoulCraft,			//¼Ò¿ïÅ©·¡ÇÁÆ®(¿µ·Â)
-	CIE_BasicOptionAmp,		//¿É¼Ç´É·ÂÄ¡Áõ°¡
-	CIE_GateWayUnLock,		//¸ÊÀÌµ¿ ÇÏ¸é¼­ ¼ÒÁø
-	CIE_TimeOut,			//»ç¿ë ½Ã°£ ¸¸·á
-	CIE_KillCount,			//¸ó½ºÅÍ Å³ Ä«¿îÆ® º¸»ó
-	CIE_OpenChest,			//»óÀÚ ¿­¾î¼­ º¸»ó
-	CIE_AlramMission,		//µ¹¹ß¹Ì¼Ç º¸»ó
+	//ì•„ì´í…œ
+	CIE_Loot,				//ë•…ì—ì„œ ì¤ê¸°
+	CIE_BuyItem,			//ì•„ì´í…œ êµ¬ë§¤
+	CIE_Make,				//ì œì¡°
+	CIE_Party,				//íŒŒí‹° ì˜µì…˜ì— ë”°ë¥¸ ì§€ê¸‰(ë‚¨ì´ ë¨¹ì—ˆëŠ”ë° ê·¸ë†ˆì´ ìŠµë“)	
+	CIE_PVP,				//PvPë³´ìƒ
+	//CIE_Reward,			//í€˜ìŠ¤íŠ¸ ë³´ìƒ
+	CIE_QuestItem,			//í€˜ìŠ¤íŠ¸ ì§„í–‰ ì•„ì´í…œ
+	CIE_ShineStone,			//ìƒ¤ì¸ìŠ¤í†¤
+	CIE_GodCmd,				//GMëª…ë ¹ì–´ ë“±ì— ì˜í•´ì„œ
+	CIE_Event,				//Event í–‰ì‚¬ ë“±
+	CIE_EnchantLvUp,		//ì¸ì±ˆíŠ¸
+	CIE_SoulCraft,			//ì†Œìš¸í¬ëž˜í”„íŠ¸(ì˜ë ¥)
+	CIE_BasicOptionAmp,		//ì˜µì…˜ëŠ¥ë ¥ì¹˜ì¦ê°€
+	CIE_GateWayUnLock,		//ë§µì´ë™ í•˜ë©´ì„œ ì†Œì§„
+	CIE_TimeOut,			//ì‚¬ìš© ì‹œê°„ ë§Œë£Œ
+	CIE_KillCount,			//ëª¬ìŠ¤í„° í‚¬ ì¹´ìš´íŠ¸ ë³´ìƒ
+	CIE_OpenChest,			//ìƒìž ì—´ì–´ì„œ ë³´ìƒ
+	CIE_AlramMission,		//ëŒë°œë¯¸ì…˜ ë³´ìƒ
 
-	CIE_Mission,			//ÀÎ´ø(¹Ì¼Ç¸Ê) º¸»ó
-	CIE_Mission1,			//ÀÎ´ø(¹Ì¼Ç¸Ê) º¸»ó-·¹º§
+	CIE_Mission,			//ì¸ë˜(ë¯¸ì…˜ë§µ) ë³´ìƒ
+	CIE_Mission1,			//ì¸ë˜(ë¯¸ì…˜ë§µ) ë³´ìƒ-ë ˆë²¨
 	CIE_Mission2,
 	CIE_Mission3,
 	CIE_Mission4,
-	CIE_Mission_GadaCoin,	//°¡´ÙÄÚÀÎÀ» ÀÌ¿ëÇÑ ¾ÆÀÌÅÛ
-	CIE_Mission_Event,		//ÀÌº¥Æ® ¸Ê Å¬¸®¾î Ã¼Å©
+	CIE_Mission_GadaCoin,	//ê°€ë‹¤ì½”ì¸ì„ ì´ìš©í•œ ì•„ì´í…œ
+	CIE_Mission_Event,		//ì´ë²¤íŠ¸ ë§µ í´ë¦¬ì–´ ì²´í¬
 	CIE_Mission_Rank,
-	CIE_Mission_InfallibleSelection,//µðÆæ½º ¸ðµå ¹æÇâ °í¸£±â ¾ÆÀÌÅÛ
-	CIE_Mission_DefenceTimePlus,//µðÆæ½º ¸ðµå ¹æ¾î½Ã°£ Áõ°¡
-	CIE_Mission_DefencePotion,//µðÆæ½º ¸ðµå ¼öÈ£¼® È¸º¹
-	CIE_Mission_DefenceWin,	// µðÆÒ½º ½Â¸®º¸»ó
-	CIE_Mission_UseItem,	// ¹Ì¼Ç Àü¿ë ¾ÆÀÌÅÛ
-	CIE_Defence7_Relay_Stage,	//µðÆæ½º7 ÀÌ¾îÇÏ±â ¾ÆÀÌÅÛ
-	CIE_Defence7_Point_Copy,	//µðÆæ½º7 Æ÷ÀÎÆ® º¹Á¦±â.
+	CIE_Mission_InfallibleSelection,//ë””íŽœìŠ¤ ëª¨ë“œ ë°©í–¥ ê³ ë¥´ê¸° ì•„ì´í…œ
+	CIE_Mission_DefenceTimePlus,//ë””íŽœìŠ¤ ëª¨ë“œ ë°©ì–´ì‹œê°„ ì¦ê°€
+	CIE_Mission_DefencePotion,//ë””íŽœìŠ¤ ëª¨ë“œ ìˆ˜í˜¸ì„ íšŒë³µ
+	CIE_Mission_DefenceWin,	// ë””íŒ¬ìŠ¤ ìŠ¹ë¦¬ë³´ìƒ
+	CIE_Mission_UseItem,	// ë¯¸ì…˜ ì „ìš© ì•„ì´í…œ
+	CIE_Defence7_Relay_Stage,	//ë””íŽœìŠ¤7 ì´ì–´í•˜ê¸° ì•„ì´í…œ
+	CIE_Defence7_Point_Copy,	//ë””íŽœìŠ¤7 í¬ì¸íŠ¸ ë³µì œê¸°.
 
 	CIE_HiddenReword,
 	CIE_HiddenRewordItem,
 
-	CIE_Mouse_Event,		//µå·¡±×¾Ø µå·Ó
+	CIE_Mouse_Event,		//ë“œëž˜ê·¸ì•¤ ë“œë¡­
 
-	CIE_Dec_Dur_by_Defence,	//¹æ¾îÇÏ´Ù °¨¼Ò
-	CIE_Dec_Dur_by_Attack,	//°ø°ÝÇÏ´Ù °¨¼Ò
+	CIE_Dec_Dur_by_Defence,	//ë°©ì–´í•˜ë‹¤ ê°ì†Œ
+	CIE_Dec_Dur_by_Attack,	//ê³µê²©í•˜ë‹¤ ê°ì†Œ
 	
-	CIE_Repair,				//¼ö¸®
+	CIE_Repair,				//ìˆ˜ë¦¬
 	
-	CIE_Dump,				//¹ö¸²
-	CIE_Disassemble_Result,	//¹ö¸®°í ³ª¼­ ¾ò´Â°Å(ºÐÇØ)
-	CIE_Exchange,			//±³È¯
-	CIE_Script_Delete,		//½ºÅ©¸³Æ®¿¡¼­ Áö¿ò
+	CIE_Dump,				//ë²„ë¦¼
+	CIE_Disassemble_Result,	//ë²„ë¦¬ê³  ë‚˜ì„œ ì–»ëŠ”ê±°(ë¶„í•´)
+	CIE_Exchange,			//êµí™˜
+	CIE_Script_Delete,		//ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ì§€ì›€
 	CIE_Divide,				//Divide
 	CIE_CallGodCmd,			// called by God Command
-	//CIE_MissionQuestCard,	//(»ç¿ë¾ÈÇÔ)
-	CIE_GuildLevelUp,		//±æµå ·¹º§¾÷
-	CIE_GuildInventoryCreate, //±æµå±Ý°í »ý¼º
-	CIE_GuildLearnSkill,	//±æµå ½ºÅ³
-	CIE_CoupleWarp,			//Ä¿ÇÃ ¿öÇÁ
-	CIE_CoupleLearnSkill,	//Ä¿ÇÃ ½ºÅ³
+	//CIE_MissionQuestCard,	//(ì‚¬ìš©ì•ˆí•¨)
+	CIE_GuildLevelUp,		//ê¸¸ë“œ ë ˆë²¨ì—…
+	CIE_GuildInventoryCreate, //ê¸¸ë“œê¸ˆê³  ìƒì„±
+	CIE_GuildLearnSkill,	//ê¸¸ë“œ ìŠ¤í‚¬
+	CIE_CoupleWarp,			//ì»¤í”Œ ì›Œí”„
+	CIE_CoupleLearnSkill,	//ì»¤í”Œ ìŠ¤í‚¬
 
-	CIE_Post_Mail_Send,		//¸ÞÀÏ º¸³»±â
-	CIE_Post_Mail_Modify,	//¸ÞÀÏ »óÅÂ º¯°æ
-	CIE_Post_Mail_Item_Recv,//¸ÞÀÏ ¾ÆÀÌÅÛ ¼ö·É
+	CIE_Post_Mail_Send,		//ë©”ì¼ ë³´ë‚´ê¸°
+	CIE_Post_Mail_Modify,	//ë©”ì¼ ìƒíƒœ ë³€ê²½
+	CIE_Post_Mail_Item_Recv,//ë©”ì¼ ì•„ì´í…œ ìˆ˜ë ¹
 
-	CIE_UM_Market_Open,		//¸¶ÄÏ ¿ÀÇÂ ¿äÃ»
-	CIE_UM_Article_Reg,		//°æ¸Å ¹°Ç° µî·Ï
-	CIE_UM_Article_Dereg,	//µî·ÏµÈ °æ¸Å Ãë¼Ò
-	CIE_UM_Article_Query,	//°æ¸Å ¹°Ç° Á¶È¸
-	CIE_UM_Article_Buy,		//°æ¸Å ¹°Ç° ±¸ÀÔ
-	CIE_UM_Dealing_Query,	//°æ¸Å ³»¿ª Á¶È¸
-	CIE_UM_Dealing_Read,	//°æ¸Å ³»¿ª ÀÐ±â(½ÇÁ¦ ¿©±â¼­ ÆÇ¸ÅÇÑ ¹°Ç°ÀÇ ±Ý¾×À» ¹Þ´ÂÃ³¸® ¹× ±¸ÀÔÇÑ ¾ÆÀÌÅÛÀÇ ¼ö·ÉÀ» Ã³¸® ÇÑ´Ù.)
-	CIE_UM_Modify_Market,	//¸¶ÄÏ »óÅÂ º¯°æ
-	CIE_UM_Reg_Money,		//°ÔÀÓ ¸Ó´Ï µî·Ï
-	CIE_UM_Reg_Cash,		//Ä³½Ã µî·Ï
+	CIE_UM_Market_Open,		//ë§ˆì¼“ ì˜¤í”ˆ ìš”ì²­
+	CIE_UM_Article_Reg,		//ê²½ë§¤ ë¬¼í’ˆ ë“±ë¡
+	CIE_UM_Article_Dereg,	//ë“±ë¡ëœ ê²½ë§¤ ì·¨ì†Œ
+	CIE_UM_Article_Query,	//ê²½ë§¤ ë¬¼í’ˆ ì¡°íšŒ
+	CIE_UM_Article_Buy,		//ê²½ë§¤ ë¬¼í’ˆ êµ¬ìž…
+	CIE_UM_Dealing_Query,	//ê²½ë§¤ ë‚´ì—­ ì¡°íšŒ
+	CIE_UM_Dealing_Read,	//ê²½ë§¤ ë‚´ì—­ ì½ê¸°(ì‹¤ì œ ì—¬ê¸°ì„œ íŒë§¤í•œ ë¬¼í’ˆì˜ ê¸ˆì•¡ì„ ë°›ëŠ”ì²˜ë¦¬ ë° êµ¬ìž…í•œ ì•„ì´í…œì˜ ìˆ˜ë ¹ì„ ì²˜ë¦¬ í•œë‹¤.)
+	CIE_UM_Modify_Market,	//ë§ˆì¼“ ìƒíƒœ ë³€ê²½
+	CIE_UM_Reg_Money,		//ê²Œìž„ ë¨¸ë‹ˆ ë“±ë¡
+	CIE_UM_Reg_Cash,		//ìºì‹œ ë“±ë¡
 
-	CIE_Sys2Inv,			//½Ã½ºÅÛ ÀÎº¥¿¡¼­ ÀÎº¥Åä¸®·Î ÀÌµ¿
-	CIE_Delete_SysItem,		//½Ã½ºÅÛ ÀÎº¥¿¡¼­ ¾ÆÀÌÅÛ »èÁ¦
+	CIE_Sys2Inv,			//ì‹œìŠ¤í…œ ì¸ë²¤ì—ì„œ ì¸ë²¤í† ë¦¬ë¡œ ì´ë™
+	CIE_Delete_SysItem,		//ì‹œìŠ¤í…œ ì¸ë²¤ì—ì„œ ì•„ì´í…œ ì‚­ì œ
 
-	CIE_CS_Select,			//Ä³½¬ ÀÜ¾× Äõ¸®
-	CIE_CS_Buy,				//Ä³½¬ ¾ÆÀÌÅÛ ±¸¸Å
-	CIE_CS_Gift,			//Ä³½¬ ¾ÆÀÌÅÛ ¼±¹°
-	CIE_CS_Gift_Recv,		//¼±¹° ¼ö·É
+	CIE_CS_Select,			//ìºì‰¬ ìž”ì•¡ ì¿¼ë¦¬
+	CIE_CS_Buy,				//ìºì‰¬ ì•„ì´í…œ êµ¬ë§¤
+	CIE_CS_Gift,			//ìºì‰¬ ì•„ì´í…œ ì„ ë¬¼
+	CIE_CS_Gift_Recv,		//ì„ ë¬¼ ìˆ˜ë ¹
 
 	// CP
-	CPE_REWARD_PVP,			// PvP¿¡¼­ ¾ò¾ú´Ù.
-	CPE_BuyItem,			// Item ±¸¸Å·Î °¨¼Ò
-	CPE_SellItem,			// Item ÆÇ¸Å·Î Áõ°¡
+	CPE_REWARD_PVP,			// PvPì—ì„œ ì–»ì—ˆë‹¤.
+	CPE_BuyItem,			// Item êµ¬ë§¤ë¡œ ê°ì†Œ
+	CPE_SellItem,			// Item íŒë§¤ë¡œ ì¦ê°€
 	CPE_GodCmd,
 
 	CIE_ChangeClass_ByNormal,	// called by God Command
@@ -3476,66 +3476,66 @@ typedef enum eItemModifyParentEventType
 	CNE_CONTENTS_EVENT,			// ContentsServer Event
 
 	CIE_Rank_Point,
-	CIE_SafeMode,				// ¾ÈÀü°ÅÇ°
+	CIE_SafeMode,				// ì•ˆì „ê±°í’ˆ
 	CIE_MissionUpdate,
-	IMEPT_INSURANCE_REVIVE,		//»ç¸Áº¸Çè
-	IMEPT_INSURANCE_SOUL_CRAFT,	//¼Ò¿ï Å©·¡ÇÁÆ® º¸Çè
-	IMEPT_INSURANCE_ENCHANT,	//ÀÎÃ¦Æ® º¸Çè º¸Çè
-	IMEPT_WORLD_MAP,			//¿ùµå¸Ê ¾÷µ¥ÀÌÆ®
-	IMEPT_RECENT,				//Recent ¾÷µ¥ÀÌÆ®
+	IMEPT_INSURANCE_REVIVE,		//ì‚¬ë§ë³´í—˜
+	IMEPT_INSURANCE_SOUL_CRAFT,	//ì†Œìš¸ í¬ëž˜í”„íŠ¸ ë³´í—˜
+	IMEPT_INSURANCE_ENCHANT,	//ì¸ì±ˆíŠ¸ ë³´í—˜ ë³´í—˜
+	IMEPT_WORLD_MAP,			//ì›”ë“œë§µ ì—…ë°ì´íŠ¸
+	IMEPT_RECENT,				//Recent ì—…ë°ì´íŠ¸
 
-	CAE_Achievement,		// ¾÷Àû °ü·Ã ¾îºô º¯°æ
-	CAE_Achievement2Inv,	// ÈÆÀå -> ¾ÆÀÌÅÛ º¯°æ
+	CAE_Achievement,		// ì—…ì  ê´€ë ¨ ì–´ë¹Œ ë³€ê²½
+	CAE_Achievement2Inv,	// í›ˆìž¥ -> ì•„ì´í…œ ë³€ê²½
 
-	CAE_HiddenOpen,			// È÷µç¸Ê ¿ÀÇÂ¿©ºÎ
+	CAE_HiddenOpen,			// ížˆë“ ë§µ ì˜¤í”ˆì—¬ë¶€
 		
-	CIE_Coupon,				// ÄíÆù »ç¿ë
+	CIE_Coupon,				// ì¿ í° ì‚¬ìš©
 
-	CIE_UserMapMove,		// ¼ø°£ÀÌµ¿ Ä«µå »ç¿ë
-	CIE_MoveToPartyMember,	// ÆÄÆ¼¿ø Ã£±â ÀÌµ¿ Ä«µå »ç¿ë
-	CIE_RentalSafeExtend,	// Ã¢°í È®Àå
+	CIE_UserMapMove,		// ìˆœê°„ì´ë™ ì¹´ë“œ ì‚¬ìš©
+	CIE_MoveToPartyMember,	// íŒŒí‹°ì› ì°¾ê¸° ì´ë™ ì¹´ë“œ ì‚¬ìš©
+	CIE_RentalSafeExtend,	// ì°½ê³  í™•ìž¥
 
 	SYS_UpdateCacheDB,		//
 
-	CIE_UM_Modify_Market_State,// ¸¶ÄÏ »óÅÂ º¯°æ OPEN, CLOSE, EDIT
-	CIE_SummonPartyMember,	// ÆÄÆ¼¿ø ¼ÒÈ¯
-	CIE_UM_Market_Remove,	// ¸¶ÄÏ »èÁ¦
+	CIE_UM_Modify_Market_State,// ë§ˆì¼“ ìƒíƒœ ë³€ê²½ OPEN, CLOSE, EDIT
+	CIE_SummonPartyMember,	// íŒŒí‹°ì› ì†Œí™˜
+	CIE_UM_Market_Remove,	// ë§ˆì¼“ ì‚­ì œ
 
-	CIE_Equip,				//ÀåÂø
-	CIE_UnEquip,			//ÀåÂø ÇØÁö
-	CIE_MoveToSafe,			//Ã¢°í º¸°ü
-	CIE_MoveToInv,			//Ã¢°í ²¨³»±â
+	CIE_Equip,				//ìž¥ì°©
+	CIE_UnEquip,			//ìž¥ì°© í•´ì§€
+	CIE_MoveToSafe,			//ì°½ê³  ë³´ê´€
+	CIE_MoveToInv,			//ì°½ê³  êº¼ë‚´ê¸°
 	
-	CIE_MoveFromGuildInvToGuildInv, // ±æµå±Ý°í³» ÀÌµ¿
-	CIE_MoveFromGuildInvToInv,		// ±æµå±Ý°í ²¨³»±â
-	CIE_MoveFromInvToGuildInv,		// ±æµå±Ý°í º¸°ü
+	CIE_MoveFromGuildInvToGuildInv, // ê¸¸ë“œê¸ˆê³ ë‚´ ì´ë™
+	CIE_MoveFromGuildInvToInv,		// ê¸¸ë“œê¸ˆê³  êº¼ë‚´ê¸°
+	CIE_MoveFromInvToGuildInv,		// ê¸¸ë“œê¸ˆê³  ë³´ê´€
 
-	CAE_Inv2Achievement,	// ¾ÆÀÌÅÛ -> ÈÆÀå º¯°æ
+	CAE_Inv2Achievement,	// ì•„ì´í…œ -> í›ˆìž¥ ë³€ê²½
 
-	IMPET_MapmoveDeleteItem, // ¸ÊÀÌµ¿½Ã »èÁ¦ µÇ´Â ¾ÆÀÌÅÛ ÀÌº¥Æ®
+	IMPET_MapmoveDeleteItem, // ë§µì´ë™ì‹œ ì‚­ì œ ë˜ëŠ” ì•„ì´í…œ ì´ë²¤íŠ¸
 
-	CIE_OpenPack,			//ÆÑ ¿­¾î¼­ º¸»ó
-	CIE_OpenPack2,			//ÆÑ ¿­¾î¼­ º¸»ó (No Rarity)
-	CIE_HiddenPack,			//È÷µç º¸»ó »óÀÚ ¿­¾î¼­ º¸»ó
+	CIE_OpenPack,			//íŒ© ì—´ì–´ì„œ ë³´ìƒ
+	CIE_OpenPack2,			//íŒ© ì—´ì–´ì„œ ë³´ìƒ (No Rarity)
+	CIE_HiddenPack,			//ížˆë“  ë³´ìƒ ìƒìž ì—´ì–´ì„œ ë³´ìƒ
 
-	CIE_CS_Add_TimeLimit,	// Ä³½Ã ¾ÆÀÌÅÛ ½Ã°£ ¿¬Àå
-	CPE_Event,				// ÀÌº¥Æ® -> À¯Àú Á¤º¸ ¼öÁ¤
+	CIE_CS_Add_TimeLimit,	// ìºì‹œ ì•„ì´í…œ ì‹œê°„ ì—°ìž¥
+	CPE_Event,				// ì´ë²¤íŠ¸ -> ìœ ì € ì •ë³´ ìˆ˜ì •
 
-	CNE_POST_SYSTEM_MAIL,		// ½Ã½ºÅÛ ¸ÞÀÏ Àü¼Û
+	CNE_POST_SYSTEM_MAIL,		// ì‹œìŠ¤í…œ ë©”ì¼ ì „ì†¡
 	CNE_POST_SYSTEM_MAIL_ORDER,
 	CNE_CONTENTS_SENDTOUSER,// SendToUser packet
 
-	CIE_Item_Bind,			// ¾ÆÀÌÅÛ Àá±Ý
-	CIE_Item_Unbind,		// ¾ÆÀÌÅÛ Àá±Ý ÇØÁ¦
+	CIE_Item_Bind,			// ì•„ì´í…œ ìž ê¸ˆ
+	CIE_Item_Unbind,		// ì•„ì´í…œ ìž ê¸ˆ í•´ì œ
 
-	CIE_Set_DefaultItem,	// ±âº» ÀåÂø ¾ÆÀÌÅÛ º¯°æ
+	CIE_Set_DefaultItem,	// ê¸°ë³¸ ìž¥ì°© ì•„ì´í…œ ë³€ê²½
 
-	CIE_Create_CharacterCard,// Ä³¸¯ÅÍ Ä«µå »ý¼º
-	CIE_Modify_RecommendPoint,	// ÃßÃµ Æ÷ÀÎÆ® º¯°æ
-	CIE_Modify_CharacterCard,	// Ä³¸¯ÅÍ Ä«µå Á¤º¸ º¯°æ
-	CIE_Delete_CharacterCard,	// Ä³¸¯ÅÍ Ä«µå »èÁ¦
+	CIE_Create_CharacterCard,// ìºë¦­í„° ì¹´ë“œ ìƒì„±
+	CIE_Modify_RecommendPoint,	// ì¶”ì²œ í¬ì¸íŠ¸ ë³€ê²½
+	CIE_Modify_CharacterCard,	// ìºë¦­í„° ì¹´ë“œ ì •ë³´ ë³€ê²½
+	CIE_Delete_CharacterCard,	// ìºë¦­í„° ì¹´ë“œ ì‚­ì œ
 
-	CIE_Modify_UserPortal,		// À§Ä¡ ±â¾ï Æ÷Å» ¼öÁ¤
+	CIE_Modify_UserPortal,		// ìœ„ì¹˜ ê¸°ì–µ í¬íƒˆ ìˆ˜ì •
 
 	CIE_Gen_Socket,
 	CIE_Set_MonsterCard,
@@ -3543,110 +3543,110 @@ typedef enum eItemModifyParentEventType
 	CIE_Del_MonsterCard,
 	CIE_EXTRACTION_MonsterCard,
 
-	CIE_Cash_Pack,				// Ä³½ÃÆÑÀ» »ç¿ëÇÏ¿© Ä³½Ã¸¦ ¹ÞÀ½
-	CIE_CoinChange_Buy,			// ÄÚÀÎ±³È¯
-	CIE_GemStore_Buy,			// º¸¼® ±³È¯±â
-	CIE_CollectAntique,			// °ñµ¿Ç° ¼öÁý
-	CIE_ExchangeGem,			// º¸¼®»óÀÎ ±³È¯
-	CIE_Rollback,				// ÀÎÃ¾Æ® ·Ñ¹é
-	CIE_Locked_Chest,			// Àá±ä »óÀÚ ¿­±â
-	CIE_Open_Gamble,			// °×ºí ¾ÆÀÌÅÛ ¿­±â
-	CIE_Convert_Item,			// ¾ÆÀÌÅÛ º¯È¯
-	CIE_HatchPet,				// Pet ºÎÈ­
-	CIE_RenamePet,				// Pet ÀÌ¸§ º¯°æ
+	CIE_Cash_Pack,				// ìºì‹œíŒ©ì„ ì‚¬ìš©í•˜ì—¬ ìºì‹œë¥¼ ë°›ìŒ
+	CIE_CoinChange_Buy,			// ì½”ì¸êµí™˜
+	CIE_GemStore_Buy,			// ë³´ì„ êµí™˜ê¸°
+	CIE_CollectAntique,			// ê³¨ë™í’ˆ ìˆ˜ì§‘
+	CIE_ExchangeGem,			// ë³´ì„ìƒì¸ êµí™˜
+	CIE_Rollback,				// ì¸ì²¸íŠ¸ ë¡¤ë°±
+	CIE_Locked_Chest,			// ìž ê¸´ ìƒìž ì—´ê¸°
+	CIE_Open_Gamble,			// ê²œë¸” ì•„ì´í…œ ì—´ê¸°
+	CIE_Convert_Item,			// ì•„ì´í…œ ë³€í™˜
+	CIE_HatchPet,				// Pet ë¶€í™”
+	CIE_RenamePet,				// Pet ì´ë¦„ ë³€ê²½
 	CIE_SetAbilPet,				// Pet Abil Set
 	CIE_ItemPet,				// Pet Item
 	CIE_ItemPetOnlyPop,			// 
 	CIE_LOAD_PET_ITEM,			// Pet Item Load
-	CIE_Use_ExpCard,			// °æÇèÄ¡ Ä«µå »ç¿ë
-	CIE_CCE_Reward,				// Ä³¸¯ »ý¼º ÀÌº¥Æ® º¸»ó
+	CIE_Use_ExpCard,			// ê²½í—˜ì¹˜ ì¹´ë“œ ì‚¬ìš©
+	CIE_CCE_Reward,				// ìºë¦­ ìƒì„± ì´ë²¤íŠ¸ ë³´ìƒ
 
-	CIE_EmporiaFunction,		// ¿¥Æ÷¸®¾Æ ±â´É ÀÌ¿ë
-    CIE_EmporiaReserve,         // ¿¥Æ÷¸®¾Æ µµÀü
-    CIE_EmporiaThrow,           // ¿¥Æ÷¸®¾Æ µµÀü
-    CIE_EmporiaReserve_Fail,    // ¿¥Æ÷¸®¾Æ µµÀü ½ÇÆÐ
+	CIE_EmporiaFunction,		// ì— í¬ë¦¬ì•„ ê¸°ëŠ¥ ì´ìš©
+    CIE_EmporiaReserve,         // ì— í¬ë¦¬ì•„ ë„ì „
+    CIE_EmporiaThrow,           // ì— í¬ë¦¬ì•„ ë„ì „
+    CIE_EmporiaReserve_Fail,    // ì— í¬ë¦¬ì•„ ë„ì „ ì‹¤íŒ¨
 
-	CIE_CASH_LIMIT_ITEM_REQ,	// ÇöÀç ÇÑÁ¤ÆÇ¸Å ¹®ÀÇ
+	CIE_CASH_LIMIT_ITEM_REQ,	// í˜„ìž¬ í•œì •íŒë§¤ ë¬¸ì˜
 	CIE_CASH_LIMIT_ITEM_RCV,
-	CIE_CASH_BALANCE_REQ,		// ÇöÀç Ä³½Ã·® ¹®ÀÇ
+	CIE_CASH_BALANCE_REQ,		// í˜„ìž¬ ìºì‹œëŸ‰ ë¬¸ì˜
 	CIE_CASH_BALANCE_RCV,
-	CIE_CASH_USE_REQ,			// Cash »ç¿ë ¿äÃ»
+	CIE_CASH_USE_REQ,			// Cash ì‚¬ìš© ìš”ì²­
 	CIE_CASH_USE_RCV,
-	CIE_CASH_PROCESS_END,		// Cash ÀÛ¾÷ ¸¶¹«¸®.
+	CIE_CASH_PROCESS_END,		// Cash ìž‘ì—… ë§ˆë¬´ë¦¬.
 
-	CIE_Buy_MyHome,				// ¸¶ÀÌÈ¨ ±¸ÀÔ
+	CIE_Buy_MyHome,				// ë§ˆì´í™ˆ êµ¬ìž…
 
-	CIE_MixupItem,				// ¾ÆÀÌÅÛ Á¶ÇÕ
-	CIE_UM_Article_CashBuy,		// OpenMarket ¿¡¼­ Cash ±¸¸Å
-	CIE_UM_Article_CashReg,		// OpenMarket ¿¡ Cash article µî·Ï
-	CIE_UM_Article_CashBack,	// OpenMarket ÆÇ¸Å±Ý¾× È¸¼ö(Cash·Î È¸¼ö)
+	CIE_MixupItem,				// ì•„ì´í…œ ì¡°í•©
+	CIE_UM_Article_CashBuy,		// OpenMarket ì—ì„œ Cash êµ¬ë§¤
+	CIE_UM_Article_CashReg,		// OpenMarket ì— Cash article ë“±ë¡
+	CIE_UM_Article_CashBack,	// OpenMarket íŒë§¤ê¸ˆì•¡ íšŒìˆ˜(Cashë¡œ íšŒìˆ˜)
 
-	CIE_Home_Equip,				// È¨ ¾ÆÀÌÅÛ ¹èÄ¡
-	CIE_Home_UnEquip,			// È¨ ¾ÆÀÌÅÛ ¹èÄ¡
-	CIE_Home_Modify,			// Áý Á¤º¸ ¼öÁ¤
-	CIE_Home_Bidding,			// Áý ÀÔÂû Âü¿©
+	CIE_Home_Equip,				// í™ˆ ì•„ì´í…œ ë°°ì¹˜
+	CIE_Home_UnEquip,			// í™ˆ ì•„ì´í…œ ë°°ì¹˜
+	CIE_Home_Modify,			// ì§‘ ì •ë³´ ìˆ˜ì •
+	CIE_Home_Bidding,			// ì§‘ ìž…ì°° ì°¸ì—¬
 
-	CIE_Home_Auction_Reg,		// °æ¸Å µî·Ï
-	CIE_Home_Auction_Unreg,		// °æ¸Å Ãë¼Ò
-	CIE_Home_Auction_End,		// °æ¸Å Á¾·á
-	CIE_Home_Attachment,		// È¨ Â÷¾Ð
-	CIE_Home_Noti_PayTex,		// È¨ ¼ÒÁöÀÚ¿¡°Ô ¼¼±Ý ³³ºÎ ¾Ë¸² ¸ÞÀÏ Àü¼Û
-	CIE_Home_PayTex,			// È¨ ¼¼±Ý Áö±Þ
+	CIE_Home_Auction_Reg,		// ê²½ë§¤ ë“±ë¡
+	CIE_Home_Auction_Unreg,		// ê²½ë§¤ ì·¨ì†Œ
+	CIE_Home_Auction_End,		// ê²½ë§¤ ì¢…ë£Œ
+	CIE_Home_Attachment,		// í™ˆ ì°¨ì••
+	CIE_Home_Noti_PayTex,		// í™ˆ ì†Œì§€ìžì—ê²Œ ì„¸ê¸ˆ ë‚©ë¶€ ì•Œë¦¼ ë©”ì¼ ì „ì†¡
+	CIE_Home_PayTex,			// í™ˆ ì„¸ê¸ˆ ì§€ê¸‰
 
-	CIE_Home_Item_Modify,		// È¨ ¾ÆÀÌÅÛ ¼öÁ¤ 
-	CIE_Home_Unit_Sync,			// È¨ À¯´Ö³¢¸® °øÀ¯ÇØ¾ß ÇÏ´Â Á¤º¸ µ¿±âÈ­
-	CIE_GambleMachine,			// °×ºí¸Ó½Å
-	CIE_ACTIVE_STATUS_SET,		// Status º¯°æÇÏ±â(STR,INT,CON,DEX)
+	CIE_Home_Item_Modify,		// í™ˆ ì•„ì´í…œ ìˆ˜ì • 
+	CIE_Home_Unit_Sync,			// í™ˆ ìœ ë‹›ë¼ë¦¬ ê³µìœ í•´ì•¼ í•˜ëŠ” ì •ë³´ ë™ê¸°í™”
+	CIE_GambleMachine,			// ê²œë¸”ë¨¸ì‹ 
+	CIE_ACTIVE_STATUS_SET,		// Status ë³€ê²½í•˜ê¸°(STR,INT,CON,DEX)
 
 	CIE_TransTower_Save_Recent,	// Save TransTower Recent Position
 	CIE_TransTower_Open_Map,	// Save TransTower Open Map
 
-	CIE_OpenEventItemReward,	// ÆÛºí¸®¼Å ¼öÁ¤ °¡´É ¾ÆÀÌÅÛ Áö±Þ ¹Ú½º	
-	CIE_SendEventItemReward,	// ÆÛºí¸®¼Å ¼öÁ¤ °¡´É ¾ÆÀÌÅÛ Áö±Þ ¹Ú½º	
+	CIE_OpenEventItemReward,	// í¼ë¸”ë¦¬ì…” ìˆ˜ì • ê°€ëŠ¥ ì•„ì´í…œ ì§€ê¸‰ ë°•ìŠ¤	
+	CIE_SendEventItemReward,	// í¼ë¸”ë¦¬ì…” ìˆ˜ì • ê°€ëŠ¥ ì•„ì´í…œ ì§€ê¸‰ ë°•ìŠ¤	
 
-	CNE_POST_GROUP_MAIL_ORDER,	// ±×·ì ¸ÞÀÏ Àü¼Û
+	CNE_POST_GROUP_MAIL_ORDER,	// ê·¸ë£¹ ë©”ì¼ ì „ì†¡
 
-	CIE_Home_SideJob_Insert,	// ¾Æ¸£¹ÙÀÌÆ® »ý¼º
-	CIE_Home_SideJob_Remove,	// ¾Æ¸£¹ÙÀÌÆ® »èÁ¦
-	CIE_Home_SideJob_Modify,	// ¾Æ¸£¹ÙÀÌÆ® ¼öÁ¤
+	CIE_Home_SideJob_Insert,	// ì•„ë¥´ë°”ì´íŠ¸ ìƒì„±
+	CIE_Home_SideJob_Remove,	// ì•„ë¥´ë°”ì´íŠ¸ ì‚­ì œ
+	CIE_Home_SideJob_Modify,	// ì•„ë¥´ë°”ì´íŠ¸ ìˆ˜ì •
 
-	CIE_GambleMachine_Shop,		// Ä³½Ã¼¥ °×ºí
+	CIE_GambleMachine_Shop,		// ìºì‹œìƒµ ê²œë¸”
 
-	CIE_Home_SideJob_Enter,		// ¾Æ¸£¹ÙÀÌÆ® µé¾î°¡±â
+	CIE_Home_SideJob_Enter,		// ì•„ë¥´ë°”ì´íŠ¸ ë“¤ì–´ê°€ê¸°
 
-	CIE_Inventory_Sort,			// ¾ÆÀÌÅÛ ¼ÒÆ® ±â´É
+	CIE_Inventory_Sort,			// ì•„ì´í…œ ì†ŒíŠ¸ ê¸°ëŠ¥
 
-	CIE_GambleMachine_Mixup,	// Ä³½Ã¼¥ ¾ÆÀÌÅÛ Á¶ÇÕ
+	CIE_GambleMachine_Mixup,	// ìºì‹œìƒµ ì•„ì´í…œ ì¡°í•©
 
-	CIE_Item_Enchant_Shift,		// ¾ÆÀÌÅÛ ÀÎÃ¾Æ® ÀüÀÌ
+	CIE_Item_Enchant_Shift,		// ì•„ì´í…œ ì¸ì²¸íŠ¸ ì „ì´
 	
-	CIE_Revive_Feather_Login,	// ·Î±×ÀÎ ºÎÈ°±êÅÐ º¸»ó
-	CIE_Revive_Feather_LevelUp,	// ·¹º§¾÷ ºÎÈ°±êÅÐ º¸»ó
-	CIE_Login_Event,			// Á¢¼Ó ½Ã°£ À¯Áö ÀÌº¥Æ®.
+	CIE_Revive_Feather_Login,	// ë¡œê·¸ì¸ ë¶€í™œê¹ƒí„¸ ë³´ìƒ
+	CIE_Revive_Feather_LevelUp,	// ë ˆë²¨ì—… ë¶€í™œê¹ƒí„¸ ë³´ìƒ
+	CIE_Login_Event,			// ì ‘ì† ì‹œê°„ ìœ ì§€ ì´ë²¤íŠ¸.
 
-	CIE_JOBSKILL,				// Á÷¾÷½ºÅ³(Ã¤Áý)
-	CIE_JOBSKILL_LEARN,			// Á÷¾÷½ºÅ³(¹è¿ì±â)
-	CIE_JOBSKILL_DELETE,			// Á÷¾÷½ºÅ³(»èÁ¦)
-	CIE_JOBSKILL3_CREATE_ITEM,	// Ã¤Áý3Â÷ ¾ÆÀÌÅÛ
+	CIE_JOBSKILL,				// ì§ì—…ìŠ¤í‚¬(ì±„ì§‘)
+	CIE_JOBSKILL_LEARN,			// ì§ì—…ìŠ¤í‚¬(ë°°ìš°ê¸°)
+	CIE_JOBSKILL_DELETE,			// ì§ì—…ìŠ¤í‚¬(ì‚­ì œ)
+	CIE_JOBSKILL3_CREATE_ITEM,	// ì±„ì§‘3ì°¨ ì•„ì´í…œ
 
-	CIE_SoulTransfer_Extract,		// ¿µ·Â ÀüÀÌ - ÃßÃâ
-	CIE_SoulTransfer_Transition,	// ¿µ·Â ÀüÀÌ - »ðÀÔ
-	CIE_OpenTreasureChestReward,	// ÆÛºí¸®¼Å ¼öÁ¤ °¡´É ¾ÆÀÌÅÛ Áö±Þ ¹Ú½º	
-	CIE_SendTreasureChestReward,	// ÆÛºí¸®¼Å ¼öÁ¤ °¡´É ¾ÆÀÌÅÛ Áö±Þ ¹Ú½º	
+	CIE_SoulTransfer_Extract,		// ì˜ë ¥ ì „ì´ - ì¶”ì¶œ
+	CIE_SoulTransfer_Transition,	// ì˜ë ¥ ì „ì´ - ì‚½ìž…
+	CIE_OpenTreasureChestReward,	// í¼ë¸”ë¦¬ì…” ìˆ˜ì • ê°€ëŠ¥ ì•„ì´í…œ ì§€ê¸‰ ë°•ìŠ¤	
+	CIE_SendTreasureChestReward,	// í¼ë¸”ë¦¬ì…” ìˆ˜ì • ê°€ëŠ¥ ì•„ì´í…œ ì§€ê¸‰ ë°•ìŠ¤	
 
-	CIE_ExtractElement,			//¿ø¼Ò ÃßÃâ
+	CIE_ExtractElement,			//ì›ì†Œ ì¶”ì¶œ
 
-	CIE_PREMIUM_SERVICE,			// ÇÁ¸®¹Ì¾ö¼­ºñ½º
+	CIE_PREMIUM_SERVICE,			// í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤
 
-	CIE_Manufacture,			//Áï¼® °¡°ø
+	CIE_Manufacture,			//ì¦‰ì„ ê°€ê³µ
 
-	CIE_PetUpgrade,				//Æê ÀüÁ÷
-	CIE_PetProduceItem,			//Æê ½ºÅ³ (¾ÆÀÌÅÛ »ý»ê)
+	CIE_PetUpgrade,				//íŽ« ì „ì§
+	CIE_PetProduceItem,			//íŽ« ìŠ¤í‚¬ (ì•„ì´í…œ ìƒì‚°)
 
-	CIE_RaceEvent,				//´Þ¸®±â ÀÌº¥Æ®
-	CIE_Constellation,			//º°ÀÚ¸® ´øÀü º¸»ó
-	CIE_Notice,			//Æ¯Á¤ ¾ÆÀÌÅÛ ºê·ÎµåÄÉ½ºÆ® °øÁö.
-	CIE_UserQuestComplete,		// Ä³¸¯ÅÍ Äù½ºÆ® ¿Ï·á
+	CIE_RaceEvent,				//ë‹¬ë¦¬ê¸° ì´ë²¤íŠ¸
+	CIE_Constellation,			//ë³„ìžë¦¬ ë˜ì „ ë³´ìƒ
+	CIE_Notice,			//íŠ¹ì • ì•„ì´í…œ ë¸Œë¡œë“œì¼€ìŠ¤íŠ¸ ê³µì§€.
+	CIE_UserQuestComplete,		// ìºë¦­í„° í€˜ìŠ¤íŠ¸ ì™„ë£Œ
 }EItemModifyParentEventType;
 
 typedef struct tagPlayerModifyOrderData_AddCash
@@ -3877,11 +3877,11 @@ typedef enum
 	GIOT_CHEST		= 8,
 	GIOT_QUEST		= GIOT_NONE,
 
-	GIOT_GM_NORMAL		= 101,//- ³ë¸», 
-	GIOT_GM_RARE		= 102,//- ·¹¾î, 
-	GIOT_GM_UNIQUE		= 103,//- À¯´ÏÅ©, 
-	GIOT_GM_ARTIFACT	= 104,//- ¾ÆÆ¼Æå
-	GIOT_GM_LEGEND		= 105,//-  ·¹Àüµå 
+	GIOT_GM_NORMAL		= 101,//- ë…¸ë§, 
+	GIOT_GM_RARE		= 102,//- ë ˆì–´, 
+	GIOT_GM_UNIQUE		= 103,//- ìœ ë‹ˆí¬, 
+	GIOT_GM_ARTIFACT	= 104,//- ì•„í‹°íŽ™
+	GIOT_GM_LEGEND		= 105,//-  ë ˆì „ë“œ 
 
 	GIOT_GEMSTORE		= 201,// GEM STORE
 
@@ -3890,102 +3890,102 @@ typedef enum
 }E_GEN_ITEM_OPTION_TYPE;
 
 typedef enum eItemModifyEventType : __int64
-{//¾ÆÀÌÅÛÀº ¼ö·®, ¼Ó¼ºÀ» Á¦¿ÜÇÏ°í´Â ¹Ù²ð°ÍÀÌ ¾ø½À´Ï´Ù.
-//°³º° ÀÌº¥Æ®¿¡ ´ëÇÑ ÇÃ·¡±×
+{//ì•„ì´í…œì€ ìˆ˜ëŸ‰, ì†ì„±ì„ ì œì™¸í•˜ê³ ëŠ” ë°”ë€”ê²ƒì´ ì—†ìŠµë‹ˆë‹¤.
+//ê°œë³„ ì´ë²¤íŠ¸ì— ëŒ€í•œ í”Œëž˜ê·¸
 
 	IMET_NONE = 0,
-	//Modify °è¿­Àº TargetÀ» ±âÁØÀ¸·Î ÇÔ.
-	IMET_CMP_BASE				= 0x0000000000000FFF,	//(Bit flag ¿µ¿ª)ÀÎº¥Åä¸®°¡ ÇÏ´À³Ä ÇÃ·¡±×´Â FFF ¿µ¿ª¿¡.
-	IMET_MODIFY_ENCHANT			= 0x0000000000000001,//¼Ó¼º ¹Ù²Ù±â
-	IMET_MODIFY_COUNT			= 0x0000000000000002,//¼ö·® ¹× ³»±¸µµ ¼öÁ¤.	´Ü Max ³»±¸µµ¸¦ ³ÑÀ¸¸é ¾ÈµÊ. ÀÌ°É·Î Áö¿ì±âµµ °¡´É.
-	IMET_MODIFY_POS				= 0x0000000000000004,//À§Ä¡ ÀÌµ¿
-	//Any °è¿­Àº ±âº» ¾ÆÀÌÅÛÀ» ¾Æ¹«ÀÚ¸®¿¡ ³ÖÀ½.
-	IMET_INSERT_FIXED			= 0x0000000000000008,//»ý¼ºµÈ °ªÀ» Æ¯Á¤ or ¾Æ¹« ÀÚ¸®¿¡ ³Ö±â
-	IMET_ADD_ANY				= 0x0000000000000010,//±âº» ¾ÆÀÌÅÛÀ» ¾Æ¹« ÀÚ¸®¶óµµ ³Ö±â or »©±â
-	IMET_ADD_MONEY				= 0x0000000000000020,//µ· ¼öÁ¤//SPMOD_Add_Money
-	IMET_ADD_FIXED				= 0x0000000000000040,//¾ÆÀÌÅÛÀ» Æ¯Á¤ À§Ä¡¿¡ »ý¼º ½ÃÅ²´Ù.IMET_INSERT_FIXED ¿Í´Â ´Ù¸¥ µ¿ÀÛ
-	IMET_MODIFY_DB2INV			= 0x0000000000000080,//µðºñ¿¡ ÀÖ´Â ¾ÆÀÌÅÛÀ» ¹Ù·Î 
-	IMET_ADD_CP					= 0x0000000000000100,//CP ¼öÁ¤//
-	IMET_MODIFY_SYS2INV			= 0x0000000000000200,//ÀÓ½Ã º¸°ü Ã¢¿¡¼­ ÀÎº¥Åä¸®·Î ÀÌµ¿
-	IMET_DELETE_SYSITEM			= 0x0000000000000400,//ÀÓ½Ã º¸°ü Ã¢¿¡¼­ ¾ÆÀÌÅÛ »èÁ¦
+	//Modify ê³„ì—´ì€ Targetì„ ê¸°ì¤€ìœ¼ë¡œ í•¨.
+	IMET_CMP_BASE				= 0x0000000000000FFF,	//(Bit flag ì˜ì—­)ì¸ë²¤í† ë¦¬ê°€ í•˜ëŠëƒ í”Œëž˜ê·¸ëŠ” FFF ì˜ì—­ì—.
+	IMET_MODIFY_ENCHANT			= 0x0000000000000001,//ì†ì„± ë°”ê¾¸ê¸°
+	IMET_MODIFY_COUNT			= 0x0000000000000002,//ìˆ˜ëŸ‰ ë° ë‚´êµ¬ë„ ìˆ˜ì •.	ë‹¨ Max ë‚´êµ¬ë„ë¥¼ ë„˜ìœ¼ë©´ ì•ˆë¨. ì´ê±¸ë¡œ ì§€ìš°ê¸°ë„ ê°€ëŠ¥.
+	IMET_MODIFY_POS				= 0x0000000000000004,//ìœ„ì¹˜ ì´ë™
+	//Any ê³„ì—´ì€ ê¸°ë³¸ ì•„ì´í…œì„ ì•„ë¬´ìžë¦¬ì— ë„£ìŒ.
+	IMET_INSERT_FIXED			= 0x0000000000000008,//ìƒì„±ëœ ê°’ì„ íŠ¹ì • or ì•„ë¬´ ìžë¦¬ì— ë„£ê¸°
+	IMET_ADD_ANY				= 0x0000000000000010,//ê¸°ë³¸ ì•„ì´í…œì„ ì•„ë¬´ ìžë¦¬ë¼ë„ ë„£ê¸° or ë¹¼ê¸°
+	IMET_ADD_MONEY				= 0x0000000000000020,//ëˆ ìˆ˜ì •//SPMOD_Add_Money
+	IMET_ADD_FIXED				= 0x0000000000000040,//ì•„ì´í…œì„ íŠ¹ì • ìœ„ì¹˜ì— ìƒì„± ì‹œí‚¨ë‹¤.IMET_INSERT_FIXED ì™€ëŠ” ë‹¤ë¥¸ ë™ìž‘
+	IMET_MODIFY_DB2INV			= 0x0000000000000080,//ë””ë¹„ì— ìžˆëŠ” ì•„ì´í…œì„ ë°”ë¡œ 
+	IMET_ADD_CP					= 0x0000000000000100,//CP ìˆ˜ì •//
+	IMET_MODIFY_SYS2INV			= 0x0000000000000200,//ìž„ì‹œ ë³´ê´€ ì°½ì—ì„œ ì¸ë²¤í† ë¦¬ë¡œ ì´ë™
+	IMET_DELETE_SYSITEM			= 0x0000000000000400,//ìž„ì‹œ ë³´ê´€ ì°½ì—ì„œ ì•„ì´í…œ ì‚­ì œ
 	IMET_MODIFY_EXTEND_DATA		= 0x0000000000000800,
 
-	//Ãß°¡ ÇÃ·¡±×	//ÇØ´ç ÀÌº¥Æ®°¡ Ãß°¡ÀûÀ¸·Î ¾î¶² ÀÇ¹Ì°¡ ÀÖ´ÂÁö.
-	IMC_CMP_BASE				= 0x0000000000FFF000,	// Bit flag ¿µ¿ª
+	//ì¶”ê°€ í”Œëž˜ê·¸	//í•´ë‹¹ ì´ë²¤íŠ¸ê°€ ì¶”ê°€ì ìœ¼ë¡œ ì–´ë–¤ ì˜ë¯¸ê°€ ìžˆëŠ”ì§€.
+	IMC_CMP_BASE				= 0x0000000000FFF000,	// Bit flag ì˜ì—­
 
 	IMC_DB_INIT					= 0x0000000000001000,
 	IMC_UPGRADE_SUCCESS			= 0x0000000000002000,
 	IMC_UPGRADE_FAILED			= 0x0000000000004000,
-	IMC_DEC_DUR_BY_USE			= 0x0000000000008000,//»ç¿ë
-	IMC_DEC_DUR_BY_BATTLE		= 0x0000000000010000,//½Î¿òÁß
-	IMC_DEC_DUR_BY_SHOP_SELL	= 0x0000000000020000,//ÆÇ¸Å
-	IMC_INC_DUR_BY_REPAIR		= 0x0000000000040000,//¼ö¸®
-	IMC_POS_BY_EXCHANGE			= 0x0000000000080000,//À§Ä¡ ¹Ù²î´Â°Í
-	IMC_DEC_DUR_BY_PENALTY		= 0x0000000000100000,//»ç¸ÁÆÐ³ÎÆ¼
-	IMC_POS_BY_SORT				= 0x0000000000200000,//Á¤·Ä
-	IMC_GUILD_INV				= 0x0000000000400000,//±æµåÀÎº¥
-	IMC_MODIFY_PET_INV			= 0x0000000000800000,//ÆêÀÎº¥....
+	IMC_DEC_DUR_BY_USE			= 0x0000000000008000,//ì‚¬ìš©
+	IMC_DEC_DUR_BY_BATTLE		= 0x0000000000010000,//ì‹¸ì›€ì¤‘
+	IMC_DEC_DUR_BY_SHOP_SELL	= 0x0000000000020000,//íŒë§¤
+	IMC_INC_DUR_BY_REPAIR		= 0x0000000000040000,//ìˆ˜ë¦¬
+	IMC_POS_BY_EXCHANGE			= 0x0000000000080000,//ìœ„ì¹˜ ë°”ë€ŒëŠ”ê²ƒ
+	IMC_DEC_DUR_BY_PENALTY		= 0x0000000000100000,//ì‚¬ë§íŒ¨ë„í‹°
+	IMC_POS_BY_SORT				= 0x0000000000200000,//ì •ë ¬
+	IMC_GUILD_INV				= 0x0000000000400000,//ê¸¸ë“œì¸ë²¤
+	IMC_MODIFY_PET_INV			= 0x0000000000800000,//íŽ«ì¸ë²¤....
 	IMC_UNIT_ABIL_CHANGED		= IMET_MODIFY_POS,
 	
-	IMET_CAUSE_AREA				= 0xFFFF000000000000,	// ÀÌ¿µ¿ªÀº Bit flag °ªÀ¸·Î ÇÒ ÇÊ¿ä ¾øÀ½.
-	IMET_SET_ABIL				= 0x0001000000000000,//·¹º§.
+	IMET_CAUSE_AREA				= 0xFFFF000000000000,	// ì´ì˜ì—­ì€ Bit flag ê°’ìœ¼ë¡œ í•  í•„ìš” ì—†ìŒ.
+	IMET_SET_ABIL				= 0x0001000000000000,//ë ˆë²¨.
 	IMET_ADD_ABIL				= 0x0002000000000000,
-	IMET_SET_ABIL64				= 0x0003000000000000,//·¹º§.
+	IMET_SET_ABIL64				= 0x0003000000000000,//ë ˆë²¨.
 	IMET_ADD_ABIL64				= 0x0004000000000000,
 	IMET_ADD_SKILL				= 0x0005000000000000,
-	IMET_ADD_INGQUEST			= 0x0006000000000000,//ÁøÇàÁ¤º¸ Ãß°¡/Á¦°Å/»óÅÂ °­Á¦ º¯È­ (½ÃÀÛ/¿Ï·á/Æ÷±â)(¿Ï·á°¡´É/½ÇÆÐ/ÁøÇàÁß)
-	IMET_ADD_ENDQUEST			= 0x0007000000000000,//¿Ï·áÁ¤º¸ °»½Å
-	IMET_ADD_INGQUEST_PARAM		= 0x0008000000000000,//ÁøÇàÁ¤º¸ ÆÄ¶ó¸ÞÅÍ º¯È­
-	IMET_BUILD_DAYLOOP			= 0x0009000000000000,//ÀÏº°·Î ¹Ýº¹µÇ´Â Äù½ºÆ® ºôµå
+	IMET_ADD_INGQUEST			= 0x0006000000000000,//ì§„í–‰ì •ë³´ ì¶”ê°€/ì œê±°/ìƒíƒœ ê°•ì œ ë³€í™” (ì‹œìž‘/ì™„ë£Œ/í¬ê¸°)(ì™„ë£Œê°€ëŠ¥/ì‹¤íŒ¨/ì§„í–‰ì¤‘)
+	IMET_ADD_ENDQUEST			= 0x0007000000000000,//ì™„ë£Œì •ë³´ ê°±ì‹ 
+	IMET_ADD_INGQUEST_PARAM		= 0x0008000000000000,//ì§„í–‰ì •ë³´ íŒŒë¼ë©”í„° ë³€í™”
+	IMET_BUILD_DAYLOOP			= 0x0009000000000000,//ì¼ë³„ë¡œ ë°˜ë³µë˜ëŠ” í€˜ìŠ¤íŠ¸ ë¹Œë“œ
 	IMET_ADD_GUILDEXP			= 0x000A000000000000,
-	IMET_SET_GUID				= 0x000B000000000000,// Ä¿ÇÃ, ±æµå
-	IMET_ADD_RANK_POINT			= 0x000C000000000000,// ·©Å·Æ÷ÀÎÆ®
+	IMET_SET_GUID				= 0x000B000000000000,// ì»¤í”Œ, ê¸¸ë“œ
+	IMET_ADD_RANK_POINT			= 0x000C000000000000,// ëž­í‚¹í¬ì¸íŠ¸
 	IMET_CONTENTS_EVENT			= 0x000D000000000000,// Contents Server Event (MapMove or Disconnect)
-	IMET_ADD_PVP_RANK_RECORD	= 0x000E000000000000,// PVP ±â·Ï
-	IMET_ADD_WORLD_MAP			= 0x000F000000000000,// ¿ùµå¸Ê ±â·Ï
-	IMET_END_MISSION			= 0x0010000000000000,// ¹Ì¼Ç °á°úÃ¢ º¸±â(½Ã³ª¸®¿À ¹Ì¼ÇÀÌ ¾Æ´Ò °æ¿ì¸¸)
-	IMET_SWAP_MISSION			= 0x0011000000000000,// ¹Ì¼Ç ½ºÅ×ÀÌÁö º¯°æÇÏ±â
+	IMET_ADD_PVP_RANK_RECORD	= 0x000E000000000000,// PVP ê¸°ë¡
+	IMET_ADD_WORLD_MAP			= 0x000F000000000000,// ì›”ë“œë§µ ê¸°ë¡
+	IMET_END_MISSION			= 0x0010000000000000,// ë¯¸ì…˜ ê²°ê³¼ì°½ ë³´ê¸°(ì‹œë‚˜ë¦¬ì˜¤ ë¯¸ì…˜ì´ ì•„ë‹ ê²½ìš°ë§Œ)
+	IMET_SWAP_MISSION			= 0x0011000000000000,// ë¯¸ì…˜ ìŠ¤í…Œì´ì§€ ë³€ê²½í•˜ê¸°
 	IMET_REQ_REMOVE_GROUND		= 0x0012000000000000,
-	IMET_END_MISSION_EVENT		= 0x0013000000000000,// ÀÌº¥Æ® ¹Ì¼Ç µî±Þ
-	IMET_SET_SWEETHEART			= 0x0014000000000000,// ¿¬ÀÎ
-	IMET_BUILD_RANDOM_QUEST		= 0x0015000000000000,// ·£´ý Äù½ºÆ® ¸¸µé¾î
-	IMET_SET_DATE_CONTENTS		= 0x0016000000000000,// ³¯ÀÚ,½Ã°£ ÄÁÅÙÃ÷ ¼³Á¤
-	IMET_BUILD_TACTICS_QUEST	= 0x0017000000000000,// ±æµå ·£´ý Äù½ºÆ® ¸¸µé¾î
-	IMET_ADD_ABIL64_MAPUSE		= 0x0018000000000000,// ¸Ê¼­¹ö¿¡¼­ °ªÀ» AddAbil ÇÒ °ª (ContentsServer ¿¡¼­´Â skip ÇÏ±â)
-	IMET_BUILD_WANTED_QUEST		= 0x0019000000000000,// Çö»ó ¼ö¹è Äù½ºÆ® ºôµå
-	IMET_BUILD_DAYLOOP_FORCE	= 0x001A000000000000,// °­Á¦·Î ÀÏÀÏ Äù½ºÆ®µé ºôµå
-	IMET_CLEAR_ING_QUEST		= 0x001B000000000000,// ÁøÇàÁß Äù½ºÆ® ¸ðµÎ Á¦°Å
-	IMET_INIT_WANTED_QUEST		= 0x0020000000000000,// Çö»ó ¼ö¹è Äù½ºÆ®(Å¬¸®¾î Ä«¿îÆ®) ÃÊ±âÈ­
-	IMET_PRE_CHECK_WANTED_QUEST = 0x0021000000000000,// Çö»ó ¼ö¹è Äù½ºÆ® ºôµå ÇÒ ¼ö ÀÖ´ÂÁö Ã¼Å©(ÇÃ·¹ÀÌ¾îÀÇ ·¹º§¿¡ ºôµå ÇÒ ¼ö ÀÖ´Â Äù½ºÆ®°¡ ÀÖ´Â°¡?)
-	IMET_BUILD_WEEKLOOP			= 0x0022000000000000,// ÁÖ°£Äù½ºÆ®
+	IMET_END_MISSION_EVENT		= 0x0013000000000000,// ì´ë²¤íŠ¸ ë¯¸ì…˜ ë“±ê¸‰
+	IMET_SET_SWEETHEART			= 0x0014000000000000,// ì—°ì¸
+	IMET_BUILD_RANDOM_QUEST		= 0x0015000000000000,// ëžœë¤ í€˜ìŠ¤íŠ¸ ë§Œë“¤ì–´
+	IMET_SET_DATE_CONTENTS		= 0x0016000000000000,// ë‚ ìž,ì‹œê°„ ì»¨í…ì¸  ì„¤ì •
+	IMET_BUILD_TACTICS_QUEST	= 0x0017000000000000,// ê¸¸ë“œ ëžœë¤ í€˜ìŠ¤íŠ¸ ë§Œë“¤ì–´
+	IMET_ADD_ABIL64_MAPUSE		= 0x0018000000000000,// ë§µì„œë²„ì—ì„œ ê°’ì„ AddAbil í•  ê°’ (ContentsServer ì—ì„œëŠ” skip í•˜ê¸°)
+	IMET_BUILD_WANTED_QUEST		= 0x0019000000000000,// í˜„ìƒ ìˆ˜ë°° í€˜ìŠ¤íŠ¸ ë¹Œë“œ
+	IMET_BUILD_DAYLOOP_FORCE	= 0x001A000000000000,// ê°•ì œë¡œ ì¼ì¼ í€˜ìŠ¤íŠ¸ë“¤ ë¹Œë“œ
+	IMET_CLEAR_ING_QUEST		= 0x001B000000000000,// ì§„í–‰ì¤‘ í€˜ìŠ¤íŠ¸ ëª¨ë‘ ì œê±°
+	IMET_INIT_WANTED_QUEST		= 0x0020000000000000,// í˜„ìƒ ìˆ˜ë°° í€˜ìŠ¤íŠ¸(í´ë¦¬ì–´ ì¹´ìš´íŠ¸) ì´ˆê¸°í™”
+	IMET_PRE_CHECK_WANTED_QUEST = 0x0021000000000000,// í˜„ìƒ ìˆ˜ë°° í€˜ìŠ¤íŠ¸ ë¹Œë“œ í•  ìˆ˜ ìžˆëŠ”ì§€ ì²´í¬(í”Œë ˆì´ì–´ì˜ ë ˆë²¨ì— ë¹Œë“œ í•  ìˆ˜ ìžˆëŠ” í€˜ìŠ¤íŠ¸ê°€ ìžˆëŠ”ê°€?)
+	IMET_BUILD_WEEKLOOP			= 0x0022000000000000,// ì£¼ê°„í€˜ìŠ¤íŠ¸
 
 //	IMET_SET_POINT3				= 0x0030000000000000,
-	IMET_SET_RENTALSAFETIME		= 0x0031000000000000,// Ä³½Ã Ã¢°í À¯Áö½Ã°£ ¼³Á¤
+	IMET_SET_RENTALSAFETIME		= 0x0031000000000000,// ìºì‹œ ì°½ê³  ìœ ì§€ì‹œê°„ ì„¤ì •
 
 	IMET_OPEN_MARKET			= 0x0032000000000000,	// OM Market open
-	IMET_ADD_ARTICLE			= 0x0033000000000000,	// OM article µî·Ï
-	IMET_REMOVE_ARTICLE			= 0x0034000000000000,	// OM article È¸¼ö
-	IMET_BUY_ARTICLE			= 0x0035000000000000,	// OM article ±¸¸Å
+	IMET_ADD_ARTICLE			= 0x0033000000000000,	// OM article ë“±ë¡
+	IMET_REMOVE_ARTICLE			= 0x0034000000000000,	// OM article íšŒìˆ˜
+	IMET_BUY_ARTICLE			= 0x0035000000000000,	// OM article êµ¬ë§¤
 	IMET_MODIFY_MARKET_INFO		= 0x0036000000000000,
 	IMET_MODIFY_MARKET_STATE	= 0x0037000000000000,
-	IMET_REMOVE_ARTICLE_CASH	= 0x0038000000000000,	// OM¿¡¼­ Cash article »èÁ¦
+	IMET_REMOVE_ARTICLE_CASH	= 0x0038000000000000,	// OMì—ì„œ Cash article ì‚­ì œ
 
 	IMET_CREATE_MAIL			= 0x0040000000000000,
-	IMET_REMOVE_DEALING			= 0x0041000000000000,	// OM ÆÇ¸Å ±Ý¾× È¸¼ö
+	IMET_REMOVE_DEALING			= 0x0041000000000000,	// OM íŒë§¤ ê¸ˆì•¡ íšŒìˆ˜
 	IMET_REMOVE_MARKET			= 0x0042000000000000,
 	IMET_ADD_CASH				= 0x0043000000000000,
 
-	IMET_COMPLETE_ACHIEVEMENT	= 0x0044000000000000,	// ¿Ï·áµÈ ¾÷Àû ±â·Ï
-	IMET_ACHIEVEMENT2INV		= 0x0045000000000000,	// ÈÆÀåÀ» ¾ÆÀÌÅÛÀ¸·Î º¯È¯
+	IMET_COMPLETE_ACHIEVEMENT	= 0x0044000000000000,	// ì™„ë£Œëœ ì—…ì  ê¸°ë¡
+	IMET_ACHIEVEMENT2INV		= 0x0045000000000000,	// í›ˆìž¥ì„ ì•„ì´í…œìœ¼ë¡œ ë³€í™˜
 	IMET_SET_ACHIEVEMENT		= 0x0046000000000000,
-	IMET_INV2ACHIEVEMENT		= 0x0047000000000000,	// ¾ÆÀÌÅÛÀ» ´Ù½Ã ÈÆÀåÀ¸·Î ¹ÝÈ¯
+	IMET_INV2ACHIEVEMENT		= 0x0047000000000000,	// ì•„ì´í…œì„ ë‹¤ì‹œ í›ˆìž¥ìœ¼ë¡œ ë°˜í™˜
 
-	IMET_ADD_UNBIND_DATE		= 0x0048000000000000,// ¾ÆÀÌÅÛ Àá±Ý ÇØÁö ´ë±â ±â°£ µî·Ï
+	IMET_ADD_UNBIND_DATE		= 0x0048000000000000,// ì•„ì´í…œ ìž ê¸ˆ í•´ì§€ ëŒ€ê¸° ê¸°ê°„ ë“±ë¡
 	IMET_CASH_SHOP_GIFT			= 0x0049000000000000,
-	IMET_DEL_UNBIND_DATE		= 0x0050000000000000,// ¾ÆÀÌÅÛ Àá±Ý ÇØÁö ´ë±â ±â°£ »èÁ¦
+	IMET_DEL_UNBIND_DATE		= 0x0050000000000000,// ì•„ì´í…œ ìž ê¸ˆ í•´ì§€ ëŒ€ê¸° ê¸°ê°„ ì‚­ì œ
 
 	IMET_SET_DEFAULT_ITEM		= 0x0051000000000000,
-	IMET_INVENTORY_EXTEND		= 0x0052000000000000,// ÀÎº¥Åä¸® È®Àå
+	IMET_INVENTORY_EXTEND		= 0x0052000000000000,// ì¸ë²¤í† ë¦¬ í™•ìž¥
 
 	IMET_CREATE_CHARACTERCARD	= 0x0053000000000000,
 	IMET_MODIFY_CHARACTERCARD	= 0x0054000000000000,
@@ -4019,51 +4019,51 @@ typedef enum eItemModifyEventType : __int64
 	IMET_MYHOME_PAY_TEX			= 0x006F000000000000,
 	IMET_MYHOME_RETURN_ITEM		= 0x0070000000000000,
 	IMET_MYHOME_STYLE_MODIFY	= 0x0071000000000000,
-	IMET_MYHOME_TEX_TIME		= 0x0072000000000000,// ¼¼±Ý ³³ºÎ ½Ã°£ º¯°æ
-	IMET_MYHOME_AUCTION_TIME	= 0x0073000000000000,// °æ¸Å Á¾·á ½Ã°£ º¯°æ
+	IMET_MYHOME_TEX_TIME		= 0x0072000000000000,// ì„¸ê¸ˆ ë‚©ë¶€ ì‹œê°„ ë³€ê²½
+	IMET_MYHOME_AUCTION_TIME	= 0x0073000000000000,// ê²½ë§¤ ì¢…ë£Œ ì‹œê°„ ë³€ê²½
 	IMET_CREATE_MAIL_BYGUID		= 0x0074000000000000,
 	IMET_MYHOME_SET_OWNER_INFO	= 0x0075000000000000,
 	IMET_MYHOME_SET_HOME_STATE	= 0x0076000000000000,
-	IMET_MYHOME_RESERVE			= 0x0077000000000000,// À¯´Ö ¿¹¾à
+	IMET_MYHOME_RESERVE			= 0x0077000000000000,// ìœ ë‹› ì˜ˆì•½
 	IMET_MYHOME_SET_HOMEADDR	= 0x0078000000000000,
 
-	IMET_EXTEND_CHARACTER_NUM	= 0x0079000000000000,// Ä³¸¯ »ý¼º °³¼ö È®Àå
+	IMET_EXTEND_CHARACTER_NUM	= 0x0079000000000000,// ìºë¦­ ìƒì„± ê°œìˆ˜ í™•ìž¥
 	IMET_ACTIVE_STATUS			= 0x007A000000000000, // ActiveStatus
 
 	IMET_TRANSTOWER_SAVE_RECENT = 0x007B000000000000,
 	IMET_COMPLETE_HIDDEN_OPEN	= 0x007C000000000000,
 	IMET_SET_HIDDEN_OPEN		= 0x007D000000000000,
 
-	IMET_SET_TODAYPOPULARPOINT	= 0x007E000000000000,// ¿À´ÃÀÇ ÀÎ±âµµ ¼³Á¤
-	IMET_ADD_ABIL64EX			= 0x007F000000000000,// ÈÞ½Ä °æÇèÄ¡ ¶§¹®¿¡ ¾îºô¿¡ Ãß°¡ Á¤º¸ Ãß°¡ °¡´ÉÇÏ°Ô ÀÛ¾÷
-	IMET_SIDEJOB_INSERT			= 0x0080000000000000,// ¾Æ¸£¹ÙÀÌÆ® Ãß°¡
-	IMET_SIDEJOB_REMOVE			= 0x0081000000000000,// ¾Æ¸£¹ÙÀÌÆ® »èÁ¦
-	IMET_SIDEJOB_MODIFY			= 0x0082000000000000,// ¾Æ¸£¹ÙÀÌÆ® ¼öÁ¤
-	IMET_SIDEJOB_COMPLETE		= 0x0083000000000000,// ¾Æ¸£¹ÙÀÌÆ® ¿Ï·á
-	IMET_MYHOME_SET_EQUIP_COUNT	= 0x0084000000000000,// ³»ºÎ ¸¶ÀÌÈ¨ ÀåºñµÈ ¾ÆÀÌÅÛ °³¼ö µ¿±âÈ­
+	IMET_SET_TODAYPOPULARPOINT	= 0x007E000000000000,// ì˜¤ëŠ˜ì˜ ì¸ê¸°ë„ ì„¤ì •
+	IMET_ADD_ABIL64EX			= 0x007F000000000000,// íœ´ì‹ ê²½í—˜ì¹˜ ë•Œë¬¸ì— ì–´ë¹Œì— ì¶”ê°€ ì •ë³´ ì¶”ê°€ ê°€ëŠ¥í•˜ê²Œ ìž‘ì—…
+	IMET_SIDEJOB_INSERT			= 0x0080000000000000,// ì•„ë¥´ë°”ì´íŠ¸ ì¶”ê°€
+	IMET_SIDEJOB_REMOVE			= 0x0081000000000000,// ì•„ë¥´ë°”ì´íŠ¸ ì‚­ì œ
+	IMET_SIDEJOB_MODIFY			= 0x0082000000000000,// ì•„ë¥´ë°”ì´íŠ¸ ìˆ˜ì •
+	IMET_SIDEJOB_COMPLETE		= 0x0083000000000000,// ì•„ë¥´ë°”ì´íŠ¸ ì™„ë£Œ
+	IMET_MYHOME_SET_EQUIP_COUNT	= 0x0084000000000000,// ë‚´ë¶€ ë§ˆì´í™ˆ ìž¥ë¹„ëœ ì•„ì´í…œ ê°œìˆ˜ ë™ê¸°í™”
 
 	IMET_GAMBLE_INSERT			= 0x0085000000000000,
 	IMET_GAMBLE_MODIFY			= 0x0086000000000000,
 	IMET_GAMBLE_REMOVE			= 0x0087000000000000,
 
-	IMET_MYHOME_SIDEJOB_ENTER	= 0x0088000000000000,// ¾Æ¸£¹ÙÀÌÆ® ÁøÇàÁßÀÎ ¸¶ÀÌÈ¨ µé¾î°¡±â
+	IMET_MYHOME_SIDEJOB_ENTER	= 0x0088000000000000,// ì•„ë¥´ë°”ì´íŠ¸ ì§„í–‰ì¤‘ì¸ ë§ˆì´í™ˆ ë“¤ì–´ê°€ê¸°
 
-	IMET_SAVE_ACHIEVEMENTS		= 0x0089000000000000,// ¾÷Àû ÀúÀå
+	IMET_SAVE_ACHIEVEMENTS		= 0x0089000000000000,// ì—…ì  ì €ìž¥
 
-	IMET_MYHOME_SET_VISITLOGCOUNT = 0x008A000000000000,// ¹æ¹®·Ï ±â·Ï °³¼ö °»½Å
-	IMET_MYHOME_ADD_VISITLOGCOUNT = 0x008B000000000000,// ¹æ¹®·Ï ±â·Ï °³¼ö °»½Å
+	IMET_MYHOME_SET_VISITLOGCOUNT = 0x008A000000000000,// ë°©ë¬¸ë¡ ê¸°ë¡ ê°œìˆ˜ ê°±ì‹ 
+	IMET_MYHOME_ADD_VISITLOGCOUNT = 0x008B000000000000,// ë°©ë¬¸ë¡ ê¸°ë¡ ê°œìˆ˜ ê°±ì‹ 
 
-	IMET_GAMBLE_MIXUP_INSERT		= 0x008C000000000000,// Ä³½Ã¼¥ ÄÚ½ºÆ¬ Á¶ÇÕ
-	IMET_GAMBLE_MIXUP_MODIFY		= 0x008D000000000000,// Ä³½Ã¼¥ ÄÚ½ºÆ¬ Á¶ÇÕ
-	IMET_GAMBLE_MIXUP_REMOVE		= 0x008E000000000000,// Ä³½Ã¼¥ ÄÚ½ºÆ¬ Á¶ÇÕ
+	IMET_GAMBLE_MIXUP_INSERT		= 0x008C000000000000,// ìºì‹œìƒµ ì½”ìŠ¤íŠ¬ ì¡°í•©
+	IMET_GAMBLE_MIXUP_MODIFY		= 0x008D000000000000,// ìºì‹œìƒµ ì½”ìŠ¤íŠ¬ ì¡°í•©
+	IMET_GAMBLE_MIXUP_REMOVE		= 0x008E000000000000,// ìºì‹œìƒµ ì½”ìŠ¤íŠ¬ ì¡°í•©
 
-	IMET_SET_ACHIEVEMENT_TIMELIMIT	= 0x008F000000000000,// ¾÷Àû »ç¿ë ±â°£ ¼³Á¤
+	IMET_SET_ACHIEVEMENT_TIMELIMIT	= 0x008F000000000000,// ì—…ì  ì‚¬ìš© ê¸°ê°„ ì„¤ì •
 
-	IMET_SET_SKILLEXTEND			= 0x0090000000000000,// ½ºÅ³ ¹è¿ì±â È®Àå
+	IMET_SET_SKILLEXTEND			= 0x0090000000000000,// ìŠ¤í‚¬ ë°°ìš°ê¸° í™•ìž¥
 
-	IMET_MYHOME_REMOVE				= 0x0091000000000000,// ¸¶ÀÌÈ¨ »èÁ¦
+	IMET_MYHOME_REMOVE				= 0x0091000000000000,// ë§ˆì´í™ˆ ì‚­ì œ
 
-	IMET_SET_STRATEGYSKILL_TABNO	= 0x0092000000000000,// Àü·«½ºÅ³ º¯°æ
+	IMET_SET_STRATEGYSKILL_TABNO	= 0x0092000000000000,// ì „ëžµìŠ¤í‚¬ ë³€ê²½
 
 	IMET_EMPORIA_FUNCTION			= 0x0093000000000000,
 
@@ -4077,7 +4077,7 @@ typedef enum eItemModifyEventType : __int64
 	IMET_JOBSKILL_ADD_EXHAUSTION	= 0x009A000000000000,
 	IMET_JOBSKILL_RESET_EXHAUSTION	= 0x009B000000000000,
 	IMET_JOBSKILL_INIT_EXHAUSTION	= 0x009C000000000000,
-	IMET_JOBSKILL_SET_EXPERTNESS	= 0x009D000000000000,	// !!ÁÖÀÇ!! µî·Ïµµ °âÇÑ´Ù
+	IMET_JOBSKILL_SET_EXPERTNESS	= 0x009D000000000000,	// !!ì£¼ì˜!! ë“±ë¡ë„ ê²¸í•œë‹¤
 	IMET_DEL_SKILL				    = 0x009E000000000000,
 	IMET_JOBSKILL_ADD_BLESSPOINT	= 0x009F000000000000,
 	IMET_JOBSKILL_INIT_BLESSPOINT	= 0x00A0000000000000,
@@ -4087,7 +4087,7 @@ typedef enum eItemModifyEventType : __int64
 	IMET_PREMIUM_SERVICE_REMOVE		= 0x00A5000000000000,
 	IMET_PREMIUM_ARTICLE_MODIFY		= 0x00A6000000000000,
 
-	IMD_MERGED_SUCCESS			= 0x0000000000100000,	// ItemÀÌ Merge µÇ¾ú´Ù.
+	IMD_MERGED_SUCCESS			= 0x0000000000100000,	// Itemì´ Merge ë˜ì—ˆë‹¤.
 
 
 }EItemModifyEventType;
@@ -4161,53 +4161,53 @@ typedef struct tagDBItemStateChange
 	
 	CLASS_DECLARATION_S(__int64, Cause);
 
-	CLASS_DECLARATION_S(BM::GUID, RetOwnerGuid);//¼ÒÀ¯ÀÚ Guid (Ä³¸¯ÅÍ guid ¶Ç´Â ¸É¹ö guid µÑ ´Ù »ç¿ë °¡´ÉÇÏ´Ù.)
-	CLASS_DECLARATION_S(BM::GUID, CharacterGuid);//¼ÒÀ¯ÀÚ Ä³¸¯ÅÍ Guid
+	CLASS_DECLARATION_S(BM::GUID, RetOwnerGuid);//ì†Œìœ ìž Guid (ìºë¦­í„° guid ë˜ëŠ” ë§´ë²„ guid ë‘˜ ë‹¤ ì‚¬ìš© ê°€ëŠ¥í•˜ë‹¤.)
+	CLASS_DECLARATION_S(BM::GUID, CharacterGuid);//ì†Œìœ ìž ìºë¦­í„° Guid
 
 	CLASS_DECLARATION_S(PgItemWrapper, ItemWrapper);
-	CLASS_DECLARATION_S(PgItemWrapper, PrevItemWrapper);//ÀÌÀü Á¤º¸ -> ¾È³»¿ë Ã¥ÀÚ·Î ½á¶ó.
+	CLASS_DECLARATION_S(PgItemWrapper, PrevItemWrapper);//ì´ì „ ì •ë³´ -> ì•ˆë‚´ìš© ì±…ìžë¡œ ì¨ë¼.
 
-	CLASS_DECLARATION_S(bool, IsQuery);		// ½ÇÁ¦·Î DBÄõ¸®¸¦ ÇÒ°ÍÀÎÁö (ÆÐÅ¶Àü¼Û ¾øÀ½)
-	CLASS_DECLARATION_S(EOrderOwnerType, OwnerType); // °á°ú¸¦ ¹ÞÀ» ´ë»ó (Ç×»ó ±âº»Àº OOT_Player) (ÆÐÅ¶Àü¼Û ¾øÀ½)
+	CLASS_DECLARATION_S(bool, IsQuery);		// ì‹¤ì œë¡œ DBì¿¼ë¦¬ë¥¼ í• ê²ƒì¸ì§€ (íŒ¨í‚·ì „ì†¡ ì—†ìŒ)
+	CLASS_DECLARATION_S(EOrderOwnerType, OwnerType); // ê²°ê³¼ë¥¼ ë°›ì„ ëŒ€ìƒ (í•­ìƒ ê¸°ë³¸ì€ OOT_Player) (íŒ¨í‚·ì „ì†¡ ì—†ìŒ)
 
-	BM::Stream	kAddonData;				// Ãß°¡ µ¥ÀÌÅÍ Àü¼Û¿ë
+	BM::Stream	kAddonData;				// ì¶”ê°€ ë°ì´í„° ì „ì†¡ìš©
 
 	size_t min_size()const
 	{
 		return 
 			sizeof(m_kState)+ //1:Create 2:Modify 3:Remove
 			sizeof(m_kCause)+
-			sizeof(m_kRetOwnerGuid)+//¼ÒÀ¯ÀÚ Guid
-			sizeof(m_kCharacterGuid)+//¼ÒÀ¯ÀÚ Guid
+			sizeof(m_kRetOwnerGuid)+//ì†Œìœ ìž Guid
+			sizeof(m_kCharacterGuid)+//ì†Œìœ ìž Guid
 			m_kItemWrapper.min_size()+
 			m_kPrevItemWrapper.min_size()+
-			sizeof(size_t);// kPacket.Pop(kAddonData.Data());		// Ãß°¡ µ¥ÀÌÅÍ Àü¼Û¿ë
+			sizeof(size_t);// kPacket.Pop(kAddonData.Data());		// ì¶”ê°€ ë°ì´í„° ì „ì†¡ìš©
 	}
 
 	void WriteToPacket(BM::Stream & kPacket) const
 	{
 		kPacket.Push(m_kState); //1:Create 2:Modify 3:Remove
 		kPacket.Push(m_kCause);
-		kPacket.Push(m_kRetOwnerGuid);//¼ÒÀ¯ÀÚ Guid
-		kPacket.Push(m_kCharacterGuid);//¼ÒÀ¯ÀÚ Guid
+		kPacket.Push(m_kRetOwnerGuid);//ì†Œìœ ìž Guid
+		kPacket.Push(m_kCharacterGuid);//ì†Œìœ ìž Guid
 		m_kItemWrapper.WriteToPacket(kPacket);
-		m_kPrevItemWrapper.WriteToPacket(kPacket);//ÀÌÀü Á¤º¸ -> ¾È³»¿ë Ã¥ÀÚ·Î ½á¶ó.
-		kPacket.Push(kAddonData.Data());		// Ãß°¡ µ¥ÀÌÅÍ Àü¼Û¿ë
+		m_kPrevItemWrapper.WriteToPacket(kPacket);//ì´ì „ ì •ë³´ -> ì•ˆë‚´ìš© ì±…ìžë¡œ ì¨ë¼.
+		kPacket.Push(kAddonData.Data());		// ì¶”ê°€ ë°ì´í„° ì „ì†¡ìš©
 	}
 
 	void ReadFromPacket(BM::Stream & kPacket)
 	{
 		kPacket.Pop(m_kState); //1:Create 2:Modify 3:Remove
 		kPacket.Pop(m_kCause);
-		kPacket.Pop(m_kRetOwnerGuid);//¼ÒÀ¯ÀÚ Guid
-		kPacket.Pop(m_kCharacterGuid);//¼ÒÀ¯ÀÚ Guid
+		kPacket.Pop(m_kRetOwnerGuid);//ì†Œìœ ìž Guid
+		kPacket.Pop(m_kCharacterGuid);//ì†Œìœ ìž Guid
 		m_kItemWrapper.ReadFromPacket(kPacket);
 		m_kPrevItemWrapper.ReadFromPacket(kPacket);
-		kPacket.Pop(kAddonData.Data());		// Ãß°¡ µ¥ÀÌÅÍ Àü¼Û¿ë
+		kPacket.Pop(kAddonData.Data());		// ì¶”ê°€ ë°ì´í„° ì „ì†¡ìš©
 		kAddonData.PosAdjust();
 	}
 
-}DB_ITEM_STATE_CHANGE;//µðºñ ±â·Ï¿ë
+}DB_ITEM_STATE_CHANGE;//ë””ë¹„ ê¸°ë¡ìš©
 
 
 typedef std::vector< DB_ITEM_STATE_CHANGE > DB_ITEM_STATE_CHANGE_ARRAY;
@@ -4221,7 +4221,7 @@ enum E_ITEM_PLUSE_UPGRADE_LEVEL_LIMIT
 	IPULL_RARE_LIMIT		= 10,
 	IPULL_UNIQUE_LIMIT		= 15,
 	IPULL_ARTIFACT_LIMIT	= 20,
-	IPULL_LEGEND_LIMIT		= 20,//real limit
+	IPULL_LEGEND_LIMIT		= 30,//real limit
 	IPULL_LIMIT_MAX			= 30,
 
 	//Items 1-59
@@ -4229,21 +4229,21 @@ enum E_ITEM_PLUSE_UPGRADE_LEVEL_LIMIT
 	IPULL_RARE_LIMIT_1 = 10,
 	IPULL_UNIQUE_LIMIT_1 = 15,
 	IPULL_ARTIFACT_LIMIT_1 = 20,
-	IPULL_LEGEND_LIMIT_1 = 20,
+	IPULL_LEGEND_LIMIT_1 = 30,
 
 	//Items 60+
 	IPULL_NORMAL_LIMIT_60 = 7,
 	IPULL_RARE_LIMIT_60 = 10,
 	IPULL_UNIQUE_LIMIT_60  = 15,
 	IPULL_ARTIFACT_LIMIT_60 = 20,
-	IPULL_LEGEND_LIMIT_60 = 20,
+	IPULL_LEGEND_LIMIT_60 = 30,
 
 	//Items 70+
 	IPULL_NORMAL_LIMIT_70 = 7,
 	IPULL_RARE_LIMIT_70 = 10,
 	IPULL_UNIQUE_LIMIT_70 = 15,
 	IPULL_ARTIFACT_LIMIT_70 = 20,
-	IPULL_LEGEND_LIMIT_70 = 20,
+	IPULL_LEGEND_LIMIT_70 = 30,
 };
 
 int const ITEM_PLUSE_UPGRADE_NOTI_LIMIT = 19;
@@ -4275,22 +4275,22 @@ enum E_GEMSTORE_TYPE
 	EGT_JOBSKILL_1		= 3,
 	EGT_JOBSKILL_2		= 4,
 	EGT_ELEMENT			= 5,
-	EGT_ANTIQUE			= 6, //°ñµ¿Ç°
+	EGT_ANTIQUE			= 6, //ê³¨ë™í’ˆ
 	EGT_SOCKETCARD		= 7,
 	EGT_CARDBOX			= 8,
-	EGT_GATHER			= 9, //Ã¤Áý±³È¯
-	EGT_EVENT			= 10,//ÀÌº¥Æ®¿ë
+	EGT_GATHER			= 9, //ì±„ì§‘êµí™˜
+	EGT_EVENT			= 10,//ì´ë²¤íŠ¸ìš©
 	EGT_ELUNIUM			= 11,
-	EGT_VALKYRIE		= 12,//¹ßÅ°¸®Àåºñ ±³È¯
-	EGT_PURESILVER_KEY	= 13,//¼øÀº¿­¼è ±³È¯
-	EGT_ITEM			= 14,//Çà¿îÀÇ ¾Ë ¶Ç´Â ¾ÆÀÌÅÛ ±³È¯
-	EGT_TREE_ITEM		= 15,//¾ÆÀÌÅÛ ±³È¯Ã¢¿¡ ¾ÆÀÌÅÛ Æ®¸® Ç¥½Ã
-	EGT_ITEM_SHOP		= 16,//¾ÆÀÌÅÛ ±³È¯
-	EGT_ITEM_PLUS		= 17,//¾ÆÀÌÅÛ °­È­
+	EGT_VALKYRIE		= 12,//ë°œí‚¤ë¦¬ìž¥ë¹„ êµí™˜
+	EGT_PURESILVER_KEY	= 13,//ìˆœì€ì—´ì‡  êµí™˜
+	EGT_ITEM			= 14,//í–‰ìš´ì˜ ì•Œ ë˜ëŠ” ì•„ì´í…œ êµí™˜
+	EGT_TREE_ITEM		= 15,//ì•„ì´í…œ êµí™˜ì°½ì— ì•„ì´í…œ íŠ¸ë¦¬ í‘œì‹œ
+	EGT_ITEM_SHOP		= 16,//ì•„ì´í…œ êµí™˜
+	EGT_ITEM_PLUS		= 17,//ì•„ì´í…œ ê°•í™”
 };
 
 /*
-enum E_ITEM_GRADE_RARITY	// ¾ÆÀÌÅÛ µî±Þº° ¿µ·Â ¼öÄ¡
+enum E_ITEM_GRADE_RARITY	// ì•„ì´í…œ ë“±ê¸‰ë³„ ì˜ë ¥ ìˆ˜ì¹˜
 {
 	IGR_NORMAL_MIN = 0,
 	IGR_NORMAL_MAX = 30,
@@ -4331,12 +4331,12 @@ class CItemDef;
 
 extern HRESULT CalcRepairNeedMoney(	PgBase_Item const &rkItem, int const iAddRepairCostRate, int &iOutValue);
 extern HRESULT CreatePetInfo( SClassKey const &kPetClassKey, PgItem_PetInfo *pkPetInfo, SEnchantInfo *pkEnchantInfo = NULL );
-extern HRESULT CreateSItem(int const iItemNo, int const iCount/* ¼ö·® ¾ÆÀÌÅÛÀº °¹¼ö, ³»±¸µµ ¾ÆÀÌÅÛÀº ³»±¸µµ. */, int const iRarityControl/*·¹¾îµµ »ý¼º Å×ÀÌºí*/, PgBase_Item &rItem, bool const bIsForceSeal = false);
+extern HRESULT CreateSItem(int const iItemNo, int const iCount/* ìˆ˜ëŸ‰ ì•„ì´í…œì€ ê°¯ìˆ˜, ë‚´êµ¬ë„ ì•„ì´í…œì€ ë‚´êµ¬ë„. */, int const iRarityControl/*ë ˆì–´ë„ ìƒì„± í…Œì´ë¸”*/, PgBase_Item &rItem, bool const bIsForceSeal = false);
 extern bool CheckIsCashItem(PgBase_Item const &kItem);
 extern E_ITEM_GRADE GetItemGrade(PgBase_Item const &kItem);
 extern HRESULT RarityValue(E_ITEM_GRADE const eItemGrade, short &nMin, short &nMax);
 extern HRESULT GenRarityValue(E_ITEM_GRADE const eItemGrade, short &nRet, bool const bGenItem = false);
-extern HRESULT CalcSellMoney(PgBase_Item const &rkItem, __int64 &iOutValue, int const iSellPrice, int const iSellCount/*¼ö·®¾ÆÀÌÅÛ¸¸ ¾²´Â°ª*/, PgPremiumMgr const& rkPremiumMgr);//ÆÇ¸Å°¡
+extern HRESULT CalcSellMoney(PgBase_Item const &rkItem, __int64 &iOutValue, int const iSellPrice, int const iSellCount/*ìˆ˜ëŸ‰ì•„ì´í…œë§Œ ì“°ëŠ”ê°’*/, PgPremiumMgr const& rkPremiumMgr);//íŒë§¤ê°€
 extern int FinddMaxAbilLevel(int const iEquipPos,int const iType,int const iLevelLimit);
 extern bool IsCanRepair(int const iItemNo);
 extern EEquipType GetEquipType(int const iItemNo);
@@ -4369,7 +4369,7 @@ typedef struct tagExchangeItem
 	SItemPos kPos;
 	PgBase_Item kItem;
 
-	size_t min_size()const	//TLoadArray_M¾²±âÀ§ÇØ ÇÊ¿äÇÔ
+	size_t min_size()const	//TLoadArray_Mì“°ê¸°ìœ„í•´ í•„ìš”í•¨
 	{
 		return 
 			sizeof(SItemPos)+
@@ -4410,17 +4410,17 @@ typedef std::vector< SExchangeItem > CONT_TRADE_ITEM;
 
 typedef struct tagTradeInfo
 {
-	BM::GUID			kTradeGuid;		//±³È¯¿ë GUID
-	BM::GUID			kCasterGuid;		//±³È¯ ¿äÃ»ÀÚ
-	BM::GUID			kTargetGuid;		//±³È¯ ´ë»óÀÚ
-	BM::PgPackedTime	kTime;			//±³È¯ ½ÃÀÛ ½Ã°£
-	bool				bCasterConfirm;	//°íÁ¤
+	BM::GUID			kTradeGuid;		//êµí™˜ìš© GUID
+	BM::GUID			kCasterGuid;		//êµí™˜ ìš”ì²­ìž
+	BM::GUID			kTargetGuid;		//êµí™˜ ëŒ€ìƒìž
+	BM::PgPackedTime	kTime;			//êµí™˜ ì‹œìž‘ ì‹œê°„
+	bool				bCasterConfirm;	//ê³ ì •
 	bool				bTargetConfirm;
-	bool				bCasterOk;		//È®ÀÎ
+	bool				bCasterOk;		//í™•ì¸
 	bool				bTargetOk;
-	CONT_TRADE_ITEM		kCasterItemCont;	//¿äÃ»ÀÚ ¾ÆÀÌÅÛ ¸ñ·Ï
-	CONT_TRADE_ITEM		kTargetItemCont;	//´ë»óÀÚ ¾ÆÀÌÅÛ ¸ñ·Ï
-	ETRADERESULT		kResult;		//¼º°ø ½ÇÆÐ ¿©ºÎ
+	CONT_TRADE_ITEM		kCasterItemCont;	//ìš”ì²­ìž ì•„ì´í…œ ëª©ë¡
+	CONT_TRADE_ITEM		kTargetItemCont;	//ëŒ€ìƒìž ì•„ì´í…œ ëª©ë¡
+	ETRADERESULT		kResult;		//ì„±ê³µ ì‹¤íŒ¨ ì—¬ë¶€
 	__int64				i64CasterMoney;	
 	__int64				i64TargetMoney;	
 
@@ -4503,9 +4503,9 @@ typedef struct tagTradeInfoPacket
 		kMoney = 0;
 	}
 
-	BM::GUID			kTradeGuid;		//±³È¯¿ë GUID
-	BM::GUID			kOwnerGuid;		//ÀÌ ¾ÆÀÌÅÛµéÀÌ ´©±¸²¨³Ä?
-	CONT_TRADE_ITEM		kItemCont;		//¾ÆÀÌÅÛ ¸ñ·Ï
+	BM::GUID			kTradeGuid;		//êµí™˜ìš© GUID
+	BM::GUID			kOwnerGuid;		//ì´ ì•„ì´í…œë“¤ì´ ëˆ„êµ¬êº¼ëƒ?
+	CONT_TRADE_ITEM		kItemCont;		//ì•„ì´í…œ ëª©ë¡
 	__int64				kMoney;
 
 	bool ReadFromPacket(BM::Stream &kPacket)
@@ -4543,21 +4543,21 @@ typedef struct tagItemData
 
 #pragma pack()
 
-typedef std::set< int > CONT_HAVE_ITEM_NO;//°®°í ÀÖ´Â ¾ÆÀÌÅÛ ¹øÈ£·Î
-typedef std::map< int, PgBase_Item > CONT_HAVE_ITEM_DATA;//°®°í ÀÖ´Â ¾ÆÀÌÅÛ//°ãÄ¥°æ¿ì. ½ß±îÀÓ. ¼ÂÆ®¾ÆÀÌÅÛ Ã¼Å©¿ë itemno, 
-typedef std::vector<PgBase_Item > CONT_HAVE_ITEM_DATA_ALL;//°®°í ÀÖ´Â ¾ÆÀÌÅÛ//°ãÄ¡´Â °Í±îÁö ¸ðµÎ °¡Á®¿È
-typedef std::map< int, size_t > ContHaveItemNoCount;//¾ÆÀÌÅÛ ¹øÈ£ + ¼ö·®
-typedef std::map< int, SItemData > CONT_HAVE_ITEM_POS;//¾ÆÀÌÅÛ ¹øÈ£ + (¼ö·®, À§Ä¡µé)
+typedef std::set< int > CONT_HAVE_ITEM_NO;//ê°–ê³  ìžˆëŠ” ì•„ì´í…œ ë²ˆí˜¸ë¡œ
+typedef std::map< int, PgBase_Item > CONT_HAVE_ITEM_DATA;//ê°–ê³  ìžˆëŠ” ì•„ì´í…œ//ê²¹ì¹ ê²½ìš°. ìŒ©ê¹Œìž„. ì…‹íŠ¸ì•„ì´í…œ ì²´í¬ìš© itemno, 
+typedef std::vector<PgBase_Item > CONT_HAVE_ITEM_DATA_ALL;//ê°–ê³  ìžˆëŠ” ì•„ì´í…œ//ê²¹ì¹˜ëŠ” ê²ƒê¹Œì§€ ëª¨ë‘ ê°€ì ¸ì˜´
+typedef std::map< int, size_t > ContHaveItemNoCount;//ì•„ì´í…œ ë²ˆí˜¸ + ìˆ˜ëŸ‰
+typedef std::map< int, SItemData > CONT_HAVE_ITEM_POS;//ì•„ì´í…œ ë²ˆí˜¸ + (ìˆ˜ëŸ‰, ìœ„ì¹˜ë“¤)
 
-typedef std::map< tagTBL_KEY<int>, PgBase_Item > CONT_RESULT_ITEM_DATA;//»ý¼º °á°ú¿ë ÇØ½¬
+typedef std::map< tagTBL_KEY<int>, PgBase_Item > CONT_RESULT_ITEM_DATA;//ìƒì„± ê²°ê³¼ìš© í•´ì‰¬
 
 typedef std::map<BM::GUID,PgItemWrapper > CONT_SELECTED_CHARACTER_ITEM_LIST;
-typedef std::map<BM::GUID,PgItemWrapper > CONT_GUILD_ITEM_LIST; // ±æµå±Ý°í ¾ÆÀÌÅÛ ¸®½ºÆ®
+typedef std::map<BM::GUID,PgItemWrapper > CONT_GUILD_ITEM_LIST; // ê¸¸ë“œê¸ˆê³  ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸
 
-__int64 const MAX_CASH_ITEM_TIMELIMIT = 511i64; // ±â°£Á¦ ¾ÆÀÌÅÛ ÃÖ´ë ±â°£
+__int64 const MAX_CASH_ITEM_TIMELIMIT = 511i64; // ê¸°ê°„ì œ ì•„ì´í…œ ìµœëŒ€ ê¸°ê°„
 
-int const MAX_ITEM_DURATION = 8000;	// ¾ÆÀÌÅÛ ÃÖ´ë ³»±¸µµ´Â 8000À» ³ÑÁö ¸øÇÑ´Ù.
-int const MAX_BASKET_SLOT = 36; //Àå¹Ù±¸´Ï
+int const MAX_ITEM_DURATION = 8000;	// ì•„ì´í…œ ìµœëŒ€ ë‚´êµ¬ë„ëŠ” 8000ì„ ë„˜ì§€ ëª»í•œë‹¤.
+int const MAX_BASKET_SLOT = 36; //ìž¥ë°”êµ¬ë‹ˆ
 
 int const ENCHANT_SHIFT_MIN_LEVEL = 0;
 int const ENCHANT_SHIFT_MAX_LEVEL = 10;
