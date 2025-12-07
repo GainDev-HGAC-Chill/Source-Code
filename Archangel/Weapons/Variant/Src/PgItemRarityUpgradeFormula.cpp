@@ -352,9 +352,15 @@ SDefItemAmplify_Specific const * PgItemRarityUpgradeFormula::ItemAmplifyRateSpec
 	return NULL;
 }
 
-bool PgItemRarityUpgradeFormula::GetMaxGradeLevelRestrict(E_ITEM_GRADE const kItemGrade, bool const bIsPet, int& iOutLevel, PgBase_Item const& kItem)
+bool PgItemRarityUpgradeFormula::GetMaxGradeLevelRestrict(
+	E_ITEM_GRADE const kItemGrade,
+	bool const bIsPet,
+	int& iOutLevel,
+	PgBase_Item const& kItem)
 {
-	if (true == bIsPet)
+	iOutLevel = 0;
+
+	if (bIsPet)
 	{
 		switch (kItemGrade)
 		{
@@ -362,102 +368,93 @@ bool PgItemRarityUpgradeFormula::GetMaxGradeLevelRestrict(E_ITEM_GRADE const kIt
 		case IG_RARE:
 		case IG_UNIQUE:
 		case IG_LEGEND:
-		{
 			iOutLevel = IPULL_UNIQUE_LIMIT;
-		}break;
+			return true;
+
+		case IG_ARTIFACT:
 		case IG_CURSE:
 		case IG_SEAL:
 		default:
-		{
+			
 			return false;
-		}break;
+		}
+	}
+
+	GET_DEF(CItemDefMgr, kItemDefMgr);
+	CItemDef const* pItemDef = kItemDefMgr.GetDef(kItem.ItemNo());
+	if (!pItemDef)
+	{
+		return false;
+	}
+
+	int iLevelEnchantRestrict = pItemDef->GetAbil(AT_LEVELLIMIT); // Determine Level Limit on Item
+
+	if (iLevelEnchantRestrict < 0)
+		iLevelEnchantRestrict = 0;
+
+	if (iLevelEnchantRestrict < 60)
+	{
+		switch (kItemGrade)
+		{
+		case IG_NORMAL:   iOutLevel = IPULL_NORMAL_LIMIT_1;   break;
+		case IG_RARE:     iOutLevel = IPULL_RARE_LIMIT_1;     break;
+		case IG_UNIQUE:   iOutLevel = IPULL_UNIQUE_LIMIT_1;   break;
+		case IG_ARTIFACT: iOutLevel = IPULL_ARTIFACT_LIMIT_1; break;
+		case IG_LEGEND:   iOutLevel = IPULL_LEGEND_LIMIT_1;   break;
+
+		case IG_CURSE:
+		case IG_SEAL:
+		default:
+			return false;
+		}
+	}
+	else if (iLevelEnchantRestrict >= 60 && iLevelEnchantRestrict < 70)
+	{
+		switch (kItemGrade)
+		{
+		case IG_NORMAL:   iOutLevel = IPULL_NORMAL_LIMIT_60;   break;
+		case IG_RARE:     iOutLevel = IPULL_RARE_LIMIT_60;     break;
+		case IG_UNIQUE:   iOutLevel = IPULL_UNIQUE_LIMIT_60;   break;
+		case IG_ARTIFACT: iOutLevel = IPULL_ARTIFACT_LIMIT_60; break;
+		case IG_LEGEND:   iOutLevel = IPULL_LEGEND_LIMIT_60;   break;
+
+		case IG_CURSE:
+		case IG_SEAL:
+		default:
+			return false;
+		}
+	}
+	else if (iLevelEnchantRestrict >= 70 /* && iLevelEnchantRestrict < 80 */)
+	{
+		switch (kItemGrade)
+		{
+		case IG_NORMAL:   iOutLevel = IPULL_NORMAL_LIMIT_70;   break;
+		case IG_RARE:     iOutLevel = IPULL_RARE_LIMIT_70;     break;
+		case IG_UNIQUE:   iOutLevel = IPULL_UNIQUE_LIMIT_70;   break;
+		case IG_ARTIFACT: iOutLevel = IPULL_ARTIFACT_LIMIT_70; break;
+		case IG_LEGEND:   iOutLevel = IPULL_LEGEND_LIMIT_70;   break;
+
+		case IG_CURSE:
+		case IG_SEAL:
+		default:
+			return false;
 		}
 	}
 	else
 	{
-
-		GET_DEF(CItemDefMgr, kItemDefMgr);
-		CItemDef const* pItemDef = kItemDefMgr.GetDef(kItem.ItemNo());
-		int iLevelEnchantRestrict = pItemDef->GetAbil(AT_LEVELLIMIT); //Determine Level Limit on Item
-
-		if (iLevelEnchantRestrict < 60)
+		switch (kItemGrade)
 		{
-			switch (kItemGrade)
-			{
+		case IG_NORMAL:   iOutLevel = IPULL_NORMAL_LIMIT;   break;
+		case IG_RARE:     iOutLevel = IPULL_RARE_LIMIT;     break;
+		case IG_UNIQUE:   iOutLevel = IPULL_UNIQUE_LIMIT;   break;
+		case IG_ARTIFACT: iOutLevel = IPULL_ARTIFACT_LIMIT; break;
+		case IG_LEGEND:   iOutLevel = IPULL_LEGEND_LIMIT;   break;
 
-			case IG_NORMAL: {iOutLevel = IPULL_NORMAL_LIMIT_1; }break;
-			case IG_RARE: {iOutLevel = IPULL_RARE_LIMIT_1; }break;
-			case IG_UNIQUE: {iOutLevel = IPULL_UNIQUE_LIMIT_1; }break;
-			case IG_ARTIFACT: {iOutLevel = IPULL_ARTIFACT_LIMIT_1; }break;
-			case IG_LEGEND: {iOutLevel = IPULL_LEGEND_LIMIT_1; }break;
-			case IG_CURSE:
-			case IG_SEAL:
-			default:
-			{
-				return false;
-			}break;
-			}
+		case IG_CURSE:
+		case IG_SEAL:
+		default:
+			return false;
 		}
-		else if (iLevelEnchantRestrict >= 60 && iLevelEnchantRestrict < 70)
-		{
-			switch (kItemGrade)
-			{
-
-
-			case IG_NORMAL: {iOutLevel = IPULL_NORMAL_LIMIT_60; }break;
-			case IG_RARE: {iOutLevel = IPULL_RARE_LIMIT_60; }break;
-			case IG_UNIQUE: {iOutLevel = IPULL_UNIQUE_LIMIT_60; }break;
-			case IG_ARTIFACT: {iOutLevel = IPULL_ARTIFACT_LIMIT_60; }break;
-			case IG_LEGEND: {iOutLevel = IPULL_LEGEND_LIMIT_60; }break;
-			case IG_CURSE:
-			case IG_SEAL:
-			default:
-			{
-				return false;
-			}break;
-			}
-		}
-		else if (iLevelEnchantRestrict >= 70  /*&& iLevelEnchantRestrict < 80*/)
-		{
-			switch (kItemGrade)
-			{
-
-			case IG_NORMAL: {iOutLevel = IPULL_NORMAL_LIMIT_70; }break;
-			case IG_RARE: {iOutLevel = IPULL_RARE_LIMIT_70; }break;
-			case IG_UNIQUE: {iOutLevel = IPULL_UNIQUE_LIMIT_70; }break;
-			case IG_ARTIFACT: {iOutLevel = IPULL_ARTIFACT_LIMIT_70; }break;
-			case IG_LEGEND: {iOutLevel = IPULL_LEGEND_LIMIT_70; }break;
-			case IG_CURSE:
-			case IG_SEAL:
-			default:
-			{
-				return false;
-
-			}break;
-			}
-		}
-		else
-		{
-			switch (kItemGrade)
-			{
-
-
-			case IG_NORMAL: {iOutLevel = IPULL_NORMAL_LIMIT; }break;
-			case IG_RARE: {iOutLevel = IPULL_RARE_LIMIT; }break;
-			case IG_UNIQUE: {iOutLevel = IPULL_UNIQUE_LIMIT; }break;
-			case IG_ARTIFACT: {iOutLevel = IPULL_ARTIFACT_LIMIT; }break;
-			case IG_LEGEND: {iOutLevel = IPULL_LEGEND_LIMIT; }break;
-			case IG_CURSE:
-			case IG_SEAL:
-			default:
-			{
-				return false;
-			}break;
-			}
-
-		}
-		
-
 	}
 
 	return true;
@@ -499,7 +496,7 @@ bool PgItemRarityUpgradeFormula::GetMaxGradeLevelRestrict(E_ITEM_GRADE const kIt
 	case IG_CURSE:
 	case IG_SEAL:
 	default:
-		{// ·¾¾÷ ºÒ°¡´É
+		{// Â·Â¾Â¾Ã· ÂºÃ’Â°Â¡Â´Ã‰
 			return false;
 		}break;
 	}
