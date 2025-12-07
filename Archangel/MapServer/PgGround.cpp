@@ -294,7 +294,7 @@ namespace PgGroundUtil
 			}
 			else
 			{
-				return rkType; // ÀÌ¹Ì ´Ù¸¥ °÷¿¡ ÀÖ´Ù.
+				return rkType; // ì´ë¯¸ ë‹¤ë¥¸ ê³³ì— ìˆë‹¤.
 			}
 		}
 		return eEnterType;
@@ -527,7 +527,7 @@ void OnItemEffectProc(CUnit * pkCaster,CUnit * pkTarget,PgActionResult* pkAction
 }
 
 void OnEffectAbilProc(CUnit * pkCaster,CUnit * pkTarget, WORD const wAbil, bool const bGetAbilerIsCaster)
-{//bGetAbilerIsCaster ¾îºôÀ» Ä³½ºÅÍ¿¡¼­ ¾ò¾î ¿À´Â°¡?
+{//bGetAbilerIsCaster ì–´ë¹Œì„ ìºìŠ¤í„°ì—ì„œ ì–»ì–´ ì˜¤ëŠ”ê°€?
 	CUnit* pkUnit = bGetAbilerIsCaster ? (pkCaster) : (pkTarget);
 	CUnit* pkUnit2 = bGetAbilerIsCaster ? (pkTarget) : (pkCaster);
 
@@ -535,15 +535,15 @@ void OnEffectAbilProc(CUnit * pkCaster,CUnit * pkTarget, WORD const wAbil, bool 
 	{
 		// EffectNo
 		// Rate
-		// IsMe 3°³°¡ ¼¼Æ®
+		// IsMe 3ê°œê°€ ì„¸íŠ¸
 
-		for(int i = wAbil; i < wAbil + 10; ++i) //10°³±îÁö Áö¿ø µÇµµ·Ï ÇÔ.
+		for(int i = wAbil; i < wAbil + 10; ++i) //10ê°œê¹Œì§€ ì§€ì› ë˜ë„ë¡ í•¨.
 		{
 			int const iAddEffect = pkUnit->GetAbil(i);			
 			if(0 < iAddEffect)
 			{
 				int const iRate = pkUnit->GetAbil(i + 10);			// AT_DMG_ADD_EFFECT_01_RATE
-				if(iRate >= BM::Rand_Index(ABILITY_RATE_VALUE)) // 10000ºĞ·ü
+				if(iRate >= BM::Rand_Index(ABILITY_RATE_VALUE)) // 10000ë¶„ë¥ 
 				{
 					int const iIsTarget = pkUnit->GetAbil(i + 20); // AT_DMG_ADD_EFFECT_01_TARGET_TYPE_IS_ME
 					CUnit* pkTargetUnit = (iIsTarget) ? (pkUnit) : (pkUnit2);
@@ -582,8 +582,8 @@ void OnEffectProc(CUnit * pkCaster,CUnit * pkTarget,PgActionResult* pkActionResu
 
 extern void OnAttacked(CUnit* pkUnit, UNIT_PTR_ARRAY* pkUnitArray, int const iSkillNo, PgActionResultVector* pkResult, SActArg* pArg, DWORD const dwTimeStamp)
 {
-	//Caster´Â ¾ÕÀ¸·Î ¾à°£ ÀÌµ¿
-	//TargetÀº µÚ·Î ¾à°£ ÀÌµ¿
+	//CasterëŠ” ì•ìœ¼ë¡œ ì•½ê°„ ì´ë™
+	//Targetì€ ë’¤ë¡œ ì•½ê°„ ì´ë™
 	if (!pkUnit || !pkUnitArray || !pkResult)
 	{
 		LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("OnAttacked Failed!"));
@@ -607,13 +607,13 @@ extern void OnAttacked(CUnit* pkUnit, UNIT_PTR_ARRAY* pkUnitArray, int const iSk
 			PgActionResult* pkActionResult = pkResult->GetResult(pkTarget->GetID(), true);
 			if (pkActionResult)
 			{
-				//RemainHP °ª ¼¼ÆÃ
+				//RemainHP ê°’ ì„¸íŒ…
 				pkActionResult->SetRemainHP(pkTarget->GetAbil(AT_HP));
 // 				if (0 < pkTarget->GetAbil(AT_MAX_DP))
 // 				{
 // 					pkActionResult->SetAbil(AT_DP, 0);
 // 				}
-				//ÀÏ´ÜÀº Damage>0ÀÌ¸é, Target ¹Ğ·Á³ªµµ·Ï
+				//ì¼ë‹¨ì€ Damage>0ì´ë©´, Target ë°€ë ¤ë‚˜ë„ë¡
 				if (!pkActionResult->GetInvalid() && 0 < pkActionResult->GetValue() && iTargetLen)
 				{
 					POINT3 kNow = pkUnit->GetPos();
@@ -646,7 +646,7 @@ extern void OnAttacked(CUnit* pkUnit, UNIT_PTR_ARRAY* pkUnitArray, int const iSk
 					{
 						CUnit* pkCaller = pkUnit;
 
-						//Caller°¡ ´ë½Å µ¥¹ÌÁö ÀÔµµ·Ï ¼³Á¤µÇ¾îÀÖÀ¸¸é
+						//Callerê°€ ëŒ€ì‹  ë°ë¯¸ì§€ ì…ë„ë¡ ì„¤ì •ë˜ì–´ìˆìœ¼ë©´
 						if(0 < pkUnit->GetAbil(AT_DELIVER_DAMAGE_CALLER))
 						{
 							BM::GUID const& rkCaller = pkUnit->Caller();
@@ -657,7 +657,7 @@ extern void OnAttacked(CUnit* pkUnit, UNIT_PTR_ARRAY* pkUnitArray, int const iSk
 							}
 							else
 							{
-								//¹Ù²ï Å¸°ÙÀÇ ³²Àº HP·Î º¯°æÇÑ´Ù.
+								//ë°”ë€ íƒ€ê²Ÿì˜ ë‚¨ì€ HPë¡œ ë³€ê²½í•œë‹¤.
 								pkActionResult->SetAbil(AT_REFLECT_DMG_HP, pkCaller->GetAbil(AT_HP) - iReflect);
 							}
 						}
@@ -705,7 +705,7 @@ float	PgGround::ms_DoubleFighterAwakeReviserByKill= 0.0f;
 
 int		PgGround::ms_JobSkillBaseExpDiff[] = {0, };
 
-PgGround::PgGround()	//µ¶¸³¼ºÀ» ÇØÄ£´Ù.
+PgGround::PgGround()	//ë…ë¦½ì„±ì„ í•´ì¹œë‹¤.
 :	m_iMapLevel(0)
 ,	m_iGroundWeight(0)
 ,	m_iTunningLevel(0)
@@ -830,20 +830,20 @@ EOpeningState PgGround::Init( int const iMonsterControlID, bool const bMonsterGe
 	CONT_MAP_ENTITY const *pkMapEntity = NULL;
 	g_kTblDataMgr.GetContDef( pkMapEntity );
 	if ( pkMapEntity )
-	{// Map Entity »ı¼º
+	{// Map Entity ìƒì„±
 
 		CONT_MAP_ENTITY::const_iterator mapentity_itr = std::lower_bound( pkMapEntity->begin(), pkMapEntity->end(), CONT_MAP_ENTITY::value_type(GetGroundNo()) );
 		while ( (mapentity_itr != pkMapEntity->end()) && (mapentity_itr->iGroundNo == GetGroundNo()) )
 		{
 			CONT_MAP_ENTITY::value_type const &kElement = *mapentity_itr;
 
-			// Entity¸¦ ¸¸µé¾î¾ß ÇÑ´Ù.
+			// Entityë¥¼ ë§Œë“¤ì–´ì•¼ í•œë‹¤.
 			SCreateEntity kCreateInfo( BM::GUID::Create(), SClassKey( mapentity_itr->iClass, mapentity_itr->nLevel ) );
 			kCreateInfo.ptPos = mapentity_itr->pt3Pos;
 			kCreateInfo.bEternalLife = true;
 
 			if ( !IsCorrectPos( kCreateInfo.ptPos ) )
-			{// Á¤»óÀ§Ä¡°¡ ¾Æ´Ï¸é Spawn1¿¡ »ı¼ºµÇµµ·Ï ¸¸µç´Ù.
+			{// ì •ìƒìœ„ì¹˜ê°€ ì•„ë‹ˆë©´ Spawn1ì— ìƒì„±ë˜ë„ë¡ ë§Œë“ ë‹¤.
 				FindSpawnLoc(1, kCreateInfo.ptPos );
 			}
 
@@ -923,7 +923,7 @@ EOpeningState PgGround::Init( int const iMonsterControlID, bool const bMonsterGe
 	POINT3 rkOut;
 	PgSmallArea* pRetArea;
 	if(S_OK == FindSpawnLoc(1, rkOut))
-	{//½ºÆù ·ÎÄÉÀÌ¼ÇÀÌ ÀÖ´ÂÁö È®ÀÎ.
+	{//ìŠ¤í° ë¡œì¼€ì´ì…˜ì´ ìˆëŠ”ì§€ í™•ì¸.
 		POINT3 ptTemp;
 		if( S_OK != GetArea(rkOut, ptTemp, pRetArea, false))
 		{
@@ -954,22 +954,22 @@ EOpeningState PgGround::Init( int const iMonsterControlID, bool const bMonsterGe
 
 HRESULT PgGround::GetArea(POINT3 const &rkPos, POINT3& rkOut, PgSmallArea* &pRetArea, bool const bIsMoveToSpawn, bool bCheckPos)
 {
-	if(bCheckPos && !IsCorrectPos(rkPos))//Á¤»óÀûÀÌ ¾Æ´Ï¶ó¸é Spawn_1·Î º¸³½´Ù
+	if(bCheckPos && !IsCorrectPos(rkPos))//ì •ìƒì ì´ ì•„ë‹ˆë¼ë©´ Spawn_1ë¡œ ë³´ë‚¸ë‹¤
 	{
 		INFO_LOG(BM::LOG_LV5, __FL__ << _T("IncorrectPos MapNo=") << GetGroundNo() << _T(", Pos[") << rkPos << _T("]"));
 		goto __FAILED;
 	}
 
-	if( rkPos == POINT3::NullData() )//0,0,0 ÀÌ¸é Spawn_1·Î º¸³½´Ù
+	if( rkPos == POINT3::NullData() )//0,0,0 ì´ë©´ Spawn_1ë¡œ ë³´ë‚¸ë‹¤
 	{
 		INFO_LOG(BM::LOG_LV7, __FL__<<L"NullPoint ["<<GetGroundNo()<<L"]["<<rkPos<<L"]");
 		goto __FAILED;
 	}
 
-	PgSmallArea* pkArea = GetArea( m_kSmallAreaInfo.GetAreaIndexFromPos( rkPos ) );//µé¾î¿Â À§Ä¡¸¦ AreaÅ°·Î ¹Ù²ãº»´Ù.
+	PgSmallArea* pkArea = GetArea( m_kSmallAreaInfo.GetAreaIndexFromPos( rkPos ) );//ë“¤ì–´ì˜¨ ìœ„ì¹˜ë¥¼ Areaí‚¤ë¡œ ë°”ê¿”ë³¸ë‹¤.
 	//if(pkArea != NULL)
 	{
-		// pkArea == NULL ÀÏ ¼öµµ ÀÖ´Ù.
+		// pkArea == NULL ì¼ ìˆ˜ë„ ìˆë‹¤.
 		pRetArea = pkArea;
 		return S_OK;
 	}
@@ -977,7 +977,7 @@ HRESULT PgGround::GetArea(POINT3 const &rkPos, POINT3& rkOut, PgSmallArea* &pRet
 	INFO_LOG(BM::LOG_LV5, __FL__ << _T("Incorrect MapNo=") << GetGroundNo() << _T(", Pos[") << rkPos << _T("]"));
 	goto __FAILED;
 
-__FAILED://Á¤»óÀû Æ÷ÀÎÆ®°¡ ¾Æ´Ï¾úÀ½.
+__FAILED://ì •ìƒì  í¬ì¸íŠ¸ê°€ ì•„ë‹ˆì—ˆìŒ.
 	{	//	rkOut = rkPos;
 		if(bIsMoveToSpawn)
 		{
@@ -1022,7 +1022,7 @@ HRESULT PgGround::BuildZone()
 		return E_FAIL;
 	}
 
-	// ¸ÊÀÇ ¹Ù¿î´õ¸® Á¤º¸¸¦ ¹Ş´Â´Ù.
+	// ë§µì˜ ë°”ìš´ë”ë¦¬ ì •ë³´ë¥¼ ë°›ëŠ”ë‹¤.
 	//const NiBound& kBound = m_spSceneRoot->GetWorldBound();
 	//int iRadius = (int)kBound.GetRadius();
 	//POINT3 const kCenter(kBound.GetCenter().x, kBound.GetCenter().y, kBound.GetCenter().z);
@@ -1036,19 +1036,19 @@ HRESULT PgGround::BuildZone()
 		return E_FAIL;
 	}
 
-	// ±âÁ¸ÀÇ Á¸ Á¤º¸¸¦ ÇØÁ¦ÇÑ´Ù.
+	// ê¸°ì¡´ì˜ ì¡´ ì •ë³´ë¥¼ í•´ì œí•œë‹¤.
 	ReleaseZone();
 
-	// GSAÀÇ °æ¿ì ¾Æ·¡ FindMinMax()°¡ ¾Æ´Ï¶ó LoadGsa() ºÎºĞ¿¡¼­ Min Max¸¦ Ã£´Â´Ù.
+	// GSAì˜ ê²½ìš° ì•„ë˜ FindMinMax()ê°€ ì•„ë‹ˆë¼ LoadGsa() ë¶€ë¶„ì—ì„œ Min Maxë¥¼ ì°¾ëŠ”ë‹¤.
 	NxVec3 kMin = m_kMin;
 	NxVec3 kMax = m_kMax;
 	if( !m_bFoundMinMax )
 	{
-		// PhysX³ëµå¸¦ ³Ö¾î¼­ Bound¿¡ ¾µ Min,Max¸¦ Ã£´Â´Ù.
+		// PhysXë…¸ë“œë¥¼ ë„£ì–´ì„œ Boundì— ì“¸ Min,Maxë¥¼ ì°¾ëŠ”ë‹¤.
 		FindMinMax( pkNode, kMin, kMax );
 	}
 
-	// Ä³¸¯ÅÍ ½ºÆùÀº ÇÇÁ÷½ºº¸´Ù ³ôÀÌ ¹èÄ¡ ÇÏ±â¶§¹®¿¡ ¾î´À Á¤µµ ¿©À¯¸¦ ´õ ÁØ´Ù.
+	// ìºë¦­í„° ìŠ¤í°ì€ í”¼ì§ìŠ¤ë³´ë‹¤ ë†’ì´ ë°°ì¹˜ í•˜ê¸°ë•Œë¬¸ì— ì–´ëŠ ì •ë„ ì—¬ìœ ë¥¼ ë” ì¤€ë‹¤.
 	kMin.z -= 200.0f;
 	kMax.z += 200.0f;
 
@@ -1061,7 +1061,7 @@ HRESULT PgGround::BuildZone()
 		return E_FAIL;
 	}
 
-	// Big Area¸¦ ¸¸µç´Ù.
+	// Big Areaë¥¼ ë§Œë“ ë‹¤.
 	if ( !m_pkBigArea )
 	{
 		m_pkBigArea = g_kSmallAreaPool.New();
@@ -1081,7 +1081,7 @@ HRESULT PgGround::BuildZone()
 	m_pkBigArea->Init( pt3Min, pt3Max - pt3Min );
 	m_pkBigArea->Index( PgSmallArea::BIG_AREA_INDEX );
 
-	// ¹Ù¿î´õ¸®¿¡ ¸Â°Ô Á¸µéÀ» »ı¼ºÇÑ´Ù.
+	// ë°”ìš´ë”ë¦¬ì— ë§ê²Œ ì¡´ë“¤ì„ ìƒì„±í•œë‹¤.
 	size_t const iTotalSmallAreaSize = static_cast<size_t>(m_kSmallAreaInfo.GetTotalSize());
 	m_kAreaCont.resize(iTotalSmallAreaSize, NULL);
 
@@ -1185,7 +1185,7 @@ HRESULT PgGround::MakeZone(NiNode *pkRootNode)
 				POINT3I pt3CurrentIndex3;
 				if ( m_kSmallAreaInfo.GetAreaIndex3( pkNew->Index(), pt3CurrentIndex3 ) )
 				{
-					// ÀÚ¿¬½º·¯¿î µ¿±âÈ­¸¦ À§ÇØ¼­ AdjacentAreaµµ »ı¼º ½ÃÄÑ ÁØ´Ù.
+					// ìì—°ìŠ¤ëŸ¬ìš´ ë™ê¸°í™”ë¥¼ ìœ„í•´ì„œ AdjacentAreaë„ ìƒì„± ì‹œì¼œ ì¤€ë‹¤.
 					for (ESmallArea_Direction eDir = SaDir_Begin; eDir < SaDir_Max; eDir = ESmallArea_Direction(eDir+1))
 					{
 						int iAdIndex = m_kSmallAreaInfo.GetRelativeIndexFromIndex3( pt3CurrentIndex3, eDir );
@@ -1259,7 +1259,7 @@ HRESULT PgGround::BuildZone()
 		return E_FAIL;
 	}
 
-	// ¸ÊÀÇ ¹Ù¿î´õ¸® Á¤º¸¸¦ ¹Ş´Â´Ù.
+	// ë§µì˜ ë°”ìš´ë”ë¦¬ ì •ë³´ë¥¼ ë°›ëŠ”ë‹¤.
 	//const NiBound& kBound = m_spSceneRoot->GetWorldBound();
 	//int iRadius = (int)kBound.GetRadius();
 	//POINT3 const kCenter(kBound.GetCenter().x, kBound.GetCenter().y, kBound.GetCenter().z);
@@ -1273,19 +1273,19 @@ HRESULT PgGround::BuildZone()
 		return E_FAIL;
 	}
 
-	// ±âÁ¸ÀÇ Á¸ Á¤º¸¸¦ ÇØÁ¦ÇÑ´Ù.
+	// ê¸°ì¡´ì˜ ì¡´ ì •ë³´ë¥¼ í•´ì œí•œë‹¤.
 	ReleaseZone();
 
-	// GSAÀÇ °æ¿ì ¾Æ·¡ FindMinMax()°¡ ¾Æ´Ï¶ó LoadGsa() ºÎºĞ¿¡¼­ Min Max¸¦ Ã£´Â´Ù.
+	// GSAì˜ ê²½ìš° ì•„ë˜ FindMinMax()ê°€ ì•„ë‹ˆë¼ LoadGsa() ë¶€ë¶„ì—ì„œ Min Maxë¥¼ ì°¾ëŠ”ë‹¤.
 	NxVec3 kMin = m_kMin;
 	NxVec3 kMax = m_kMax;
 	if( !m_bFoundMinMax )
 	{
-		// PhysX³ëµå¸¦ ³Ö¾î¼­ Bound¿¡ ¾µ Min,Max¸¦ Ã£´Â´Ù.
+		// PhysXë…¸ë“œë¥¼ ë„£ì–´ì„œ Boundì— ì“¸ Min,Maxë¥¼ ì°¾ëŠ”ë‹¤.
 		FindMinMax( pkNode, kMin, kMax );
 	}
 
-	// Ä³¸¯ÅÍ ½ºÆùÀº ÇÇÁ÷½ºº¸´Ù ³ôÀÌ ¹èÄ¡ ÇÏ±â¶§¹®¿¡ ¾î´À Á¤µµ ¿©À¯¸¦ ´õ ÁØ´Ù.
+	// ìºë¦­í„° ìŠ¤í°ì€ í”¼ì§ìŠ¤ë³´ë‹¤ ë†’ì´ ë°°ì¹˜ í•˜ê¸°ë•Œë¬¸ì— ì–´ëŠ ì •ë„ ì—¬ìœ ë¥¼ ë” ì¤€ë‹¤.
 	kMin.z -= 200.0f;
 	kMax.z += 200.0f;
 
@@ -1307,7 +1307,7 @@ HRESULT PgGround::BuildZone()
 		return E_FAIL;
 	}
 
-	// Big Area¸¦ ¸¸µç´Ù.
+	// Big Areaë¥¼ ë§Œë“ ë‹¤.
 	if ( !m_pkBigArea )
 	{
 		m_pkBigArea = g_kSmallAreaPool.New();
@@ -1327,7 +1327,7 @@ HRESULT PgGround::BuildZone()
 	m_pkBigArea->Init( pt3Min, pt3Max - pt3Min );
 	m_pkBigArea->Index( PgSmallArea::BIG_AREA_INDEX );
 
-	// ¹Ù¿î´õ¸®¿¡ ¸Â°Ô Á¸µéÀ» »ı¼ºÇÑ´Ù.
+	// ë°”ìš´ë”ë¦¬ì— ë§ê²Œ ì¡´ë“¤ì„ ìƒì„±í•œë‹¤.
 	size_t const iTotalSmallAreaSize = static_cast<size_t>(m_kSmallAreaInfo.GetTotalSize());
 	m_kAreaCont.reserve( iTotalSmallAreaSize );
 
@@ -1544,7 +1544,7 @@ HRESULT PgGround::FindSpawnLoc( int iPotalNo, POINT3 &rkSpawnLoc_out, bool bRand
 }
 
 bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
-{// ÀÌ°Å ÇÏ¸é SmallArea ±îÁö ´Ù Ä¿¹ö ÇÑ´Ù.
+{// ì´ê±° í•˜ë©´ SmallArea ê¹Œì§€ ë‹¤ ì»¤ë²„ í•œë‹¤.
 	BM::CAutoMutex Lock(m_kRscMutex);
 	if(!pkUnit)
 	{
@@ -1568,14 +1568,14 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 	}
 
 	BM::CObserver< BM::Stream* > *pkObserver = dynamic_cast< BM::CObserver< BM::Stream* >* >(this);
-	pkUnit->VAttach(pkObserver);//±×¶ó¿îµå¿¡ µî·ÏÇÏ¸é ±×¶ó¿îµå À¯´Ö¸Å´ÏÀú°¡ ÅäÅ»·Î ¿Ã·ÁÁÖ°Ô Â¥ÀÚ.
+	pkUnit->VAttach(pkObserver);//ê·¸ë¼ìš´ë“œì— ë“±ë¡í•˜ë©´ ê·¸ë¼ìš´ë“œ ìœ ë‹›ë§¤ë‹ˆì €ê°€ í† íƒˆë¡œ ì˜¬ë ¤ì£¼ê²Œ ì§œì.
 
 	switch(pkUnit->UnitType())
 	{
 	case UT_MYHOME:
 		{
 			PgMyHome* pkPlayer = dynamic_cast<PgMyHome*>(pkUnit);
-			pkPlayer->SetAbil(AT_USENOT_SMALLAREA,1);// ¸¶ÀÌÈ¨ À¯´ÖÀº ¹«Á¶°Ç ÀüÃ¼ ¿µ¿ª¿¡ º¸ÀÎ´Ù.
+			pkPlayer->SetAbil(AT_USENOT_SMALLAREA,1);// ë§ˆì´í™ˆ ìœ ë‹›ì€ ë¬´ì¡°ê±´ ì „ì²´ ì˜ì—­ì— ë³´ì¸ë‹¤.
 			if(MYHOME_CLASS_OUTSIDE_NO == pkPlayer->GetAbil(AT_CLASS))
 			{
 				BM::vstring kNodeName(L"Home_");
@@ -1594,7 +1594,7 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 		return false;
 	}
 
-	// RandomSeed¸¦ »õ·Î ¼¼ÆÃ ÇÑ´Ù.
+	// RandomSeedë¥¼ ìƒˆë¡œ ì„¸íŒ… í•œë‹¤.
 	pkUnit->SetRandomSeed(g_kEventView.GetServerElapsedTime());
 
 	switch(pkUnit->UnitType())
@@ -1618,8 +1618,8 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 
 			//INFO_LOG(BM::LOG_LV9, _T("[%s] One user come in [%d]ground. Remain user count - [%d]"), __FUNCTIONW__, GroundKey().GroundNo(), (int)m_kUserCount);
 
-			// °¡²û MapLoadComplete µÇ±âÀü¿¡ Client¿¡¼­ Action packetÀ» º¸³»±âµµ ÇÑ´Ù.
-			// ±×·¡¼­ Player°¡ Á¢¼ÓÇÏÀÚ ¸¶ÀÚ, GameTimeÀ» µ¿±âÈ­ ½ÃÄÑ ÁØ´Ù.
+			// ê°€ë” MapLoadComplete ë˜ê¸°ì „ì— Clientì—ì„œ Action packetì„ ë³´ë‚´ê¸°ë„ í•œë‹¤.
+			// ê·¸ë˜ì„œ Playerê°€ ì ‘ì†í•˜ì ë§ˆì, GameTimeì„ ë™ê¸°í™” ì‹œì¼œ ì¤€ë‹¤.
 			BM::Stream kSPacket(PT_M_C_SYNC_GAMETIME);
 			g_kEventView.WriteToPacket(true, kSPacket);
 			pkUnit->Send(kSPacket, E_SENDTYPE_SEND_BYFORCE|E_SENDTYPE_SELF);
@@ -1629,12 +1629,12 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 				pkPlayer->GroundEnterTimeSec(BM::GetTime64());
 				m_kPlayTime.iInCount++;
 
-				pkPlayer->Gattr(this->GetAttr());		// ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ ±×¶ó¿îµå ¼Ó¼º..(¿øÁ¤´ë Èú·®, µ¥¹ÌÁö ´©ÀûÀ» À§ÇØ).
+				pkPlayer->Gattr(this->GetAttr());		// í˜„ì¬ í”Œë ˆì´ì–´ì˜ ê·¸ë¼ìš´ë“œ ì†ì„±..(ì›ì •ëŒ€ íëŸ‰, ë°ë¯¸ì§€ ëˆ„ì ì„ ìœ„í•´).
 				
-				{// ½ÖµÕÀÌ Ä³¸¯ÅÍ
+				{// ìŒë‘¥ì´ ìºë¦­í„°
 					int const iClass = pkPlayer->GetAbil(AT_CLASS);
 					if( IsClass_OwnSubPlayer(iClass) )
-					{//ÀÌ¶ó¸é
+					{//ì´ë¼ë©´
 						if( 0 == pkPlayer->GetAbil(AT_DEL_SUB_PLAYER) )
 						{
 							BM::GUID kGuid = pkPlayer->SubPlayerID();
@@ -1679,7 +1679,7 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 			}
 			pkUnit->AggroMeter(pkMeter);
 
-			// ·Î±×¸¦ ³²°Ü
+			// ë¡œê·¸ë¥¼ ë‚¨ê²¨
 			PgLogCont kLogCont(ELogMain_Contents_Monster, ELogSub_Monster_Create );
 			kLogCont.MemberKey( GroundKey().Guid() );	// GroundGuid
 			kLogCont.CharacterKey( pkUnit->GetID() );
@@ -1688,7 +1688,7 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 			kLogCont.ChannelNo( g_kProcessCfg.ChannelNo() );
 
 			PgLog kLog( ELOrderMain_Monster, ELOrderSub_Create );
-			kLog.Set( 1, static_cast<int>(this->GetAttr()) );	// iValue2 ±×¶ó¿îµå Å¸ÀÔ
+			kLog.Set( 1, static_cast<int>(this->GetAttr()) );	// iValue2 ê·¸ë¼ìš´ë“œ íƒ€ì…
 			
 			kLogCont.Add( kLog );
 			kLogCont.Commit();
@@ -1703,15 +1703,15 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 		}break;
 	}
 
-	{//¿ì¼± »èÁ¦ÇÒ ÀÌÆåÆ® ¸ÕÀú Á¦°ÅÇÏ°í ÀÌÆåÆ®¸¦ Àû¿ë!!
-		// ¸ÊÀÌµ¿½Ã »èÁ¦ µÇ¾î¾ß ÇÒ ¾ÆÀÌÅÛµéÀ» ¿©±â¼­ Áö¿ì±â ¿äÃ»ÇÏÀÚ
+	{//ìš°ì„  ì‚­ì œí•  ì´í™íŠ¸ ë¨¼ì € ì œê±°í•˜ê³  ì´í™íŠ¸ë¥¼ ì ìš©!!
+		// ë§µì´ë™ì‹œ ì‚­ì œ ë˜ì–´ì•¼ í•  ì•„ì´í…œë“¤ì„ ì—¬ê¸°ì„œ ì§€ìš°ê¸° ìš”ì²­í•˜ì
 		GET_DEF(CItemDefMgr, kItemDefMgr);
 		PgGroundUtil::DeleteInvenItem(pkUnit, IT_CONSUME, AT_MAPMOVE_DELETE, kItemDefMgr, GroundKey());
 		PgGroundUtil::DeleteEffect(pkUnit, AT_MAPMOVE_DELETE);
 
 		if( pkUnit->IsUnitType(UT_PLAYER) )
 		{
-			// °áÈ¥½ÄÀåÀ» ³ª°¡¸é º¹Àå ±³Ã¼
+			// ê²°í˜¼ì‹ì¥ì„ ë‚˜ê°€ë©´ ë³µì¥ êµì²´
 			if( !(GetAttr() & GATTR_MARRY) )
 			{
 				int iEffectNo = 0;
@@ -1730,7 +1730,7 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 				}
 			}
 
-			// Ä¿ÇÃ ÀÌÆåÆ®´Â PvP¿¡¼­ Àû¿ë ¾ÈµÊ.
+			// ì»¤í”Œ ì´í™íŠ¸ëŠ” PvPì—ì„œ ì ìš© ì•ˆë¨.
 			if(GetAttr() & GATTR_FLAG_PVP_ABLE)
 			{
 				if(pkUnit->GetEffect(COUPLE_SKILL_AREA, true))
@@ -1740,19 +1740,19 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 			}
 		}
 
-		// ¸®Á¨½Ã ºÙÀÏ ÀÌÆåÆ®(¹öÆÛ)°¡ ÀÖÀ¸¸é ¹Ì¸® ºÙÀÌÀÚ
+		// ë¦¬ì  ì‹œ ë¶™ì¼ ì´í™íŠ¸(ë²„í¼)ê°€ ìˆìœ¼ë©´ ë¯¸ë¦¬ ë¶™ì´ì
 		{
 			PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_DEFAULT_EFFECT);
 			PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM1);
 			PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM2);
-			PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM3); // ÀÏ´Ü 3¹ø ±îÁö¸¸ Ç®¾î³õÀÚ
+			PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM3); // ì¼ë‹¨ 3ë²ˆ ê¹Œì§€ë§Œ í’€ì–´ë†“ì
 			//PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM4);
 			//PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM5);
 			//PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM6);
 			//PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM7);
 			//PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM8);
 			//PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM9);
-			//PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM10); // ÇÊ¿äÇØÁö¸¸ ±×¶§ °¡¼­ ÇÏ³ª¾¿ Ç®µµ·Ï ÇÏÀÚ
+			//PgGroundUtil::AddRegenTimeEffectReserve(pkUnit, AT_EFFECTNUM10); // í•„ìš”í•´ì§€ë§Œ ê·¸ë•Œ ê°€ì„œ í•˜ë‚˜ì”© í’€ë„ë¡ í•˜ì
 		}
 	
 		if( pkUnit->IsUnitType(UT_PLAYER) )
@@ -1767,7 +1767,7 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 
 			if(PgPlayer * pkPlayer = dynamic_cast<PgPlayer*>(pkUnit))
 			{
-				//ÇÁ¸®¹Ì¾ö ÀÌÆåÆ® ºÙÀÌ±â
+				//í”„ë¦¬ë¯¸ì—„ ì´í™íŠ¸ ë¶™ì´ê¸°
 				if( S_PST_ApplyEffect const* pkPremium = pkPlayer->GetPremium().GetType<S_PST_ApplyEffect>() )
 				{
 					SActArg kArg;
@@ -1782,7 +1782,7 @@ bool PgGround::AddUnit( CUnit *pkUnit, bool const bIsSendAreaData )
 
 		if( pkUnit->IsInUnitType(static_cast<EUnitType>(UT_PLAYER|UT_MONSTER|UT_BOSSMONSTER)) )
 		{
-			// GroundEffect ÁÖ±â
+			// GroundEffect ì£¼ê¸°
 			PgAction_GroundEffect kAction(this,EFFECT_TYPE_SEND_GROUND);
 			kAction.DoAction(pkUnit, NULL);
 		}
@@ -1804,7 +1804,7 @@ int PgGround::TickAI( CUnit* pkUnit, DWORD dwElapsed )
 	EUnitType eType = pkUnit->UnitType();
 	if((eType & UT_UNIT_AI) != 0)
 	{
-		if(pkUnit->IsDead())//»ç¸Á½Ã ¾Æ¹«°Íµµ ¾ÈÇÔ.
+		if(pkUnit->IsDead())//ì‚¬ë§ì‹œ ì•„ë¬´ê²ƒë„ ì•ˆí•¨.
 		{
 			LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return 0"));
 			return 0 ;
@@ -1830,11 +1830,11 @@ void PgGround::Clear()
 	BM::CAutoMutex kLock( m_kRscMutex );
 
 	if ( 0 < PgObjectMgr::GetUnitCount(UT_PLAYER) )	
-	{//ÇöÀç ±×¶ó¿îµå¿¡ Á¢¼ÓÇØÀÖ´Â À¯Àú°¡ ÀÖÀ¸¸é ÀÏ´Ü SaveÇÏ°í ºÁ¾ß ÇÑ´Ù.
+	{//í˜„ì¬ ê·¸ë¼ìš´ë“œì— ì ‘ì†í•´ìˆëŠ” ìœ ì €ê°€ ìˆìœ¼ë©´ ì¼ë‹¨ Saveí•˜ê³  ë´ì•¼ í•œë‹¤.
 
 		CAUTION_LOG( BM::LOG_LV5, __FL__<<L"All player information save BEGIN Ground[" << GetGroundNo() << L"]" );
 
-		// ³²¾Æ ÀÖ´Â À¯Àú Á¤º¸ ÀúÀåÇÏ±â
+		// ë‚¨ì•„ ìˆëŠ” ìœ ì € ì •ë³´ ì €ì¥í•˜ê¸°
 		CUnit* pkUnit = NULL;
 		CONT_OBJECT_MGR_UNIT::iterator kItor;
 		PgObjectMgr::GetFirstUnit(UT_PLAYER, kItor);
@@ -1845,7 +1845,7 @@ void PgGround::Clear()
 			PgPlayer *pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 			if ( pkPlayer )
 			{
-				// À¯ÀúÀÇ Á¢¼ÓÀº ²÷¾î¾ß ÇÑ´Ù.
+				// ìœ ì €ì˜ ì ‘ì†ì€ ëŠì–´ì•¼ í•œë‹¤.
 				BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_MapServerClear) );
 				kDPacket.Push( pkPlayer->GetMemberGUID() );
 				::SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -1853,7 +1853,7 @@ void PgGround::Clear()
 		}
 
 		CAUTION_LOG( BM::LOG_LV5, __FL__<<L"All player information save END" );
-		Sleep( std::min<DWORD>( static_cast<DWORD>(PgObjectMgr::GetUnitCount(UT_PLAYER)) * 100, 5000) );// °©ÀÚ±â DB ÆøÁÖµÇ´Â°Í ¸·¾Æ º¸ÀÚ.	
+		Sleep( std::min<DWORD>( static_cast<DWORD>(PgObjectMgr::GetUnitCount(UT_PLAYER)) * 100, 5000) );// ê°‘ìê¸° DB í­ì£¼ë˜ëŠ”ê²ƒ ë§‰ì•„ ë³´ì.	
 	}
 
 	PgGroundResource::Clear(); 
@@ -1927,7 +1927,7 @@ bool PgGround::AddExpeditionMember( PgPlayer * pMaster, PgReqMapMove & MapMoveAc
 
 	if( !m_kLocalPartyMgr.IsExpeditionMaster(pMaster->ExpeditionGuid(), pMaster->GetID() ) )
 	{
-		pMaster->SendWarnMessage(720045); // ÀÌµ¿ ¿äÃ»Àº ¿øÁ¤´ëÀå¸¸ °¡´É.
+		pMaster->SendWarnMessage(720045); // ì´ë™ ìš”ì²­ì€ ì›ì •ëŒ€ì¥ë§Œ ê°€ëŠ¥.
 		LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return false"));
 		return false;	
 	}
@@ -2158,7 +2158,7 @@ bool PgGround::AddPartyAllMember( PgPlayer *pkMaster, PgReqMapMove &kMapMoveActi
 
 	if( m_kLocalPartyMgr.GetMemberCount(pkMaster->PartyGuid()) != (kPartyList.size()+1) )
 	{
-		// °°Àº ±×¶ó¿îµå¿¡ ¸ğµÎ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì
+		// ê°™ì€ ê·¸ë¼ìš´ë“œì— ëª¨ë‘ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš°
 		return false;
 	}
 	return true;
@@ -2176,7 +2176,7 @@ void PgGround::ReqMapMoveCome( SReqMapMove_CM const &kRMMC, VEC_GUID const &kUse
 	{
 		CUnit *pkUnit = GetUnit( *guid_itr );
 		if ( pkUnit )
-		{// ÇöÀç ±×¶ó¿îµå¿¡ ÀÖÀ¸¸é POS¸¸ ÀÌµ¿½ÃÅ°¸é µÈ´Ù.
+		{// í˜„ì¬ ê·¸ë¼ìš´ë“œì— ìˆìœ¼ë©´ POSë§Œ ì´ë™ì‹œí‚¤ë©´ ëœë‹¤.
 			SendToPosLoc( pkUnit, kRMMC.pt3TargetPos, kRMMC.cType );
 		}
 		else
@@ -2190,7 +2190,7 @@ void PgGround::ReqMapMoveCome( SReqMapMove_CM const &kRMMC, VEC_GUID const &kUse
 		BM::Stream kPacket( PT_M_T_REQ_MAP_MOVE_COME );
 		kRMMC.WriteToPacket(kPacket);
 		kPacket.Push( kUserList );
-		SendToCenter( kPacket );//¼¾ÅÍ·Î º¸³¿;
+		SendToCenter( kPacket );//ì„¼í„°ë¡œ ë³´ëƒ„;
 	}
 }
 
@@ -2213,7 +2213,7 @@ bool PgGround::RecvMapMoveCome( SReqMapMove_CM const &kRMMC, BM::GUID const &kCo
 		}
 		else
 		{
-			// Æ÷Áö¼Ç Ã¼ÀÎÁö¸¦ ÇØ¾ßÇÑ´Ù.
+			// í¬ì§€ì…˜ ì²´ì¸ì§€ë¥¼ í•´ì•¼í•œë‹¤.
 			POINT3 pt3TargetPos = kRMMC.pt3TargetPos;
 			if ( kRMMC.nPortalNo )
 			{
@@ -2247,7 +2247,7 @@ bool PgGround::RecvMapMoveTarget( BM::GUID const &kTargetCharGuid, BM::GUID cons
 			BM::Stream kFailedPacket( PT_M_T_ANS_MAP_MOVE_TARGET_FAILED, kReqCharGuid );
 			kFailedPacket.Push( kTargetCharGuid );
 			kFailedPacket.Push( bGMCommand );
-			kFailedPacket.Push( kGndAttr );//¿äÃ»ÇÒ¼ö ¾ø´Â Àå¼Ò¾ß
+			kFailedPacket.Push( kGndAttr );//ìš”ì²­í• ìˆ˜ ì—†ëŠ” ì¥ì†Œì•¼
 			::SendToCenter( kFailedPacket );
 		}break;
 	default:
@@ -2277,7 +2277,7 @@ bool PgGround::RecvMapMoveTarget( BM::GUID const &kTargetCharGuid, BM::GUID cons
 			BM::Stream kFailedPacket( PT_M_T_ANS_MAP_MOVE_TARGET_FAILED, kReqCharGuid );
 			kFailedPacket.Push( kTargetCharGuid );
 			kFailedPacket.Push( bGMCommand );
-			kFailedPacket.Push( static_cast<T_GNDATTR>(GATTR_DEFAULT) );// Ã£À» ¼ö ¾ø¾î
+			kFailedPacket.Push( static_cast<T_GNDATTR>(GATTR_DEFAULT) );// ì°¾ì„ ìˆ˜ ì—†ì–´
 			::SendToCenter( kFailedPacket );
 		}break;
 	}
@@ -2314,7 +2314,7 @@ bool PgGround::RecvMapMove( UNIT_PTR_ARRAY& rkUnitArray, SReqMapMove_MT &rkRMM, 
 	{
 		if ( FAILED(FindSpawnLoc( rkRMM.nTargetPortal, rkRMM.pt3TargetPos ) ) )
 		{
-			// ´Ùµ¹·Áº¸³»¾ßÇØ
+			// ë‹¤ëŒë ¤ë³´ë‚´ì•¼í•´
 			ProcessMapMoveResult( rkUnitArray, kAMM );
 			LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("FindSpawnLoc Failed!"));
 			return false;
@@ -2345,7 +2345,7 @@ bool PgGround::RecvMapMove( UNIT_PTR_ARRAY& rkUnitArray, SReqMapMove_MT &rkRMM, 
 		rkRMM.pt3TargetPos.z = kHit.worldImpact.z;
 	}
 
-	UNIT_PTR_ARRAY kFailedUnitArray;// ¿©±â¿¡ ´ã±ä³ğÀº µÇµ¹·Á º¸³»¾ß ÇÑ´Ù.
+	UNIT_PTR_ARRAY kFailedUnitArray;// ì—¬ê¸°ì— ë‹´ê¸´ë†ˆì€ ë˜ëŒë ¤ ë³´ë‚´ì•¼ í•œë‹¤.
 	UNIT_PTR_ARRAY::iterator unit_itr = rkUnitArray.begin();
 	while( unit_itr != rkUnitArray.end() )
 	{
@@ -2358,7 +2358,7 @@ bool PgGround::RecvMapMove( UNIT_PTR_ARRAY& rkUnitArray, SReqMapMove_MT &rkRMM, 
 		}
 
 		if(pkUser->OpenVendor() || pkUser->VendorGuid().IsNotNull() )
-		{//³ëÁ¡ ¿­·ÈÀ¸¸é ´İµµ·Ï
+		{//ë…¸ì  ì—´ë ¸ìœ¼ë©´ ë‹«ë„ë¡
 			RecvVendorClose(unit_itr->pkUnit);
 		}
 
@@ -2441,7 +2441,7 @@ bool PgGround::RecvMapMove( UNIT_PTR_ARRAY& rkUnitArray, SReqMapMove_MT &rkRMM, 
 		}
 
 		pkUser->LastAreaIndex(PgSmallArea::NONE_AREA_INDEX);
-		pkUser->MapLoading();	// PT_C_M_NFY_MAPLOADED ¹ŞÀ»¶§ ±îÁö ¾î¶°ÇÑ Actionµµ ±İÁö~
+		pkUser->MapLoading();	// PT_C_M_NFY_MAPLOADED ë°›ì„ë•Œ ê¹Œì§€ ì–´ë– í•œ Actionë„ ê¸ˆì§€~
 
 		if ( rkRMM.iCustomValue )
 		{
@@ -2453,7 +2453,7 @@ bool PgGround::RecvMapMove( UNIT_PTR_ARRAY& rkUnitArray, SReqMapMove_MT &rkRMM, 
 
 		if(	bRet )
 		{
-			// ·Î±×¸¦ ³²°Ü
+			// ë¡œê·¸ë¥¼ ë‚¨ê²¨
 			PgLogCont kLogCont(ELogMain_User_Character, ELogSub_Character_Move );
 			kLogCont.MemberKey( pkUser->GetMemberGUID() );
 			kLogCont.CharacterKey( pkUser->GetID() );
@@ -2466,17 +2466,17 @@ bool PgGround::RecvMapMove( UNIT_PTR_ARRAY& rkUnitArray, SReqMapMove_MT &rkRMM, 
 			kLogCont.ChannelNo( g_kProcessCfg.ChannelNo() );
 
 			PgLog kLog( ELOrderMain_Map, ELOrderSub_Move );
-			kLog.Set( 0, GetGroundNo() );				// iValue1 Å¸°Ù¸Ê¹øÈ£
-			kLog.Set( 1, rkRMM.kCasterKey.GroundNo() );	// iValue2 ÄÉ½ºÆÃ¸Ê ¹øÈ£
-			kLog.Set( 2, pkUser->GetAbil(AT_GENDER) );	// iValue3 ¼ºº°
-			kLog.Set( 3, static_cast< int >(rkRMM.cType) ); // iValue4 ¸ÊÀÌµ¿ »çÀ¯
-			kLog.Set( 2, GroundKey().Guid().str() );			// guidValue1 Å¸°Ù¸Ê GUID
-			kLog.Set( 3, pkUser->PartyGuid().str() );			// guidValue2 ÆÄÆ¼ GUID
+			kLog.Set( 0, GetGroundNo() );				// iValue1 íƒ€ê²Ÿë§µë²ˆí˜¸
+			kLog.Set( 1, rkRMM.kCasterKey.GroundNo() );	// iValue2 ì¼€ìŠ¤íŒ…ë§µ ë²ˆí˜¸
+			kLog.Set( 2, pkUser->GetAbil(AT_GENDER) );	// iValue3 ì„±ë³„
+			kLog.Set( 3, static_cast< int >(rkRMM.cType) ); // iValue4 ë§µì´ë™ ì‚¬ìœ 
+			kLog.Set( 2, GroundKey().Guid().str() );			// guidValue1 íƒ€ê²Ÿë§µ GUID
+			kLog.Set( 3, pkUser->PartyGuid().str() );			// guidValue2 íŒŒí‹° GUID
 
 			kLogCont.Add( kLog );
 			kLogCont.Commit();
 
-			unit_itr->bAutoRemove = false;// ÀÚµ¿»èÁ¦¸¦ ¸·´Â´Ù.
+			unit_itr->bAutoRemove = false;// ìë™ì‚­ì œë¥¼ ë§‰ëŠ”ë‹¤.
 
 			BM::GUID const kSelectedPetID = pkUser->SelectedPetID();
 			if ( kSelectedPetID.IsNotNull() )
@@ -2492,7 +2492,7 @@ bool PgGround::RecvMapMove( UNIT_PTR_ARRAY& rkUnitArray, SReqMapMove_MT &rkRMM, 
 // 				}
 			}
 
-			//¼ÒÈ¯Ã¼ »ı¼º
+			//ì†Œí™˜ì²´ ìƒì„±
 			CONT_UNIT_SUMMONED_MAPMOVE_DATA::iterator cont_summoned = kContUnitSummonedMapMoveData.find(pkUser->GetID());
 			if(cont_summoned != kContUnitSummonedMapMoveData.end())
 			{
@@ -2553,21 +2553,21 @@ void PgGround::ProcessMapMoveResult( UNIT_PTR_ARRAY& rkUnitArray, SAnsMapMove_MT
 	BM::Stream kAPacket( PT_M_T_ANS_MAP_MOVE_RESULT, rkAMM );
 	rkUnitArray.WriteToPacket( kAPacket, WT_MAPMOVE_CLIENT );
 
-	// À¯ÀúÇÑÅ× ·ÎµùÇÒ ¸ÊÁ¤º¸¸¦ Åëº¸ÇØÁÖ¾î¾ß ÇÑ´Ù.
-	// ¹Ì¼Ç¸Ê¿¡¼­´Â ¸Ê¹øÈ£°¡ ¹Ù²î´Ï±î... ´Ù½Ã º¸³»ÁÖ¾î¾ß ÇÑ´Ù.
+	// ìœ ì €í•œí…Œ ë¡œë”©í•  ë§µì •ë³´ë¥¼ í†µë³´í•´ì£¼ì–´ì•¼ í•œë‹¤.
+	// ë¯¸ì…˜ë§µì—ì„œëŠ” ë§µë²ˆí˜¸ê°€ ë°”ë€Œë‹ˆê¹Œ... ë‹¤ì‹œ ë³´ë‚´ì£¼ì–´ì•¼ í•œë‹¤.
 	SGroundKey kUserGndKey = GroundKey();
-	kUserGndKey.GroundNo( this->GetGroundNo() );// ÀÌ°É·Î ÇØÁà¾ß ÇØ..
+	kUserGndKey.GroundNo( this->GetGroundNo() );// ì´ê±¸ë¡œ í•´ì¤˜ì•¼ í•´..
 	kUserGndKey.WriteToPacket( kAPacket );
 
-	m_kSmallAreaInfo.WriteToPacket( kAPacket );// Zone Á¤º¸¸¦ ºÙ¿©¼­ º¸³»¾ß ÇÑ´Ù.
+	m_kSmallAreaInfo.WriteToPacket( kAPacket );// Zone ì •ë³´ë¥¼ ë¶™ì—¬ì„œ ë³´ë‚´ì•¼ í•œë‹¤.
 
 
-	// °øÀ¯¸Ê ¼­¹ö¿¡¼­´Â ·ÎÁ÷À» ¹Ù²ã¾ß ÇÑ´Ù.
+	// ê³µìœ ë§µ ì„œë²„ì—ì„œëŠ” ë¡œì§ì„ ë°”ê¿”ì•¼ í•œë‹¤.
 	::SendToCenter( kAPacket );
 
 	if(MMR_SUCCESS != rkAMM.eRet)
 	{
-		return; // ¸Ê ÀÌµ¿¿¡ ½ÇÆĞ ÇÑ °æ¿ì´Â Ã³¸® ÇÏÁö ¾Ê´Â´Ù.
+		return; // ë§µ ì´ë™ì— ì‹¤íŒ¨ í•œ ê²½ìš°ëŠ” ì²˜ë¦¬ í•˜ì§€ ì•ŠëŠ”ë‹¤.
 	}
 
 	for(UNIT_PTR_ARRAY::iterator iter = rkUnitArray.begin();iter != rkUnitArray.end();++iter)
@@ -2584,13 +2584,13 @@ void PgGround::ProcessMapMoveResult( UNIT_PTR_ARRAY& rkUnitArray, SAnsMapMove_MT
 			PgGroundUtil::SendPartyMgr_Refuse((*iter).pkUnit->GetID(), EPR_BOSSROOM, m_bIsBossRoom);
 		}
 
-		// ´øÀü¿ë ¾÷Àû ¾îºô
+		// ë˜ì „ìš© ì—…ì  ì–´ë¹Œ
 		if( false == ( GATTR_INSTANCE & GetAttr() ) )
 		{
-			(*iter).pkUnit->SetAbil( AT_ACHIEVEMENT_DUNGEON_ATTACKED_COUNT, 0 );// ÇÇ°İ È¸¼ö ÃÊ±âÈ­
-			(*iter).pkUnit->SetAbil( AT_ACHIEVEMENT_DUNGEON_TIMEATTACK, 0 );	// ´øÀü ÀÔÀå ½Ã°£ ÃÊ±âÈ­
-			(*iter).pkUnit->SetAbil( AT_ACHIEVEMENT_DUNGEON_ANYONE_DIE, 0 );	// ¾Æ¹«µµ Á×Áö¾Ê°í ´øÀüÅ¬¸®¾î ÃÊ±âÈ­
-			(*iter).pkUnit->SetAbil( AT_INDUN_PARTICIPATION_RATE, 0 );	// ÀÎ´øÂü¿©À²
+			(*iter).pkUnit->SetAbil( AT_ACHIEVEMENT_DUNGEON_ATTACKED_COUNT, 0 );// í”¼ê²© íšŒìˆ˜ ì´ˆê¸°í™”
+			(*iter).pkUnit->SetAbil( AT_ACHIEVEMENT_DUNGEON_TIMEATTACK, 0 );	// ë˜ì „ ì…ì¥ ì‹œê°„ ì´ˆê¸°í™”
+			(*iter).pkUnit->SetAbil( AT_ACHIEVEMENT_DUNGEON_ANYONE_DIE, 0 );	// ì•„ë¬´ë„ ì£½ì§€ì•Šê³  ë˜ì „í´ë¦¬ì–´ ì´ˆê¸°í™”
+			(*iter).pkUnit->SetAbil( AT_INDUN_PARTICIPATION_RATE, 0 );	// ì¸ë˜ì°¸ì—¬ìœ¨
 		}
 		else
 		{
@@ -2627,7 +2627,7 @@ void PgGround::ProcessMapMoveResult( UNIT_PTR_ARRAY& rkUnitArray, SAnsMapMove_MT
 					kItemModifyAction.DoAction((*iter).pkUnit,NULL);
 				}
 
-				{// ±ÇÀå Ã¤³Î ÀÔÀå ¹öÇÁ
+				{// ê¶Œì¥ ì±„ë„ ì…ì¥ ë²„í”„
 					PgPlayer* pkPlayer = dynamic_cast<PgPlayer*>((*iter).pkUnit);
 					if( pkPlayer )
 					{
@@ -2657,7 +2657,7 @@ void PgGround::ProcessMapMoveResult( UNIT_PTR_ARRAY& rkUnitArray, SAnsMapMove_MT
 					}
 				}
 
-				{// PC¹æ Á¢¼ÓÀÌ¸é Ãß°¡ ¹öÇÁ °É¾îÁØ´Ù.
+				{// PCë°© ì ‘ì†ì´ë©´ ì¶”ê°€ ë²„í”„ ê±¸ì–´ì¤€ë‹¤.
 					PgPlayer* pkPlayer = dynamic_cast<PgPlayer*>((*iter).pkUnit);
 					if( pkPlayer && pkPlayer->IsPCCafe() )
 					{
@@ -2684,12 +2684,12 @@ void PgGround::ProcessMapMoveResult( UNIT_PTR_ARRAY& rkUnitArray, SAnsMapMove_MT
 					}
 				}
 
-				{// "¿À·£¸¸ÀÌ³×" ¾÷Àû Ã¼Å©
+				{// "ì˜¤ëœë§Œì´ë„¤" ì—…ì  ì²´í¬
 					PgCheckAchievements<PgCheckComplete_Base,PgValueCtrl_LongTimeNoSee> kCheckAchievements(AT_ACHIEVEMENT_LONGTIMENOSEE, GroundKey() );
 					kCheckAchievements.DoAction((*iter).pkUnit,NULL);
 				}
 
-				{// "¾ÆÄ§ÇüÀÎ°£, ¿Ã»©¹ÌÇüÀÎ°£" ¾÷Àû Ã¼Å©
+				{// "ì•„ì¹¨í˜•ì¸ê°„, ì˜¬ë¹¼ë¯¸í˜•ì¸ê°„" ì—…ì  ì²´í¬
 					BM::DBTIMESTAMP_EX kCurTime;
 					g_kEventView.GetLocalTime(kCurTime);
 					int const iType = AT_ACHIEVEMENT_LOGIN_0 + kCurTime.hour;
@@ -2745,8 +2745,8 @@ void PgGround::PreReleaseUnit( CUnit const *pkUnit )
 }
 
 // bRecursiveCall :
-//	ÆêÀÌ³ª ¼ÒÈ¯¹° µî Player°¡ ¼ÒÀ¯ÇÑ ´Ù¸¥ À¯´ÖÀÌ ÀÖÀ» °æ¿ì
-//	Player »èÁ¦ µÇ¸é¼­ ÇÔ²² Release¸¦ È£ÃâÇÏµµ·Ï ¼³Á¤ÇÑ´Ù.
+//	í«ì´ë‚˜ ì†Œí™˜ë¬¼ ë“± Playerê°€ ì†Œìœ í•œ ë‹¤ë¥¸ ìœ ë‹›ì´ ìˆì„ ê²½ìš°
+//	Player ì‚­ì œ ë˜ë©´ì„œ í•¨ê»˜ Releaseë¥¼ í˜¸ì¶œí•˜ë„ë¡ ì„¤ì •í•œë‹¤.
 bool PgGround::ReleaseUnit( CUnit *pkUnit, bool bRecursiveCall, bool const bSendArea )
 {
 	if(!pkUnit)
@@ -2771,7 +2771,7 @@ bool PgGround::ReleaseUnit( CUnit *pkUnit, bool bRecursiveCall, bool const bSend
 				if( pkUnit->IsUnitType(UT_SUMMONED)
 					&& pkCaller->IsUnitType(UT_PLAYER) 
 					)
-				{// ¼ÒÈ¯Ã¼°¡ »ç¶óÁ³À¸¹Ç·Î ¼ÒÈ¯Ã¼ Á¾·ù°¡ ¸î°³ÀÎÁö¿¡ µû¶ó °É¸®´Â ÀÌÆåÆ®¸¦ °»½ÅÇÏ°í
+				{// ì†Œí™˜ì²´ê°€ ì‚¬ë¼ì¡Œìœ¼ë¯€ë¡œ ì†Œí™˜ì²´ ì¢…ë¥˜ê°€ ëª‡ê°œì¸ì§€ì— ë”°ë¼ ê±¸ë¦¬ëŠ” ì´í™íŠ¸ë¥¼ ê°±ì‹ í•˜ê³ 
 					RefreshSummonEffect( dynamic_cast<PgPlayer*>(pkCaller) );
 				}
 			}
@@ -2816,12 +2816,12 @@ bool PgGround::ReleaseUnit( CUnit *pkUnit, bool bRecursiveCall, bool const bSend
 
 	PreReleaseUnit(pkUnit);
 	
-	//if (!bRecursiveCall) ¼ÒÈ¯Ã¼ ¸ñ·ÏÀ» ÂüÁ¶·Î ¾òÁö ¾Ê±â¶§¹®¿¡ ÀçÈ£ÃâµÇ¾îµµ ¹«¹æ
+	//if (!bRecursiveCall) ì†Œí™˜ì²´ ëª©ë¡ì„ ì°¸ì¡°ë¡œ ì–»ì§€ ì•Šê¸°ë•Œë¬¸ì— ì¬í˜¸ì¶œë˜ì–´ë„ ë¬´ë°©
 	EUnitDieType const eDieType = static_cast<EUnitDieType>(pkUnit->GetAbil(AT_DIE_TYPE));
 	if(false==(eDieType&EUDT_NOT_CHILD_DIE)
 		&& pkUnit->GetSummonUnitCount()>0 )
 	{
-		// ÁÖÀÇ!! ÂüÁ¶·Î ¼ÒÈ¯¸®½ºÆ®¸¦ ¾ò°Ô µÇ¸é RecursiveCallÀÏ¶§´Â ¹«ÇÑÈ£Ãâ »óÅÂ°¡ µÊ.
+		// ì£¼ì˜!! ì°¸ì¡°ë¡œ ì†Œí™˜ë¦¬ìŠ¤íŠ¸ë¥¼ ì–»ê²Œ ë˜ë©´ RecursiveCallì¼ë•ŒëŠ” ë¬´í•œí˜¸ì¶œ ìƒíƒœê°€ ë¨.
 
 		BM::GUID kOwnerGuid;
 		CUnit* pkOwner = NULL;
@@ -2830,7 +2830,7 @@ bool PgGround::ReleaseUnit( CUnit *pkUnit, bool bRecursiveCall, bool const bSend
 			pkOwner = GetUnit( kOwnerGuid );
 		}
 
-		// ·Î±×¸¦ ³²°Ü
+		// ë¡œê·¸ë¥¼ ë‚¨ê²¨
 		PgLogCont kLogCont(ELogMain_Contents_Monster, ELogSub_Monster_Death );
 		kLogCont.MemberKey( GroundKey().Guid() );// GroundGuid
 		kLogCont.CharacterKey( pkUnit->GetID() );
@@ -2883,7 +2883,7 @@ bool PgGround::ReleaseUnit( CUnit *pkUnit, bool bRecursiveCall, bool const bSend
 		kLogCont.Commit();
 	}
 
-	//ÀÚ½ÅÀÌ ÀÚ½Äº¸´Ù ¸ÕÀú Á×´Â °æ¿ì, °ü¸®¸¦ ºÎ¸ğ¿¡°Ô ³Ñ±è
+	//ìì‹ ì´ ìì‹ë³´ë‹¤ ë¨¼ì € ì£½ëŠ” ê²½ìš°, ê´€ë¦¬ë¥¼ ë¶€ëª¨ì—ê²Œ ë„˜ê¹€
 	if(pkCaller && pkUnit->GetAbil(AT_MON_CHILD_DIE) && pkCaller->GetAbil(AT_MON_CHILD_DIE))
 	{
 		CUnit* pkSummonUnit = NULL;
@@ -2916,16 +2916,16 @@ bool PgGround::ReleaseUnit( CUnit *pkUnit, bool bRecursiveCall, bool const bSend
 	if ( pkArea )
 	{
 		///////////////////////////////////
-		// 2007.11.29 ÀÌÀü ¹öÀü¿¡¼­´Â 
-		// ¸ó½ºÅÍ Release´Â Å¬¶ó¿¡¼­ Á÷Á¢ÇÑ´Ù.
-		// HP_VALUE_KILL_NOTADDED_UNIT °ªÀº ¼­¹ö°¡ °­Á¦·Î Á×ÀÎ³ÑÀÌ´Ù....(Å¬¶ó·Î ReleaseUnitÆĞÅ¶ º¸³»Áà¾ß ÇÑ´Ù.)
+		// 2007.11.29 ì´ì „ ë²„ì „ì—ì„œëŠ” 
+		// ëª¬ìŠ¤í„° ReleaseëŠ” í´ë¼ì—ì„œ ì§ì ‘í•œë‹¤.
+		// HP_VALUE_KILL_NOTADDED_UNIT ê°’ì€ ì„œë²„ê°€ ê°•ì œë¡œ ì£½ì¸ë„˜ì´ë‹¤....(í´ë¼ë¡œ ReleaseUnitíŒ¨í‚· ë³´ë‚´ì¤˜ì•¼ í•œë‹¤.)
 		//if (pkUnit->IsUnitType(UT_MONSTER) == false || pkUnit->GetAbil(AT_HP) == HP_VALUE_KILL_NOTADDED_UNIT)
 		////////////////////////////////////
-		// 2007.11.29 ÀÌÈÄ ºÎÅÍ´Â
-		// Monster Die¸¦ º¸³»Áö ¾ÊÀ¸¸é Å¬¶óÀÌ¾ğÆ®¿¡ Á×Áö¾Ê´Â Dummy Monster°¡ »ı¼ºµÈ´Ù.
-		//	Áï, Client¿¡¼­´Â ´Ù¸¥ÇÃ·¹ÀÌ¾î°¡ ¸ó½ºÅÍ¸¦ ¶§·Á¼­ Á×ÀÏ¶§ / ¸ó½ºÅÍ¸¸ º¸ÀÌ°í, ÇÃ·¹ÀÌ¾î´Â ¾Èº¸ÀÎ´Ù°í ÇÑ´Ù¸é
-		//	ÇÃ·¹ÀÌ¾îÀÇ °ø°İAction PacketÀ» ¹ŞÀ» ¼ö ¾ø¾î ¸ó½ºÅÍÀÇ Á×À½À» ¾Ë¼ö ¾ø°Ô µÈ´Ù.
-		//	±×·¡¼­ ¸ó½ºÅÍ°¡ Á×À»¶§´Â AT_HP¸¦ º¸³»¾î Å¬¶óÀÌ¾ğÆ®¿¡¼­ Á×À½¾×¼Ç ¿¬ÃâÀ» ÇÒ ¼ö ÀÖµµ·Ï ÇÑ´Ù.
+		// 2007.11.29 ì´í›„ ë¶€í„°ëŠ”
+		// Monster Dieë¥¼ ë³´ë‚´ì§€ ì•Šìœ¼ë©´ í´ë¼ì´ì–¸íŠ¸ì— ì£½ì§€ì•ŠëŠ” Dummy Monsterê°€ ìƒì„±ëœë‹¤.
+		//	ì¦‰, Clientì—ì„œëŠ” ë‹¤ë¥¸í”Œë ˆì´ì–´ê°€ ëª¬ìŠ¤í„°ë¥¼ ë•Œë ¤ì„œ ì£½ì¼ë•Œ / ëª¬ìŠ¤í„°ë§Œ ë³´ì´ê³ , í”Œë ˆì´ì–´ëŠ” ì•ˆë³´ì¸ë‹¤ê³  í•œë‹¤ë©´
+		//	í”Œë ˆì´ì–´ì˜ ê³µê²©Action Packetì„ ë°›ì„ ìˆ˜ ì—†ì–´ ëª¬ìŠ¤í„°ì˜ ì£½ìŒì„ ì•Œìˆ˜ ì—†ê²Œ ëœë‹¤.
+		//	ê·¸ë˜ì„œ ëª¬ìŠ¤í„°ê°€ ì£½ì„ë•ŒëŠ” AT_HPë¥¼ ë³´ë‚´ì–´ í´ë¼ì´ì–¸íŠ¸ì—ì„œ ì£½ìŒì•¡ì…˜ ì—°ì¶œì„ í•  ìˆ˜ ìˆë„ë¡ í•œë‹¤.
 		
 		if ( bSendArea )
 		{
@@ -2959,7 +2959,7 @@ bool PgGround::ReleaseUnit( CUnit *pkUnit, bool bRecursiveCall, bool const bSend
 #ifdef AI_DEBUG2
 					INFO_LOG( BM::LOG_LV9, __FL__ << _T("UT_MONSTER Released Class<") << pkUnit->GetAbil(AT_CLASS) << _T("> Guid<") << pkUnit->GetID() << _T(">") );
 #endif
-				}// break »ç¿ëÇÏÁö ¾ÊÀ½
+				}// break ì‚¬ìš©í•˜ì§€ ì•ŠìŒ
 			default:
 				{
 					SendAreaData( pkUnit, NULL, pkArea );
@@ -2982,7 +2982,7 @@ bool PgGround::ReleaseUnit( CUnit *pkUnit, bool bRecursiveCall, bool const bSend
 	{
 	case UT_MYHOME:
 		{
-			// È¨Àº ÀÌµ¿ ¸øÇØ!!
+			// í™ˆì€ ì´ë™ ëª»í•´!!
 		}break;
 	case UT_PLAYER:
 		{
@@ -3077,7 +3077,7 @@ void PgGround::LogOut( SERVER_IDENTITY const &kSI )
 				BM::Stream kEndPacket( PT_M_C_NFY_OBMODE_END );
 				pkMyPlayer->Send( kEndPacket, E_SENDTYPE_SELF|E_SENDTYPE_SEND_BYFORCE);
 
-				// ¿ø·¡ AreaÁ¤º¸·Î º¹±¸ ½ÃÄÑ ÁÖ¾î¾ß ÇÑ´Ù~
+				// ì›ë˜ Areaì •ë³´ë¡œ ë³µêµ¬ ì‹œì¼œ ì£¼ì–´ì•¼ í•œë‹¤~
 				pkMyPlayer->SetSyncType( SYNC_TYPE_DEFAULT, false );
 
 				if(pkMyPlayer->OpenVendor() || pkMyPlayer->VendorGuid().IsNotNull() )
@@ -3089,7 +3089,7 @@ void PgGround::LogOut( SERVER_IDENTITY const &kSI )
 // 				{
 // 					PgSmallArea *pkCasterArea = GetArea( pkMyPlayer->LastAreaIndex() );
 // 					PgSmallArea *pkTargetArea = GetArea( iAreaIndex );
-// 					SendAreaData( pkMyPlayer, pkCasterArea, pkTargetArea, SYNC_TYPE_RECV_ADD );// AddUnit ¹Ş±â¸¸ ÇØ¾ß ÇÑ´Ù.
+// 					SendAreaData( pkMyPlayer, pkCasterArea, pkTargetArea, SYNC_TYPE_RECV_ADD );// AddUnit ë°›ê¸°ë§Œ í•´ì•¼ í•œë‹¤.
 // 				}
 			}
 		}
@@ -3107,7 +3107,7 @@ void PgGround::LogOut( SERVER_IDENTITY const &kSI )
 			{
 				if( pkPlayer->GetChannel() == kSI.nChannel )
 				{
-					// ¼¾ÅÍ°¡ ²÷¾îÁø°Å´Ù. ±×³É Á¶¿ëÈ÷ Release¸¸ ÇØ¾ß ÇÑ´Ù!
+					// ì„¼í„°ê°€ ëŠì–´ì§„ê±°ë‹¤. ê·¸ëƒ¥ ì¡°ìš©íˆ Releaseë§Œ í•´ì•¼ í•œë‹¤!
 					CAUTION_LOG( BM::LOG_LV0, L"Center["<<kSI.nChannel<<L"] Error!! No Save ReleaseUnit["<<pkPlayer->Name()<<L"-"<<pkPlayer->GetID()<<L"]" );
 					ReleaseUnit(pkPlayer);
 				}
@@ -3129,7 +3129,7 @@ bool PgGround::LogOut(BM::GUID const &rkCharGuid)
 
 	PgObjectMgr2::UnRegistObserver( rkCharGuid, NULL );
 
-	if( GetAttr() & GKIND_EXPEDITION_LOBBY )	// ·Îºñ¸ÊÀÏ °æ¿ì ¿øÁ¤´ë °¡ÀÔ´ë±âÀÚÀÎÁö È®ÀÎ(Ã¤³ÎÀÌµ¿°¡ÀÔ).
+	if( GetAttr() & GKIND_EXPEDITION_LOBBY )	// ë¡œë¹„ë§µì¼ ê²½ìš° ì›ì •ëŒ€ ê°€ì…ëŒ€ê¸°ìì¸ì§€ í™•ì¸(ì±„ë„ì´ë™ê°€ì…).
 	{
 		PgExpeditionLobby * pGround = dynamic_cast<PgExpeditionLobby*>(this);
 		if( pGround )
@@ -3165,8 +3165,8 @@ bool PgGround::LogOut(BM::GUID const &rkCharGuid)
 }
 
 // bRecursiveCall :
-//	ÆêÀÌ³ª ¼ÒÈ¯¹° µî Player°¡ ¼ÒÀ¯ÇÑ ´Ù¸¥ À¯´ÖÀÌ ÀÖÀ» °æ¿ì
-//	Player »èÁ¦ µÇ¸é¼­ ÇÔ²² Release¸¦ È£ÃâÇÏµµ·Ï ¼³Á¤ÇÑ´Ù.
+//	í«ì´ë‚˜ ì†Œí™˜ë¬¼ ë“± Playerê°€ ì†Œìœ í•œ ë‹¤ë¥¸ ìœ ë‹›ì´ ìˆì„ ê²½ìš°
+//	Player ì‚­ì œ ë˜ë©´ì„œ í•¨ê»˜ Releaseë¥¼ í˜¸ì¶œí•˜ë„ë¡ ì„¤ì •í•œë‹¤.
 void PgGround::ReleaseUnit(UNIT_PTR_ARRAY& rkUnitArray, bool bRecursiveCall)
 {
 	UNIT_PTR_ARRAY::iterator unit_itr = rkUnitArray.begin();
@@ -3212,8 +3212,8 @@ bool PgGround::SaveUnit( CUnit *pkUnit, SReqSwitchReserveMember const *pRSRM, BM
 				}
 			}
 
-			// ¿øÁ¤´ë ·Îºñ³ª ´øÀü µî ¿øÁ¤´ë ÄÁÅÙÃ÷ ¸ÊÀÏ°æ¿ì ¿ø·¡ ¸ÊÀ¸·Î µÇµ¹·Á Áà¾ß µÊ.
-			// Ã¤³ÎÀÌ À¯Àú°¡ ¼±ÅÃÇÒ ¼ö ¾ø¾î¼­ Á¢¼Ó ÇÒ ¼ö ¾øÀ½.
+			// ì›ì •ëŒ€ ë¡œë¹„ë‚˜ ë˜ì „ ë“± ì›ì •ëŒ€ ì»¨í…ì¸  ë§µì¼ê²½ìš° ì›ë˜ ë§µìœ¼ë¡œ ë˜ëŒë ¤ ì¤˜ì•¼ ë¨.
+			// ì±„ë„ì´ ìœ ì €ê°€ ì„ íƒí•  ìˆ˜ ì—†ì–´ì„œ ì ‘ì† í•  ìˆ˜ ì—†ìŒ.
 			SRecentPlayerNormalMapData MapData;
 			pkPlayer->GetRecentNormalMap(MapData);
 			if( (GetAttr() & GKIND_EXPEDITION)
@@ -3232,11 +3232,11 @@ bool PgGround::SaveUnit( CUnit *pkUnit, SReqSwitchReserveMember const *pRSRM, BM
 			}
 
 			bool bSaveHPMP = PgGroundUtil::IsSaveHPMP(static_cast<EGndAttr>(GetAttr()));
-//			pkPlayer->UpdateRecent( this->GroundKey(), this->GetAttr() ); ÇÒÇÊ¿ä ¾ø´Ù ÇöÀç Æ÷Áö¼ÇÀ» ¹Ù·Î º¸³» ÁÙ²¨´Ù.
+//			pkPlayer->UpdateRecent( this->GroundKey(), this->GetAttr() ); í• í•„ìš” ì—†ë‹¤ í˜„ì¬ í¬ì§€ì…˜ì„ ë°”ë¡œ ë³´ë‚´ ì¤„êº¼ë‹¤.
 			BM::Stream kSPacket( PT_M_T_REQ_SAVE_CHARACTER, pkPlayer->GetID() );
-			kSPacket.Push( bSelectChannel );	// Ã¤³Î º¯°æÀÎÁö, Ä³¸¯ÅÍ ¼±ÅÃÀÎÁö.
+			kSPacket.Push( bSelectChannel );	// ì±„ë„ ë³€ê²½ì¸ì§€, ìºë¦­í„° ì„ íƒì¸ì§€.
 			kSPacket.Push( SaveGroundKey );
-			kSPacket.Push( MapData );	// ¿øÁ¤´ë Ã¤³Î·Î ÀÌµ¿ÇÒ °æ¿ì. Ã¤³Î/¸Ê/À§Ä¡Á¤º¸.
+			kSPacket.Push( MapData );	// ì›ì •ëŒ€ ì±„ë„ë¡œ ì´ë™í•  ê²½ìš°. ì±„ë„/ë§µ/ìœ„ì¹˜ì •ë³´.
 			kSPacket.Push( pkPlayer->GetPos() );		// 1 Recent Position
 			kSPacket.Push( (bSaveHPMP) ? pkPlayer->GetAbil(AT_HP) : -1 );	// 2 HP
 			kSPacket.Push( (bSaveHPMP) ? pkPlayer->GetAbil(AT_MP) : -1 );	// 3 MP
@@ -3255,7 +3255,7 @@ bool PgGround::SaveUnit( CUnit *pkUnit, SReqSwitchReserveMember const *pRSRM, BM
 				pkUnit->GetInven()->SaveGroupCoolTime(g_kEventView.GetServerElapsedTime(), abyItemGroupCoolTime);
 				kSPacket.Push(abyItemGroupCoolTime, MAX_DB_ITEM_GROUP_COOLTIMEP_SIZE);
 			}
-			{//ÇöÀç À¯´ÖÀÇ ÀÜ¿© ÄğÅ¸ÀÓ ÀúÀå
+			{//í˜„ì¬ ìœ ë‹›ì˜ ì”ì—¬ ì¿¨íƒ€ì„ ì €ì¥
 				CSkill::MAP_COOLTIME kContCoolTime;
 				pkUnit->GetSkill()->SaveToDBCoolTimeMap(kContCoolTime);
 				kSPacket.Push(kContCoolTime);
@@ -3272,10 +3272,10 @@ bool PgGround::SaveUnit( CUnit *pkUnit, SReqSwitchReserveMember const *pRSRM, BM
 				BYTE const byMax = static_cast<BYTE>(MAX_PET_SKILLCOUNT-1);
 				__int64 i64CoolTime[byMax] ={0i64,};
 
-				// ÄğÅ¸ÀÓ ÀúÀåÇØ¾ß ÇÑ´Ù.
+				// ì¿¨íƒ€ì„ ì €ì¥í•´ì•¼ í•œë‹¤.
 				CSkill *pkPetSkill = pkPet->GetSkill();
 				PgMySkill *pkPetMySkill = pkPet->GetMySkill();
-				DWORD const dwCurrentTime = g_kEventView.GetServerElapsedTime() + 3000;//3ÃÊÀÇ ¹öÆÛ
+				DWORD const dwCurrentTime = g_kEventView.GetServerElapsedTime() + 3000;//3ì´ˆì˜ ë²„í¼
 				__int64 const i64NowMSTime = g_kEventView.GetLocalSecTime( CGameTime::MILLISECOND );
 
 				CSkill::CONST_COOLTIME_INDEX kItor;
@@ -3354,13 +3354,13 @@ bool PgGround::SaveUnit( CUnit *pkUnit, SReqSwitchReserveMember const *pRSRM, BM
 						++iter;
 					}
 				}
-				{// ÄŞº¸ ÀúÀå
+				{// ì½¤ë³´ ì €ì¥
 					PgComboCounter* pkCounter = NULL;
 					if( GetComboCounter(pkPlayer->GetID(), pkCounter) )
 					{
 						COMBO_TYPE const iLatestCombo = pkCounter->GetComboCount();
 
-						// NC¿ë
+						// NCìš©
 						BM::Stream kNPacket(PT_A_N_NFY_CHARACTER_COMBO_INFO);
 						kNPacket.Push( static_cast< int >(g_kProcessCfg.RealmNo()) );
 						kNPacket.Push( pkPlayer->GetID() );
@@ -3368,15 +3368,15 @@ bool PgGround::SaveUnit( CUnit *pkUnit, SReqSwitchReserveMember const *pRSRM, BM
 						kNPacket.Push( BM::DBTIMESTAMP_EX(BM::PgPackedTime::LocalTime()) );
 						::SendToRealmContents(PMET_WEB_HELPER, kNPacket);
 
-						// °øÅë TB_UserCharacter_Point
-						// ProcessModifyPlayer_LogOut() ³»¿¡¼­ ¿¹¿Ü Ã³¸® ÇØ ÁØ´Ù.( iLatestCombo °ª ±×´ë·Î UPDATE ) 
+						// ê³µí†µ TB_UserCharacter_Point
+						// ProcessModifyPlayer_LogOut() ë‚´ì—ì„œ ì˜ˆì™¸ ì²˜ë¦¬ í•´ ì¤€ë‹¤.( iLatestCombo ê°’ ê·¸ëŒ€ë¡œ UPDATE ) 
 						if( iLatestCombo > pkPlayer->GetAbil( AT_MAX_COMBO ) )
 						{
 							CONT_PLAYER_MODIFY_ORDER kOrder;
 							SPMOD_AddRankPoint kSetRank( E_RANKPOINT_MAXCOMBO, iLatestCombo );
 							kOrder.push_back( SPMO( IMET_ADD_RANK_POINT, pkPlayer->GetID(), kSetRank ) );
 
-							PgAction_ReqModifyItem kItemModifyAction(CIE_Rank_Point, GroundKey(), kOrder, BM::Stream(), true);//·©Å·Àº »ç¸Á °ü·Ã ¾øÀ½.
+							PgAction_ReqModifyItem kItemModifyAction(CIE_Rank_Point, GroundKey(), kOrder, BM::Stream(), true);//ë­í‚¹ì€ ì‚¬ë§ ê´€ë ¨ ì—†ìŒ.
 							kItemModifyAction.DoAction(pkPlayer, NULL);
 						}
 					}
@@ -3420,7 +3420,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 	
 	pkUnit->SetPos(rkAction.ptPos);
 
-	// ÀÏ´Ü ¼¼ÆÃÇØ ÁÖ¾î¾ß ÇÑ´Ù.
+	// ì¼ë‹¨ ì„¸íŒ…í•´ ì£¼ì–´ì•¼ í•œë‹¤.
 	if(0 != (rkAction.byDirection & 0x0F))
 	{
 		pkUnit->FrontDirection(static_cast<Direction>(rkAction.byDirection & 0x0F));
@@ -3446,18 +3446,18 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 						//VERIFY_INFO_LOG(false, BM::LOG_LV1, kLogMsg) ;
 						HACKING_LOG(BM::LOG_LV0, kLogMsg);
 
-						//Player¿¡°Ô °á°ú¸¦ º¸¿©ÁÙ °æ¿ì(Debug)
+						//Playerì—ê²Œ ê²°ê³¼ë¥¼ ë³´ì—¬ì¤„ ê²½ìš°(Debug)
 						if((g_kProcessCfg.RunMode() & CProcessConfig::E_RunMode_Debug) && (PgGround::ms_kAntiHackCheckActionCount.m_bResultToPlayer))
 						{
 							pkPlayer->SendWarnMessageStr(kLogMsg);
 						}
 
-						//ÇØÅ· Æ÷ÀÎÆ®¸¦ »ç¿ë ÇÒ °æ¿ì
+						//í•´í‚¹ í¬ì¸íŠ¸ë¥¼ ì‚¬ìš© í•  ê²½ìš°
 						if(PgGround::ms_kAntiHackCheckActionCount.m_bHackingIndex)
 						{
 							if(pkPlayer->SuspectHacking(EAHP_ActionCount, PgGround::ms_kAntiHackCheckActionCount.m_iAddHackingPoint))
 							{
-								// SpeedHackÀÌ ÀÇ½É½º·¯¿ì´Ï °­Á¦Á¢¼Ó ÇØÁ¦ ½ÃÅ²´Ù.
+								// SpeedHackì´ ì˜ì‹¬ìŠ¤ëŸ¬ìš°ë‹ˆ ê°•ì œì ‘ì† í•´ì œ ì‹œí‚¨ë‹¤.
 								BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_ActionCount_Hack_B) );
 								kDPacket.Push( pkPlayer->GetMemberGUID() );
 								SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -3480,19 +3480,19 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 					//VERIFY_INFO_LOG(false, BM::LOG_LV1, kLogMsg) ;
 					HACKING_LOG(BM::LOG_LV0, kLogMsg);
 
-					//Player¿¡°Ô °á°ú¸¦ º¸¿©ÁÙ °æ¿ì(Debug)
+					//Playerì—ê²Œ ê²°ê³¼ë¥¼ ë³´ì—¬ì¤„ ê²½ìš°(Debug)
 					if((g_kProcessCfg.RunMode() & CProcessConfig::E_RunMode_Debug) && (PgGround::ms_kAntiHackCheckActionCount.m_bResultToPlayer))
 					{
 						BM::vstring kLogMsg; kLogMsg << _T("HackingType[FastAction] RecvPacketCount[") << kResult.m_iRecvPacketCount << _T("] TotalAniTime[") << kResult.m_iTotalActionAniTime << _T("] ClientElapsedTime[") << kResult.m_iClientElapsedTime << _T("] ServerElapsedTime[") << kResult.m_iServerElapsedTime << _T("]");
 						pkPlayer->SendWarnMessageStr(kLogMsg);
 					}
 
-					//ÇØÅ· Æ÷ÀÎÆ®¸¦ »ç¿ë ÇÒ °æ¿ì
+					//í•´í‚¹ í¬ì¸íŠ¸ë¥¼ ì‚¬ìš© í•  ê²½ìš°
 					if(kResult.m_bHackingWarning && PgGround::ms_kAntiHackCheckActionCount.m_bHackingIndex)
 					{
 						if(pkPlayer->SuspectHacking(EAHP_ActionCount, PgGround::ms_kAntiHackCheckActionCount.m_iAddHackingPoint))
 						{
-							// SpeedHackÀÌ ÀÇ½É½º·¯¿ì´Ï °­Á¦Á¢¼Ó ÇØÁ¦ ½ÃÅ²´Ù.
+							// SpeedHackì´ ì˜ì‹¬ìŠ¤ëŸ¬ìš°ë‹ˆ ê°•ì œì ‘ì† í•´ì œ ì‹œí‚¨ë‹¤.
 							BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_ActionCount_Hack_C) );
 							kDPacket.Push( pkPlayer->GetMemberGUID() );
 							SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -3502,7 +3502,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 			}
 		}
 
-		//ÆĞÅ¶À» ¹ŞÀº ½Ã°£/À§Ä¡/¾×¼Ç À» ÀúÀåÇÑ´Ù.
+		//íŒ¨í‚·ì„ ë°›ì€ ì‹œê°„/ìœ„ì¹˜/ì•¡ì…˜ ì„ ì €ì¥í•œë‹¤.
 		PLAYER_ACTION_INFO* pkOldActionInfo = pkPlayer->GetOldPlayerActionInfo();
 		if(pkOldActionInfo)
 		{
@@ -3519,8 +3519,8 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 		pkPlayer->PathNormal(ptPathNormal);
 	}
 
-	// ÇØÅ·ÀÌ¶óµµ Ã³¸® ÇÏ°í CheckHackingAction ¾È¿¡¼­ ÇØÅ· Ä«¿îÆ®°¡ Áõ°¡ µÇ¹Ç·Î Á¡¼ö°¡ ½×ÀÌ¸é ²÷´Â´Ù.
-	// ÇØÅ·ÀÌ¸é ¾×¼Ç Ã³¸® ÇÏÁö ¾Ê´Â´Ù. Å¬¶ó·Î ¾î¶² µ¥ÀÌÅÍµµ º¸³»Áö ¾ÊÀ½
+	// í•´í‚¹ì´ë¼ë„ ì²˜ë¦¬ í•˜ê³  CheckHackingAction ì•ˆì—ì„œ í•´í‚¹ ì¹´ìš´íŠ¸ê°€ ì¦ê°€ ë˜ë¯€ë¡œ ì ìˆ˜ê°€ ìŒ“ì´ë©´ ëŠëŠ”ë‹¤.
+	// í•´í‚¹ì´ë©´ ì•¡ì…˜ ì²˜ë¦¬ í•˜ì§€ ì•ŠëŠ”ë‹¤. í´ë¼ë¡œ ì–´ë–¤ ë°ì´í„°ë„ ë³´ë‚´ì§€ ì•ŠìŒ
 	//if(bHacking)
 	//{
 	//	return ;
@@ -3543,17 +3543,17 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 	DWORD dwSyncTime;
 	
 	pkPacket->Pop(dwSyncTime);
-	// BM::GetTime32() - dwSyncTime = ÆĞÅ¶ÀÌ ¿À´Âµ¥ °É¸° ½Ã°£.
+	// BM::GetTime32() - dwSyncTime = íŒ¨í‚·ì´ ì˜¤ëŠ”ë° ê±¸ë¦° ì‹œê°„.
 	DWORD dwSeedCallCounter = 0;
 	pkPacket->Pop(dwSeedCallCounter);
 
-	// RandomSeedCallCounter Ã¼Ä¿¸¦ »ç¿ëÇÒ ¶§
+	// RandomSeedCallCounter ì²´ì»¤ë¥¼ ì‚¬ìš©í•  ë•Œ
 	if(PgGround::ms_kAntiHackCheckVariable.bUse_RandomSeedCallCounter)
 	{
 		if(dwSeedCallCounter != pkUnit->RandomSeedCallCounter())
 		{
-			// Player°¡ ¸ÊÀÌµ¿À» ÇÒ °æ¿ì ÇÃ·¹ÀÌ¾î Á¤º¸°¡ ÀÌÀü ¸ÊÀ¸·Î ¿À´Â ÆĞÅ¶ÀÌ °£È¤ ÀÖ´Ù. ÀÌ¶§ ¼­¹öÀÇ °ªÀº 0ÀÌ´Ù.
-			// ¼­¹ö°¡ 0ÀÎ °æ¿ì ÀÌÀü ¸ÊÀ¸·Î ÆĞÅ¶ÀÌ ¿À´Â °æ¿ì°¡ ÀÖ´Ù.
+			// Playerê°€ ë§µì´ë™ì„ í•  ê²½ìš° í”Œë ˆì´ì–´ ì •ë³´ê°€ ì´ì „ ë§µìœ¼ë¡œ ì˜¤ëŠ” íŒ¨í‚·ì´ ê°„í˜¹ ìˆë‹¤. ì´ë•Œ ì„œë²„ì˜ ê°’ì€ 0ì´ë‹¤.
+			// ì„œë²„ê°€ 0ì¸ ê²½ìš° ì´ì „ ë§µìœ¼ë¡œ íŒ¨í‚·ì´ ì˜¤ëŠ” ê²½ìš°ê°€ ìˆë‹¤.
 			if(0 != pkUnit->RandomSeedCallCounter())
 			{
 				PgPlayer* pkPlayer = NULL;
@@ -3561,11 +3561,11 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 				{
 					pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 				}
-				//¿£Æ¼Æ¼´Â ÇöÀç ³ªÁß¿¡ Ã³¸®
+				//ì—”í‹°í‹°ëŠ” í˜„ì¬ ë‚˜ì¤‘ì— ì²˜ë¦¬
 				//else if(pkUnit->IsUnitType(UT_ENTITY))
 				//{
 				//	CUnit* pkCaller = GetUnit(pkUnit->Caller());
-				//	if( pkCaller )//¼ÒÀ¯ÀÚ°¡ Entity¸¦ ¼ÒÈ¯ÇÑ »ç¶÷
+				//	if( pkCaller )//ì†Œìœ ìê°€ Entityë¥¼ ì†Œí™˜í•œ ì‚¬ëŒ
 				//	{
 				//		if(pkCaller->IsUnitType(UT_PLAYER))
 				//		{
@@ -3580,7 +3580,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 					bool bHackingUser = false;
 					bool bResAction = false;
 
-					// Ä«¿îÅÍ Â÷ÀÌ°¡ ½ÉÇÏ°Ô ³ª´Â °æ¿ì ÇØÅ·À¸·Î °£ÁÖÇÑ´Ù.
+					// ì¹´ìš´í„° ì°¨ì´ê°€ ì‹¬í•˜ê²Œ ë‚˜ëŠ” ê²½ìš° í•´í‚¹ìœ¼ë¡œ ê°„ì£¼í•œë‹¤.
 					if(static_cast<int>(dwSeedCallCounter - pkPlayer->RandomSeedCallCounter()) >= PgGround::ms_kAntiHackCheckVariable.iRandomSeedCallCounter_CheckValue)
 					{
 						bShowHackingLog = true;
@@ -3589,8 +3589,8 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 					}
 					else
 					{
-						// Ä«¿îÅÍ Áõ°¡´Â À¯´ÖÀ» ÇØÁÖ¾î¾ß ÇÑ´Ù.
-						// pkUnitÀº Player / EntityÀÏ ¼ö ÀÖ±â ¶§¹®¿¡
+						// ì¹´ìš´í„° ì¦ê°€ëŠ” ìœ ë‹›ì„ í•´ì£¼ì–´ì•¼ í•œë‹¤.
+						// pkUnitì€ Player / Entityì¼ ìˆ˜ ìˆê¸° ë•Œë¬¸ì—
 						if(dwSeedCallCounter > pkUnit->RandomSeedCallCounter())
 						{
 							while(dwSeedCallCounter != pkUnit->RandomSeedCallCounter())
@@ -3612,8 +3612,8 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 								}
 							}
 
-							// Fire¸¦ ¹ßµ¿ ½ÃÄÑ¾ß Fire ÀÌÈÄ Å¸°ÙÀ» ÀâÀ» ¶§ RandomSeedCallCounter Áõ°¡ ÇÑ´Ù.
-							// Áï TargetList°¡ º¯°æ µÇ¾úÀ» °æ¿ì¸¸ Äµ½½ ½ÃÅ´.
+							// Fireë¥¼ ë°œë™ ì‹œì¼œì•¼ Fire ì´í›„ íƒ€ê²Ÿì„ ì¡ì„ ë•Œ RandomSeedCallCounter ì¦ê°€ í•œë‹¤.
+							// ì¦‰ TargetListê°€ ë³€ê²½ ë˜ì—ˆì„ ê²½ìš°ë§Œ ìº”ìŠ¬ ì‹œí‚´.
 							if(ESS_TARGETLISTMODIFY == rkAction.byActionParam)
 							{
 								bShowHackingLog = true;
@@ -3625,12 +3625,12 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 
 					if(bShowHackingLog)
 					{
-						//Å¬¶óÀÌ¾ğÆ®¿¡¼­ º¸³»¿Â Seed¸¦ ºñ±³
-						//dwSeedCallCounter Å¬¶ó·Î ºÎÅÍ ¹Ş¾Æ¿Â pkUnitÀÇ seedÄ«¿îÅÍ ÀÌ´Ù.
-						//·Î±×¸¦ ³²±â´Â°ÍÀº playerÀÌ¾î¾ß ÇÑ´Ù.
-						//pkUnit °ú pkPlayer¸¦ Çò°¥¸®¸é ¾ÈµÈ´Ù.
+						//í´ë¼ì´ì–¸íŠ¸ì—ì„œ ë³´ë‚´ì˜¨ Seedë¥¼ ë¹„êµ
+						//dwSeedCallCounter í´ë¼ë¡œ ë¶€í„° ë°›ì•„ì˜¨ pkUnitì˜ seedì¹´ìš´í„° ì´ë‹¤.
+						//ë¡œê·¸ë¥¼ ë‚¨ê¸°ëŠ”ê²ƒì€ playerì´ì–´ì•¼ í•œë‹¤.
+						//pkUnit ê³¼ pkPlayerë¥¼ í—·ê°ˆë¦¬ë©´ ì•ˆëœë‹¤.
 						PLAYER_ACTION_INFO* pkOldActionInfo = pkPlayer->GetOldPlayerActionInfo();
-						//GetOldPlayerActionInfo ´Â  PgPlayerÀÇ Member µ¥ÀÌÅÍ ÀÌ¹Ç·Î * °Ë»ç ÇÏÁö ¾Ê¾Æµµ µÊ.
+						//GetOldPlayerActionInfo ëŠ”  PgPlayerì˜ Member ë°ì´í„° ì´ë¯€ë¡œ * ê²€ì‚¬ í•˜ì§€ ì•Šì•„ë„ ë¨.
 
 						BM::vstring kLogMsg; kLogMsg << __FL__ << _T("[HACKING][RandomSeedCallCounter] User[" << pkPlayer->Name() << "] GUID[" << pkPlayer->GetID() << "]  MemberGUID[" 
 							<< pkPlayer->GetMemberGUID() <<"] GroundNo[" << GroundKey().GroundNo() << "] Client[") << dwSeedCallCounter << _T("] Server[") << pkUnit->RandomSeedCallCounter() << _T("] OldSkill[") << pkOldActionInfo->iOldActionID << _T("] NewSkill[") << pkOldActionInfo->iActionID << _T("]");
@@ -3648,7 +3648,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 					{
 						if(pkPlayer->SuspectHacking(EAHP_RandomSeedCallCounter, PgGround::ms_kAntiHackCheckVariable.sRandomSeedCallCounter_AddHackIndex))
 						{
-							// SpeedHackÀÌ ÀÇ½É½º·¯¿ì´Ï °­Á¦Á¢¼Ó ÇØÁ¦ ½ÃÅ²´Ù.
+							// SpeedHackì´ ì˜ì‹¬ìŠ¤ëŸ¬ìš°ë‹ˆ ê°•ì œì ‘ì† í•´ì œ ì‹œí‚¨ë‹¤.
 							BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_RandomSeedCallCounter) );
 							kDPacket.Push( pkPlayer->GetMemberGUID() );
 							SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -3682,36 +3682,36 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 		if(pkSkillDef)
 		{
 			switch( pkSkillDef->GetAbil(AT_ACTION_AFTER_CHANGE_BLOCK_ABLE)  )
-			{// ¾×¼Ç ÈÄ¿¡ ºí·ÏÀ»
+			{// ì•¡ì…˜ í›„ì— ë¸”ë¡ì„
 			case ECBA_MAKE_CAN_NOT_BLOCK:
-				{// ºÒ°¡´É ÇÏ°Ô ÇÏ´Â ¾×¼ÇÀÎÁö
+				{// ë¶ˆê°€ëŠ¥ í•˜ê²Œ í•˜ëŠ” ì•¡ì…˜ì¸ì§€
 					if(0 == pkUnit->GetAbil(AT_CAN_NOT_BLOCK_BY_ACTION) )
 					{
 						pkUnit->SetAbil(AT_CAN_NOT_BLOCK_BY_ACTION, 1, true, true);
 					}
 				}break;
 			case ECBA_MAKE_CAN_BLOCK:
-				{// °¡´É ÇÏ°Ô ÇÏ´Â ¾×¼ÇÁö¸¦
+				{// ê°€ëŠ¥ í•˜ê²Œ í•˜ëŠ” ì•¡ì…˜ì§€ë¥¼
 					if(0 < pkUnit->GetAbil(AT_CAN_NOT_BLOCK_BY_ACTION) )
 					{
 						pkUnit->SetAbil(AT_CAN_NOT_BLOCK_BY_ACTION, 0, true, true);
 					}
 				}break;
-			}// ¼³Á¤ ÇÏ°í
+			}// ì„¤ì • í•˜ê³ 
 			
 			if(ESS_FIRE == rkAction.byActionParam)
 			{
-				if( EST_TOGGLE  != pkSkillDef->GetType() ) // Åä±ÛÀº PgDefaultSkillFunction::SkillToggle¿¡¼­ ²ø¶§ Ã³¸®
-				{/// ¾×¼Ç Á¾·áÈÄ °É¾îÁÙ ÀÌÆåÆ®°¡ ÀÖÀ¸¸é °É¾îÁØ´Ù
+				if( EST_TOGGLE  != pkSkillDef->GetType() ) // í† ê¸€ì€ PgDefaultSkillFunction::SkillToggleì—ì„œ ëŒë•Œ ì²˜ë¦¬
+				{/// ì•¡ì…˜ ì¢…ë£Œí›„ ê±¸ì–´ì¤„ ì´í™íŠ¸ê°€ ìˆìœ¼ë©´ ê±¸ì–´ì¤€ë‹¤
 					int const iPrevActionID = pkUnit->GetAbil(AT_PREV_ACTION_ID);
 					if(0 < iPrevActionID)
-					{// ÀÌÀü ¾×¼ÇÀÌ Á¾·á µÇ¾úÀ¸¹Ç·Î
+					{// ì´ì „ ì•¡ì…˜ì´ ì¢…ë£Œ ë˜ì—ˆìœ¼ë¯€ë¡œ
 						CSkillDef const* pkPrevSkillDef = kSkillDefMgr.GetDef(iPrevActionID);
 						if(pkPrevSkillDef)
-						{// ÀÌÀü ¾×¼ÇÀÌ Á¾·áÈÄ 
+						{// ì´ì „ ì•¡ì…˜ì´ ì¢…ë£Œí›„ 
 							int const iAddEffectID =  pkPrevSkillDef->GetAbil(AT_ADD_EFFECT_WHEN_SKILL_END);
 							if(0 < iAddEffectID)
-							{// °É¾îÁÖ¾î¾ßÇÒ ÀÌÆåÆ®°¡ Á¸ÀçÇÑ´Ù¸é °É¾îÁÖ°í
+							{// ê±¸ì–´ì£¼ì–´ì•¼í•  ì´í™íŠ¸ê°€ ì¡´ì¬í•œë‹¤ë©´ ê±¸ì–´ì£¼ê³ 
 								SEffectCreateInfo kCreate;
 								kCreate.eType = EFFECT_TYPE_NORMAL;
 								kCreate.iEffectNum = iAddEffectID;
@@ -3719,7 +3719,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 								kCreate.eOption = SEffectCreateInfo::ECreateOption_CallbyServer;
 								pkUnit->AddEffect(kCreate);
 							}
-							{// ¿¬°èÈ¿°ú¸¦ »ç¿ëÇÏ´Â ½ºÅ³ÀÌ¶ó¸é, Áßº¹¹æÁö¸¦ À§ÇØ »ç¿ëÇÑ °ªÀ» ÃÊ±âÈ­ÇÏ°í
+							{// ì—°ê³„íš¨ê³¼ë¥¼ ì‚¬ìš©í•˜ëŠ” ìŠ¤í‚¬ì´ë¼ë©´, ì¤‘ë³µë°©ì§€ë¥¼ ìœ„í•´ ì‚¬ìš©í•œ ê°’ì„ ì´ˆê¸°í™”í•˜ê³ 
 								CUnit* pkTarget = NULL;
 								switch( pkUnit->UnitType() )
 								{
@@ -3736,14 +3736,14 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 							}
 						}
 					}
-					pkUnit->SetAbil(AT_PREV_ACTION_ID, rkAction.iActionID); // ÇöÀç ¾×¼ÇÀ» ÀúÀåÇØµĞ´Ù
+					pkUnit->SetAbil(AT_PREV_ACTION_ID, rkAction.iActionID); // í˜„ì¬ ì•¡ì…˜ì„ ì €ì¥í•´ë‘”ë‹¤
 				}
 			}
 
-			{// °¢¼º±â¿ë 
+			{// ê°ì„±ê¸°ìš© 
 				int const iValue = pkSkillDef->GetAbil(AT_AWAKE_SKILL_FIRE_ADD_EFFECT);
 				if(iValue)
-				{//½ºÅ³ »ç¿ë½Ã °¢¼º±â¿ë ½´ÆÛ ¾Æ¸Ó ÀÌÆåÆ®°¡ ÀÖÀ¸¸é °É¾îÁØ´Ù.
+				{//ìŠ¤í‚¬ ì‚¬ìš©ì‹œ ê°ì„±ê¸°ìš© ìŠˆí¼ ì•„ë¨¸ ì´í™íŠ¸ê°€ ìˆìœ¼ë©´ ê±¸ì–´ì¤€ë‹¤.
 					if(!pkUnit->GetEffect(EFFECTNO_AWAKE_SKILL_ADD_EFFECT_NO))
 					{
 						SEffectCreateInfo kCreate;
@@ -3756,7 +3756,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 					}
 				}
 				else
-				{//¾øÀ¸¸é Áö¿öÁÖ¾î¾ß ÇÑ´Ù.
+				{//ì—†ìœ¼ë©´ ì§€ì›Œì£¼ì–´ì•¼ í•œë‹¤.
 					if(pkUnit->GetEffect(EFFECTNO_AWAKE_SKILL_ADD_EFFECT_NO))
 					{
 						pkUnit->DeleteEffect(EFFECTNO_AWAKE_SKILL_ADD_EFFECT_NO);
@@ -3764,10 +3764,10 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 				}
 			}
 
-			{// ±Ã±Ø±â¿ë
+			{// ê¶ê·¹ê¸°ìš©
 				int const iValue = pkSkillDef->GetAbil(AT_MASTER_SKILL_FIRE_ADD_EFFECT);
 				if(iValue)
-				{//½ºÅ³ »ç¿ë½Ã ±Ã±Ø±â¿ë ¹«Àû ÀÌÆåÆ®°¡ ÀÖÀ¸¸é °É¾îÁØ´Ù.
+				{//ìŠ¤í‚¬ ì‚¬ìš©ì‹œ ê¶ê·¹ê¸°ìš© ë¬´ì  ì´í™íŠ¸ê°€ ìˆìœ¼ë©´ ê±¸ì–´ì¤€ë‹¤.
 					if(!pkUnit->GetEffect(EFFECTNO_MASTER_SKILL_ADD_EFFECT_NO))
 					{
 						SEffectCreateInfo kCreate;
@@ -3780,7 +3780,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 					}
 				}
 				else
-				{//¾øÀ¸¸é Áö¿öÁÖ¾î¾ß ÇÑ´Ù.
+				{//ì—†ìœ¼ë©´ ì§€ì›Œì£¼ì–´ì•¼ í•œë‹¤.
 					if(pkUnit->GetEffect(EFFECTNO_MASTER_SKILL_ADD_EFFECT_NO))
 					{
 						pkUnit->DeleteEffect(EFFECTNO_MASTER_SKILL_ADD_EFFECT_NO);
@@ -3789,7 +3789,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 			}
 		}
 		else
-		{//SkillDef¸¦ ¸øÃ£À¸¸é ÀüºÎ´Ù Áö¿öÁÖ¾î¾ß ÇÑ´Ù.
+		{//SkillDefë¥¼ ëª»ì°¾ìœ¼ë©´ ì „ë¶€ë‹¤ ì§€ì›Œì£¼ì–´ì•¼ í•œë‹¤.
 			if(pkUnit->GetEffect(EFFECTNO_AWAKE_SKILL_ADD_EFFECT_NO))
 			{
 				pkUnit->DeleteEffect(EFFECTNO_AWAKE_SKILL_ADD_EFFECT_NO);
@@ -3802,7 +3802,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 		}
 	}
 	else
-	{// ½ºÅ³ ½ÇÆĞ ½Ã¿¡µµ ´Ù Áö¿öÁÖ¾î¾ß ÇÑ´Ù.
+	{// ìŠ¤í‚¬ ì‹¤íŒ¨ ì‹œì—ë„ ë‹¤ ì§€ì›Œì£¼ì–´ì•¼ í•œë‹¤.
 		if(pkUnit->GetEffect(EFFECTNO_AWAKE_SKILL_ADD_EFFECT_NO))
 		{
 			pkUnit->DeleteEffect(EFFECTNO_AWAKE_SKILL_ADD_EFFECT_NO);
@@ -3814,8 +3814,8 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 		}
 	}
 	
-	// ESS_FIRE or ESS_TARGETLISTMODIFY »ó°ü¾øÀÌ Target ÀÖÀ¸¸é ¹«Á¶°Ç FireSkill È£Ãâ
-	// ¿ø·¡ TargetÀÌ ¾ø´Â °æ¿ì(¼³Ä¡·ù ½ºÅ³µé)¿¡´Â ESS_FIRE ¸¸ ÆĞÅ¶À¸·Î ¿Â´Ù.
+	// ESS_FIRE or ESS_TARGETLISTMODIFY ìƒê´€ì—†ì´ Target ìˆìœ¼ë©´ ë¬´ì¡°ê±´ FireSkill í˜¸ì¶œ
+	// ì›ë˜ Targetì´ ì—†ëŠ” ê²½ìš°(ì„¤ì¹˜ë¥˜ ìŠ¤í‚¬ë“¤)ì—ëŠ” ESS_FIRE ë§Œ íŒ¨í‚·ìœ¼ë¡œ ì˜¨ë‹¤.
 	switch( eResult )
 	{
 	case EActionR_Success_Fire:	// FireSkill
@@ -3827,11 +3827,11 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 			{
 				if(byTargetNum > pkSkillDef->GetAbil(AT_MAX_TARGETNUM))
 				{
-					//Å¸°ÙÆÃÀÌ ½ºÅ³ÀÇ ÃÖ´ë Å¸°ÙÆÃÀ» ³ÑÀ» ¼ø ¾ø´Ù.
-					//ÇØÅ·À» ÀÇ½ÉÇØ ºÁ¾ß ÇÑ´Ù.
-					//½ºÅ³ ÀÚÃ¼¸¦ Äµ½½ ½ÃÄÑ¹ö¸°´Ù.
+					//íƒ€ê²ŸíŒ…ì´ ìŠ¤í‚¬ì˜ ìµœëŒ€ íƒ€ê²ŸíŒ…ì„ ë„˜ì„ ìˆœ ì—†ë‹¤.
+					//í•´í‚¹ì„ ì˜ì‹¬í•´ ë´ì•¼ í•œë‹¤.
+					//ìŠ¤í‚¬ ìì²´ë¥¼ ìº”ìŠ¬ ì‹œì¼œë²„ë¦°ë‹¤.
 					eResult = EActionR_Err_LimitMaxTarget;
-					//¿¡·¯ ¸®ÅÏ°ªÀº ³²°Ü µÎµÇ Å¬¶óÀÌ¾ğÆ®·Î Á¤º¸¸¦ ¾Ë·ÁÁÖÁö ¾Ê´Â´Ù.
+					//ì—ëŸ¬ ë¦¬í„´ê°’ì€ ë‚¨ê²¨ ë‘ë˜ í´ë¼ì´ì–¸íŠ¸ë¡œ ì •ë³´ë¥¼ ì•Œë ¤ì£¼ì§€ ì•ŠëŠ”ë‹¤.
 					PgPlayer* pkPlayer = NULL;
 					if(pkUnit->IsUnitType(UT_PLAYER))
 					{
@@ -3840,7 +3840,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 					else if(pkUnit->IsUnitType(UT_ENTITY))
 					{
 						CUnit* pkCaller = GetUnit(pkUnit->Caller());
-						if( pkCaller )//¼ÒÀ¯ÀÚ°¡ Entity¸¦ ¼ÒÈ¯ÇÑ »ç¶÷
+						if( pkCaller )//ì†Œìœ ìê°€ Entityë¥¼ ì†Œí™˜í•œ ì‚¬ëŒ
 						{
 							if(pkCaller->IsUnitType(UT_PLAYER))
 							{
@@ -3865,7 +3865,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 
 						if(pkPlayer->SuspectHacking(EAHP_MaxTarget, PgGround::ms_kAntiHackCheckVariable.sMaxTarget_AddIndex))
 						{
-							// SpeedHackÀÌ ÀÇ½É½º·¯¿ì´Ï °­Á¦Á¢¼Ó ÇØÁ¦ ½ÃÅ²´Ù.
+							// SpeedHackì´ ì˜ì‹¬ìŠ¤ëŸ¬ìš°ë‹ˆ ê°•ì œì ‘ì† í•´ì œ ì‹œí‚¨ë‹¤.
 							BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_MaxTarget_Hack) );
 							kDPacket.Push( pkPlayer->GetMemberGUID() );
 							SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -3887,9 +3887,9 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 			//else if(byTargetNum == 0 && (pkSkillDef->GetTargetType() & ESTARGET_LOCATION) == 0)
 			//else if(byTargetNum == 0 && rkAction.byActionParam != ESS_TARGETLISTMODIFY)
 			//{
-				// Target °³¼ö°¡ ¾øÀ¸¸é Fire È£ÃâÇØ¼­´Â ¾ÈµÈ´Ù.
-				// ESS_FIRE or ESS_TARGETLISTMODIFY °ªÀ¸·Î ÀÌÂÊÀ¸·Î µÎ¹ø µé¾î¿È.
-				// ¼³Ä¡·ùÀÇ ½ºÅ³µéÀº , TargetNum == 0 ÀÏÁö¶óµµ FireSkill È£ÃâÇØ¾ß ÇÔ.
+				// Target ê°œìˆ˜ê°€ ì—†ìœ¼ë©´ Fire í˜¸ì¶œí•´ì„œëŠ” ì•ˆëœë‹¤.
+				// ESS_FIRE or ESS_TARGETLISTMODIFY ê°’ìœ¼ë¡œ ì´ìª½ìœ¼ë¡œ ë‘ë²ˆ ë“¤ì–´ì˜´.
+				// ì„¤ì¹˜ë¥˜ì˜ ìŠ¤í‚¬ë“¤ì€ , TargetNum == 0 ì¼ì§€ë¼ë„ FireSkill í˜¸ì¶œí•´ì•¼ í•¨.
 			//	break;
 			//}
 
@@ -3897,12 +3897,12 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 			{
 				int const iZAdded = ((pkSkillDef->GetAbil(AT_CASTER_STATE) & ECaster_State_Jumping) && (pkSkillDef->GetAbil(AT_ATTACK_UNIT_POS) & EAttacked_Pos_Blowup)) ? 95 : 0;
 
-				// Skill : Target ¿¡ Àû¿ë½ÃÅ°±â
+				// Skill : Target ì— ì ìš©ì‹œí‚¤ê¸°
 				if ( CheckPathNormal(pkUnit, pkSkillDef, rkAction) )
 				{
 					if ( rkAction.byActionParam == ESS_FIRE || rkAction.byActionParam == ESS_TARGETLISTMODIFY)
 					{
-						g_kSkillOnFindTargetMgr.OnFindTarget(pkPacket, pkSkillDef, pkUnit, byTargetNum, this, rkAction, kTargetArray, kActionResultVec);//ÇÏ³ª°¡ ½ÇÆĞÇß´Ù°í ´Ù ½ÇÆĞÇÏ¸é ¾ÈµÊ
+						g_kSkillOnFindTargetMgr.OnFindTarget(pkPacket, pkSkillDef, pkUnit, byTargetNum, this, rkAction, kTargetArray, kActionResultVec);//í•˜ë‚˜ê°€ ì‹¤íŒ¨í–ˆë‹¤ê³  ë‹¤ ì‹¤íŒ¨í•˜ë©´ ì•ˆë¨
 						FireSkill(pkUnit, kTargetArray, rkAction, &kActionResultVec);
 					}
 				}
@@ -3931,7 +3931,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 				}
 			}
 
-			pkUnit->StandUpTime(0);		//Å¬¶ó°¡ ¾×¼ÇÀ»(³«¹ı µî) º¸³ÂÀ¸¸é ÀÌ¹Ì ÀÏ¾î³­ »óÈ²
+			pkUnit->StandUpTime(0);		//í´ë¼ê°€ ì•¡ì…˜ì„(ë‚™ë²• ë“±) ë³´ëƒˆìœ¼ë©´ ì´ë¯¸ ì¼ì–´ë‚œ ìƒí™©
 			pkUnit->SetAbil(AT_POSTURE_STATE,0);
 			if (pkSkillDef->IsSkillAtt(SAT_CLIENT_CTRL_PROJECTILE))
 			{
@@ -3939,7 +3939,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 				int iSkillRange = PgAdjustSkillFunc::GetAttackRange(pkUnit, pkSkillDef);
 				if (iSkillRange < 100.0f)
 				{
-					iSkillRange += 50;	// SkillRange°¡ ³Ê¹« ÂªÀ¸¸é X ¸¦ ÇØÁàµµ º°·Î È¿°ú ¾ø´Ù.
+					iSkillRange += 50;	// SkillRangeê°€ ë„ˆë¬´ ì§§ìœ¼ë©´ X ë¥¼ í•´ì¤˜ë„ ë³„ë¡œ íš¨ê³¼ ì—†ë‹¤.
 				}
 				kInfo.fDmgRangeQ = pow(iSkillRange * 2.0f , 2.0f);
 				GetClinetProjectileInfo(pkUnit, rkAction, pkSkillDef, kInfo);
@@ -3949,7 +3949,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 					PgPlayer* pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 					if (pkPlayer)
 					{
-						// ÀÌ°Å ÇØÄ¿´Ù
+						// ì´ê±° í•´ì»¤ë‹¤
 						BM::vstring kLogMsg;
 						kLogMsg << __FL__ << "[HACKING][Projectile] User[" << pkPlayer->Name() << "] GUID[" << pkPlayer->GetID() << "] MemberGUID[" << pkPlayer->GetMemberGUID() 
 							<< "] GroundNo[" << GroundKey().GroundNo() << "] Projectile Add failed...Action InstanceID : " << rkAction.iActionInstanceID;
@@ -3962,7 +3962,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 
 						if (pkPlayer->SuspectHacking(EAHP_Projectile, PgGround::ms_kAntiHackCheckVariable.sProjectile_AddIndex))
 						{
-							// SpeedHackÀÌ ÀÇ½É½º·¯¿ì´Ï °­Á¦Á¢¼Ó ÇØÁ¦ ½ÃÅ²´Ù.
+							// SpeedHackì´ ì˜ì‹¬ìŠ¤ëŸ¬ìš°ë‹ˆ ê°•ì œì ‘ì† í•´ì œ ì‹œí‚¨ë‹¤.
 							BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_Projectile_Hack) );
 							kDPacket.Push( pkPlayer->GetMemberGUID() );
 							SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -4002,7 +4002,7 @@ void PgGround::RecvReqAction2(CUnit* pkUnit, SActionInfo& rkAction, BM::Stream *
 
 		if(byTargetNum != 0)
 		{
-			// ¿©±â °É¸®¸é ¾ÈµÊ.. È¤½Ã ¸ô¶ó¼­ ¿¹¿Ü Ã³¸®.
+			// ì—¬ê¸° ê±¸ë¦¬ë©´ ì•ˆë¨.. í˜¹ì‹œ ëª°ë¼ì„œ ì˜ˆì™¸ ì²˜ë¦¬.
 			kMPacket.Push((bool)0);		// Use Extra Data
 		}
 		else
@@ -4100,9 +4100,9 @@ bool PgGround::CheckAction2_SubFunc_CheckPlayerAction(PgPlayer* pkPlayer, CSkill
 	return false;
 }
 
-// Skill À» °Ë»çÇÑ´Ù.
+// Skill ì„ ê²€ì‚¬í•œë‹¤.
 // [RETURN]
-// EActionResultCode ÂüÁ¶
+// EActionResultCode ì°¸ì¡°
 EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAction)
 {
 	EActionResultCode eReturn = EActionR_Success;
@@ -4198,14 +4198,14 @@ EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAct
 		/*
 		if (rkAction.byActionParam == ESS_TARGETLISTMODIFY)
 		{
-			// SAT_MAINTENANCE_CAST ¼Ó¼ºÀÌ ¼³Á¤µÇ¾î ÀÖ´Â ½ºÅ³¸¸ ESS_TARGETLISTMODIFY¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+			// SAT_MAINTENANCE_CAST ì†ì„±ì´ ì„¤ì •ë˜ì–´ ìˆëŠ” ìŠ¤í‚¬ë§Œ ESS_TARGETLISTMODIFYë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
 			if (!pkSkillDef->IsSkillAtt(SAT_MAINTENANCE_CAST))
 			{
 				return EActionR_Err_MCastAttr;
 			}
 			if (pkUnit->GetSkill()->GetSkillNo() != rkAction.iActionID)
 			{
-				return EActionR_Err_ModifyTarget;	// ESS_FIRE ÇÑ ÀÌÈÄ¿¡ ESS_TARGETLISTMODIFY ¿Í¾ß¸¸ ÇÑ´Ù.
+				return EActionR_Err_ModifyTarget;	// ESS_FIRE í•œ ì´í›„ì— ESS_TARGETLISTMODIFY ì™€ì•¼ë§Œ í•œë‹¤.
 			}
 		}
 		*/
@@ -4213,7 +4213,7 @@ EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAct
 		{
 			if (pkUnit->GetAbil(AT_CANNOT_CASTSKILL) > 0)
 			{
-				// Casting TypeÀÇ ½ºÅ³ »ç¿ë ±İÁö~
+				// Casting Typeì˜ ìŠ¤í‚¬ ì‚¬ìš© ê¸ˆì§€~
 				LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return EActionR_Err_StateLimit"));
 				eReturn = EActionR_Err_StateLimit;
 			}
@@ -4288,22 +4288,22 @@ EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAct
 
 		int iNeedHP = pkSkillDef->GetAbil(AT_NEED_HP);
 		int iNeedMP = pkSkillDef->GetAbil(AT_NEED_MP);
-		int const iNeedHPPer = pkUnit->GetAbil(AT_ADD_R_NEED_HP); // ¼Ò¸ğHPÀÇ %
-		int const iNeedMPPer = pkUnit->GetAbil(AT_ADD_R_NEED_MP); // ¼Ò¸ğMPÀÇ %
-		int const iNeedHPPer2 = pkUnit->GetAbil(AT_ADD_R_NEED_HP_2); // ¼Ò¸ğHPÀÇ °¨¼Ò%
-		int const iNeedMPPer2 = pkUnit->GetAbil(AT_ADD_R_NEED_MP_2); // ¼Ò¸ğMPÀÇ °¨¼Ò%
+		int const iNeedHPPer = pkUnit->GetAbil(AT_ADD_R_NEED_HP); // ì†Œëª¨HPì˜ %
+		int const iNeedMPPer = pkUnit->GetAbil(AT_ADD_R_NEED_MP); // ì†Œëª¨MPì˜ %
+		int const iNeedHPPer2 = pkUnit->GetAbil(AT_ADD_R_NEED_HP_2); // ì†Œëª¨HPì˜ ê°ì†Œ%
+		int const iNeedMPPer2 = pkUnit->GetAbil(AT_ADD_R_NEED_MP_2); // ì†Œëª¨MPì˜ ê°ì†Œ%
 
 		int const iMaxHP = pkUnit->GetAbil(AT_C_MAX_HP);
 		int const iMaxMP = pkUnit->GetAbil(AT_C_MAX_MP);
 		int const iNeedMaxHPPer = pkSkillDef->GetAbil(AT_NEED_MAX_R_HP);
 		int const iNeedMaxMPPer = pkSkillDef->GetAbil(AT_NEED_MAX_R_MP);
 
-		//½ºÅ³ »ç¿ë½Ã MaxHPÀÇ %¸¦ ¼Ò¸ğ ½ÃÅ°´Â °æ¿ì iNeedHp´Â »õ·Î ¼¼ÆÃ µÈ´Ù.
+		//ìŠ¤í‚¬ ì‚¬ìš©ì‹œ MaxHPì˜ %ë¥¼ ì†Œëª¨ ì‹œí‚¤ëŠ” ê²½ìš° iNeedHpëŠ” ìƒˆë¡œ ì„¸íŒ… ëœë‹¤.
 		if(0 < iNeedMaxHPPer)
 		{
 			iNeedHP = static_cast<int>(iMaxHP * (static_cast<float>(iNeedMaxHPPer) / ABILITY_RATE_VALUE_FLOAT));			
 		}
-		//½ºÅ³ »ç¿ë½Ã MaxMPÀÇ %¸¦ ¼Ò¸ğ ½ÃÅ°´Â °æ¿ì iNeedMp´Â »õ·Î ¼¼ÆÃ µÈ´Ù.
+		//ìŠ¤í‚¬ ì‚¬ìš©ì‹œ MaxMPì˜ %ë¥¼ ì†Œëª¨ ì‹œí‚¤ëŠ” ê²½ìš° iNeedMpëŠ” ìƒˆë¡œ ì„¸íŒ… ëœë‹¤.
 		if(0 < iNeedMaxMPPer)
 		{
 			iNeedMP = static_cast<int>(iMaxMP * (static_cast<float>(iNeedMaxMPPer) / ABILITY_RATE_VALUE_FLOAT));			
@@ -4320,7 +4320,7 @@ EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAct
 
 		if (0 < iNeedHP)
 		{
-			// ½ºÅ³ »ç¿ë½Ã ÇÊ¿äÇÑ ÃÖ¼Ò °ªÀÌ ÀÖÀ» °æ¿ì Ã¼Å©ÇÑ´Ù
+			// ìŠ¤í‚¬ ì‚¬ìš©ì‹œ í•„ìš”í•œ ìµœì†Œ ê°’ì´ ìˆì„ ê²½ìš° ì²´í¬í•œë‹¤
 			int const iNeedMinValue = pkSkillDef->GetAbil(AT_NEED_HP_MIN_VALUE);
 			int const iCurrent = pkUnit->GetAbil(AT_HP);
 
@@ -4342,7 +4342,7 @@ EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAct
 		}
 		if (0 < iNeedMP)
 		{
-			// ½ºÅ³ »ç¿ë½Ã ÇÊ¿äÇÑ ÃÖ¼Ò °ªÀÌ ÀÖÀ» °æ¿ì Ã¼Å©ÇÑ´Ù
+			// ìŠ¤í‚¬ ì‚¬ìš©ì‹œ í•„ìš”í•œ ìµœì†Œ ê°’ì´ ìˆì„ ê²½ìš° ì²´í¬í•œë‹¤
 			int const iNeedMinValue = pkSkillDef->GetAbil(AT_NEED_MP_MIN_VALUE);
 			int const iCurrent = pkUnit->GetAbil(AT_MP);
 
@@ -4363,12 +4363,12 @@ EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAct
 			pkUnit->SetAbil(AT_MP, iCurrent-iNeedMP, true);
 		}
 
-		// °¢¼º±â °ÔÀÌÁö »ç¿ë ÇÏ´Â °÷
+		// ê°ì„±ê¸° ê²Œì´ì§€ ì‚¬ìš© í•˜ëŠ” ê³³
 
-		// °¢¼º±â °ÔÀÌÁö Àı´ë°ª °¨¼Ò
+		// ê°ì„±ê¸° ê²Œì´ì§€ ì ˆëŒ€ê°’ ê°ì†Œ
 		int iNeedAwake = pkSkillDef->GetAbil(AT_NEED_AWAKE); 
 
-		// °¢¼º±â °ÔÀÌÁö¸¦ ÀüÃ¼ÀÇ %·Î ¼Ò¸ğ
+		// ê°ì„±ê¸° ê²Œì´ì§€ë¥¼ ì „ì²´ì˜ %ë¡œ ì†Œëª¨
 		int const iNeedAwakePer = pkSkillDef->GetAbil(AT_NEED_MAX_R_AWAKE);
 
 		if(0 < iNeedAwakePer)
@@ -4376,18 +4376,18 @@ EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAct
 			iNeedAwake = static_cast<int>(AWAKE_VALUE_MAX * (static_cast<float>(iNeedAwakePer) / ABILITY_RATE_VALUE_FLOAT));			
 		}
 
-		// °¢¼º±â °ÔÀÌÁö Áõ°¨ ¾îºô
+		// ê°ì„±ê¸° ê²Œì´ì§€ ì¦ê° ì–´ë¹Œ
 		int const iAddNeedAwakePer = pkUnit->GetAbil(AT_ADD_NEED_R_AWAKE);
 		if(iAddNeedAwakePer)
 		{
 			iNeedAwake -= static_cast<int>(iNeedAwake * (static_cast<float>(iAddNeedAwakePer) / ABILITY_RATE_VALUE_FLOAT));
 		}
 
-		// ³²¾ÆÀÖ´Â ¸ğµç °¢¼º±â °ÔÀÌÁö ¼Ò¸ğÇÏ´Â ¾îºô
+		// ë‚¨ì•„ìˆëŠ” ëª¨ë“  ê°ì„±ê¸° ê²Œì´ì§€ ì†Œëª¨í•˜ëŠ” ì–´ë¹Œ
 		int const iAllNeedAwake = pkSkillDef->GetAbil(AT_ALL_NEED_AWAKE); 
 		if(0 < iAllNeedAwake)
 		{
-			//³²¾Æ ÀÖ´Â ¸ğµç °¢¼º±â °ÔÀÌÁö¸¦ ¼Ò¸ğ ÇÑ´Ù.
+			//ë‚¨ì•„ ìˆëŠ” ëª¨ë“  ê°ì„±ê¸° ê²Œì´ì§€ë¥¼ ì†Œëª¨ í•œë‹¤.
 			iNeedAwake = pkUnit->GetAbil(AT_AWAKE_VALUE);
 		}
 
@@ -4406,7 +4406,7 @@ EActionResultCode PgGround::CheckAction2(CUnit* pkUnit, SActionInfo const &rkAct
 		}
 		else
 		{
-			// °¢¼º±â °ÔÀÌÁö°¡ 0ÀÎ °æ¿ì¿¡ AllNeedAwake°¡ ÀÖ´Â ½ºÅ³ »ç¿ë½Ã
+			// ê°ì„±ê¸° ê²Œì´ì§€ê°€ 0ì¸ ê²½ìš°ì— AllNeedAwakeê°€ ìˆëŠ” ìŠ¤í‚¬ ì‚¬ìš©ì‹œ
 			if(iAllNeedAwake)
 			{
 				LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return EActionR_Err_NeedAwake"));
@@ -4441,7 +4441,7 @@ void PgGround::Broadcast( BM::Stream const& rkPacket, CUnit const *pkCaller, DWO
 				PgPlayer* pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 				if(	pkPlayer )
 				{
-					BroadcastUtil::AddSwitchInfo(kContTarget, pkPlayer->GetSwitchServer(), pkPlayer->GetMemberGUID()); // ºê·ÎµåÄ³½ºÆ® ¸ñ·Ï¿¡ ³ÖÀ½
+					BroadcastUtil::AddSwitchInfo(kContTarget, pkPlayer->GetSwitchServer(), pkPlayer->GetMemberGUID()); // ë¸Œë¡œë“œìºìŠ¤íŠ¸ ëª©ë¡ì— ë„£ìŒ
 				}
 			}
 
@@ -4477,7 +4477,7 @@ void PgGround::SendToParty(BM::GUID const& rkPartyGuid, BM::Stream & Packet)
 	}
 }
 
-// ÀÎ±Ù Area±îÁö Broadcasting  ÇÑ´Ù
+// ì¸ê·¼ Areaê¹Œì§€ Broadcasting  í•œë‹¤
 void PgGround::SendToArea( BM::Stream *pkPacket, int const iAreaIndex, BM::GUID const &rkIgnoreGuid, BYTE const bySyncTypeCheck, DWORD const dwSendFlag )
 {
 	PgSmallArea *pkArea = GetArea( iAreaIndex );
@@ -4594,7 +4594,7 @@ bool PgGround::InitEventMonsterGen()
 	__int64 const CurTime = GameTime.GetLocalSecTime();
 
 	CONT_DEF_EVENT_GROUP::const_iterator iter = pEventGroup->begin();
-	for( ; iter != pEventGroup->end() ; ++iter )		// ÁøÇà ÁßÀÎ ÀÌº¥Æ®¸¦ ¸ğµÎ È®ÀÎ.
+	for( ; iter != pEventGroup->end() ; ++iter )		// ì§„í–‰ ì¤‘ì¸ ì´ë²¤íŠ¸ë¥¼ ëª¨ë‘ í™•ì¸.
 	{
 		CONT_DEF_EVENT_GROUP::mapped_type const & Element = (*iter).second;
 
@@ -4603,19 +4603,19 @@ bool PgGround::InitEventMonsterGen()
 			continue;
 		}
 
-		CONT_DEF_EVENT_MONSTER_GROUP::const_iterator mon_iter = pEventMonsterGroup->find(Element.MonsterGroupNo);	// »ı¼ºÇØ¾ßµÉ ¸ó½ºÅÍ ±×·ìÀ» Ã£´Â´Ù.
+		CONT_DEF_EVENT_MONSTER_GROUP::const_iterator mon_iter = pEventMonsterGroup->find(Element.MonsterGroupNo);	// ìƒì„±í•´ì•¼ë  ëª¬ìŠ¤í„° ê·¸ë£¹ì„ ì°¾ëŠ”ë‹¤.
 		if( mon_iter != pEventMonsterGroup->end() )
 		{
 			CONT_DEF_EVENT_MONSTER_GROUP::mapped_type const & MonsterElement = (*mon_iter).second;
 
-			CONT_EVENTMONSTERGROUP::const_iterator group_iter = MonsterElement.find(GroundKey().GroundNo());	// ÇöÀç ±×¶ó¿îµå¿¡¼­ »ı¼º ÇÒ ¸ó½ºÅÍ°¡ ÀÖ´ÂÁö Ã£´Â´Ù.
+			CONT_EVENTMONSTERGROUP::const_iterator group_iter = MonsterElement.find(GroundKey().GroundNo());	// í˜„ì¬ ê·¸ë¼ìš´ë“œì—ì„œ ìƒì„± í•  ëª¬ìŠ¤í„°ê°€ ìˆëŠ”ì§€ ì°¾ëŠ”ë‹¤.
 			if( group_iter != MonsterElement.end() )
 			{
 				CONT_EVENTMONSTERGROUP::mapped_type const & GruopElement = (*group_iter).second;
 				InitEventMonsterGen_sub(Element, GruopElement.MonsterInfo, true, NowTime, CurTime);
 			}
 
-			CONT_EVENTMONSTERGROUP::const_iterator event_iter = MonsterElement.find(0);	// Å°°ªÀÌ 0ÀÎ ¸ó½ºÅÍ ±×·ìÀº ¸®Á¨ ±×·ìÀÌ ¾Æ´Ï°í ÇöÀç ¸Ê¿¡ ¸ğµç ¸ó½ºÅÍ°¡ °°Àº ¾ÆÀÌÅÛÀ» µå¶øÇÏµµ·Ï ÇÔ.
+			CONT_EVENTMONSTERGROUP::const_iterator event_iter = MonsterElement.find(0);	// í‚¤ê°’ì´ 0ì¸ ëª¬ìŠ¤í„° ê·¸ë£¹ì€ ë¦¬ì   ê·¸ë£¹ì´ ì•„ë‹ˆê³  í˜„ì¬ ë§µì— ëª¨ë“  ëª¬ìŠ¤í„°ê°€ ê°™ì€ ì•„ì´í…œì„ ë“œëí•˜ë„ë¡ í•¨.
 			if( event_iter != MonsterElement.end() )
 			{
 				CONT_EVENTMONSTERGROUP::mapped_type const & GruopElement = (*event_iter).second;
@@ -4656,29 +4656,29 @@ void PgGround::InitEventMonsterGen_sub(SEventGroup const& rkElement, VEC_EVENTMO
 			EventMonsterGen.IsInsertMonster = bInsertMonster;
 
 			__int64 Now = 0;
-			BM::DBTIMESTAMP_EX DBNowTime(rkNowTime);		// ÇöÀç ½Ã°£. CurTimeÀº °ÔÀÓÅ¸ÀÓÀÌ¶ó¼­ »ç¿ëÇÒ ¼ö ¾ø´Ù.
+			BM::DBTIMESTAMP_EX DBNowTime(rkNowTime);		// í˜„ì¬ ì‹œê°„. CurTimeì€ ê²Œì„íƒ€ì„ì´ë¼ì„œ ì‚¬ìš©í•  ìˆ˜ ì—†ë‹¤.
 			CGameTime::DBTimeEx2SecTime(DBNowTime, Now);
 
 			__int64 EndTime = 0;
 			BM::DBTIMESTAMP_EX DBEndTime(rkElement.EndTime);
 			CGameTime::DBTimeEx2SecTime(DBEndTime, EndTime);
-			EventMonsterGen.DelTime = rkCurTime + ( EndTime - Now );	// ÇØ´ç ¸ó½ºÅÍ ÀÌº¥Æ® ½Ã°£ÀÌ ³¡³ª¼­ Á¦°ÅÇØ¾ßµÉ ½Ã°£.
+			EventMonsterGen.DelTime = rkCurTime + ( EndTime - Now );	// í•´ë‹¹ ëª¬ìŠ¤í„° ì´ë²¤íŠ¸ ì‹œê°„ì´ ëë‚˜ì„œ ì œê±°í•´ì•¼ë  ì‹œê°„.
 
-			if( rkNowTime < rkElement.StartTime )		// ÀÌº¥Æ® ½ÃÀÛ ½Ã°£ ÀüÀÌ¶ó¸é.
+			if( rkNowTime < rkElement.StartTime )		// ì´ë²¤íŠ¸ ì‹œì‘ ì‹œê°„ ì „ì´ë¼ë©´.
 			{
 				__int64 StartTime = 0;
-				BM::DBTIMESTAMP_EX DBStartTime(rkElement.StartTime);		// ÀÌº¥Æ® ½ÃÀÛ½Ã°£.
+				BM::DBTIMESTAMP_EX DBStartTime(rkElement.StartTime);		// ì´ë²¤íŠ¸ ì‹œì‘ì‹œê°„.
 				CGameTime::DBTimeEx2SecTime(DBStartTime, StartTime);
 
 				EventMonsterGen.GenTime = rkCurTime + ( StartTime - Now );
 			}
 			else if( (rkElement.StartTime < rkNowTime) && (rkNowTime < rkElement.EndTime) )
 			{
-				EventMonsterGen.GenTime = rkCurTime + EventMonsterGen.DelayTime;		// ÀÌº¥Æ® ÁßÀÌ¶ó¸é µô·¹ÀÌ ½Ã°£ ÈÄ¿¡ ¸®Á¨.
+				EventMonsterGen.GenTime = rkCurTime + EventMonsterGen.DelayTime;		// ì´ë²¤íŠ¸ ì¤‘ì´ë¼ë©´ ë”œë ˆì´ ì‹œê°„ í›„ì— ë¦¬ì  .
 			}
 			else
 			{
-				continue;		// ±×¿Ü¿£ Á¨½ÃÅ°Áö ¾Ê´Â´Ù.
+				continue;		// ê·¸ì™¸ì—” ì  ì‹œí‚¤ì§€ ì•ŠëŠ”ë‹¤.
 			}
 
 			m_ContEventMonsterGen.insert( std::make_pair( EventMonsterGen.MonNo, EventMonsterGen) );
@@ -4752,7 +4752,7 @@ bool PgGround::DropAnyMonsterTimeCheck()
 	{
 		VEC_EVENTDROPANYMONSTER::value_type & Element = *iter;
 		if( Element.EndTime < NowTime )
-		{	// ½Ã°£ Áö³². ÄÁÅ×ÀÌ³Ê¿¡¼­ Á¦°Å.
+		{	// ì‹œê°„ ì§€ë‚¨. ì»¨í…Œì´ë„ˆì—ì„œ ì œê±°.
 			iter = m_ContEventDropAnyMonster.erase(iter);
 			continue;
 		}
@@ -4797,12 +4797,12 @@ void PgGround::DropAnyMonsterCheck(CONT_MONSTER_DROP_ITEM & DropItems) const
 
 					int AllDropRate = (*item_iter).second.size() * 100;
 					if( AllDropRate == TotalRate )
-					{	// ÄÁÅ×ÀÌ³Ê¿¡ µé¾îÀÖ´Â ¾ÆÀÌÅÛ µå¶ø È®·üÀÌ ¸ğµÎ 100ÀÌ¶ó¸é..
+					{	// ì»¨í…Œì´ë„ˆì— ë“¤ì–´ìˆëŠ” ì•„ì´í…œ ë“œë í™•ë¥ ì´ ëª¨ë‘ 100ì´ë¼ë©´..
 						bAlldrop = true;
 					}
 
 					if( TotalRate < 100 )
-					{	// ÃÑÇÕÈ®·üÀÌ 100ÀÌ ¾ÈµÇ¸é
+					{	// ì´í•©í™•ë¥ ì´ 100ì´ ì•ˆë˜ë©´
 						ExceptionCase = true;
 					}
 
@@ -4811,7 +4811,7 @@ void PgGround::DropAnyMonsterCheck(CONT_MONSTER_DROP_ITEM & DropItems) const
 						for( drop_iter = (*item_iter).second.begin() ; drop_iter != (*item_iter).second.end() ; ++drop_iter )
 						{
 							for( int i = 0 ; i < (*drop_iter).Count ; ++i )
-							{	// ÁöÁ¤µÈ °³¼ö ¸¸Å­ ¾ÆÀÌÅÛ »óÀÚ·Î µå¶ø.
+							{	// ì§€ì •ëœ ê°œìˆ˜ ë§Œí¼ ì•„ì´í…œ ìƒìë¡œ ë“œë.
 								PgBase_Item Item;
 								if(S_OK == CreateSItem((*drop_iter).ItemNo, 1, GetGroundItemRarityNo(), Item))
 								{
@@ -4822,7 +4822,7 @@ void PgGround::DropAnyMonsterCheck(CONT_MONSTER_DROP_ITEM & DropItems) const
 						}
 					}
 					else if( ExceptionCase )
-					{	// ¿¹¿Ü ÄÉÀÌ½º·Î, °¢ ¾ÆÀÌÅÛÀº ¹éºĞ·ü·Î °è»ê.
+					{	// ì˜ˆì™¸ ì¼€ì´ìŠ¤ë¡œ, ê° ì•„ì´í…œì€ ë°±ë¶„ë¥ ë¡œ ê³„ì‚°.
 						for(int i = 0 ; i < Element.RewardCount ; ++i)
 						{
 							int const Rate = BM::Rand_Range(100, 1);
@@ -4832,7 +4832,7 @@ void PgGround::DropAnyMonsterCheck(CONT_MONSTER_DROP_ITEM & DropItems) const
 								if( Rate <= (*drop_iter).Rate )
 								{
 									for( int i = 0 ; i < (*drop_iter).Count ; ++i )
-									{	// ÁöÁ¤µÈ °³¼ö ¸¸Å­ ¾ÆÀÌÅÛ »óÀÚ·Î µå¶ø.
+									{	// ì§€ì •ëœ ê°œìˆ˜ ë§Œí¼ ì•„ì´í…œ ìƒìë¡œ ë“œë.
 										PgBase_Item Item;
 										if(S_OK == CreateSItem((*drop_iter).ItemNo, 1, GetGroundItemRarityNo(), Item))
 										{
@@ -4857,7 +4857,7 @@ void PgGround::DropAnyMonsterCheck(CONT_MONSTER_DROP_ITEM & DropItems) const
 								if( Rate < CurRate )
 								{
 									for( int i = 0 ; i < (*drop_iter).Count ; ++i )
-									{	// ÁöÁ¤µÈ °³¼ö ¸¸Å­ ¾ÆÀÌÅÛ »óÀÚ·Î µå¶ø.
+									{	// ì§€ì •ëœ ê°œìˆ˜ ë§Œí¼ ì•„ì´í…œ ìƒìë¡œ ë“œë.
 										PgBase_Item Item;
 										if(S_OK == CreateSItem((*drop_iter).ItemNo, 1, GetGroundItemRarityNo(), Item))
 										{
@@ -4912,7 +4912,7 @@ bool PgGround::RareMonsterGenerate()
 	if( PgGroundUtil::IsBSGround(GetAttr())
 	&&	false == PgGroundUtil::IsHaveFreePVPAttr(DynamicGndAttr()) )
 	{
-		return false; // ¹èÆ² ½ºÄù¾î °ÔÀÓÁßÀÌÁö ¾Ê´Ù¸é ¸ó½ºÅÍ ¸®Á¨ ¾øÀ½
+		return false; // ë°°í‹€ ìŠ¤í€˜ì–´ ê²Œì„ì¤‘ì´ì§€ ì•Šë‹¤ë©´ ëª¬ìŠ¤í„° ë¦¬ì   ì—†ìŒ
 	}
 
 	CGameTime kGameTime;
@@ -5038,7 +5038,7 @@ bool PgGround::RemoveRareMonster(int const iMonNo,PgMonster * pkMonster)
 	{
 		BM::GUID kOwnerGuid;
 		CUnit* pkOwner = NULL;
-		if(true == CheckUnitOwner(pkMonster, kOwnerGuid) )//¸ó½ºÅÍÀÇ ¶§¸°¾çÀ¸·Î ´©°¡ ¾ÆÀÌÅÛ ÁÖÀÎÀÎÁö È®ÀÎÇÑ´Ù
+		if(true == CheckUnitOwner(pkMonster, kOwnerGuid) )//ëª¬ìŠ¤í„°ì˜ ë•Œë¦°ì–‘ìœ¼ë¡œ ëˆ„ê°€ ì•„ì´í…œ ì£¼ì¸ì¸ì§€ í™•ì¸í•œë‹¤
 		{
 			pkOwner = GetUnit( kOwnerGuid );
 			if(pkOwner)
@@ -5174,12 +5174,12 @@ HRESULT PgGround::InsertMonster(TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, int co
 	kCreateInfo.iTunningLevel = m_iTunningLevel;
 	if(0==pkMonDef->GetAbil(AT_NO_ENCHNAT_MONSTER))
 	{
-		kCreateInfo.iEnchantGradeNo = (0 == pkMonDef->GetAbil(AT_MON_ENCHANT_GRADE_NO))? iEnchantGradeNo: pkMonDef->GetAbil(AT_MON_ENCHANT_GRADE_NO); // DefMonAbilÀÌ ¿ì¼±
+		kCreateInfo.iEnchantGradeNo = (0 == pkMonDef->GetAbil(AT_MON_ENCHANT_GRADE_NO))? iEnchantGradeNo: pkMonDef->GetAbil(AT_MON_ENCHANT_GRADE_NO); // DefMonAbilì´ ìš°ì„ 
 	}
 
 	EUnitGrade eMonGrade = (EUnitGrade)pkMonDef->GetAbil(AT_GRADE);
 	
-	PgMonster* pkMonster = dynamic_cast<PgMonster*>(g_kTotalObjMgr.CreateUnit((eMonGrade == EMGRADE_BOSS) ? UT_BOSSMONSTER : UT_MONSTER, kCreateInfo.kGuid));//»ó¼Ó °èÃşÀÌ¹Ç·Î »ó°ü ¾ø´Ù.
+	PgMonster* pkMonster = dynamic_cast<PgMonster*>(g_kTotalObjMgr.CreateUnit((eMonGrade == EMGRADE_BOSS) ? UT_BOSSMONSTER : UT_MONSTER, kCreateInfo.kGuid));//ìƒì† ê³„ì¸µì´ë¯€ë¡œ ìƒê´€ ì—†ë‹¤.
 	if(!pkMonster)
 	{
 		VERIFY_INFO_LOG(false, BM::LOG_LV5, __FL__<<L"CreateUnit failed...UnitType["<<((eMonGrade == EMGRADE_BOSS) ? UT_BOSSMONSTER : UT_MONSTER)<<L"], Guid["<<kCreateInfo.kGuid<<L"]");
@@ -5187,11 +5187,11 @@ HRESULT PgGround::InsertMonster(TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, int co
 		return E_FAIL;
 	}
 
-	//xxx ¾ÆÀÌÅÛ ¹é~~;.
+	//xxx ì•„ì´í…œ ë°±~~;.
 	POINT3 pt3Pos = kCreateInfo.kTable.pt3Pos;
 	pt3Pos.z += 35;
 
-	HRESULT const eRet = pkMonster->Create((LPBYTE)&kCreateInfo);//½ÇÁ¦ »ı¼º.
+	HRESULT const eRet = pkMonster->Create((LPBYTE)&kCreateInfo);//ì‹¤ì œ ìƒì„±.
 
 	if ( true == bDropAllItem )
 	{
@@ -5199,12 +5199,12 @@ HRESULT PgGround::InsertMonster(TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, int co
 	}
 
 #ifdef AI_DEBUG
-	// AI Test¸¦ À§ÇØ AI ¼³Á¤À» °­Á¦ º¯°æÇÑ´Ù.
+	// AI Testë¥¼ ìœ„í•´ AI ì„¤ì •ì„ ê°•ì œ ë³€ê²½í•œë‹¤.
 	//SUnit_AI_Info* pkInfo = pkMonster->GetAI();
 	//pkInfo->AddActionType(EAI_ACTION_CHASEENEMY, 1);
 #endif
 
-	// ¹Ù´ÚÀ§¿¡ ¿Ã·Á ³õ´Â´Ù.
+	// ë°”ë‹¥ìœ„ì— ì˜¬ë ¤ ë†“ëŠ”ë‹¤.
 	NxRay kRay(NxVec3(pt3Pos.x, pt3Pos.y, pt3Pos.z), NxVec3(0, 0, -1.0f));
 	NxRaycastHit kHit;
 	NxShape *pkHitShape = RayCast(kRay, kHit, 200.0f);
@@ -5216,13 +5216,13 @@ HRESULT PgGround::InsertMonster(TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, int co
 	pkMonster->SetPos(pt3Pos);
 	pkMonster->LastAreaIndex(PgSmallArea::NONE_AREA_INDEX);
 
-	// °­Á¦ ÁöÁ¤
+	// ê°•ì œ ì§€ì •
 	if ( pkMonster->GetAbil( AT_MANUAL_OPENING ) > 0 )
 	{
 		pkMonster->SetAbil( AT_USENOT_SMALLAREA, 1 );
 	}
-	pkMonster->SetAbil(AT_MON_DEFAULT_ANGLE, kCreateInfo.kTable.cDirection);//¹æÇâ °­Á¦ÁöÁ¤
-	pkMonster->FrontDirection(static_cast<Direction>(pkMonDef->GetAbil(AT_MON_ANGLE_FIX)));//¹Ù¶óº¸´Â ¹æÇâÁöÁ¤
+	pkMonster->SetAbil(AT_MON_DEFAULT_ANGLE, kCreateInfo.kTable.cDirection);//ë°©í–¥ ê°•ì œì§€ì •
+	pkMonster->FrontDirection(static_cast<Direction>(pkMonDef->GetAbil(AT_MON_ANGLE_FIX)));//ë°”ë¼ë³´ëŠ” ë°©í–¥ì§€ì •
 
 	if ( pkCaller )
 	{
@@ -5273,7 +5273,7 @@ HRESULT PgGround::InsertMonster(TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, int co
 		}
 		else
 		{
-			if(pkMonster->GetAbil(AT_C_MAX_HP) != iCreateHP)	//±ï¿´À» °æ¿ì¿¡¸¸ Now HPÃÖ´ë ¸ÊÀÌÆåÆ® Àû¿ëÀÌ ¾ÈµÇµµ·Ï
+			if(pkMonster->GetAbil(AT_C_MAX_HP) != iCreateHP)	//ê¹ì˜€ì„ ê²½ìš°ì—ë§Œ Now HPìµœëŒ€ ë§µì´í™íŠ¸ ì ìš©ì´ ì•ˆë˜ë„ë¡
 			{
 				bNeedReSetAbilHp = true;
 			}
@@ -5289,7 +5289,7 @@ HRESULT PgGround::InsertMonster(TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, int co
 		}
 		rkOutGuid = kCreateInfo.kGuid;
 
-		if(pkMonster->GetAbil(AT_TALK_IDLE))// Èñ±Í ¸ó½ºÅÍÀÇ °æ¿ì ÀÌ ¾îºô¿¡ °ªÀÌ ÇÒ´çµÇ¾î ÀÖ´Ù.
+		if(pkMonster->GetAbil(AT_TALK_IDLE))// í¬ê·€ ëª¬ìŠ¤í„°ì˜ ê²½ìš° ì´ ì–´ë¹Œì— ê°’ì´ í• ë‹¹ë˜ì–´ ìˆë‹¤.
 		{
 			BM::Stream kPacket(PT_M_C_NFY_CHAT);
 			kPacket.Push(static_cast<BYTE>(CT_RAREMONSTERGEN));
@@ -5300,7 +5300,7 @@ HRESULT PgGround::InsertMonster(TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, int co
 		m_bUpdateMonsterCount = true;
 		return eRet;
 	}
-	// ½ÇÆĞÇßÀ¸¹Ç·Î Unit Áö¿öÁÖ¾î¾ß ÇÑ´Ù.
+	// ì‹¤íŒ¨í–ˆìœ¼ë¯€ë¡œ Unit ì§€ì›Œì£¼ì–´ì•¼ í•œë‹¤.
 	if (pkMonster != NULL)
 	{
 		g_kTotalObjMgr.ReleaseUnit(pkMonster);
@@ -5330,7 +5330,7 @@ HRESULT PgGround::InsertObjectUnit( TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, SO
 // 		return E_FAIL;
 // 	}
 
-	PgObjectUnit* pkObjectUnit = dynamic_cast<PgObjectUnit*>(g_kTotalObjMgr.CreateUnit(UT_OBJECT, kCreateInfo.kGuid));//»ó¼Ó °èÃşÀÌ¹Ç·Î »ó°ü ¾ø´Ù.
+	PgObjectUnit* pkObjectUnit = dynamic_cast<PgObjectUnit*>(g_kTotalObjMgr.CreateUnit(UT_OBJECT, kCreateInfo.kGuid));//ìƒì† ê³„ì¸µì´ë¯€ë¡œ ìƒê´€ ì—†ë‹¤.
 	if(!pkObjectUnit)
 	{
 		VERIFY_INFO_LOG(false, BM::LOG_LV5, __FL__<<L"CreateUnit failed...UnitType["<<UT_OBJECT<<L"], Guid["<<kCreateInfo.kGuid<<L"]");
@@ -5341,9 +5341,9 @@ HRESULT PgGround::InsertObjectUnit( TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, SO
 	POINT3 pt3Pos = kCreateInfo.pt3Pos;
 	pt3Pos.z += 25;
 
-	HRESULT eRet = pkObjectUnit->Create((LPBYTE)&kCreateInfo);//½ÇÁ¦ »ı¼º.
+	HRESULT eRet = pkObjectUnit->Create((LPBYTE)&kCreateInfo);//ì‹¤ì œ ìƒì„±.
 
-	// ¹Ù´ÚÀ§¿¡ ¿Ã·Á ³õ´Â´Ù.
+	// ë°”ë‹¥ìœ„ì— ì˜¬ë ¤ ë†“ëŠ”ë‹¤.
 	NxRay kRay(NxVec3(pt3Pos.x, pt3Pos.y, pt3Pos.z), NxVec3(0, 0, -1.0f));
 	NxRaycastHit kHit;
 	NxShape *pkHitShape = PhysXScene()->GetPhysXScene()->raycastClosestShape(kRay, NX_STATIC_SHAPES, kHit, -1, 90.0f, NX_RAYCAST_SHAPE|NX_RAYCAST_IMPACT);
@@ -5353,7 +5353,7 @@ HRESULT PgGround::InsertObjectUnit( TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, SO
 	}
 	pkObjectUnit->SetPos(pt3Pos);
 	pkObjectUnit->LastAreaIndex(PgSmallArea::NONE_AREA_INDEX);
-	pkObjectUnit->SetAbil(AT_MON_DEFAULT_ANGLE, rkGenInfo.cDirection);//¹æÇâ °­Á¦ÁöÁ¤
+	pkObjectUnit->SetAbil(AT_MON_DEFAULT_ANGLE, rkGenInfo.cDirection);//ë°©í–¥ ê°•ì œì§€ì •
 
 	if ( pkCaller )
 	{
@@ -5367,7 +5367,7 @@ HRESULT PgGround::InsertObjectUnit( TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, SO
 		{
 			if(pkWarGnd->IsModeType( WAR_TYPE_DESTROYCORE ))
 			{
-				pkObjectUnit->SetAbil(AT_CANNOT_DAMAGE, 1);	//ÄÚ¾îÀü¿¡¼­ ¿ÀºêÁ§Æ®¸¦ °ø°İÇÒ ¼ö ¾øµµ·Ï ¼öÁ¤, PgWarType_DestroyCore::InitUnitInfo¿¡¼­ ÇØÁ¦ÇÔ
+				pkObjectUnit->SetAbil(AT_CANNOT_DAMAGE, 1);	//ì½”ì–´ì „ì—ì„œ ì˜¤ë¸Œì íŠ¸ë¥¼ ê³µê²©í•  ìˆ˜ ì—†ë„ë¡ ìˆ˜ì •, PgWarType_DestroyCore::InitUnitInfoì—ì„œ í•´ì œí•¨
 			}
 		}
 	}
@@ -5378,7 +5378,7 @@ HRESULT PgGround::InsertObjectUnit( TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, SO
 		return eRet;
 	}
 
-	// ½ÇÆĞÇßÀ¸¹Ç·Î Unit Áö¿öÁÖ¾î¾ß ÇÑ´Ù.
+	// ì‹¤íŒ¨í–ˆìœ¼ë¯€ë¡œ Unit ì§€ì›Œì£¼ì–´ì•¼ í•œë‹¤.
 	if ( pkObjectUnit != NULL )
 	{
 		g_kTotalObjMgr.ReleaseUnit(pkObjectUnit);
@@ -5392,7 +5392,7 @@ HRESULT PgGround::InsertObjectUnit( TBL_DEF_MAP_REGEN_POINT const &rkGenInfo, SO
 
 void PgGround::SendAddUnitAreaData( PgNetModule<> const &kNetModule, PgSmallArea const* pkTo, PgSmallArea const* pkFrom, BM::GUID const &kIgnoreCharGuid )
 {
-	// ÀÚ½Å¿¡°Ô SmallAreaÀÇ Á¤º¸¸¦ º¸³½´Ù.
+	// ìì‹ ì—ê²Œ SmallAreaì˜ ì •ë³´ë¥¼ ë³´ë‚¸ë‹¤.
 	UNIT_PTR_ARRAY kAddUnitArray;
 	UNIT_PTR_ARRAY kDelUnitArray;
 
@@ -5469,11 +5469,11 @@ void PgGround::SendAreaData( CUnit *pkUnit, PgSmallArea const* pkTo, PgSmallArea
 	BM::GUID const& kDelIgnoreGuid = ( pkUnit->IsInUnitType(UT_SUMMONED) ? pkUnit->Caller() : pkUnit->GetID() );
 	if ( pkUnit->IsInUnitType(UT_PLAYER) )
 	{
-		// ÀÚ½Å¿¡°Ô SmallAreaÀÇ Á¤º¸¸¦ º¸³½´Ù.
+		// ìì‹ ì—ê²Œ SmallAreaì˜ ì •ë³´ë¥¼ ë³´ë‚¸ë‹¤.
 		UNIT_PTR_ARRAY kAddUnitArray;
 		UNIT_PTR_ARRAY kDelUnitArray;
 		
-		// ´Ù¸¥ Player¿¡°Ô »õ·Î¿î UnitÀÇ ÀÔÀå/ÅğÀåÀ» ¾Ë¸°´Ù.
+		// ë‹¤ë¥¸ Playerì—ê²Œ ìƒˆë¡œìš´ Unitì˜ ì…ì¥/í‡´ì¥ì„ ì•Œë¦°ë‹¤.
 
 		// Add Packet
 		UNIT_PTR_ARRAY kAddUnitArray2;
@@ -5568,7 +5568,7 @@ void PgGround::SendAreaData( CUnit *pkUnit, PgSmallArea const* pkTo, PgSmallArea
 	}
 	else
 	// -----------------------------------------------------------------------------------------
-	// ¾Æ·¡ ÆĞÅ¶ Áö¿ìÁö ¸»°Í~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// ì•„ë˜ íŒ¨í‚· ì§€ìš°ì§€ ë§ê²ƒ~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// -----------------------------------------------------------------------------------------
 	{
 
@@ -5608,20 +5608,20 @@ void PgGround::SendAreaData( CUnit *pkUnit, PgSmallArea const* pkTo, PgSmallArea
 			}	
 		}
 
-		// ´Ù¸¥ Player¿¡°Ô »õ·Î¿î UnitÀÇ ÀÔÀå/ÅğÀåÀ» ¾Ë¸°´Ù.
+		// ë‹¤ë¥¸ Playerì—ê²Œ ìƒˆë¡œìš´ Unitì˜ ì…ì¥/í‡´ì¥ì„ ì•Œë¦°ë‹¤.
 		if (pkTo != NULL)
 		{
-			// SyncUnit ÀÌ ¾Æ´Ï¶ó¸é Add PacketÀº ¾Èº¸³»¾ß ÇÑ´Ù.
+			// SyncUnit ì´ ì•„ë‹ˆë¼ë©´ Add Packetì€ ì•ˆë³´ë‚´ì•¼ í•œë‹¤.
 			if ( true == bSendAddUnit )
 			{
 				UNIT_PTR_ARRAY kAddUnitArray;
 				BM::Stream kAPacket(PT_M_C_ADD_UNIT);
 				//PgPlayer* pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 				//if(pkPlayer)
-				//{// ½ÖµÕÀÌ Ä³¸¯ÅÍ
+				//{// ìŒë‘¥ì´ ìºë¦­í„°
 				//	int const iClass = pkPlayer->GetAbil(AT_CLASS);
 				//	if( IsClass_OwnSubPlayer(iClass) )
-				//	{//ÀÌ¶ó¸é
+				//	{//ì´ë¼ë©´
 				//		if( 0 == pkPlayer->GetAbil(AT_DEL_SUB_PLAYER) )
 				//		{
 				//			BM::GUID kSubPlayerGuid = pkPlayer->SubPlayerID();
@@ -5717,8 +5717,8 @@ void PgGround::SendAreaData( CUnit *pkUnit, PgSmallArea const* pkTo, PgSmallArea
 //	//const BM::GUID kGuid = BM::GUID::Create();
 //	PgNpc *pkNpc = dynamic_cast<PgNpc*>(g_kTotalObjMgr.CreateUnit(UT_NPC, rkGuid));
 //
-//	ptLoc.z += 50;	// ¹Ù´Ú¿¡ ºüÁöÁö ¾Êµµ·Ï Á¶±İ ¿Ã·ÁÁÖÀÚ
-//	pkNpc->LastAreaPos(ptLoc);	// ÀÌ ºÎºĞÀÌ ¾øÀ» °æ¿ì AdjustArea(..)¿¡¼­ ¿À·ù ¸Ş½ÃÁö Ãâ·ÂµÈ´Ù.....(ÇÊ¿ä~~~!!!!!!!!!)
+//	ptLoc.z += 50;	// ë°”ë‹¥ì— ë¹ ì§€ì§€ ì•Šë„ë¡ ì¡°ê¸ˆ ì˜¬ë ¤ì£¼ì
+//	pkNpc->LastAreaPos(ptLoc);	// ì´ ë¶€ë¶„ì´ ì—†ì„ ê²½ìš° AdjustArea(..)ì—ì„œ ì˜¤ë¥˜ ë©”ì‹œì§€ ì¶œë ¥ëœë‹¤.....(í•„ìš”~~~!!!!!!!!!)
 //
 //	if(NULL != pkNpc)
 //	{
@@ -5737,7 +5737,7 @@ void PgGround::SendAreaData( CUnit *pkUnit, PgSmallArea const* pkTo, PgSmallArea
 //}
 
 
-// Player°¡ ½ºÅ³À» »ç¿ëÇÏ¿´´Ù : Attack Skill ¾Æ´Ï¾îµµ ÇÔ¼ö°¡ È£ÃâµÈ´Ù. (¸ğµç½ºÅ³)
+// Playerê°€ ìŠ¤í‚¬ì„ ì‚¬ìš©í•˜ì˜€ë‹¤ : Attack Skill ì•„ë‹ˆì–´ë„ í•¨ìˆ˜ê°€ í˜¸ì¶œëœë‹¤. (ëª¨ë“ ìŠ¤í‚¬)
 // [PARAMETER]
 //	pkCaster : Skill caster
 //	pkTarget : Skill Target unit
@@ -5767,8 +5767,8 @@ bool PgGround::FireSkill(CUnit* pkCaster, UNIT_PTR_ARRAY& rkTargetArray, const S
 	int const iThisMapNo = GetGroundNo();
 	bool bSuccess = false;
 
-	// ¼û¾îÀÖ´Ù°¡ ¸Â°Å³ª/¶§¸®¸é Hidden ¼Ó¼ºÀÌ »ç¶óÁü
-	// ´Ü AT_LOCK_HIDDEN_ATTACK ÀÌ ÀÖÀ¸¸é Ç®¸®Áö ¾Ê´Â´Ù.
+	// ìˆ¨ì–´ìˆë‹¤ê°€ ë§ê±°ë‚˜/ë•Œë¦¬ë©´ Hidden ì†ì„±ì´ ì‚¬ë¼ì§
+	// ë‹¨ AT_LOCK_HIDDEN_ATTACK ì´ ìˆìœ¼ë©´ í’€ë¦¬ì§€ ì•ŠëŠ”ë‹¤.
 	int iHiddenAbil = pkCaster->GetAbil(AT_UNIT_HIDDEN);
 	if (iHiddenAbil > 0 && pkCaster->GetAbil(AT_LOCK_HIDDEN_ATTACK) <= 0)
 	{
@@ -5782,14 +5782,14 @@ bool PgGround::FireSkill(CUnit* pkCaster, UNIT_PTR_ARRAY& rkTargetArray, const S
 	{
 		SActArg kArg;
 		PgGroundUtil::SetActArgGround(kArg, this);
-		kArg.Set(ACTARG_ACTIONINSTANCEID, rkAction.iActionInstanceID);	// ClientÇÑÅ× AddEffect ÆĞÅ¶ º¸³¾¶§ ÇÊ¿äÇÏ´Ù.
+		kArg.Set(ACTARG_ACTIONINSTANCEID, rkAction.iActionInstanceID);	// Clientí•œí…Œ AddEffect íŒ¨í‚· ë³´ë‚¼ë•Œ í•„ìš”í•˜ë‹¤.
 		kArg.Set(ACTARG_CUSTOM_UNIT1, pkCaster->GetID());
 		kArg.Set(ACTARG_CUSTOM_UNIT1_TYPE, pkCaster->UnitType());
-		kArg.Set(ACTARG_ACTION_TIMESTAMP, rkAction.dwTimeStamp); // ÄŞº¸ Ä«¿îÅÍ °è»êÇÏ´Âµ¥ ÇÊ¿äÇÏ´Ù
+		kArg.Set(ACTARG_ACTION_TIMESTAMP, rkAction.dwTimeStamp); // ì½¤ë³´ ì¹´ìš´í„° ê³„ì‚°í•˜ëŠ”ë° í•„ìš”í•˜ë‹¤
 
 		int iUseChoasDebuff = pkCaster->GetAbil(AT_PHY_DMG_PER) + pkCaster->GetAbil(AT_MAGIC_DMG_PER);
-		kArg.Set(ACTARG_EFFECT_CASTER_USE_CHAOS_DEBUFF, iUseChoasDebuff); // Ä«¿À½º ¸Ê¿¡ ÀÖ´ÂÁö ¿©ºÎ¸¦ ½ºÅ³ ÀÎÀÚ·Î Àü´ŞÇÏ¿© ½ºÅ³ ¹× ÀÌÆåÆ®¿¡¼­ ¾²µµ·Ï ÇÑ´Ù.
-		kArg.Set(ACTARG_EFFECT_CASTER_UNIT_TYPE, pkCaster->UnitType());	  // Ä³½ºÅÍ Å¸ÀÔÀ» ÀúÀåÇÑ´Ù
+		kArg.Set(ACTARG_EFFECT_CASTER_USE_CHAOS_DEBUFF, iUseChoasDebuff); // ì¹´ì˜¤ìŠ¤ ë§µì— ìˆëŠ”ì§€ ì—¬ë¶€ë¥¼ ìŠ¤í‚¬ ì¸ìë¡œ ì „ë‹¬í•˜ì—¬ ìŠ¤í‚¬ ë° ì´í™íŠ¸ì—ì„œ ì“°ë„ë¡ í•œë‹¤.
+		kArg.Set(ACTARG_EFFECT_CASTER_UNIT_TYPE, pkCaster->UnitType());	  // ìºìŠ¤í„° íƒ€ì…ì„ ì €ì¥í•œë‹¤
 		{
 			CheckTargetList(rkTargetArray);
 
@@ -5815,11 +5815,11 @@ bool PgGround::FireSkill(CUnit* pkCaster, UNIT_PTR_ARRAY& rkTargetArray, const S
 				if(PgActionResult* pkResult = pkActionResultVec->GetResult(pkTarget->GetID()))
 				{
 					if( this->IsDecEquipDuration())
-					{//³»±¸µµ ±î±â.
+					{//ë‚´êµ¬ë„ ê¹Œê¸°.
 						if(0 < pkResult->GetValue())
-						{// Å¸°ÙÆÃ¿¡ µ¥¹ÌÁö°¡ ÀÖÀ»¶§¸¸ ³»±¸µµ°¡ ÁÙ¾îµé¾î¾ß ÇÑ´Ù.
+						{// íƒ€ê²ŸíŒ…ì— ë°ë¯¸ì§€ê°€ ìˆì„ë•Œë§Œ ë‚´êµ¬ë„ê°€ ì¤„ì–´ë“¤ì–´ì•¼ í•œë‹¤.
 							{
-								PgAction_DecEquipDuration kDecDurAction(GroundKey(), true, pkResult->GetValue());//Ä«¿îÆ®°¡ Áß¿äÇÑ°Ì´Ï´Ù.
+								PgAction_DecEquipDuration kDecDurAction(GroundKey(), true, pkResult->GetValue());//ì¹´ìš´íŠ¸ê°€ ì¤‘ìš”í•œê²ë‹ˆë‹¤.
 								kDecDurAction.DoAction(pkCaster, pkTarget);
 							}
 
@@ -5834,10 +5834,10 @@ bool PgGround::FireSkill(CUnit* pkCaster, UNIT_PTR_ARRAY& rkTargetArray, const S
 					if(pkTarget->IsAlive() && 0<iDmgEffect && pkTarget->IsDamageAction())
 					{
 						CEffectDef* pkDmgEffect = (CEffectDef*) kEffectDefMgr.GetDef(iDmgEffect);
-						if(pkDmgEffect && 0 < pkDmgEffect->GetAbil(AT_BLOW_VALUE) )	// AT_BLOW_VALUE°ªÀÌ ¾ç¼öÀÌ¸é DamageDelay°¡ ÀÖ´Â °ø°İÀÌ´Ù.
+						if(pkDmgEffect && 0 < pkDmgEffect->GetAbil(AT_BLOW_VALUE) )	// AT_BLOW_VALUEê°’ì´ ì–‘ìˆ˜ì´ë©´ DamageDelayê°€ ìˆëŠ” ê³µê²©ì´ë‹¤.
 						{
 							pkTarget->SetBlowAttacker(pkCaster->GetID());
-							pkTarget->SetAbil(AT_DAMAGE_EFFECT_DURATION, pkDmgEffect->GetDurationTime());//µ¥¹ÌÁö ¾×¼Ç ½Ã°£ ÀúÀå
+							pkTarget->SetAbil(AT_DAMAGE_EFFECT_DURATION, pkDmgEffect->GetDurationTime());//ë°ë¯¸ì§€ ì•¡ì…˜ ì‹œê°„ ì €ì¥
 							pkTarget->SetDelay(__max(pkDmgEffect->GetDurationTime(), 3000));
 						}
 #ifdef _DEBUG
@@ -5857,7 +5857,7 @@ bool PgGround::FireSkill(CUnit* pkCaster, UNIT_PTR_ARRAY& rkTargetArray, const S
 
 	if(rkAction.byActionParam == ESS_FIRE && NULL != pkSkillDef)
 	{
-		// ¿©±â´Â °¢¼º±â °ÔÀÌÁö Ã¤¿ì´Â °÷
+		// ì—¬ê¸°ëŠ” ê°ì„±ê¸° ê²Œì´ì§€ ì±„ìš°ëŠ” ê³³
 		::CalcAwakeValue(pkCaster, pkSkillDef);
 	}
 	return true;
@@ -5871,7 +5871,7 @@ void PgGround::FireSkillFailed(CUnit* pkCaster, UNIT_PTR_ARRAY& rkTargetArray, c
 	g_kSkillAbilHandleMgr.SkillFail(pkCaster, rkAction.iActionID, &kArg, &rkTargetArray, pkActionResultVec);
 }
 
-void PgGround::SendAllQuestInfo(PgPlayer* pkPlayer)//±×¶ó¿îµå ÀüÃ¼ NPCÀÇ Quest Á¤º¸¸¦ º¸³½´Ù.
+void PgGround::SendAllQuestInfo(PgPlayer* pkPlayer)//ê·¸ë¼ìš´ë“œ ì „ì²´ NPCì˜ Quest ì •ë³´ë¥¼ ë³´ë‚¸ë‹¤.
 {
 	BM::CAutoMutex Lock(m_kRscMutex);
 
@@ -5933,11 +5933,11 @@ void PgGround::RecvReqTrigger(CUnit* pkUnit, int const iType, BM::Stream *pkNfy)
 			pkNfy->Pop(kObjectGuid);
 			m_kStoneCtrl.PlayerStoneUpdate(pkUnit,GroundKey(), kObjectGuid);
 		}break;
-	case QOT_Trigger://¸ğµç ÀÌº¥Æ® Æ®¸®°Å
+	case QOT_Trigger://ëª¨ë“  ì´ë²¤íŠ¸ íŠ¸ë¦¬ê±°
 		{
 			//
 		}break;
-	case QOT_Location://Äù½ºÆ® Àå¼Ò Æ®¸®°Å¸¦ ÇÑ´Ù.
+	case QOT_Location://í€˜ìŠ¤íŠ¸ ì¥ì†Œ íŠ¸ë¦¬ê±°ë¥¼ í•œë‹¤.
 		{
 			int iTriggerNo = 0;
 			pkNfy->Pop(iTriggerNo);
@@ -6086,7 +6086,7 @@ void PgGround::RecvReqTrigger(CUnit* pkUnit, int const iType, BM::Stream *pkNfy)
 			pkNfy->Pop(kObjectGuid);
 			pkNfy->Pop(iTrapSkillNo);
 
-			// Trap¿¡ ¸Â¾Æ¼­ Damage¸¦ ÁÖ¾î¾ß ÇÑ´Ù.
+			// Trapì— ë§ì•„ì„œ Damageë¥¼ ì£¼ì–´ì•¼ í•œë‹¤.
 			PgAction_ReqTrapDamage kAction(GroundKey(), this, iTrapSkillNo);
 			kAction.DoAction(NULL, pkUnit);
 		}break;
@@ -6149,11 +6149,11 @@ void PgGround::ReqIntroQuest(CUnit *pkUnit, int const iQuestID, BM::GUID const& 
 
 	SUserQuestState const *pkState = pkMyQuest->Get(iQuestID);
 	EQuestState eState = QS_None;
-	if( pkState )//³» Äù½ºÆ®¿¡ ÀÖÀ¸¸é ÁøÇàÁß, ¿Ï·á µÑÁß¿¡ ÇÏ³ª´Ù
+	if( pkState )//ë‚´ í€˜ìŠ¤íŠ¸ì— ìˆìœ¼ë©´ ì§„í–‰ì¤‘, ì™„ë£Œ ë‘˜ì¤‘ì— í•˜ë‚˜ë‹¤
 	{
 		eState = static_cast< EQuestState >(pkState->byQuestState);
 	}
-	else//¾øÀ¸¸é¼­ ½ÃÀÛ ÇÒ ¼ö ÀÖÀ¸¸é ½ÃÀÛ½ÃÅ²´Ù.
+	else//ì—†ìœ¼ë©´ì„œ ì‹œì‘ í•  ìˆ˜ ìˆìœ¼ë©´ ì‹œì‘ì‹œí‚¨ë‹¤.
 	{
 		eState = QS_Begin;
 
@@ -6266,19 +6266,19 @@ void PgGround::ReqRemoteCompleteQuest(CUnit *pkUnit, int const iQuestID)
 	SUserQuestState const* pkState = pkMyQuest->Get(iQuestID);
 	if( !pkState )
 	{
-		pkUnit->SendWarnMessage(iOnlyHaveQuest); // °¡Áö°í ÀÖÁö ¾ÊÀº Äù½ºÆ® ÀÔ´Ï´Ù.
+		pkUnit->SendWarnMessage(iOnlyHaveQuest); // ê°€ì§€ê³  ìˆì§€ ì•Šì€ í€˜ìŠ¤íŠ¸ ì…ë‹ˆë‹¤.
 		return;
 	}
 
 	if( QS_End != pkState->byQuestState
 	||	!pkQuestInfo->IsCanRemoteComplete() )
 	{
-		pkUnit->SendWarnMessage(iNotStateQuest); // ¿Ï·á ÇÒ ¼ö ¾ø´Â »óÅÂÀÇ Äù½ºÆ® ÀÔ´Ï´Ù.
+		pkUnit->SendWarnMessage(iNotStateQuest); // ì™„ë£Œ í•  ìˆ˜ ì—†ëŠ” ìƒíƒœì˜ í€˜ìŠ¤íŠ¸ ì…ë‹ˆë‹¤.
 		return;
 	}
 
-	//¿ø°İ Äù½ºÆ® ¼ö¶ô ±â´ÉÀ¸·Î ÀÎÇÑ º¯°æ »çÇ× : ¸Ê¼Ó¼º¿¡ °ü°è¾øÀÌ ¿ø°İ ¼ö¶ô °¡´É(2012.06.27 Á¶Çö°Ç)
-	//// ±×¶ó¿îµå °Ë»ç
+	//ì›ê²© í€˜ìŠ¤íŠ¸ ìˆ˜ë½ ê¸°ëŠ¥ìœ¼ë¡œ ì¸í•œ ë³€ê²½ ì‚¬í•­ : ë§µì†ì„±ì— ê´€ê³„ì—†ì´ ì›ê²© ìˆ˜ë½ ê°€ëŠ¥(2012.06.27 ì¡°í˜„ê±´)
+	//// ê·¸ë¼ìš´ë“œ ê²€ì‚¬
 	//switch( pkQuestInfo->Type() )
 	//{
 	//case QT_Couple:
@@ -6287,14 +6287,14 @@ void PgGround::ReqRemoteCompleteQuest(CUnit *pkUnit, int const iQuestID)
 	//case QT_Random:
 	//case QT_Wanted:
 	//	{
-	//		if( 0 != (GetAttr() & GATTR_FLAG_MISSION) ) // ¹Ì¼Ç¿¡¼­ ¿Ï·á ¾ÈµÇ
+	//		if( 0 != (GetAttr() & GATTR_FLAG_MISSION) ) // ë¯¸ì…˜ì—ì„œ ì™„ë£Œ ì•ˆë˜
 	//		{
 	//			return;
 	//		}
 	//	}break;
 	//default:
 	//	{
-	//		// ±×¿Ü Äù½ºÆ®´Â ¸¶À»/´ëÇÊµå/¸¶ÀÌÈ¨¿¡¼­¸¸ °¡´É
+	//		// ê·¸ì™¸ í€˜ìŠ¤íŠ¸ëŠ” ë§ˆì„/ëŒ€í•„ë“œ/ë§ˆì´í™ˆì—ì„œë§Œ ê°€ëŠ¥
 	//		switch( GetAttr() )
 	//		{
 	//		case GATTR_DEFAULT:
@@ -6305,7 +6305,7 @@ void PgGround::ReqRemoteCompleteQuest(CUnit *pkUnit, int const iQuestID)
 	//		case GATTR_HOMETOWN:
 	//		case GATTR_EXPEDITION_LOBBY:
 	//			{
-	//				// ¿©±â¼± °¡´É
+	//				// ì—¬ê¸°ì„  ê°€ëŠ¥
 	//			}break;
 	//		default:
 	//			{
@@ -6317,7 +6317,7 @@ void PgGround::ReqRemoteCompleteQuest(CUnit *pkUnit, int const iQuestID)
 	//}
 
 
-	// ½ÇÁ¦ ¿Ï·á ½Ãµµ
+	// ì‹¤ì œ ì™„ë£Œ ì‹œë„
 	switch( pkQuestInfo->Type() )
 	{
 	case QT_Couple:
@@ -6325,30 +6325,30 @@ void PgGround::ReqRemoteCompleteQuest(CUnit *pkUnit, int const iQuestID)
 		{
 			CONT_PLAYER_MODIFY_ORDER kMyOrder, kCoupleOrder;
 
-			int iTTW = iNotStateQuest; // ¿Ï·á ÇÒ ¼ö ¾ø´Â »óÅÂÀÇ Äù½ºÆ® ÀÔ´Ï´Ù.
+			int iTTW = iNotStateQuest; // ì™„ë£Œ í•  ìˆ˜ ì—†ëŠ” ìƒíƒœì˜ í€˜ìŠ¤íŠ¸ ì…ë‹ˆë‹¤.
 			bool bCanComplete = PgGroundQuestUtil::MakeQuestReward(kMyOrder, pkQuestInfo, pkPlayer);
 			if( bCanComplete )
 			{
 				bCanComplete = false;
-				iTTW = iNotInMapCouple; // Ä¿ÇÃ/ºÎºÎ Äù½ºÆ®´Â ¿Ï·á ÇÏ·Á¸é »ó´ëÆíÀÌ °°Àº ±×¶ó¿îµå³»¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.
+				iTTW = iNotInMapCouple; // ì»¤í”Œ/ë¶€ë¶€ í€˜ìŠ¤íŠ¸ëŠ” ì™„ë£Œ í•˜ë ¤ë©´ ìƒëŒ€í¸ì´ ê°™ì€ ê·¸ë¼ìš´ë“œë‚´ì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.
 				PgPlayer* pkCouple = dynamic_cast< PgPlayer* >(GetUnit(pkPlayer->CoupleGuid()));
 				if( pkCouple )
 				{
 					PgMyQuest const* pkCoupleQuest = pkCouple->GetMyQuest();
 					if( pkCoupleQuest )
 					{
-						iTTW = iNoHaveQuestCouple; // Ä¿ÇÃ ¶Ç´Â ºÎºÎ°¡ ÇØ´ç Äù½ºÆ®¸¦ °¡Áö°í ÀÖÁö ¾Ê½À´Ï´Ù.
+						iTTW = iNoHaveQuestCouple; // ì»¤í”Œ ë˜ëŠ” ë¶€ë¶€ê°€ í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ê°€ì§€ê³  ìˆì§€ ì•ŠìŠµë‹ˆë‹¤.
 						SUserQuestState const* pkCoupleState = pkCoupleQuest->Get(iQuestID);
 						if( NULL != pkCoupleState )
 						{
-							iTTW = iNoStateCouple; // Ä¿ÇÃ ¶Ç´Â ºÎºÎ°¡ ÇØ´ç Äù½ºÆ®¸¦ ¿Ï·áÇÒ Á¶°ÇÀÌ µÇÁö ¾Ê½À´Ï´Ù.
+							iTTW = iNoStateCouple; // ì»¤í”Œ ë˜ëŠ” ë¶€ë¶€ê°€ í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ì™„ë£Œí•  ì¡°ê±´ì´ ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
 							if( QS_End == pkCoupleState->byQuestState )
 							{
 								bCanComplete = PgGroundQuestUtil::MakeQuestReward(kCoupleOrder, pkQuestInfo, pkCouple);
 							}
 						}
 
-						if( !bCanComplete ) // ³» Ä¿ÇÃÀÌ ÀÌ¹Ì Äù½ºÆ®¸¦ ¿Ï·á ÇßÀ¸¸é ³ªµµ ¿Ï·á °¡´É ÇÏ´Ù
+						if( !bCanComplete ) // ë‚´ ì»¤í”Œì´ ì´ë¯¸ í€˜ìŠ¤íŠ¸ë¥¼ ì™„ë£Œ í–ˆìœ¼ë©´ ë‚˜ë„ ì™„ë£Œ ê°€ëŠ¥ í•˜ë‹¤
 						{
 							iTTW = iNoStateCouple;
 							bCanComplete = pkCoupleQuest->IsEndedQuest(iQuestID);
@@ -6358,7 +6358,7 @@ void PgGround::ReqRemoteCompleteQuest(CUnit *pkUnit, int const iQuestID)
 			}
 			if( bCanComplete )
 			{
-				iTTW = iNoStateCouple;// Ä¿ÇÃ ¶Ç´Â ºÎºÎ°¡ ÇØ´ç Äù½ºÆ®¸¦ ¿Ï·áÇÒ Á¶°ÇÀÌ µÇÁö ¾Ê½À´Ï´Ù.
+				iTTW = iNoStateCouple;// ì»¤í”Œ ë˜ëŠ” ë¶€ë¶€ê°€ í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ì™„ë£Œí•  ì¡°ê±´ì´ ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
 				CUnit* pkCouple = GetUnit(pkPlayer->CoupleGuid());
 				if( pkCouple
 				&&	!kMyOrder.empty() )
@@ -6472,7 +6472,7 @@ bool PgGround::FindEnemy( CUnit* pkFrom, UNIT_PTR_ARRAY& rkUnitArray, int const 
 	case UT_MONSTER:
 	case UT_BOSSMONSTER:
 		{
-			int iZLimit = pkFrom->GetAbil(AT_DETECT_RANGE_Z);//ÇÃ·¹ÀÌ¾î¿Í ¿£Æ¼Æ¼´Â »ç¿ëÇÒ ÀÏÀÌ ¾ø´Ù
+			int iZLimit = pkFrom->GetAbil(AT_DETECT_RANGE_Z);//í”Œë ˆì´ì–´ì™€ ì—”í‹°í‹°ëŠ” ì‚¬ìš©í•  ì¼ì´ ì—†ë‹¤
 			if(0==iZLimit)
 			{
 				iZLimit = static_cast<int>(AI_Z_LIMIT);
@@ -6524,7 +6524,7 @@ bool PgGround::FindEnemy( CUnit* pkFrom, UNIT_PTR_ARRAY& rkUnitArray, int const 
 
 							if(pkMonster && pkMonster->CheckIgnoreTarget(pkTarget, BM::GetTime32()))
 							{
-								break;	//ÇÑ³ğÀÌ¶óµµ Á¦´ë·Î µÈ ³ğÀÌ ÀÖ´Ù¸é
+								break;	//í•œë†ˆì´ë¼ë„ ì œëŒ€ë¡œ ëœ ë†ˆì´ ìˆë‹¤ë©´
 							}
 						}
 						else
@@ -6547,7 +6547,7 @@ bool PgGround::FindEnemy( CUnit* pkFrom, UNIT_PTR_ARRAY& rkUnitArray, int const 
 							}
 						}
 						else
-						{//ÁÖÀÎÀ» µû¶ó°¨
+						{//ì£¼ì¸ì„ ë”°ë¼ê°
 						}
 					}
 				}
@@ -6585,7 +6585,7 @@ bool PgGround::FindEnemy( CUnit* pkFrom, UNIT_PTR_ARRAY& rkUnitArray, int const 
 			//pkFrom->GoalPos(GetUnitPos(pkTarget, true));
 			if (iCount == 0)
 			{
-				// AI °³Ã¼µéÀº ´Ù¸¥³ğµéÀÇ PathNormal Á¤º¸¸¦ CopyÇØ¼­ ¾²ÀÚ..
+				// AI ê°œì²´ë“¤ì€ ë‹¤ë¥¸ë†ˆë“¤ì˜ PathNormal ì •ë³´ë¥¼ Copyí•´ì„œ ì“°ì..
 				pkFrom->PathNormal(pkTarget->PathNormal());
 			}
 			++iCount;
@@ -6628,20 +6628,20 @@ CUnit* PgGround::GetReservedUnitByEffect(CUnit *pUnit)
 	return TargetUnit;
 }
 
-// ÁÖ¾îÁø ÁÂÇ¥¿¡¼­ ¹üÀ§¾ÈÀÇ UnitÀ» Ã£´Â´Ù.
+// ì£¼ì–´ì§„ ì¢Œí‘œì—ì„œ ë²”ìœ„ì•ˆì˜ Unitì„ ì°¾ëŠ”ë‹¤.
 // [PARAMETER]
-//	eUT : Ã£°íÀÚ ÇÏ´Â À¯´ÖÅ¸ÀÔ
-//	pt3Pos : Ã£°íÀÚ ÇÏ´Â Áß½ÉÁ¡
-//	fRange : Ã£´Â ¹üÀ§°ª
-//	iFindType : Ã£´Â ÇüÅÂ
-//		0 : ¹üÀ§¾ÈÀÇ ¸ğµç °³Ã¼
-//		1 : XÃàÀÇ ¿À¸¥ÂÊ °³Ã¼¸¸ Ã£±â
-//		2 : XÃàÀÇ ¿ŞÂÊ °³Ã¼¸¸ Ã£±â
-//	bOnlyAlive : »ì¾Æ ÀÖ´Â °³Ã¼¸¸ Ã£À» °ÍÀÎ°¡?
-//	pfDist : [OUT] Ã£Àº °³Ã¼¿ÍÀÇ °Å¸®
-//	pkFindUnit : [OUT] Ã£Àº Unit Á¤º¸
+//	eUT : ì°¾ê³ ì í•˜ëŠ” ìœ ë‹›íƒ€ì…
+//	pt3Pos : ì°¾ê³ ì í•˜ëŠ” ì¤‘ì‹¬ì 
+//	fRange : ì°¾ëŠ” ë²”ìœ„ê°’
+//	iFindType : ì°¾ëŠ” í˜•íƒœ
+//		0 : ë²”ìœ„ì•ˆì˜ ëª¨ë“  ê°œì²´
+//		1 : Xì¶•ì˜ ì˜¤ë¥¸ìª½ ê°œì²´ë§Œ ì°¾ê¸°
+//		2 : Xì¶•ì˜ ì™¼ìª½ ê°œì²´ë§Œ ì°¾ê¸°
+//	bOnlyAlive : ì‚´ì•„ ìˆëŠ” ê°œì²´ë§Œ ì°¾ì„ ê²ƒì¸ê°€?
+//	pfDist : [OUT] ì°¾ì€ ê°œì²´ì™€ì˜ ê±°ë¦¬
+//	pkFindUnit : [OUT] ì°¾ì€ Unit ì •ë³´
 // [RETURN]
-//	Ã£¾ÒÀ¸¸é true
+//	ì°¾ì•˜ìœ¼ë©´ true
 bool PgGround::FindNearestUnt(const EUnitType eUT, POINT3 const& rkPos, float const fRange, int const iFindType, bool const bOnlyAlive, float* pfDist,
 							  BM::GUID& pkFindUnit, NxVec3& kNormalVector)
 {
@@ -6667,9 +6667,9 @@ bool PgGround::FindNearestUnt(const EUnitType eUT, POINT3 const& rkPos, float co
 			continue;
 		}
 		*/
-		if (pkUnit->GetAbil(AT_UNIT_HIDDEN) > 0 || (0 != pkUnit->GetAbil(AT_CANNOT_DAMAGE)) )	// ¼û¾î ÀÖ´Â Ä³¸¯ÀÌ´Ù.
+		if (pkUnit->GetAbil(AT_UNIT_HIDDEN) > 0 || (0 != pkUnit->GetAbil(AT_CANNOT_DAMAGE)) )	// ìˆ¨ì–´ ìˆëŠ” ìºë¦­ì´ë‹¤.
 		{
-			// Hidden »óÅÂÀÌ°Å³ª AT_CANNOT_DAMAGE »óÅÂÀÌ¸é ¶§¸± ¼ö ¾ø´Ù.
+			// Hidden ìƒíƒœì´ê±°ë‚˜ AT_CANNOT_DAMAGE ìƒíƒœì´ë©´ ë•Œë¦´ ìˆ˜ ì—†ë‹¤.
 			continue;
 		}
 
@@ -6690,7 +6690,7 @@ bool PgGround::FindNearestUnt(const EUnitType eUT, POINT3 const& rkPos, float co
 				continue;
 			}
 		}
-		if (abs(rkPos.z - kPos.z) < 20)	// ³ôÀÌ°¡ Â÷ÀÌ³ª¸é ¹«Á¶°Ç ¸Ó~~¾ğ °Å¸®
+		if (abs(rkPos.z - kPos.z) < 20)	// ë†’ì´ê°€ ì°¨ì´ë‚˜ë©´ ë¬´ì¡°ê±´ ë¨¸~~ì–¸ ê±°ë¦¬
 		{
 			fDist = kDistance.magnitude();
 		}
@@ -6762,7 +6762,7 @@ void PgGround::RecvReqRegQuickSlotViewPage(CUnit* pkUnit, char const cViewPage)
 {
 	PgRegQuickSlotViewPage kReg(cViewPage);
 	if(kReg.DoAction(pkUnit))
-	{//ÄÁÅÙÃ÷·Î ¿Ã·Á¾ß µÇ°Ú. ¸ÊÀÌµ¿ ÇÏ¸é ÀúÀå µÇ´Ï±î. ±×³É ³ÀµÎÀÚ. (ÄÁÅÙÃ÷·Î º¸³»Áö ¸»ÀÚ)
+	{//ì»¨í…ì¸ ë¡œ ì˜¬ë ¤ì•¼ ë˜ê² . ë§µì´ë™ í•˜ë©´ ì €ì¥ ë˜ë‹ˆê¹Œ. ê·¸ëƒ¥ ëƒ…ë‘ì. (ì»¨í…ì¸ ë¡œ ë³´ë‚´ì§€ ë§ì)
 //		BM::Stream kPacket(PT_C_M_REQ_REGQUICKSLOT_VIEWPAGE, cViewPage);
 //		SendToContents(kPacket);
 //		BM::Stream kPacket(PT_M_C_NFY_QUICKSLOTCHANGE);
@@ -6841,7 +6841,7 @@ void PgGround::OnTick100ms()
 	{
 	case E_FAIL:
 		{
-			// ¾Æ·¡¿¡ ´Ù¸¥ Æ½ÀÌ ´õ ÀÖ¾î¼­ µ¹¾Æ¾ß ÇÑ´Ù --
+			// ì•„ë˜ì— ë‹¤ë¥¸ í‹±ì´ ë” ìˆì–´ì„œ ëŒì•„ì•¼ í•œë‹¤ --
 			LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("MonsterTick Ret E_FAIL"));
 			//return;
 		}break;
@@ -6895,13 +6895,13 @@ void PgGround::OnTick100ms()
 	//}
 
 	float const fAutoHealMultiplier = GetAutoHealMultiplier();
-	// EntityÀÇ Tick
+	// Entityì˜ Tick
 	PgObjectMgr::GetFirstUnit(UT_ENTITY,kItor);
 	while((pkUnit = PgObjectMgr::GetNextUnit(UT_ENTITY,kItor)) != NULL)
 	{
 		EntityTick(pkUnit, dwkElapsed, fAutoHealMultiplier);
 		
-		// Á×¾ú´Â°¡ °Ë»ç
+		// ì£½ì—ˆëŠ”ê°€ ê²€ì‚¬
 		if( (pkUnit->GetAbil(AT_HP) <= 0) || pkUnit->IsState(US_DEAD) )
 		{
 			kDeleteUnitVec.push_back(pkUnit);
@@ -6915,7 +6915,7 @@ void PgGround::OnTick100ms()
 	while((pkUnit = PgObjectMgr::GetNextUnit(UT_SUMMONED,kItor)) != NULL)
 	{
 		if( MonsterTickOK )
-		{// ¸ó½ºÅÍ AI µ¿ÀÛ Áß
+		{// ëª¬ìŠ¤í„° AI ë™ì‘ ì¤‘
 			if(EAI_ACTION_OPENING==pkUnit->GetAI()->eCurrentAction)
 			{
 				pkPlayer = dynamic_cast<PgPlayer*>( GetUnit(pkUnit->Caller()) );
@@ -6936,7 +6936,7 @@ void PgGround::OnTick100ms()
 			}
 		}
 		else
-		{// ÀÎ´ø¿¡¼­ PLAY »óÅÂ°¡ Áö³­ ÈÄ AI µ¿ÀÛÀ» Á¦¿ÜÇÑ ³ª¸ÓÁö Ã³¸®°¡ ÇÊ¿äÇÒ ¶§
+		{// ì¸ë˜ì—ì„œ PLAY ìƒíƒœê°€ ì§€ë‚œ í›„ AI ë™ì‘ì„ ì œì™¸í•œ ë‚˜ë¨¸ì§€ ì²˜ë¦¬ê°€ í•„ìš”í•  ë•Œ
 			EIndunState const IndunState = this->GetState();
 			if( INDUN_STATE_RESULT_WAIT == IndunState
 				|| INDUN_STATE_RESULT == IndunState
@@ -6955,7 +6955,7 @@ void PgGround::OnTick100ms()
 		}
 	}
 
-	// ¿ùµå ÀÌº¥Æ® Æ½
+	// ì›”ë“œ ì´ë²¤íŠ¸ í‹±
 	PgWorldEventMgr::TickWorldEvent(GetGroundNo(), dwkElapsed);
 
 	//
@@ -7080,7 +7080,7 @@ void ProcessAchievementTimeOut(PgPlayer * pkPlayer)
 				int const iSaveIdx = (*iter).second.iSaveIdx;
 				if(kTimeOuted.find(iSaveIdx) != kTimeOuted.end())
 				{
-					kContModifyOrder.push_back(SPMO(IMET_MODIFY_COUNT, pkPlayer->GetID(), SPMOD_Modify_Count(kItem,kItemPos,0,true))); // ÀÎº¥¿¡¼­ ¾ÆÀÌÅÛ »èÁ¦
+					kContModifyOrder.push_back(SPMO(IMET_MODIFY_COUNT, pkPlayer->GetID(), SPMOD_Modify_Count(kItem,kItemPos,0,true))); // ì¸ë²¤ì—ì„œ ì•„ì´í…œ ì‚­ì œ
 				}
 			}
 		}
@@ -7102,7 +7102,7 @@ void PgGround::OnTick30s()
 		BM::PgPackedTime kFailPrevTime, kNextTime;
 		PgQuestInfoUtil::MakeDayLoopQuestTime(kFailPrevTime, kNextTime);
 
-		BM::PgPackedTime WeekFailPrevTime, WeekNextTime; // ÁÖ°£Äù½ºÆ®¸¦ À§ÇÑ ½Ã°£ ¼¼ÆÃ
+		BM::PgPackedTime WeekFailPrevTime, WeekNextTime; // ì£¼ê°„í€˜ìŠ¤íŠ¸ë¥¼ ìœ„í•œ ì‹œê°„ ì„¸íŒ…
 		PgQuestInfoUtil::MakeWeekLoopQuestTime(WeekFailPrevTime, WeekNextTime);
 
 		PgPlayer* pkPlayer = NULL;
@@ -7110,29 +7110,29 @@ void PgGround::OnTick30s()
 		PgObjectMgr::GetFirstUnit(UT_PLAYER, itr);
 		while ((pkPlayer = dynamic_cast<PgPlayer*> (PgObjectMgr::GetNextUnit(UT_PLAYER, itr))) != NULL)
 		{
-			CheckDayLoopQuestTime(GroundKey(), pkPlayer, kFailPrevTime, kNextTime); // ÀÏÀÏÄù½ºÆ® 24½Ã°£Á¦ °è»ê
-			CheckWeekLoopQuestTime(GroundKey(), pkPlayer, WeekFailPrevTime, WeekNextTime); // ÁÖ°£Äù½ºÆ® °è»ê
+			CheckDayLoopQuestTime(GroundKey(), pkPlayer, kFailPrevTime, kNextTime); // ì¼ì¼í€˜ìŠ¤íŠ¸ 24ì‹œê°„ì œ ê³„ì‚°
+			CheckWeekLoopQuestTime(GroundKey(), pkPlayer, WeekFailPrevTime, WeekNextTime); // ì£¼ê°„í€˜ìŠ¤íŠ¸ ê³„ì‚°
 			CheckPetAliveAchievement(pkPlayer);
 			SaveAchievement(pkPlayer);
 			ProcessAchievementTimeOut(pkPlayer);
 			if( JobSkillExpertnessUtil::IsCanResetExhaustion(pkPlayer->JobSkillExpertness()) )
 			{
 				CONT_PLAYER_MODIFY_ORDER kOrder;
-				SPMO kIMO(IMET_JOBSKILL_RESET_EXHAUSTION, pkPlayer->GetID(), SPMOD_JobSkillExhaustion(0)); // ÇÇ·Îµµ ¸®¼Â
+				SPMO kIMO(IMET_JOBSKILL_RESET_EXHAUSTION, pkPlayer->GetID(), SPMOD_JobSkillExhaustion(0)); // í”¼ë¡œë„ ë¦¬ì…‹
 				kOrder.push_back(kIMO);
 
 				PgAction_ReqModifyItem kItemModifyAction(CIE_JOBSKILL, GroundKey(), kOrder);
 				kItemModifyAction.DoAction(pkPlayer, NULL);
 			}
 
-			// È÷µç¸Ê 2000ºĞ ÀÌ»ó ÇÃ·¹ÀÌ ¾÷Àû
+			// íˆë“ ë§µ 2000ë¶„ ì´ìƒ í”Œë ˆì´ ì—…ì 
 			if( this->GetAttr() & GATTR_HIDDEN_F )
 			{
 				PgAddAchievementValue kMA( AT_ACHIEVEMENT_HIDDEN_PLAY_TIME, 30, GroundKey() );
 				kMA.DoAction( pkPlayer, NULL );
 			}
 
-			// ÀÌº¥Æ® ±â°£ µ¿¾È ÇÃ·¹ÀÌ ½Ã°£ ¾÷Àû °ü·Ã È®ÀÎ( ¾îºô ´Ş¼ºµµ°¡ ÀúÀåµÇ´Â°ÍÀÌ ¾Æ´Ï´Ù. Æ¯Á¤ ÀÌº¥Æ® ±â°£ µ¿¾È¿¡¸¸ ´Ş¼º µÇ¾î¾ß ÇÔ ·Î±× ¾Æ¿ô ÇÏ¸é ÃÊ±âÈ­ µÇ¾î¾ß ÇÔ )
+			// ì´ë²¤íŠ¸ ê¸°ê°„ ë™ì•ˆ í”Œë ˆì´ ì‹œê°„ ì—…ì  ê´€ë ¨ í™•ì¸( ì–´ë¹Œ ë‹¬ì„±ë„ê°€ ì €ì¥ë˜ëŠ”ê²ƒì´ ì•„ë‹ˆë‹¤. íŠ¹ì • ì´ë²¤íŠ¸ ê¸°ê°„ ë™ì•ˆì—ë§Œ ë‹¬ì„± ë˜ì–´ì•¼ í•¨ ë¡œê·¸ ì•„ì›ƒ í•˜ë©´ ì´ˆê¸°í™” ë˜ì–´ì•¼ í•¨ )
 			PgAddAchievementValue kAAV(AT_ACHIEVEMENT_CHEKCPLAYTIME, dwkElapsed,GroundKey(),false);
 			kAAV.DoAction(pkPlayer, NULL);
 
@@ -7177,7 +7177,7 @@ void PgGround::OnTick30s()
 						{
 							PgBase_Item kPetItem;
 							SItemPos kItemPos;
-							if(S_OK == pkCaller->GetInven()->GetItem(kPetID,kPetItem,kItemPos))// Æê ¾ÆÀÌÅÛ¿¡ Á×¾ú´ø Á¤º¸¸¦ ÀúÀåÇÑ´Ù.
+							if(S_OK == pkCaller->GetInven()->GetItem(kPetID,kPetItem,kItemPos))// í« ì•„ì´í…œì— ì£½ì—ˆë˜ ì •ë³´ë¥¼ ì €ì¥í•œë‹¤.
 							{
 								SEnchantInfo kEnchantInfo = kPetItem.EnchantInfo();
 								if(false == kEnchantInfo.HasPetDead())
@@ -7245,15 +7245,15 @@ void PgGround::UpdatePartyUnitAbil(PgPlayer const *pkPC, BYTE const cAbil)
 	}
 	if( bUpdatedHP )
 	{
-		iCur = pkPC->GetAbil(AT_HP);//ÇöÀç HP
-		iMax = pkPC->GetAbil(AT_C_MAX_HP);//ÃÑÇÕµÈ ÃÖ´ë HP
-		sUpdatedHP = (unsigned short)((iCur/(float)iMax)*PMCA_MAX_PERCENT); //100.00 Á¤È®µµ
+		iCur = pkPC->GetAbil(AT_HP);//í˜„ì¬ HP
+		iMax = pkPC->GetAbil(AT_C_MAX_HP);//ì´í•©ëœ ìµœëŒ€ HP
+		sUpdatedHP = (unsigned short)((iCur/(float)iMax)*PMCA_MAX_PERCENT); //100.00 ì •í™•ë„
 	}
 	if( bUpdatedMP )
 	{
 		iCur = pkPC->GetAbil(AT_MP);
 		iMax = pkPC->GetAbil(AT_C_MAX_MP);
-		sUpdatedMP = (unsigned short)((iCur/(float)iMax)*PMCA_MAX_PERCENT); //100.00 Á¤È®µµ
+		sUpdatedMP = (unsigned short)((iCur/(float)iMax)*PMCA_MAX_PERCENT); //100.00 ì •í™•ë„
 	}
 	if( bUpdatePos )
 	{
@@ -7263,7 +7263,7 @@ void PgGround::UpdatePartyUnitAbil(PgPlayer const *pkPC, BYTE const cAbil)
 
 	if( 0 != cAbil )
 	{
-		BM::Stream kPacket; // ¾÷µ¥ÀÌÆ® ¸Ş½ÃÁö¸¦ PgLocalPartyMgr·Î º¸³½´Ù
+		BM::Stream kPacket; // ì—…ë°ì´íŠ¸ ë©”ì‹œì§€ë¥¼ PgLocalPartyMgrë¡œ ë³´ë‚¸ë‹¤
 		kPacket.Push( rkPartyGuid );
 		kPacket.Push( rkCharGuid );
 		kPacket.Push( cAbil );
@@ -7396,11 +7396,11 @@ void PgGround::ProcessCheckMacroUse(PgPlayer * const pkPlayer)
 		return;
 	}
 
-	if( GATTR_FLAG_VILLAGE != (GATTR_FLAG_VILLAGE & GetAttr()) ) // ¸¶À»À» Á¦¿ÜÇÑ ¸ğµç ÇÊµå¿¡¼­ ÀÀ´äÃ¢ ½Ã°£ °¡µµ·Ï
+	if( GATTR_FLAG_VILLAGE != (GATTR_FLAG_VILLAGE & GetAttr()) ) // ë§ˆì„ì„ ì œì™¸í•œ ëª¨ë“  í•„ë“œì—ì„œ ì‘ë‹µì°½ ì‹œê°„ ê°€ë„ë¡
 	{
 		if( pkPlayer->ProcessMacroInputTimeOut() )
 		{
-			pkPlayer->MacroClear();// ¸ÅÅ©·Î¸¦ Å¬¸®¾îÇÏ°í ¸ÊÀÌµ¿À» ÇØ¾ß ÇÑ´Ù.
+			pkPlayer->MacroClear();// ë§¤í¬ë¡œë¥¼ í´ë¦¬ì–´í•˜ê³  ë§µì´ë™ì„ í•´ì•¼ í•œë‹¤.
 			
 			SReqMapMove_MT kRMM(MMET_None);
 			kRMM.kTargetKey.GroundNo(pkPlayer->GetAbil(AT_LAST_VILLAGE));
@@ -7477,7 +7477,7 @@ void PgGround::ProcessRecommendPointRefresh(PgPlayer * const pkPlayer)
 
 	if(true == pkPlayer->IsCreateCard())
 	{
-		kCont.push_back(SPMO(IMET_SET_TODAYPOPULARPOINT, pkPlayer->GetID(),SMOD_AddPopularPoint(0))); // ÀÚ½ÅÀÇ 
+		kCont.push_back(SPMO(IMET_SET_TODAYPOPULARPOINT, pkPlayer->GetID(),SMOD_AddPopularPoint(0))); // ìì‹ ì˜ 
 	}
 
 	PgAction_ReqModifyItem kAction(CIE_Modify_RecommendPoint,GroundKey(),kCont);
@@ -7502,7 +7502,7 @@ void PgGround::OnTick1s()
 
 	float const fAutoHealMultiplier = GetAutoHealMultiplier();
 
-	// ÈŞ½Ä°æÇèÄ¡
+	// íœ´ì‹ê²½í—˜ì¹˜
 
 	int const iRestExpLevelLimit = GetMapAbil(AT_BONUS_EXP_LEVELLIMIT);
 
@@ -7524,7 +7524,7 @@ void PgGround::OnTick1s()
 	bool const bSpeedHackCountClear = CheckTickAvailable(ETICK_INTERVAL_2S, dwNow, dwkElapsed2s, true);
 
 	static DWORD s_dwOnTick1s_Check5s = BM::GetTime32();
-	bool const bDoClientProjectileTick = BM::TimeCheck(s_dwOnTick1s_Check5s, 5000);	// 5s ¸¶´Ù ÇÑ¹ø¾¿
+	bool const bDoClientProjectileTick = BM::TimeCheck(s_dwOnTick1s_Check5s, 5000);	// 5s ë§ˆë‹¤ í•œë²ˆì”©
 
 	bool const bDefendModeTick = BM::TimeCheck( m_kDefendModeTickTime, 30000 );
 
@@ -7560,19 +7560,19 @@ void PgGround::OnTick1s()
 					//VERIFY_INFO_LOG(false, BM::LOG_LV1, kLogMsg) ;
 					HACKING_LOG(BM::LOG_LV0, kLogMsg);
 					
-					//Player¿¡°Ô °á°ú¸¦ º¸¿©ÁÙ °æ¿ì(Debug)
+					//Playerì—ê²Œ ê²°ê³¼ë¥¼ ë³´ì—¬ì¤„ ê²½ìš°(Debug)
 					if((g_kProcessCfg.RunMode() & CProcessConfig::E_RunMode_Debug) && (PgGround::ms_kAntiHackCheckActionCount.m_bResultToPlayer))
 					{
 						BM::vstring kLogMsg; kLogMsg << _T("HackingType[FastAction] RecvPacketCount[") << kResult.m_iRecvPacketCount << _T("] TotalAniTime[") << kResult.m_iTotalActionAniTime << _T("] ClientElapsedTime[") << kResult.m_iClientElapsedTime << _T("] ServerElapsedTime[") << kResult.m_iServerElapsedTime << _T("]");
 						pkPlayer->SendWarnMessageStr(kLogMsg);
 					}
 
-					//ÇØÅ· Æ÷ÀÎÆ®¸¦ »ç¿ë ÇÒ °æ¿ì
+					//í•´í‚¹ í¬ì¸íŠ¸ë¥¼ ì‚¬ìš© í•  ê²½ìš°
 					if(kResult.m_bHackingWarning && PgGround::ms_kAntiHackCheckActionCount.m_bHackingIndex)
 					{
 						if (pkPlayer->SuspectHacking(EAHP_ActionCount, static_cast<short>(PgGround::ms_kAntiHackCheckActionCount.m_iAddHackingPoint)))
 						{
-							// SpeedHackÀÌ ÀÇ½É½º·¯¿ì´Ï °­Á¦Á¢¼Ó ÇØÁ¦ ½ÃÅ²´Ù.
+							// SpeedHackì´ ì˜ì‹¬ìŠ¤ëŸ¬ìš°ë‹ˆ ê°•ì œì ‘ì† í•´ì œ ì‹œí‚¨ë‹¤.
 							BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_ActionCount_Hack_C) );
 							kDPacket.Push( pkPlayer->GetMemberGUID() );
 							SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -7582,7 +7582,7 @@ void PgGround::OnTick1s()
 			}
 		}
 
-		UpdatePartyUnitAbil(pkPlayer, PMCAT_HP|PMCAT_MP|PMCAT_POS);//1ÃÊ ¸¶´Ù ÆÄÆ¼ HP/MP °»½Å
+		UpdatePartyUnitAbil(pkPlayer, PMCAT_HP|PMCAT_MP|PMCAT_POS);//1ì´ˆ ë§ˆë‹¤ íŒŒí‹° HP/MP ê°±ì‹ 
 
 		if ( bDefendModeTick )
 		{
@@ -7630,7 +7630,7 @@ void PgGround::OnTick1s()
 			i64NewExpAdd += i64CurExp;
 			i64NewExpAdd += std::max(1i64, static_cast<__int64>(i64LvExp * fAddExpInVillageRate));
 
-			i64NewExpAdd = std::min(i64MaxExpAdd, i64NewExpAdd);	//ÃÖ´ë°ª °Ë»ç
+			i64NewExpAdd = std::min(i64MaxExpAdd, i64NewExpAdd);	//ìµœëŒ€ê°’ ê²€ì‚¬
 			pkPlayer->SetAbil64(AT_REST_EXP_ADD_MAX, i64NewExpAdd, true);
 		}
 
@@ -7720,7 +7720,7 @@ void PgGround::OnTick5s()
 	DWORD dwkElapsed = 0;
 	CheckTickAvailable(ETICK_INTERVAL_5S, dwNow, dwkElapsed, true);
 	
-	if( BM::TimeCheck(m_kLastGenCheckTime, 6000) )//5ÃÊ ¸¶´Ù µé¾î¿À´Ï±î 6ÃÊµ¹·Á. ±×·³ Á¶±İ¾¿ ¾î±ß³ª±ä ÇÒ²¨¾ß
+	if( BM::TimeCheck(m_kLastGenCheckTime, 6000) )//5ì´ˆ ë§ˆë‹¤ ë“¤ì–´ì˜¤ë‹ˆê¹Œ 6ì´ˆëŒë ¤. ê·¸ëŸ¼ ì¡°ê¸ˆì”© ì–´ê¸‹ë‚˜ê¸´ í• êº¼ì•¼
 	{
 		RareMonsterGenerate();
 		MonsterGenerate(m_kContGenPoint_Monster);
@@ -7773,7 +7773,7 @@ void PgGround::AutoHealAndCheckDieSkill(CUnit * pkUnit, DWORD const dwkElapsed, 
 		if( 0==pkUnit->GetAbil(AT_MON_SKILL_AFTER_DIE) )
 		{
 			pkUnit->SetState(eOldState);
-			pkUnit->SetAbil(AT_MON_SKILL_AFTER_DIE, 1);		// Á×À»¶§ ÇÑ¹ø¸¸ ½ºÅ³ÀÌ ¹ßµ¿µÇµµ·Ï Ã¼Å©ÇÏ±â À§ÇÑ ¿ëµµ
+			pkUnit->SetAbil(AT_MON_SKILL_AFTER_DIE, 1);		// ì£½ì„ë•Œ í•œë²ˆë§Œ ìŠ¤í‚¬ì´ ë°œë™ë˜ë„ë¡ ì²´í¬í•˜ê¸° ìœ„í•œ ìš©ë„
 			PgSkillHelpFunc::SkillOnDie(pkUnit, pkUnit->GetAbil(AT_SKILL_ON_DIE), false);
 		}
 		else if( ON_DIE_SKILL_HP==pkUnit->GetAbil(AT_HP) )
@@ -7804,8 +7804,8 @@ void PgGround::InsertItemBox(POINT3 const &kptPos, VEC_GUID const &kOwners, CUni
 	{
 		pkItemBox = dynamic_cast<PgGroundItemBox*>(g_kTotalObjMgr.CreateUnit(UT_GROUNDBOX, BM::GUID::Create()));
 
-		POINT3 ptRandom1( (float)( 25 - (BM::Rand_Index(50)) ), (float)( 25 - (BM::Rand_Index(50)) ), 25.0f );//¾à°£ ³ô°Ô.
-		// Player°¡ °¥¼ö ¾ø´Â °÷À¸·Î ¾ÆÀÌÅÛ ¶³¾îÁö´Â °ÍÀ» ¹æÁöÇØ¾ß ÇÑ´Ù.
+		POINT3 ptRandom1( (float)( 25 - (BM::Rand_Index(50)) ), (float)( 25 - (BM::Rand_Index(50)) ), 25.0f );//ì•½ê°„ ë†’ê²Œ.
+		// Playerê°€ ê°ˆìˆ˜ ì—†ëŠ” ê³³ìœ¼ë¡œ ì•„ì´í…œ ë–¨ì–´ì§€ëŠ” ê²ƒì„ ë°©ì§€í•´ì•¼ í•œë‹¤.
 		NxVec3 kDirNormal(ptRandom1.x, ptRandom1.y, 0);
 		kDirNormal.normalize();
 		NxRay kRay(NxVec3(kptPos.x, kptPos.y, kptPos.z+20), kDirNormal);
@@ -7845,14 +7845,14 @@ void PgGround::InsertItemBox(POINT3 const &kptPos, VEC_GUID const &kOwners, CUni
 		if( pItemDef )
 		{
 			if( pItemDef->GetAbil(AT_INSTANCE_ITEM) )
-			{	// ÀÎ½ºÅÏ½º ¾ÆÀÌÅÛ!
+			{	// ì¸ìŠ¤í„´ìŠ¤ ì•„ì´í…œ!
 				pkItemBox->IsInstanceItem(true);
 				
-				// GenGroup ¹øÈ£·Î ÆÀ ¹øÈ£¸¦ ±¸ÇÔ.
+				// GenGroup ë²ˆí˜¸ë¡œ íŒ€ ë²ˆí˜¸ë¥¼ êµ¬í•¨.
 				pkItemBox->Team(Team);
 
 				if( wCollectRemainTime > 0 )
-				{	// È¸¼ö ½Ã°£ÀÌ ÀÖÀ» °æ¿ì ¾ÆÀÌÅÛ ¹Ú½º¿¡ ÀúÀå.
+				{	// íšŒìˆ˜ ì‹œê°„ì´ ìˆì„ ê²½ìš° ì•„ì´í…œ ë°•ìŠ¤ì— ì €ì¥.
 					pkItemBox->CollectRemainTime(wCollectRemainTime);
 				}
 			}
@@ -7862,34 +7862,34 @@ void PgGround::InsertItemBox(POINT3 const &kptPos, VEC_GUID const &kOwners, CUni
 		if ( AddUnit(pkItemBox) )
 		{
 			OutGuid = pkItemBox->GetID();
-			// ·Î±×¸¦ ³²°Ü
+			// ë¡œê·¸ë¥¼ ë‚¨ê²¨
 			PgLog kLog( ELOrderMain_Item, ELOrderSub_Drop );
-			kLog.Set( 0, pkItemBox->Name() );					// wstrValue1 ¾ÆÀÌÅÛ¸í
+			kLog.Set( 0, pkItemBox->Name() );					// wstrValue1 ì•„ì´í…œëª…
 			if(pkCaller)
 			{
-				kLog.Set( 1, pkCaller->Name() );				// wstrValue2 µå¶ø¸ó½ºÅÍ¸í
+				kLog.Set( 1, pkCaller->Name() );				// wstrValue2 ë“œëëª¬ìŠ¤í„°ëª…
 			}
 			else
 			{
-				kLog.Set( 1, _T("Not Monster") );				// wstrValue2 µå¶ø¸ó½ºÅÍ¸í
+				kLog.Set( 1, _T("Not Monster") );				// wstrValue2 ë“œëëª¬ìŠ¤í„°ëª…
 			}
 
-			kLog.Set( 0, static_cast<int>(kItem.ItemNo()) );	// iValue1 ¾ÆÀÌÅÛ ¹øÈ£
-			kLog.Set( 2, static_cast<int>(kItem.Count()) );		// iValue3 ¾ÆÀÌÅÛ ¼ö·®
+			kLog.Set( 0, static_cast<int>(kItem.ItemNo()) );	// iValue1 ì•„ì´í…œ ë²ˆí˜¸
+			kLog.Set( 2, static_cast<int>(kItem.Count()) );		// iValue3 ì•„ì´í…œ ìˆ˜ëŸ‰
 			kLog.Set( 0, i64Money );							// i64Value1 Money
-			kLog.Set( 1, kItem.EnchantInfo().Field_1() );		// i64Value2 ÀÎÃ¾Æ®Á¤º¸ 1
-			kLog.Set( 2, kItem.EnchantInfo().Field_2() );		// i64Value3 ÀÎÃ¾Æ®Á¤º¸ 2
-			kLog.Set( 3, kItem.EnchantInfo().Field_1() );		// i64Value4 ÀÎÃ¾Æ®Á¤º¸ 3
-			kLog.Set( 4, kItem.EnchantInfo().Field_2() );		// i64Value5 ÀÎÃ¾Æ®Á¤º¸ 4
-			kLog.Set( 2, pkItemBox->GetID().str() );			// guidValue1 ¾ÆÀÌÅÛ GUID
+			kLog.Set( 1, kItem.EnchantInfo().Field_1() );		// i64Value2 ì¸ì²¸íŠ¸ì •ë³´ 1
+			kLog.Set( 2, kItem.EnchantInfo().Field_2() );		// i64Value3 ì¸ì²¸íŠ¸ì •ë³´ 2
+			kLog.Set( 3, kItem.EnchantInfo().Field_1() );		// i64Value4 ì¸ì²¸íŠ¸ì •ë³´ 3
+			kLog.Set( 4, kItem.EnchantInfo().Field_2() );		// i64Value5 ì¸ì²¸íŠ¸ì •ë³´ 4
+			kLog.Set( 2, pkItemBox->GetID().str() );			// guidValue1 ì•„ì´í…œ GUID
 
 			if(pkCaller)
 			{
-				kLog.Set( 3, pkCaller->GetID().str() );			// guidValue2 µå¶ø¸ó½ºÅÍ GUID
+				kLog.Set( 3, pkCaller->GetID().str() );			// guidValue2 ë“œëëª¬ìŠ¤í„° GUID
 			}
 			else
 			{
-				kLog.Set( 3, BM::GUID::NullData().str() );		// guidValue2 µå¶ø¸ó½ºÅÍ GUID
+				kLog.Set( 3, BM::GUID::NullData().str() );		// guidValue2 ë“œëëª¬ìŠ¤í„° GUID
 			}
 			kLogCont.Add( kLog );
 		}
@@ -7909,8 +7909,8 @@ void PgGround::InsertItemBox(TBL_DEF_MAP_REGEN_POINT const & GenInfo, VEC_GUID c
 	{
 		pItemBox = dynamic_cast<PgGroundItemBox*>(g_kTotalObjMgr.CreateUnit(UT_GROUNDBOX, BM::GUID::Create()));
 
-		POINT3 ptRandom1( (float)( 25 - (BM::Rand_Index(50)) ), (float)( 25 - (BM::Rand_Index(50)) ), 25.0f );//¾à°£ ³ô°Ô.
-		// Player°¡ °¥¼ö ¾ø´Â °÷À¸·Î ¾ÆÀÌÅÛ ¶³¾îÁö´Â °ÍÀ» ¹æÁöÇØ¾ß ÇÑ´Ù.
+		POINT3 ptRandom1( (float)( 25 - (BM::Rand_Index(50)) ), (float)( 25 - (BM::Rand_Index(50)) ), 25.0f );//ì•½ê°„ ë†’ê²Œ.
+		// Playerê°€ ê°ˆìˆ˜ ì—†ëŠ” ê³³ìœ¼ë¡œ ì•„ì´í…œ ë–¨ì–´ì§€ëŠ” ê²ƒì„ ë°©ì§€í•´ì•¼ í•œë‹¤.
 		NxVec3 DirNormal(ptRandom1.x, ptRandom1.y, 0);
 		DirNormal.normalize();
 		NxRay Ray(NxVec3(GenInfo.pt3Pos.x, GenInfo.pt3Pos.y, GenInfo.pt3Pos.z+20), DirNormal);
@@ -7950,16 +7950,16 @@ void PgGround::InsertItemBox(TBL_DEF_MAP_REGEN_POINT const & GenInfo, VEC_GUID c
 		if( pItemDef )
 		{
 			if( pItemDef->GetAbil(AT_INSTANCE_ITEM) )
-			{	// ÀÎ½ºÅÏ½º ¾ÆÀÌÅÛ!
+			{	// ì¸ìŠ¤í„´ìŠ¤ ì•„ì´í…œ!
 				pItemBox->IsInstanceItem(true);
 				pItemBox->GenInfo(GenInfo);
 				
-				// GenGroup ¹øÈ£·Î ÆÀ ¹øÈ£¸¦ ±¸ÇÔ.
+				// GenGroup ë²ˆí˜¸ë¡œ íŒ€ ë²ˆí˜¸ë¥¼ êµ¬í•¨.
 				int Team = GenInfo.iPointGroup % 10;
 				pItemBox->Team(Team);
 
 				if( wCollectRemainTime > 0 )
-				{	// È¸¼ö ½Ã°£ÀÌ ÀÖÀ» °æ¿ì ¾ÆÀÌÅÛ ¹Ú½º¿¡ ÀúÀå.
+				{	// íšŒìˆ˜ ì‹œê°„ì´ ìˆì„ ê²½ìš° ì•„ì´í…œ ë°•ìŠ¤ì— ì €ì¥.
 					pItemBox->CollectRemainTime(wCollectRemainTime);
 				}
 			}
@@ -7970,34 +7970,34 @@ void PgGround::InsertItemBox(TBL_DEF_MAP_REGEN_POINT const & GenInfo, VEC_GUID c
 		{
 			OutGuid = pItemBox->GetID();
 
-			// ·Î±×¸¦ ³²°Ü
+			// ë¡œê·¸ë¥¼ ë‚¨ê²¨
 			PgLog Log( ELOrderMain_Item, ELOrderSub_Drop );
-			Log.Set( 0, pItemBox->Name() );					// wstrValue1 ¾ÆÀÌÅÛ¸í
+			Log.Set( 0, pItemBox->Name() );					// wstrValue1 ì•„ì´í…œëª…
 			if( pCaller )
 			{
-				Log.Set( 1, pCaller->Name() );				// wstrValue2 µå¶ø¸ó½ºÅÍ¸í
+				Log.Set( 1, pCaller->Name() );				// wstrValue2 ë“œëëª¬ìŠ¤í„°ëª…
 			}
 			else
 			{
-				Log.Set( 1, _T("Not Monster") );				// wstrValue2 µå¶ø¸ó½ºÅÍ¸í
+				Log.Set( 1, _T("Not Monster") );				// wstrValue2 ë“œëëª¬ìŠ¤í„°ëª…
 			}
 
-			Log.Set( 0, static_cast<int>(Item.ItemNo()) );	// iValue1 ¾ÆÀÌÅÛ ¹øÈ£
-			Log.Set( 2, static_cast<int>(Item.Count()) );		// iValue3 ¾ÆÀÌÅÛ ¼ö·®
+			Log.Set( 0, static_cast<int>(Item.ItemNo()) );	// iValue1 ì•„ì´í…œ ë²ˆí˜¸
+			Log.Set( 2, static_cast<int>(Item.Count()) );		// iValue3 ì•„ì´í…œ ìˆ˜ëŸ‰
 			Log.Set( 0, i64Money );							// i64Value1 Money
-			Log.Set( 1, Item.EnchantInfo().Field_1() );		// i64Value2 ÀÎÃ¾Æ®Á¤º¸ 1
-			Log.Set( 2, Item.EnchantInfo().Field_2() );		// i64Value3 ÀÎÃ¾Æ®Á¤º¸ 2
-			Log.Set( 3, Item.EnchantInfo().Field_1() );		// i64Value4 ÀÎÃ¾Æ®Á¤º¸ 3
-			Log.Set( 4, Item.EnchantInfo().Field_2() );		// i64Value5 ÀÎÃ¾Æ®Á¤º¸ 4
-			Log.Set( 2, pItemBox->GetID().str() );			// guidValue1 ¾ÆÀÌÅÛ GUID
+			Log.Set( 1, Item.EnchantInfo().Field_1() );		// i64Value2 ì¸ì²¸íŠ¸ì •ë³´ 1
+			Log.Set( 2, Item.EnchantInfo().Field_2() );		// i64Value3 ì¸ì²¸íŠ¸ì •ë³´ 2
+			Log.Set( 3, Item.EnchantInfo().Field_1() );		// i64Value4 ì¸ì²¸íŠ¸ì •ë³´ 3
+			Log.Set( 4, Item.EnchantInfo().Field_2() );		// i64Value5 ì¸ì²¸íŠ¸ì •ë³´ 4
+			Log.Set( 2, pItemBox->GetID().str() );			// guidValue1 ì•„ì´í…œ GUID
 
 			if( pCaller )
 			{
-				Log.Set( 3, pCaller->GetID().str() );			// guidValue2 µå¶ø¸ó½ºÅÍ GUID
+				Log.Set( 3, pCaller->GetID().str() );			// guidValue2 ë“œëëª¬ìŠ¤í„° GUID
 			}
 			else
 			{
-				Log.Set( 3, BM::GUID::NullData().str() );		// guidValue2 µå¶ø¸ó½ºÅÍ GUID
+				Log.Set( 3, BM::GUID::NullData().str() );		// guidValue2 ë“œëëª¬ìŠ¤í„° GUID
 			}
 			LogCont.Add( Log );
 		}
@@ -8011,7 +8011,7 @@ HRESULT PgGround::PlayerTick(DWORD const dwElapsed)
 	PgObjectMgr::GetFirstUnit(UT_PLAYER, kItor);
 	while((pkUnit = PgObjectMgr::GetNextUnit(UT_PLAYER, kItor)) != NULL)
 	{
-		// Tick¿¡¼­ DelayTime À» ÀĞ¾î¼­ »óÅÂÀÌ»óÀ» Ç®¾î ÁÖ¾î¾ß ÇÑ´Ù.
+		// Tickì—ì„œ DelayTime ì„ ì½ì–´ì„œ ìƒíƒœì´ìƒì„ í’€ì–´ ì£¼ì–´ì•¼ í•œë‹¤.
 		int iDelay = __max(pkUnit->GetDelay() - dwElapsed, 0);
 		if (iDelay <= 0)
 		{
@@ -8028,15 +8028,15 @@ HRESULT PgGround::PlayerTick(DWORD const dwElapsed)
 		if( 0 != iActivateEventScriptID )
 		{
 			int const iEventScriptElapsedTime = pkUnit->GetAbil(AT_EVENT_SCRIPT_TIME);
-			int const iAlertTime = 1000 * 60 * 15; //15ºĞ ´ÜÀ§ °æ°í
+			int const iAlertTime = 1000 * 60 * 15; //15ë¶„ ë‹¨ìœ„ ê²½ê³ 
 			if( iAlertTime < iEventScriptElapsedTime )
 			{
 				CAUTION_LOG(BM::LOG_LV5, __FL__<<L"player[Ground: "<<GetGroundNo()<<L", Name: "<<pkUnit->Name()<<L", Guid: "<<pkUnit->GetID()<<L"] is long time(over "<<iAlertTime<<L" msec, now: "<<iEventScriptElapsedTime<<L") play Event[ID: "<<iActivateEventScriptID<<L"]");
-				pkUnit->SetAbil(AT_EVENT_SCRIPT_TIME, dwElapsed); // °æ°í ½Ã°£ ÃÊ±âÈ­
+				pkUnit->SetAbil(AT_EVENT_SCRIPT_TIME, dwElapsed); // ê²½ê³  ì‹œê°„ ì´ˆê¸°í™”
 			}
 			else
 			{
-				pkUnit->SetAbil(AT_EVENT_SCRIPT_TIME, iEventScriptElapsedTime + dwElapsed); // °æ°ú ½Ã°£ ÀúÀå
+				pkUnit->SetAbil(AT_EVENT_SCRIPT_TIME, iEventScriptElapsedTime + dwElapsed); // ê²½ê³¼ ì‹œê°„ ì €ì¥
 			}
 		}
 		//PlayerQuestTick(pkUnit);
@@ -8057,7 +8057,7 @@ HRESULT PgGround::PetTick(DWORD const dwElapsed)
 	return S_OK;
 }
 
-//void PgGround::PlayerQuestTick(CUnit* pkUnit)//½Ã°£ Á¦ÇÑ Äù½ºÆ® Á¦ÀÛ½Ã ±îÁö ÁÖ¼®Ã³¸®
+//void PgGround::PlayerQuestTick(CUnit* pkUnit)//ì‹œê°„ ì œí•œ í€˜ìŠ¤íŠ¸ ì œì‘ì‹œ ê¹Œì§€ ì£¼ì„ì²˜ë¦¬
 //{
 //	if( !pkUnit->IsUnitType(UT_PLAYER) ) {return;}
 //	PgPlayer* pkPC = dynamic_cast<PgPlayer*>(pkUnit);
@@ -8134,7 +8134,7 @@ HRESULT PgGround::ObjectUnitTick( DWORD const dwElapsed, UNIT_PTR_ARRAY& rkDelUn
 						}break;
 					case E_FAIL:
 						{
-							// ÀÌ·± »óÈ²ÀÌ ³ª¿À¸é ÀÌ»óÇÑ°Çµ¥.
+							// ì´ëŸ° ìƒí™©ì´ ë‚˜ì˜¤ë©´ ì´ìƒí•œê±´ë°.
 							VERIFY_INFO_LOG(false, BM::LOG_LV1,__FL__<<L"ObjectUnit["<<pkObjUnit->Name()<<L"] State:DEAD But HP["<<pkObjUnit->GetAbil(AT_HP)<<L"], GUID["<<pkObjUnit->GetID()<<L"]" );
 						}break;
 					}
@@ -8248,21 +8248,21 @@ HRESULT PgGround::MonsterTick( DWORD const dwElapsed, VEC_UNIT& rkDelUnitVec )
 		{
 		case US_DEAD:
 			{
-				// ¸ó½ºÅÍ Á×¾úÀ» ¶§~~~
+				// ëª¬ìŠ¤í„° ì£½ì—ˆì„ ë•Œ~~~
 				switch( CheckMonsterDie(pkMonster) )
 				{
 				case S_OK:
 					{
 						rkDelUnitVec.push_back(pkMonster);
 					}break;
-				case S_FALSE:// ¸ğµç ¸ó½ºÅÍ¸¦ Á¦°ÅÇØ¾ß ÇÏ´Â »óÈ² ´õÀÌ»ó TickÀ» µ¹ ÇÊ¿ä°¡ ¾ø´Ù.
+				case S_FALSE:// ëª¨ë“  ëª¬ìŠ¤í„°ë¥¼ ì œê±°í•´ì•¼ í•˜ëŠ” ìƒí™© ë”ì´ìƒ Tickì„ ëŒ í•„ìš”ê°€ ì—†ë‹¤.
 					{
 						rkDelUnitVec.clear();
 						return S_FALSE;
 					}
 				case E_FAIL:
 					{
-						// ÀÌ·± »óÈ²ÀÌ ³ª¿À¸é ÀÌ»óÇÑ°Çµ¥.
+						// ì´ëŸ° ìƒí™©ì´ ë‚˜ì˜¤ë©´ ì´ìƒí•œê±´ë°.
 						VERIFY_INFO_LOG(false, BM::LOG_LV1,__FL__<<L"Monster["<<pkMonster->Name()<<L"] State:DEAD But HP["<<pkMonster->GetAbil(AT_HP)<<L"], GUID["<<pkMonster->GetID()<<L"]");
 						LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("CheckMonsterDie Ret E_Fail!"));
 					}break;
@@ -8302,7 +8302,7 @@ int PgGround::MonsterTickAI(CUnit* pkUnit, DWORD dwElapsed)
 	if(pkUnit->GetAbil(AT_FROZEN) > 0)
 	{
 		if(EAI_ACTION_ROAD==pkUnit->GetAI()->eCurrentAction)
-		{ //±âÀı»óÅÂ°¡ Ç®¸®¸é ´Ù½Ã walk action Á¤º¸¸¦ Àü¼ÛÇØ¾ß ÇÏ±â ¶§¹®¿¡
+		{ //ê¸°ì ˆìƒíƒœê°€ í’€ë¦¬ë©´ ë‹¤ì‹œ walk action ì •ë³´ë¥¼ ì „ì†¡í•´ì•¼ í•˜ê¸° ë•Œë¬¸ì—
 			pkUnit->SetSync(true);
 		}
 		LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return -1"));
@@ -8358,7 +8358,7 @@ bool PgGround::StageActionFire(BM::GUID &rkGuid, int iSkillNo, SActArg *pkActArg
 	if (iSkillNo <= 0)
 	{
 		INFO_LOG(BM::LOG_LV0, _T("[%s] Unit cannot FireSkill because SkillNo is %d"), __FUNCTIONW__, iSkillNo);
-		pkUnit->SetDelay(0);	// ERROR ¹ß»ıÇÏ¿© ´Ù¸¥ ActionÀ¸·Î º¯°æÇØ¾ß ÇÔ.
+		pkUnit->SetDelay(0);	// ERROR ë°œìƒí•˜ì—¬ ë‹¤ë¥¸ Actionìœ¼ë¡œ ë³€ê²½í•´ì•¼ í•¨.
 		LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return false"));
 		return false;
 	}
@@ -8476,7 +8476,7 @@ void PgGround::SendNfyAIAction(CUnit* pkUnit, EUnitState eState, PgActionResultV
 			GET_DEF(CSkillDefMgr, kSkillDefMgr);
 			iActionID = kSkillDefMgr.GetSkillNoFromActionName(_T("a_idle"));
 		}break;
-	case US_FIRE_WAITING:	//¼­¹ö°¡ ±â´Ù¸®±â ½ÃÀÛÇÒ¶§ Å¬¶ó´Â °ø°İ¸ğ¼ÇÀ» ÇØ¾ß ÇÑ´Ù
+	case US_FIRE_WAITING:	//ì„œë²„ê°€ ê¸°ë‹¤ë¦¬ê¸° ì‹œì‘í• ë•Œ í´ë¼ëŠ” ê³µê²©ëª¨ì…˜ì„ í•´ì•¼ í•œë‹¤
 	case US_ATTACK:
 		{
 			iActionID = (0<iSkillNo) ? iSkillNo : pkUnit->GetSkill()->GetSkillNo();
@@ -8489,7 +8489,7 @@ void PgGround::SendNfyAIAction(CUnit* pkUnit, EUnitState eState, PgActionResultV
 		{
 			if (pkActionResultVec == NULL || pkActionResultVec->GetValidCount() <= 0)
 			{
-				// Å¸°ÙÀÌ ¾ø´Ù¸é Á¤º¸¸¦ º¸³¾ ÇÊ¿ä ¾ø´Ù.
+				// íƒ€ê²Ÿì´ ì—†ë‹¤ë©´ ì •ë³´ë¥¼ ë³´ë‚¼ í•„ìš” ì—†ë‹¤.
 				return;
 			}
 #ifdef AI_DEBUG
@@ -8577,8 +8577,8 @@ void PgGround::SendNfyAIAction(CUnit* pkUnit, EUnitState eState, PgActionResultV
 
 	SActionInfo kAction;
 	kAction.guidPilot = pkUnit->GetID();
-	kAction.bIsDown = true;	// ÀÌ°ÍÀ» false·Î ÇÏ¸é Monster°¡ ¿òÁ÷ÀÌÁö¸¦ ¾Ê´õ±º..
-	kAction.byDirection = 0;	// TODO : DirectionÀ» 0À¸·Î ÇØµµ »ó°ü¾øÀ¸·Á³ª??
+	kAction.bIsDown = true;	// ì´ê²ƒì„ falseë¡œ í•˜ë©´ Monsterê°€ ì›€ì§ì´ì§€ë¥¼ ì•Šë”êµ°..
+	kAction.byDirection = 0;	// TODO : Directionì„ 0ìœ¼ë¡œ í•´ë„ ìƒê´€ì—†ìœ¼ë ¤ë‚˜??
 	kAction.ptPos = pkUnit->GetPos();
 
 	int iElapsedTime = 0;
@@ -8631,7 +8631,7 @@ void PgGround::SendNfyAIAction(CUnit* pkUnit, EUnitState eState, PgActionResultV
 
 	SendToArea( &kMPacket, pkUnit->LastAreaIndex(), BM::GUID::NullData(), SYNC_TYPE_RECV_ADD, E_SENDTYPE_NONE );
 
-	// °¢ ¸ó½ºÅÍ´Â 1ÃÊ´ç, ÆĞÅ¶À» ¾ó¸¶³ª º¸³»´Â°¡?
+	// ê° ëª¬ìŠ¤í„°ëŠ” 1ì´ˆë‹¹, íŒ¨í‚·ì„ ì–¼ë§ˆë‚˜ ë³´ë‚´ëŠ”ê°€?
 	//{
 	//	INFO_LOG(BM::LOG_LV9, _T("[%s] Sent Packet Size : %d\n"), __FUNCTIONW__, kMPacket.Size());
 	//	CPacketLogger &rkPacketLogger = GetPacketLogger();
@@ -8668,10 +8668,10 @@ void PgGround::SendNftChaseEnemy(CUnit* pkUnit)
 
 void PgGround::EffectTick(CUnit* pkUnit, DWORD dwElapsed)
 {
-	// ÀÌ¹Ì Unit¿¡ ´ëÇÑ LockÀÌ ÀâÇô ÀÖÀ¸¹Ç·Î Effect LockÀº º°µµ·Î ¼³Á¤ ¾ÈÇÑ´Ù.
+	// ì´ë¯¸ Unitì— ëŒ€í•œ Lockì´ ì¡í˜€ ìˆìœ¼ë¯€ë¡œ Effect Lockì€ ë³„ë„ë¡œ ì„¤ì • ì•ˆí•œë‹¤.
 	if (pkUnit->GetEffectMgr().MustAllClear())
 	{
-		// Áö¿öÁ®¾ß ÇÑ´Ù°í Ç¥½ÃµÇ¾î ÀÖÀ¸¸é...
+		// ì§€ì›Œì ¸ì•¼ í•œë‹¤ê³  í‘œì‹œë˜ì–´ ìˆìœ¼ë©´...
 		pkUnit->ClearAllEffect(true);
 		return;
 	}
@@ -8711,7 +8711,7 @@ void PgGround::EffectTick(CUnit* pkUnit, DWORD dwElapsed)
 		bool const bApply = bIndunApply ? true : (pkEffect->GetType()!=EFFECT_TYPE_CURSED && pkEffect->GetType()!=EFFECT_TYPE_SYSTEM && pkEffect->GetType()!=EFFECT_TYPE_SEND_GROUND);
 		if ( ECT_DOTICK & kCheck && bApply )	// Do Effect
 		{
-			// ¸Ê ÀÌµ¿À¸·Î ÀÎÇØ pkEffectÀÇ SActArg¾È¿¡ ÀúÀåµÈ PgGround°¡ ³¯¾Æ°¬À» °æ¿ì ´Ù½Ã ¼¼ÆÃ ÇØ ÁØ´Ù.
+			// ë§µ ì´ë™ìœ¼ë¡œ ì¸í•´ pkEffectì˜ SActArgì•ˆì— ì €ì¥ëœ PgGroundê°€ ë‚ ì•„ê°”ì„ ê²½ìš° ë‹¤ì‹œ ì„¸íŒ… í•´ ì¤€ë‹¤.
 			SActArg* pkArg = pkEffect->GetActArg();
 			if(pkArg)
 			{
@@ -8738,7 +8738,7 @@ void PgGround::EffectTick(CUnit* pkUnit, DWORD dwElapsed)
 			//INFO_LOG(BM::LOG_LV8, _T("[%s] Effect deleted....ID[%d]"), __FUNCTIONW__, pkEffect->GetEffectNo());
 			int const iEndActionNo = pkEffect->GetAbil(AT_END_ACTION_WHEN_EFFECT_DELETED);
 			if(iEndActionNo)
-			{// ÀÌÆåÆ®°¡ »èÁ¦ µÉ¶§ Á¾·á½ÃÄÑÁÙ ¾×¼ÇÀÌ ÀÖ´Ù¸é
+			{// ì´í™íŠ¸ê°€ ì‚­ì œ ë ë•Œ ì¢…ë£Œì‹œì¼œì¤„ ì•¡ì…˜ì´ ìˆë‹¤ë©´
 				BM::Stream kPacket(PT_M_C_NFY_END_ACTION);
 				kPacket.Push(pkUnit->GetID());
 				kPacket.Push(iEndActionNo);
@@ -8780,7 +8780,7 @@ bool PgGround::UnitEventNfy(BM::GUID const &rkGuid, BM::Stream* pkPacket)
 		return true;
 	}
 
-	// ObserverÀÏ ¼öµµ ÀÖ¾î
+	// Observerì¼ ìˆ˜ë„ ìˆì–´
 	PgNetModule<> kNetModule;
 	if ( SUCCEEDED( PgObjectMgr2::GetObserver( rkGuid, kNetModule ) ) )
 	{
@@ -8795,7 +8795,7 @@ bool PgGround::UnitEventNfy(BM::GUID const &rkGuid, BM::Stream* pkPacket)
 	return false;
 }
 
-const int FEARLESS_LEVEL_GAP = 10; // ¾÷Àû °Ì ¾ø´Â »ç³É²Û Àü¿ë ¼±¾ğ
+const int FEARLESS_LEVEL_GAP = 10; // ì—…ì  ê² ì—†ëŠ” ì‚¬ëƒ¥ê¾¼ ì „ìš© ì„ ì–¸
 
 HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 {
@@ -8805,7 +8805,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 	{
 		BM::GUID kOwnerGuid;
 		CUnit* pkOwner = NULL;
-		if( CheckUnitOwner(pkMonster, kOwnerGuid) )//¸ó½ºÅÍÀÇ ¶§¸°¾çÀ¸·Î ´©°¡ ¾ÆÀÌÅÛ ÁÖÀÎÀÎÁö È®ÀÎÇÑ´Ù
+		if( CheckUnitOwner(pkMonster, kOwnerGuid) )//ëª¬ìŠ¤í„°ì˜ ë•Œë¦°ì–‘ìœ¼ë¡œ ëˆ„ê°€ ì•„ì´í…œ ì£¼ì¸ì¸ì§€ í™•ì¸í•œë‹¤
 		{
 			pkOwner = GetUnit( kOwnerGuid );
 		}
@@ -8820,7 +8820,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 		if(gen_point_itor != m_kContGenPoint_Monster.end())
 		{
 			PgGenPoint &kGenPoint = (*gen_point_itor).second;
-			kGenPoint.RemoveChild( pkMonster->GetID() );//¾ê¸¦ Æ÷ÀÎÆ®¿¡¼­ »©ÁÜ.
+			kGenPoint.RemoveChild( pkMonster->GetID() );//ì–˜ë¥¼ í¬ì¸íŠ¸ì—ì„œ ë¹¼ì¤Œ.
 		}
 
 		PgWorldEventMgr::DecMonsterGenPointCount(rkPosGuid);
@@ -8828,8 +8828,8 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 		
 		if( pkOwner )
 		{
-			CUnit * pActor = NULL; // ÀÌº¥Æ®¸¦ ¹ß»ı ½ÃÅ³ Ä³¸¯ÅÍ°¡ ´©±¸ÀÎÁö..(ÆÄÆ¼Àå/¿øÁ¤´ëÀå¸¸ °¡´É or ÆÄÆ¼/¿øÁ¤´ë¿ø ¾Æ¹«³ª)
-			if( GetAttr() & GKIND_EXPEDITION )		// ¿øÁ¤´ë ´øÀüÀÎ °æ¿ì..
+			CUnit * pActor = NULL; // ì´ë²¤íŠ¸ë¥¼ ë°œìƒ ì‹œí‚¬ ìºë¦­í„°ê°€ ëˆ„êµ¬ì¸ì§€..(íŒŒí‹°ì¥/ì›ì •ëŒ€ì¥ë§Œ ê°€ëŠ¥ or íŒŒí‹°/ì›ì •ëŒ€ì› ì•„ë¬´ë‚˜)
+			if( GetAttr() & GKIND_EXPEDITION )		// ì›ì •ëŒ€ ë˜ì „ì¸ ê²½ìš°..
 			{
 				pActor = pkOwner;
 
@@ -8859,7 +8859,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 						{
 							pActor = GetUnit(kMasterGuid);
 							if( NULL == pActor )
-							{//ÆÄÆ¼ÀåÀÌ ¸Ê¼­¹ö¿¡ ¾ø´Â °æ¿ì, °ø°İÀÚ¸¦ ¾×ÅÍ·Î ¼³Á¤ÇÑ´Ù.
+							{//íŒŒí‹°ì¥ì´ ë§µì„œë²„ì— ì—†ëŠ” ê²½ìš°, ê³µê²©ìë¥¼ ì•¡í„°ë¡œ ì„¤ì •í•œë‹¤.
 								pActor = pkOwner;
 							}
 						}
@@ -8877,7 +8877,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 			PgWorldEventMgr::DoMonsterRegenPoint(GetGroundNo(), rkPosGuid, iGenPointGroup);
 		}
 
-		// ·Î±×¸¦ ³²°Ü
+		// ë¡œê·¸ë¥¼ ë‚¨ê²¨
 		PgLogCont kLogCont(ELogMain_Contents_Monster, ELogSub_Monster_Death );
 		kLogCont.MemberKey( GroundKey().Guid() );// GroundGuid
 		kLogCont.CharacterKey( pkMonster->GetID() );
@@ -8891,14 +8891,14 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 		}
 
 		PgLog kLog( ELOrderMain_Monster, ELOrderSub_Death );
-		kLog.Set( 1, static_cast<int>(this->GetAttr()) );	// iValue2 ±×¶ó¿îµå Å¸ÀÔ
+		kLog.Set( 1, static_cast<int>(this->GetAttr()) );	// iValue2 ê·¸ë¼ìš´ë“œ íƒ€ì…
 
 		kLogCont.Add( kLog );
 		
 
 		if( pkOwner )
 		{
-			if(pkMonster->GetAbil(AT_TALK_IDLE) && 0==pkMonster->GetAbil(AT_VOLUNTARILY_DIE))//Èñ±Í ¸ó½ºÅÍ¸¸ ÇØ´ç ¾îºôÀ» »ç¿ëÇÑ´Ù.
+			if(pkMonster->GetAbil(AT_TALK_IDLE) && 0==pkMonster->GetAbil(AT_VOLUNTARILY_DIE))//í¬ê·€ ëª¬ìŠ¤í„°ë§Œ í•´ë‹¹ ì–´ë¹Œì„ ì‚¬ìš©í•œë‹¤.
 			{
 				BM::Stream kPacket(PT_M_C_NFY_CHAT);
 				kPacket.Push(static_cast<BYTE>(CT_RAREMONSTERDEAD));
@@ -8908,7 +8908,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 				Broadcast(kPacket,NULL,E_SENDTYPE_SELF);
 			}
 
-			{// ¾÷Àû
+			{// ì—…ì 
 				VEC_GUID kPartyMemberVec;
 				GetPartyMemberGround(dynamic_cast<PgPlayer const*>(pkOwner), GroundKey(), kPartyMemberVec);
 
@@ -8923,10 +8923,10 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 					CUnit* pkUnit = GetUnit( *partyMember_iter );
 					if( pkUnit )
 					{
-						// ´øÀü¿ë ¾÷Àû
+						// ë˜ì „ìš© ì—…ì 
 						if( EMGRADE_BOSS == pkMonster->GetAbil( AT_GRADE ) )
 						{
-							// ÀÏÁ¤ ÇÇ°İ È¸¼ö ÀÌÇÏ·Î ´øÀü Å¬¸®¾î
+							// ì¼ì • í”¼ê²© íšŒìˆ˜ ì´í•˜ë¡œ ë˜ì „ í´ë¦¬ì–´
 							PgComboCounter* pkCounter = NULL;
 							if( GetComboCounter( pkUnit->GetID(), pkCounter ) )
 							{
@@ -8937,7 +8937,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 								kCA.DoAction( pkUnit, NULL );
 							}
 
-							{// ´øÀü Å¸ÀÓ ¾îÅÃ ¾÷Àû
+							{// ë˜ì „ íƒ€ì„ ì–´íƒ ì—…ì 
 								int const iNowTimeSec = g_kEventView.GetLocalSecTime( CGameTime::SECOND );
 								int iDungeonStartTimeSec = pkUnit->GetAbil( AT_ACHIEVEMENT_DUNGEON_TIMEATTACK );
 								pkUnit->SetAbil( AT_ACHIEVEMENT_DUNGEON_TIMEATTACK, iNowTimeSec - iDungeonStartTimeSec );
@@ -8950,7 +8950,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 						int const iMonsterIdx = pkMonster->GetAbil(AT_ACHIEVEMENT_MONSTER_TYPE);
 						if(iMonsterIdx && (AT_ACHIEVEMENT_KILL_MONSTER_MAX >= iMonsterIdx))
 						{
-							// ¹Ì¼Ç Å¬¸®¾î È¸¼ö ¾÷Àû
+							// ë¯¸ì…˜ í´ë¦¬ì–´ íšŒìˆ˜ ì—…ì 
 							PgAddAchievementValue kMA(iMonsterIdx,1,GroundKey());
 							kMA.DoAction(pkUnit,NULL);
 						}
@@ -8979,7 +8979,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 							}
 						}
 
-						//Âü¿©À²
+						//ì°¸ì—¬ìœ¨
 						pkUnit->SetAbil( AT_INDUN_PARTICIPATION_RATE, pkUnit->GetAbil(AT_INDUN_PARTICIPATION_RATE)+1 );
 					}
 
@@ -8987,7 +8987,7 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 				}
 
 				if( (false == IndunPartyDie()) && (EMGRADE_BOSS == pkMonster->GetAbil( AT_GRADE )) )
-				{// ÆÄÆ¼¿øÀÌ ¾Æ¹«µµ Á×Áö ¾Ê°í ´øÀü Å¬¸®¾î ¾÷Àû ¼º°ø
+				{// íŒŒí‹°ì›ì´ ì•„ë¬´ë„ ì£½ì§€ ì•Šê³  ë˜ì „ í´ë¦¬ì–´ ì—…ì  ì„±ê³µ
 					VEC_GUID::iterator partyMember_iter = kPartyMemberVec.begin();
 					while( partyMember_iter != kPartyMemberVec.end() )
 					{
@@ -9008,14 +9008,14 @@ HRESULT PgGround::CheckMonsterDie(PgMonster *pkMonster)
 			//Exp
 			GiveExp(pkMonster,pkOwner);
 
-			// AwakeVale(ÇÃ·¹ÀÌ¾î °¢¼ºÄ¡)
+			// AwakeVale(í”Œë ˆì´ì–´ ê°ì„±ì¹˜)
 			GiveAwakeValue(pkMonster, pkOwner);
 
 			//Quest
 			CheckMonsterDieQuest( pkOwner, pkMonster );
 		}
 
-		// PkOwner¿¡ ´ëÇÑ NULL Ã¼Å©´Â SetUnitDropItem¿¡¼­ ÇÑ´Ù.
+		// PkOwnerì— ëŒ€í•œ NULL ì²´í¬ëŠ” SetUnitDropItemì—ì„œ í•œë‹¤.
 		HRESULT const hRet = this->SetUnitDropItem( pkOwner, pkMonster, kLogCont );
 		kLogCont.Commit();
 		return hRet;
@@ -9036,7 +9036,7 @@ HRESULT PgGround::CheckObjectUnitDie(PgObjectUnit* pkUnit)
 		if(gen_point_itor != m_kContGenPoint_Object.end())
 		{
 			PgGenPoint_Object& rkGenPoint = (*gen_point_itor).second;
-			rkGenPoint.RemoveChild( pkUnit->GetID() );//¾ê¸¦ Æ÷ÀÎÆ®¿¡¼­ »©ÁÜ.
+			rkGenPoint.RemoveChild( pkUnit->GetID() );//ì–˜ë¥¼ í¬ì¸íŠ¸ì—ì„œ ë¹¼ì¤Œ.
 			gpg = rkGenPoint.Info().iPointGroup;
 		}
 
@@ -9044,7 +9044,7 @@ HRESULT PgGround::CheckObjectUnitDie(PgObjectUnit* pkUnit)
 		PgWorldEventMgr::DecObjectGenPointGroupCount(gpg);
 		PgWorldEventMgr::DoObjectRegenPoint(GetGroundNo(), rkGroupGuid, gpg);
 
-		// ·Î±×¸¦ ³²°Ü
+		// ë¡œê·¸ë¥¼ ë‚¨ê²¨
 		PgLogCont kLogCont(ELogMain_Contents_Monster, ELogSub_Monster_Death );
 		kLogCont.MemberKey( GroundKey().Guid() );// GroundGuid
 		kLogCont.CharacterKey( pkUnit->GetID() );
@@ -9053,13 +9053,13 @@ HRESULT PgGround::CheckObjectUnitDie(PgObjectUnit* pkUnit)
 		kLogCont.ChannelNo( g_kProcessCfg.ChannelNo() );
 
 		PgLog kLog( ELOrderMain_Monster, ELOrderSub_Death );
-		kLog.Set( 1, static_cast<int>(this->GetAttr()) );	// iValue2 ±×¶ó¿îµå Å¸ÀÔ
+		kLog.Set( 1, static_cast<int>(this->GetAttr()) );	// iValue2 ê·¸ë¼ìš´ë“œ íƒ€ì…
 
 		kLogCont.Add( kLog );
 
 		CUnit* pkOwner = NULL;
 		BM::GUID kOwnerGuid;
-		if( CheckUnitOwner(pkUnit, kOwnerGuid) )//¸ó½ºÅÍÀÇ ¶§¸°¾çÀ¸·Î ´©°¡ ¾ÆÀÌÅÛ ÁÖÀÎÀÎÁö È®ÀÎÇÑ´Ù
+		if( CheckUnitOwner(pkUnit, kOwnerGuid) )//ëª¬ìŠ¤í„°ì˜ ë•Œë¦°ì–‘ìœ¼ë¡œ ëˆ„ê°€ ì•„ì´í…œ ì£¼ì¸ì¸ì§€ í™•ì¸í•œë‹¤
 		{
 			pkOwner = GetUnit(kOwnerGuid);
 
@@ -9072,7 +9072,7 @@ HRESULT PgGround::CheckObjectUnitDie(PgObjectUnit* pkUnit)
 			}
 		}
 
-		// PkOwner¿¡ ´ëÇÑ NULL Ã¼Å©´Â SetUnitDropItem¿¡¼­ ÇÑ´Ù.
+		// PkOwnerì— ëŒ€í•œ NULL ì²´í¬ëŠ” SetUnitDropItemì—ì„œ í•œë‹¤.
 		HRESULT const hRet = this->SetUnitDropItem( pkOwner, pkUnit, kLogCont );
 		kLogCont.Commit();
 		return hRet;
@@ -9118,11 +9118,11 @@ void PgGround::GetItemOwner(CUnit const* pkUnit, VEC_GUID & rkOwnerVec)const
 {
 	if(pkUnit)
 	{
-		if( BM::GUID::IsNotNull(pkUnit->GetExpeditionGuid()) )	// ¿øÁ¤´ëÀÏ °æ¿ì.
+		if( BM::GUID::IsNotNull(pkUnit->GetExpeditionGuid()) )	// ì›ì •ëŒ€ì¼ ê²½ìš°.
 		{
 			m_kLocalPartyMgr.GetExpeditionMemberGround(pkUnit->GetExpeditionGuid(), GroundKey(), rkOwnerVec);
 		}
-		else if( BM::GUID::IsNotNull(pkUnit->GetPartyGuid()) ) // ÀÏ¹İ ÆÄÆ¼ÀÏ °æ¿ì.
+		else if( BM::GUID::IsNotNull(pkUnit->GetPartyGuid()) ) // ì¼ë°˜ íŒŒí‹°ì¼ ê²½ìš°.
 		{
 			m_kLocalPartyMgr.GetPartyMemberGround(pkUnit->GetPartyGuid(), GroundKey(), rkOwnerVec);
 		}
@@ -9167,13 +9167,13 @@ HRESULT PgGround::SetUnitDropItem(CUnit *pkOwner, CUnit *pkDroper, PgLogCont &kL
 
 		size_t const iAddDropCount = GetAddDropItemCount(pkPC);
 
-		const int iItemDropRate = iDropRate*2;//level°ú Bag drop µÎ±º´ë¼­ È®·üÀ» Àû¿ëÇØ¼­
+		const int iItemDropRate = iDropRate*2;//levelê³¼ Bag drop ë‘êµ°ëŒ€ì„œ í™•ë¥ ì„ ì ìš©í•´ì„œ
 		const float fMoneyDropRate = static_cast<float>(pkPC ? pkPC->GetMoneyRate() : 100);
 		VEC_GUID kOwnerVec;
 		GetItemOwner(pkOwner, kOwnerVec);
 		// ignore level item drop
 		{
-			//F6 Èñ±Í ¸ó½ºÅÍÀÇ ¾ÆÀÌÅÛ µå·Ó
+			//F6 í¬ê·€ ëª¬ìŠ¤í„°ì˜ ì•„ì´í…œ ë“œë¡­
 			PgGroundUtil::ContAbilValue kAbilCont;
 			PgGroundUtil::GetAlwaysDropItem(*pkDroper, kAbilCont);
 			PgGroundUtil::ContAbilValue::const_iterator iterItem = kAbilCont.begin();
@@ -9201,9 +9201,9 @@ HRESULT PgGround::SetUnitDropItem(CUnit *pkOwner, CUnit *pkDroper, PgLogCont &kL
 			}
 		}
 
-		if(true == g_kLocal.IsServiceRegion(LOCAL_MGR::NC_CHINA) || pkDroper->GetAbil(AT_MON_DROPITEM_ENFORCE))//ÀÓ½Ã
+		if(true == g_kLocal.IsServiceRegion(LOCAL_MGR::NC_CHINA) || pkDroper->GetAbil(AT_MON_DROPITEM_ENFORCE))//ì„ì‹œ
 		{
-			// Áß±¹Àº ·¹º§ Â÷ÀÌ¿¡ µû¶ó ¾ÆÀÌÅÛ µå¶ø È®·ü ÁÙ¾îµå´Â°Í »èÁ¦ ¹«Á¶°Ç ¾ÆÀÌÅÛÀº ÁØ´Ù.
+			// ì¤‘êµ­ì€ ë ˆë²¨ ì°¨ì´ì— ë”°ë¼ ì•„ì´í…œ ë“œë í™•ë¥  ì¤„ì–´ë“œëŠ”ê²ƒ ì‚­ì œ ë¬´ì¡°ê±´ ì•„ì´í…œì€ ì¤€ë‹¤.
 		}
 		else
 		{
@@ -9219,8 +9219,8 @@ HRESULT PgGround::SetUnitDropItem(CUnit *pkOwner, CUnit *pkDroper, PgLogCont &kL
 			{
 				if( !pkDroper->GetAbil(AT_EVENT_MONSTER_DROP) )
 				{
-					// ·¹º§Â÷ÀÌ°¡ ³ª¸é ¾Æ¹«°Íµµ ¾ÈÁà
-					return S_OK;
+					// ë ˆë²¨ì°¨ì´ê°€ ë‚˜ë©´ ì•„ë¬´ê²ƒë„ ì•ˆì¤˜
+					//return S_OK;
 				}
 			}
 		}
@@ -9284,23 +9284,23 @@ HRESULT PgGround::SetUnitDropItemImp(CUnit *pkOwner, CUnit *pkDroper, POINT3 con
 		kCreatePosAction.PopPos(kNewPos);
 
 		if(!rkElement.ItemNo())
-		{//µ· µå¶ø.
+		{//ëˆ ë“œë.
 			int iDropMoney = static_cast<int>(rkElement.EnchantInfo().Field_1());
 			if ( iAddDropMoneyValueRate )
-			{// ¸¸ºĞÀ²ÀÌ´Ù.
+			{// ë§Œë¶„ìœ¨ì´ë‹¤.
 				iDropMoney += ( iDropMoney * iAddDropMoneyValueRate / ABILITY_RATE_VALUE ); 
 			}
 
-			iDropMoney *= fMoneyDropRate / 100; //ÇÇ·Îµµ Àû¿ë
+			iDropMoney *= fMoneyDropRate / 100; //í”¼ë¡œë„ ì ìš©
 			if(iDropMoney > 0)
 			{
-				// µå¶ø ¸Ó´Ï´Â ¸Ó´Ï È¹µæ·® Áõ°¡ È¿°ú¿¡ ¿µÇâÀ» ¹ŞÁö ¾Ê°í ½ÇÁ¦ À¯Àú°¡ È¹µæÇÏ´Â ¸Ó´Ï¸¸ ¿µÇâÀ» ¹Şµµ·Ï ÇÑ´Ù.
+				// ë“œë ë¨¸ë‹ˆëŠ” ë¨¸ë‹ˆ íšë“ëŸ‰ ì¦ê°€ íš¨ê³¼ì— ì˜í–¥ì„ ë°›ì§€ ì•Šê³  ì‹¤ì œ ìœ ì €ê°€ íšë“í•˜ëŠ” ë¨¸ë‹ˆë§Œ ì˜í–¥ì„ ë°›ë„ë¡ í•œë‹¤.
 				InsertItemBox(kNewPos, kOwnerVec, pkDroper, PgBase_Item::NullData(), static_cast<__int64>(iDropMoney), kLogCont );
 			}
 		}
 		else
 		{
-			bool bDrop = (BM::Rand_Range(100, 1) <= iItemDropRate); //ÇÇ·Îµµ
+			bool bDrop = (BM::Rand_Range(100, 1) <= iItemDropRate); //í”¼ë¡œë„
 
 			if( bDrop )
 			{
@@ -9326,7 +9326,7 @@ void PgGround::CheckMonsterDieQuest(CUnit* pkCaster, CUnit* pkMonster)
 			VEC_GUID kGuidVec;
 			GetPartyMemberGround(pkPC, GroundKey(), kGuidVec, pkPC->GetID());
 
-			//ÆÄÆ¼°¡ ÀÖÀ¸¸é
+			//íŒŒí‹°ê°€ ìˆìœ¼ë©´
 			VEC_GUID::iterator guid_iter = kGuidVec.begin();
 			while( kGuidVec.end() != guid_iter )
 			{
@@ -9530,7 +9530,7 @@ bool PgGround::CheckUnitOwner(CUnit* pkUnit, BM::GUID& rkOut, BM::GUID * pkOutAp
 	if( bFindMeter )
 	{
 		VEC_GUID kScoreGuidVec;
-		size_t const iCount = pkMeter->GetScoreTop(kScoreGuidVec, 1);//1µî¸¸
+		size_t const iCount = pkMeter->GetScoreTop(kScoreGuidVec, 1);//1ë“±ë§Œ
 		if( iCount && GetUnit(*kScoreGuidVec.begin()) )
 		{
 			kTopGuid = (*kScoreGuidVec.begin());
@@ -9552,18 +9552,18 @@ bool PgGround::CheckUnitOwner(CUnit* pkUnit, BM::GUID& rkOut, BM::GUID * pkOutAp
 	if( pkOwner )
 	{
         //
-        //½ÇÁ¦ ¼ÒÀ¯ÀÚ
+        //ì‹¤ì œ ì†Œìœ ì
         //
 		if( pkOwner->IsUnitType(UT_PET) )
 		{
 			BM::GUID const & rkCaller = pkOwner->Caller();
 			CUnit* pkCaller = GetUnit(rkCaller);
-			if( pkCaller )//¼ÒÀ¯ÀÚ°¡ Entity¸¦ ¼ÒÈ¯ÇÑ »ç¶÷
+			if( pkCaller )//ì†Œìœ ìê°€ Entityë¥¼ ì†Œí™˜í•œ ì‚¬ëŒ
 			{
 				kOwnerGuid = rkCaller;
 				if(pkOwner->IsInUnitType(UT_PET))
 				{
-					pkCaller->AddAbil(AT_IGNORE_MACRO_COUNT, 1);	//ÆêÀÌ Á×ÀÎ°Å´Ï ¸ÅÅ©·Î Ã¼Å© È¸ÇÇ Ä«¿îÆ® Áõ°¡
+					pkCaller->AddAbil(AT_IGNORE_MACRO_COUNT, 1);	//í«ì´ ì£½ì¸ê±°ë‹ˆ ë§¤í¬ë¡œ ì²´í¬ íšŒí”¼ ì¹´ìš´íŠ¸ ì¦ê°€
 				}
 			}
 		}
@@ -9588,13 +9588,13 @@ bool PgGround::CheckUnitOwner(CUnit* pkUnit, BM::GUID& rkOut, BM::GUID * pkOutAp
 		{
 			kOwnerGuid = pkOwner->Caller();
 		}
-		else if( pkOwner->IsUnitType(UT_PLAYER) )//¾øÀ¸¸é Á×ÀÎ³ğ
+		else if( pkOwner->IsUnitType(UT_PLAYER) )//ì—†ìœ¼ë©´ ì£½ì¸ë†ˆ
 		{
 			kOwnerGuid = pkOwner->GetID();
 		}
 
         //
-        //°¢ Groundº°·Î Á¤º¸¸¦ ¾ò°í½ÍÀº ¼ÒÀ¯ÀÚ
+        //ê° Groundë³„ë¡œ ì •ë³´ë¥¼ ì–»ê³ ì‹¶ì€ ì†Œìœ ì
         //
         if( pkOutApplyOwner )
         {
@@ -9629,10 +9629,10 @@ void PgGround::GiveExp(CUnit* pkMonster, CUnit* pkOwner)
 
 		COMBO_TYPE const iCurComboCount = GetCurrentCombo(pkOwner->GetID());
 		int const iBonusRate = CalcComboBonusRate(iCurComboCount);
-		__int64 const iMonsterExp = (pkMonster->GetAbil64(AT_DIE_EXP) * (0 != pkMonster->GetAbil(AT_ADD_EXP_PER)? pkMonster->GetAbil(AT_ADD_EXP_PER)/100.f: 1.f)); // ¸ó½ºÅÍ º£ÀÌ½º °æÇèÄ¡ Á¶Àı
+		__int64 const iMonsterExp = (pkMonster->GetAbil64(AT_DIE_EXP) * (0 != pkMonster->GetAbil(AT_ADD_EXP_PER)? pkMonster->GetAbil(AT_ADD_EXP_PER)/100.f: 1.f)); // ëª¬ìŠ¤í„° ë² ì´ìŠ¤ ê²½í—˜ì¹˜ ì¡°ì ˆ
 		int const iMonsterLv = pkMonster->GetAbil(AT_LEVEL);
 
-		// ¸ó½ºÅÍ°æÇèÄ¡ * (1-(ÇÃ·¹ÀÌ¾î·¹º§ - ¸ó½ºÅÍ·¹º§) / 20)) * ÄŞº¸ º¸³Ê½º
+		// ëª¬ìŠ¤í„°ê²½í—˜ì¹˜ * (1-(í”Œë ˆì´ì–´ë ˆë²¨ - ëª¬ìŠ¤í„°ë ˆë²¨) / 20)) * ì½¤ë³´ ë³´ë„ˆìŠ¤
 		float fDiff = 1.f;
 		if( iPlayerLv < iMonsterLv )
 		{
@@ -9646,14 +9646,14 @@ void PgGround::GiveExp(CUnit* pkMonster, CUnit* pkOwner)
 		__int64 const iAddExp = static_cast<__int64>(iMonsterExp * fDiff);
 
 		//INFO_LOG(BM::LOG_LV9, _T("[%s] kAction_AddExp::DoAction(%I64d)"), __FUNCTIONW__, iAddExp);
-		if (iAddExp > 0)	// PlayerLv - MonsterLv ¿¡ µû¶ó À½¼öÀÏ¼öµµ ÀÖ´Ù.
+		if (iAddExp > 0)	// PlayerLv - MonsterLv ì— ë”°ë¼ ìŒìˆ˜ì¼ìˆ˜ë„ ìˆë‹¤.
 		{	
 			PgAction_AddExp kAction_AddExp(GroundKey(), iAddExp, AEC_KillMonster, this, iMonsterLv, iBonusRate);
 			kAction_AddExp.DoAction(pkOwner, pkMonster);
 		}
 
-		// Ãß°¡ÀûÀÎ Copper¸¦ Áà¾ß ÇÒ ¶§°¡ ÀÖ´Ù (¿¹:µµµÏÀÇ ¼Ò¸ÅÄ¡±â ½ºÅ³)
-		// ¿ø·¡´Â CheckMonsterDie ¿¡¼­ ÇÏ·Á°í Çß´Âµ¥ ±×°÷¿¡¼­ GetUnit(..)ÇÑ¹ø ´õ ÇØ¾ß ÇÏ±æ·¡ ÀÌ°÷À¸·Î ¿Å°åÀ½.
+		// ì¶”ê°€ì ì¸ Copperë¥¼ ì¤˜ì•¼ í•  ë•Œê°€ ìˆë‹¤ (ì˜ˆ:ë„ë‘‘ì˜ ì†Œë§¤ì¹˜ê¸° ìŠ¤í‚¬)
+		// ì›ë˜ëŠ” CheckMonsterDie ì—ì„œ í•˜ë ¤ê³  í–ˆëŠ”ë° ê·¸ê³³ì—ì„œ GetUnit(..)í•œë²ˆ ë” í•´ì•¼ í•˜ê¸¸ë˜ ì´ê³³ìœ¼ë¡œ ì˜®ê²¼ìŒ.
 		if( (BM::Rand_Index(ABILITY_RATE_VALUE)) < pkOwner->GetAbil(AT_ADD_MONEY_RATE) )
 		{
 			int const iLevel = pkMonster->GetAbil(AT_LEVEL);
@@ -9682,8 +9682,8 @@ int PgGround::GetGiveLevel(CUnit * pkMonster, CUnit * pkOwner)
 				return 0;
 			}
 
-			pkOwner = pkOwnerPlayer;// pkOwner°¡ º¯°æµÇ¾úÀ½
-		}// break »ç¿ë ¾ÈÇÔ
+			pkOwner = pkOwnerPlayer;// pkOwnerê°€ ë³€ê²½ë˜ì—ˆìŒ
+		}// break ì‚¬ìš© ì•ˆí•¨
 	case UT_PLAYER:
 		{
 			iPlayerLv = pkOwner->GetAbil(AT_LEVEL);
@@ -9709,79 +9709,79 @@ int PgGround::GetGiveLevel(CUnit * pkMonster, CUnit * pkOwner)
 void PgGround::GiveAwakeValue(CUnit* pkMurderee, CUnit* pkMurderer)
 {
 	if(!pkMurderee || 0!=pkMurderee->GetAbil(AT_VOLUNTARILY_DIE))
-	{//ÀÚÆøÀÎ °æ¿ì
+	{//ìí­ì¸ ê²½ìš°
 		return;
 	}
 
-	if(!pkMurderer || pkMurderer->GetAbil(AT_DUEL) > 0) //°áÅõÁßÀÏ¶§
+	if(!pkMurderer || pkMurderer->GetAbil(AT_DUEL) > 0) //ê²°íˆ¬ì¤‘ì¼ë•Œ
 	{
 		return;
 	}
 
-	// °è»ê°ø½Ä : (((·¹º§/20)*ÆíÂ÷)+(ÄŞº¸/5))*(Å¬·¡½º »ó¼ö)
-	// ´Ü  ÆíÂ÷´Â 1~10, ÄŞº¸´Â 1~100 °ªÀ¸·Î °íÁ¤ÇÔ
+	// ê³„ì‚°ê³µì‹ : (((ë ˆë²¨/20)*í¸ì°¨)+(ì½¤ë³´/5))*(í´ë˜ìŠ¤ ìƒìˆ˜)
+	// ë‹¨  í¸ì°¨ëŠ” 1~10, ì½¤ë³´ëŠ” 1~100 ê°’ìœ¼ë¡œ ê³ ì •í•¨
 
-	// ¸ó½ºÅÍ¿ÍÀÇ ·¹º§Â÷ -ÀÌ¸é ¸ó½ºÅÍ°¡ ´õ ³·À½
+	// ëª¬ìŠ¤í„°ì™€ì˜ ë ˆë²¨ì°¨ -ì´ë©´ ëª¬ìŠ¤í„°ê°€ ë” ë‚®ìŒ
 	int iLvGap = pkMurderee->GetAbil(AT_LEVEL) - pkMurderer->GetAbil(AT_LEVEL);
 	iLvGap  = std::max< int >( iLvGap, 1 );
 	iLvGap  = std::min< int >( iLvGap, 10 );
 
-	COMBO_TYPE uiCurCombo = GetCurrentCombo(pkMurderer->GetID()); // ÄŞº¸ °ª
+	COMBO_TYPE uiCurCombo = GetCurrentCombo(pkMurderer->GetID()); // ì½¤ë³´ ê°’
 	uiCurCombo  = std::max< COMBO_TYPE >( uiCurCombo, 1 );
 	uiCurCombo  = std::min< COMBO_TYPE >( uiCurCombo, 100 );
 
-	int const iClassNo = pkMurderer->GetAbil(AT_CLASS);		// Á÷¾÷
-	int const iMurdererLv = pkMurderer->GetAbil(AT_LEVEL);		// ÇÃ·¹ÀÌ¾î ·¹º§
+	int const iClassNo = pkMurderer->GetAbil(AT_CLASS);		// ì§ì—…
+	int const iMurdererLv = pkMurderer->GetAbil(AT_LEVEL);		// í”Œë ˆì´ì–´ ë ˆë²¨
 
-	// ÇØ´ç Á÷¾÷ÀÎÁö Ã¼Å©
+	// í•´ë‹¹ ì§ì—…ì¸ì§€ ì²´í¬
 	float fClassReviser =0;
 	if(IS_CLASS_LIMIT(UCLIMIT_COMMON_KNIGHT,iClassNo))
-	{// ±â»ç °è¿­
+	{// ê¸°ì‚¬ ê³„ì—´
 		fClassReviser = PgGround::ms_KnightAwakeReviserByKill;
 	}
 	else if(IS_CLASS_LIMIT(UCLIMIT_COMMON_WARRIOR,iClassNo))
-	{// Åõ»ç °è¿­
+	{// íˆ¬ì‚¬ ê³„ì—´
 		fClassReviser = PgGround::ms_WarriorAwakeReviserByKill;
 	}
 	else if(IS_CLASS_LIMIT(UCLIMIT_COMMON_MAGE,iClassNo))
-	{// ¸ŞÀÌÁö °è¿­
+	{// ë©”ì´ì§€ ê³„ì—´
 		fClassReviser = PgGround::ms_MageAwakeReviserByKill;
 	}
 	else if(IS_CLASS_LIMIT(UCLIMIT_COMMON_BATTLEMAGE,iClassNo))
-	{// ¹èÆ² ¸ŞÀÌÁö °è¿­
+	{// ë°°í‹€ ë©”ì´ì§€ ê³„ì—´
 		fClassReviser = PgGround::ms_BattleMageAwakeReviserByKill;
 	}
 	else if(IS_CLASS_LIMIT(UCLIMIT_COMMON_HUNTER,iClassNo))
-	{// »ç³É²Û °è¿­
+	{// ì‚¬ëƒ¥ê¾¼ ê³„ì—´
 		fClassReviser = PgGround::ms_HunterAwakeReviserByKill;
 	}
 	else if(IS_CLASS_LIMIT(UCLIMIT_COMMON_RANGER,iClassNo))
-	{// ·¹ÀÎÀú °è¿­
+	{// ë ˆì¸ì € ê³„ì—´
 		fClassReviser = PgGround::ms_RangerAwakeReviserByKill;
 	}		
 	else if(IS_CLASS_LIMIT(UCLIMIT_COMMON_CLOWN,iClassNo))
-	{// ±¤´ë °è¿­
+	{// ê´‘ëŒ€ ê³„ì—´
 		fClassReviser = PgGround::ms_ClownAwakeReviserByKill;
 	}
 	else if(IS_CLASS_LIMIT(UCLIMIT_COMMON_ASSASSIN,iClassNo))
-	{// ¾î½Ø½Å °è¿­
+	{// ì–´ìŒ”ì‹  ê³„ì—´
 		fClassReviser = PgGround::ms_AssassinAwakeReviserByKill;
 	}
 	else if(IS_CLASS_LIMIT(UCLIMIT_SHAMAN,iClassNo))
-	{// ¼ÒÈ¯»ç °è¿­
+	{// ì†Œí™˜ì‚¬ ê³„ì—´
 		fClassReviser = PgGround::ms_AssassinAwakeReviserByKill;
 	}
 	else if(IS_CLASS_LIMIT(UCLIMIT_DOUBLE_FIGHTER,iClassNo))
-	{// ½ÖµÕÀÌ °İÅõ°¡ °è¿­
+	{// ìŒë‘¥ì´ ê²©íˆ¬ê°€ ê³„ì—´
 		fClassReviser = PgGround::ms_AssassinAwakeReviserByKill;
 	}
 	if(0.0f == fClassReviser)
-	{// °ªÀÌ ¾ø´Ù¸é Default °ªÀ¸·Î ¼¼ÆÃ
+	{// ê°’ì´ ì—†ë‹¤ë©´ Default ê°’ìœ¼ë¡œ ì„¸íŒ…
 		fClassReviser = DEFAULT_CLASS_AWAKE_VALUE_REVISER;
 	}
 
 	int iAddValue = 0;
-	{// °è»ê °ø½Ä Àû¿ë (((iMurdererLv/20)*iLvGap)+((uiCurCombo/5))) * (fClassReviser)
+	{// ê³„ì‚° ê³µì‹ ì ìš© (((iMurdererLv/20)*iLvGap)+((uiCurCombo/5))) * (fClassReviser)
 		float  fCalc1 = (static_cast<float>(iMurdererLv)/20.0f)*static_cast<float>(iLvGap);
 		float  fCalc2 = static_cast<float>(uiCurCombo)/5.0f;
 		float  fCalc3 = fCalc1+fCalc2;
@@ -9790,11 +9790,11 @@ void PgGround::GiveAwakeValue(CUnit* pkMurderee, CUnit* pkMurderer)
 	}
 	iAddValue = std::max< int >( iAddValue, 1 );
 
-	{// ÆÄÆ¼¿¡°Ô °¢¼ºÄ¡ Àü´Ş ÇÏ±âÀ§ÇØ
+	{// íŒŒí‹°ì—ê²Œ ê°ì„±ì¹˜ ì „ë‹¬ í•˜ê¸°ìœ„í•´
 		VEC_GUID kPartyMemberArray;
 		PgPlayer* pkPlayer = NULL;
 		switch(pkMurderer->UnitType())
-		{// ÇöÀç À¯´ÖÀÌ ¾î¶² °ÍÀÎÁö È®ÀÎÇÏ¿©, ÇÃ·¹ÀÌ¾î¸¦ Ã£°í
+		{// í˜„ì¬ ìœ ë‹›ì´ ì–´ë–¤ ê²ƒì¸ì§€ í™•ì¸í•˜ì—¬, í”Œë ˆì´ì–´ë¥¼ ì°¾ê³ 
 		case UT_PLAYER:
 			{
 				pkPlayer = dynamic_cast<PgPlayer*>(pkMurderer);
@@ -9804,7 +9804,7 @@ void PgGround::GiveAwakeValue(CUnit* pkMurderee, CUnit* pkMurderer)
 			{
 				BM::GUID const & rkCaller = pkMurderer->Caller();
 				CUnit* pkCaller = GetUnit(rkCaller);
-				if( pkCaller )//¼ÒÀ¯ÀÚ°¡ Entity¸¦ ¼ÒÈ¯ÇÑ »ç¶÷
+				if( pkCaller )//ì†Œìœ ìê°€ Entityë¥¼ ì†Œí™˜í•œ ì‚¬ëŒ
 				{
 					if(pkCaller->IsInUnitType(UT_PLAYER))
 					{
@@ -9817,19 +9817,19 @@ void PgGround::GiveAwakeValue(CUnit* pkMurderee, CUnit* pkMurderer)
 			}break;
 		}
 		if(pkPlayer)
-		{// ÇÃ·¹ÀÌ¾î¸¦ Ã£¾ÒÀ¸¸é
+		{// í”Œë ˆì´ì–´ë¥¼ ì°¾ì•˜ìœ¼ë©´
 			VEC_GUID kPartyMemberArray;
 			GetPartyMemberGround(pkPlayer, GroundKey(), kPartyMemberArray, pkPlayer->GetID());
 			if(kPartyMemberArray.size())
-			{// ÇÃ·¹ÀÌ¾îÀÇ
+			{// í”Œë ˆì´ì–´ì˜
 				VEC_GUID::iterator kItor = kPartyMemberArray.begin();
 				while(kPartyMemberArray.end() != kItor)
 				{
 					CUnit* pkPartyUnit = GetUnit(*kItor);
 					if(pkPartyUnit
-						&& pkPartyUnit->GetAbil(AT_ENABLE_AWAKE_SKILL)  // °¢¼ºÄ¡°¡ ¸ğÀÏ¼ö ÀÖ´Â ÆÄÆ¼¿øµé¿¡°Ô
+						&& pkPartyUnit->GetAbil(AT_ENABLE_AWAKE_SKILL)  // ê°ì„±ì¹˜ê°€ ëª¨ì¼ìˆ˜ ìˆëŠ” íŒŒí‹°ì›ë“¤ì—ê²Œ
 						)
-					{// ÇöÀç ¾òÀº °¢¼ºÄ¡¸¦ ´õÇØÁÙ¼ö ÀÖ°Ô ÇÏ°í
+					{// í˜„ì¬ ì–»ì€ ê°ì„±ì¹˜ë¥¼ ë”í•´ì¤„ìˆ˜ ìˆê²Œ í•˜ê³ 
 						int const iNowAwakeValue = pkPartyUnit->GetAbil(AT_AWAKE_VALUE);
 						int const iRetValue = std::min< int >( iNowAwakeValue+iAddValue , AWAKE_VALUE_MAX );
 						if( iRetValue != iNowAwakeValue )
@@ -9844,7 +9844,7 @@ void PgGround::GiveAwakeValue(CUnit* pkMurderee, CUnit* pkMurderer)
 	}
 
 	if ( pkMurderer->GetAbil(AT_ENABLE_AWAKE_SKILL) )
-	{// ¸·Å¸¸¦ ¶§¸° ÇÃ·¹ÀÌ¾îÀÇ ÃÖÁ¾ °¢¼ºÄ¡¸¦ °»½ÅÇÑ´Ù
+	{// ë§‰íƒ€ë¥¼ ë•Œë¦° í”Œë ˆì´ì–´ì˜ ìµœì¢… ê°ì„±ì¹˜ë¥¼ ê°±ì‹ í•œë‹¤
 		int const iNowAwakeValue = pkMurderer->GetAbil(AT_AWAKE_VALUE);
 		int const iRetValue = std::min< int >( iNowAwakeValue+iAddValue , AWAKE_VALUE_MAX );
 		if ( iRetValue != iNowAwakeValue )
@@ -9956,7 +9956,7 @@ void PgGround::SetUnitAbil( BM::GUID const & kCharGuid, WORD const Type, int con
 	pkUnit->SetAbil( Type, iValue, blsSend, bBroadcast );
 }
 
-bool PgGround::RemoveAllMonster( bool const bKill , CUnit *pUnit, int iVoluntarilyDie)	//! ¸ğµç ¸ó½ºÅÍ¸¦ Á¦°ÅÇÑ´Ù. 
+bool PgGround::RemoveAllMonster( bool const bKill , CUnit *pUnit, int iVoluntarilyDie)	//! ëª¨ë“  ëª¬ìŠ¤í„°ë¥¼ ì œê±°í•œë‹¤. 
 {
 	BM::CAutoMutex kLock(m_kRscMutex);
 
@@ -9975,7 +9975,7 @@ bool PgGround::RemoveAllMonster( bool const bKill , CUnit *pUnit, int iVoluntari
 			pkUnit = it->second;
 			if ( pkUnit )
 			{
-				// ¼Ò»ı µÇÁö ¾Êµµ·Ï ¾îºô Ãë¼Ò
+				// ì†Œìƒ ë˜ì§€ ì•Šë„ë¡ ì–´ë¹Œ ì·¨ì†Œ
 				pkUnit->SetAbil(AT_REVIVE_COUNT, 0);
 
 				EUnitType const eType = pkUnit->UnitType();
@@ -10035,8 +10035,8 @@ bool PgGround::RemoveAllMonster( bool const bKill , CUnit *pUnit, int iVoluntari
 		}
 
 		{ // World Event Process
-			CUnit * pActor = NULL; // ÀÌº¥Æ®¸¦ ¹ß»ı ½ÃÅ³ Ä³¸¯ÅÍ°¡ ´©±¸ÀÎÁö..(ÆÄÆ¼Àå/¿øÁ¤´ëÀå¸¸ °¡´É or ÆÄÆ¼/¿øÁ¤´ë¿ø ¾Æ¹«³ª)
-			if( GetAttr() & GKIND_EXPEDITION )		// ¿øÁ¤´ë ´øÀüÀÎ °æ¿ì..
+			CUnit * pActor = NULL; // ì´ë²¤íŠ¸ë¥¼ ë°œìƒ ì‹œí‚¬ ìºë¦­í„°ê°€ ëˆ„êµ¬ì¸ì§€..(íŒŒí‹°ì¥/ì›ì •ëŒ€ì¥ë§Œ ê°€ëŠ¥ or íŒŒí‹°/ì›ì •ëŒ€ì› ì•„ë¬´ë‚˜)
+			if( GetAttr() & GKIND_EXPEDITION )		// ì›ì •ëŒ€ ë˜ì „ì¸ ê²½ìš°..
 			{
 				pActor = pUnit;
 
@@ -10102,7 +10102,7 @@ bool PgGround::RemoveAllMonster( bool const bKill , CUnit *pUnit, int iVoluntari
 	return false;
 }
 
-bool PgGround::RemoveGenGroupMonster(int const iGenGroupNo, bool const bKill )	//! ¸ğµç ¸ó½ºÅÍ¸¦ Á¦°ÅÇÑ´Ù. 
+bool PgGround::RemoveGenGroupMonster(int const iGenGroupNo, bool const bKill )	//! ëª¨ë“  ëª¬ìŠ¤í„°ë¥¼ ì œê±°í•œë‹¤. 
 {
 	BM::CAutoMutex kLock(m_kRscMutex);
 
@@ -10168,7 +10168,7 @@ bool PgGround::RemoveGenGroupMonster(int const iGenGroupNo, bool const bKill )	/
 	return true;
 }
 
-bool PgGround::RemoveGenGroupInsItem(int const iGenGroupNo)	//! ¸ğµç ÀÎ½ºÅÏ½º¾ÆÀÌÅÛ Á¦°Å.
+bool PgGround::RemoveGenGroupInsItem(int const iGenGroupNo)	//! ëª¨ë“  ì¸ìŠ¤í„´ìŠ¤ì•„ì´í…œ ì œê±°.
 {
 	BM::CAutoMutex Lock(m_kRscMutex);
 
@@ -10291,7 +10291,7 @@ bool PgGround::RemoveAllObject()
 	return false;
 }
 
-bool PgGround::RemoveGenGroupObject(int const iGenGroupNo)	//! Á¨ ±×·ìÀÇ ¿ÀºêÁ§Æ®¸¦ Á¦°ÅÇÑ´Ù. 
+bool PgGround::RemoveGenGroupObject(int const iGenGroupNo)	//! ì   ê·¸ë£¹ì˜ ì˜¤ë¸Œì íŠ¸ë¥¼ ì œê±°í•œë‹¤. 
 {
 	BM::CAutoMutex kLock(m_kRscMutex);
 
@@ -10419,7 +10419,7 @@ bool PgGround::SendToPosLoc( CUnit *pkUnit, POINT3 const &pt3Pos, BYTE const byT
 				PgPlayer* pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 				if(pkPlayer)
 				{
-					pkPlayer->GetOldPlayerActionInfo()->ptPos = pt3Pos;	//¼­¹ö¿¡¼­ ¼ø°£ÀÌµ¿ ½ÃÄÑ ÁÖ´Â°ÍÀÓ
+					pkPlayer->GetOldPlayerActionInfo()->ptPos = pt3Pos;	//ì„œë²„ì—ì„œ ìˆœê°„ì´ë™ ì‹œì¼œ ì£¼ëŠ”ê²ƒì„
 				}
 			}
 			return true;
@@ -10465,15 +10465,15 @@ bool PgGround::SendToSpawnLoc( BM::GUID const &rkCharGuid, int iPotalNo, bool bR
 
 void PgGround::SendMapLoadComplete( PgPlayer *pkUser )
 {
-//	À¯´Ö¿¡ ÇöÀç Á¸Á¤º¸ º¸³»¾ßµÇ°í.
-//	ÇöÀç Á¸¿¡ ´©±¸ µé¾î¿Ô´Ù°í ÇØÁà¾ßÇÏ°í.
-//	Äù½ºÆ® Á¤º¸ Áà¾ßÇÏ°í.
-//	µ¥ÀÌÅÍ Àü¼Û ¿Ï·á º¸³»°í.
+//	ìœ ë‹›ì— í˜„ì¬ ì¡´ì •ë³´ ë³´ë‚´ì•¼ë˜ê³ .
+//	í˜„ì¬ ì¡´ì— ëˆ„êµ¬ ë“¤ì–´ì™”ë‹¤ê³  í•´ì¤˜ì•¼í•˜ê³ .
+//	í€˜ìŠ¤íŠ¸ ì •ë³´ ì¤˜ì•¼í•˜ê³ .
+//	ë°ì´í„° ì „ì†¡ ì™„ë£Œ ë³´ë‚´ê³ .
 	m_kStoneCtrl.TryCatchStoneTicket(pkUser);
 
 	pkUser->ReadyNetwork(true);
 	SendNfyMapLoaded(pkUser);
-	RefreshGroundQuestInfo(pkUser);//Áö¿ª Äù½ºÆ® Á¤º¸
+	RefreshGroundQuestInfo(pkUser);//ì§€ì—­ í€˜ìŠ¤íŠ¸ ì •ë³´
 	CheckEffectUser(pkUser);
 	HiddenMapTimeLimit(pkUser);
 	HiddenMapRewordItem(pkUser);
@@ -10481,10 +10481,10 @@ void PgGround::SendMapLoadComplete( PgPlayer *pkUser )
 	{
 		BM::PgPackedTime kFailPrevTime, kNextTime;
 		PgQuestInfoUtil::MakeDayLoopQuestTime(kFailPrevTime, kNextTime);
-		CheckDayLoopQuestTime(GroundKey(), pkUser, kFailPrevTime, kNextTime); // ÀÏÀÏÄù½ºÆ® 24½Ã°£Á¦ °è»ê
+		CheckDayLoopQuestTime(GroundKey(), pkUser, kFailPrevTime, kNextTime); // ì¼ì¼í€˜ìŠ¤íŠ¸ 24ì‹œê°„ì œ ê³„ì‚°
 
 		PgQuestInfoUtil::MakeWeekLoopQuestTime(kFailPrevTime, kNextTime);
-		CheckWeekLoopQuestTime(GroundKey(), pkUser, kFailPrevTime, kNextTime); // ÁÖ°£Äù½ºÆ® °è»ê
+		CheckWeekLoopQuestTime(GroundKey(), pkUser, kFailPrevTime, kNextTime); // ì£¼ê°„í€˜ìŠ¤íŠ¸ ê³„ì‚°
 	}
 
 	CheckJoinPartyMemberList(dynamic_cast<CUnit *>(pkUser));
@@ -10665,13 +10665,13 @@ bool PgGround::GetVisionDirection(CUnit* pkUnit, NxVec3& rkDirectionOut, bool bU
 		ptMovingVec = ptCurPos - floor(pkUnit->LastPos()*100)/100;
 	}
 
-	if(pkUnit->GetID() != kTargetGuid && ptMovingVec.x == 0.0f && ptMovingVec.y == 0.0f)	//Å¸°ÙÀÌ ³ªÀÌ¸é Æ¨±â¸é ¾ÈµÊ
+	if(pkUnit->GetID() != kTargetGuid && ptMovingVec.x == 0.0f && ptMovingVec.y == 0.0f)	//íƒ€ê²Ÿì´ ë‚˜ì´ë©´ íŠ•ê¸°ë©´ ì•ˆë¨
 	{
 		bool bOk = false;
 		if(bUseTargetPos)
 		{
 			ptMovingVec = ptCurPos - pkUnit->LastPos();
-			bOk = !(ptMovingVec.x == 0.0f && ptMovingVec.y == 0.0f);//ÁøÂ¥ ¾Æ´Ï¸é?
+			bOk = !(ptMovingVec.x == 0.0f && ptMovingVec.y == 0.0f);//ì§„ì§œ ì•„ë‹ˆë©´?
 		}
 
 		if(!bOk)
@@ -10692,7 +10692,7 @@ bool PgGround::GetVisionDirection(CUnit* pkUnit, NxVec3& rkDirectionOut, bool bU
 	float fDotProduct = kPathNormal.x * ptMovingVec.x + kPathNormal.y * ptMovingVec.y + kPathNormal.z * ptMovingVec.z;
 	if(fDotProduct < -0.9999f || fDotProduct > 0.9999f)
 	{
-		// Moving Vector¿Í Path NormalÀÌ ÆòÇàÇØ¼­ Vision Vector¸¦ ±¸ÇÒ ¼ö ¾øÀ½.
+		// Moving Vectorì™€ Path Normalì´ í‰í–‰í•´ì„œ Vision Vectorë¥¼ êµ¬í•  ìˆ˜ ì—†ìŒ.
 		LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return false"));
 		return false;
 	}
@@ -10700,7 +10700,7 @@ bool PgGround::GetVisionDirection(CUnit* pkUnit, NxVec3& rkDirectionOut, bool bU
 	POINT3 kOrientedVec(0,0,0);
 	if(kPathNormal == POINT3(0, 1, 0) || kPathNormal == POINT3(0, -1, 0))
 	{
-		// PathNormalÀÌ ÁÖ·Î Y, -YÀÎµ¥, ±×·¯¸é °è»êÀÌ °£´ÜÇÔ.
+		// PathNormalì´ ì£¼ë¡œ Y, -Yì¸ë°, ê·¸ëŸ¬ë©´ ê³„ì‚°ì´ ê°„ë‹¨í•¨.
 		int const iGrade = pkUnit->GetAbil(AT_GRADE);
 		if(EMGRADE_UPGRADED <= iGrade && iGrade < EMGRADE_MONSTERMAX)
 		{
@@ -10713,7 +10713,7 @@ bool PgGround::GetVisionDirection(CUnit* pkUnit, NxVec3& rkDirectionOut, bool bU
 	}
 	else
 	{
-		// OrientedVector °è»ê.
+		// OrientedVector ê³„ì‚°.
 		kOrientedVec = kPathNormal.Cross(POINT3(0.0f ,0.0f ,1.0f));	// Right Vector
 		POINT3 kCrossed = kPathNormal.Cross(ptMovingVec);
 		kCrossed.Normalize();
@@ -10742,11 +10742,11 @@ float PgGround::GetAdditionalAttackProb(CUnit *pkUnit)
 	PgPlayer *pkTarget = dynamic_cast<PgPlayer *>(GetUnit(pkUnit->GetTarget()));
 	if(pkTarget)
 	{
-		/// 1. ÇÇ°¡ ¾øÀ»¼ö·Ï °ø°İ ÇÒ È®·ü Áõ°¡ (ÃÖ´ë 30% Áõ°¡)
+		/// 1. í”¼ê°€ ì—†ì„ìˆ˜ë¡ ê³µê²© í•  í™•ë¥  ì¦ê°€ (ìµœëŒ€ 30% ì¦ê°€)
 		float fDamaged = 1.0f - (float)pkTarget->GetAbil(AT_HP) / (float)pkTarget->GetAbil(AT_C_MAX_HP);
 		fProbOfAttackAlpha += fDamaged * 3000.0f;
 
-		/// 2. Å¸°ÙÀÇ µÚ¸¦ Àâ°í ÀÖÀ» ¶§ °ø°İÇÏ·¯ °¥ È®·ü Áõ°¡ (ÃÖ´ë 30% Áõ°¡)
+		/// 2. íƒ€ê²Ÿì˜ ë’¤ë¥¼ ì¡ê³  ìˆì„ ë•Œ ê³µê²©í•˜ëŸ¬ ê°ˆ í™•ë¥  ì¦ê°€ (ìµœëŒ€ 30% ì¦ê°€)
 		POINT3BY kMoveDir = pkTarget->MoveDirection();
 		NxVec3 kMovingDir(kMoveDir.x, kMoveDir.y, kMoveDir.z);
 
@@ -10757,11 +10757,11 @@ float PgGround::GetAdditionalAttackProb(CUnit *pkUnit)
 		float fDot = 1.0f - NiAbs(NiACos(kVisionDir.dot(kMovingDir)));
 		if(fDot >= 0.0f)
 		{
-			// ´ë´ãÇÔÀ» ÁÖÁö, °ÌÀ» ÁÖ°í ½ÍÁö ¾ÊÀ½.
+			// ëŒ€ë‹´í•¨ì„ ì£¼ì§€, ê²ì„ ì£¼ê³  ì‹¶ì§€ ì•ŠìŒ.
 			fProbOfAttackAlpha += fDot * 3000.0f;
 		}
 
-		/// 3. LvÀÌ ´õ ³·À» ¶§ È®·ü Áõ°¡ (ÃÖ´ë 20% Áõ°¡) [ Unit : Monster, Target : Player ]
+		/// 3. Lvì´ ë” ë‚®ì„ ë•Œ í™•ë¥  ì¦ê°€ (ìµœëŒ€ 20% ì¦ê°€) [ Unit : Monster, Target : Player ]
 		int iLvDiff = pkUnit->GetAbil(AT_LEVEL) - pkTarget->GetAbil(AT_LEVEL);
 		if(iLvDiff > 0)
 		{
@@ -10797,7 +10797,7 @@ void PgGround::CheckTargetList(UNIT_PTR_ARRAY& rkTargetArray)
 				BM::GUID const &rkGuid = (*itor).pkUnit->GetDeliverDamageUnit();
 				if(!BM::GUID::IsNull(rkGuid))
 				{
-					//ÀÚ±â ÀÚ½ÅÀÌ¸é Ãß°¡ÇÏÁö ¾Ê´Â´Ù.
+					//ìê¸° ìì‹ ì´ë©´ ì¶”ê°€í•˜ì§€ ì•ŠëŠ”ë‹¤.
 					if((*itor).pkUnit->GetID() == rkGuid)
 					{
 						continue;
@@ -10806,7 +10806,7 @@ void PgGround::CheckTargetList(UNIT_PTR_ARRAY& rkTargetArray)
 					CUnit* pkUnit = PgObjectMgr::GetUnit(rkGuid);
 					if(pkUnit)
 					{
-						rkTargetArray.Add(pkUnit, false, false, true); //Âü°í¿ëÀ¸·Î Å¸°Ù ¸®½ºÆ®¿¡ ³Ö¾îÁØ´Ù. ÁøÂ¥ Å¸°ÙÀº ¾Æ´Ï´Ù.
+						rkTargetArray.Add(pkUnit, false, false, true); //ì°¸ê³ ìš©ìœ¼ë¡œ íƒ€ê²Ÿ ë¦¬ìŠ¤íŠ¸ì— ë„£ì–´ì¤€ë‹¤. ì§„ì§œ íƒ€ê²Ÿì€ ì•„ë‹ˆë‹¤.
 					}
 					else
 					{
@@ -10829,17 +10829,17 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 	{
 		PgPlayer* pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 		
-		//ºñÁ¤»óÀûÀÎ ÀÌµ¿ °Å¸® Ã¼Å©
+		//ë¹„ì •ìƒì ì¸ ì´ë™ ê±°ë¦¬ ì²´í¬
 		PLAYER_ACTION_INFO const * pkOldActionInfo = pkPlayer->GetOldPlayerActionInfo();
 		POINT3 kOldPos = pkOldActionInfo->ptPos;
 		POINT3 kNewPos = rkAction.ptPos;
 
-		if(pkOldActionInfo->iGroundNo != GroundKey().GroundNo()) // ¸ÊÀÌµ¿ÀÌ¹Ç·Î Ã¼Å© ÇÏÁö ¾ÊÀ½
+		if(pkOldActionInfo->iGroundNo != GroundKey().GroundNo()) // ë§µì´ë™ì´ë¯€ë¡œ ì²´í¬ í•˜ì§€ ì•ŠìŒ
 		{
 			return false;
 		}
 
-		//Ã³À½¿¡´Â OldPos´Â 0,0,0ÀÌ µÈ´Ù.
+		//ì²˜ìŒì—ëŠ” OldPosëŠ” 0,0,0ì´ ëœë‹¤.
 		if(POINT3(0.0f, 0.0f, 0.0f) == kOldPos)
 		{
 			return false;
@@ -10848,11 +10848,11 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 		//float fZAdjust = 0.0f;
 		//fZAdjust = kOldPos.z - kNewPos.z;
 
-		//Z¸¦ º¸Á¤ ½ÃÅ²´Ù.
+		//Zë¥¼ ë³´ì • ì‹œí‚¨ë‹¤.
 		kOldPos.z = kNewPos.z;		
 
-		//¸¶Áö¸· ¾×¼ÇÀ» ¹ŞÀº ½Ã°£°ú ÇöÀç ½Ã°£Â÷¸¦ ±¸ÇÑ´Ù
-		//½Ã°£°ú ¼Óµµ¸¦ °öÇØ¼­ ÃÖ´ë ÀÌµ¿°Å¸®¸¦ »êÃâÇÑ´Ù.
+		//ë§ˆì§€ë§‰ ì•¡ì…˜ì„ ë°›ì€ ì‹œê°„ê³¼ í˜„ì¬ ì‹œê°„ì°¨ë¥¼ êµ¬í•œë‹¤
+		//ì‹œê°„ê³¼ ì†ë„ë¥¼ ê³±í•´ì„œ ìµœëŒ€ ì´ë™ê±°ë¦¬ë¥¼ ì‚°ì¶œí•œë‹¤.
 		DWORD dwOldTime = pkOldActionInfo->dwLastTime;
 		DWORD dwNowTime = rkAction.dwTimeStamp;
 
@@ -10864,10 +10864,10 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 		}
 
 		bool bHacked = false;
-		// ElapsedTime ÀÌ ¸Å¿ì ÀÛÀº °æ¿ì ¿ÀÂ÷°¡ ´õ¿í Å©°Ô ¹ß»ıÇÑ´Ù.
+		// ElapsedTime ì´ ë§¤ìš° ì‘ì€ ê²½ìš° ì˜¤ì°¨ê°€ ë”ìš± í¬ê²Œ ë°œìƒí•œë‹¤.
 		float fBoundRate = PgGround::ms_kAntiHackCheckVariable.fMoveSpeed_BoundRate;
-		// °¡²û ¾ÆÁÖ ³ôÀº ¼Óµµ·Î µé¾î¿À´Â ÆĞÅ¶ÀÌ ÀÖ´Ù..(Æò¼ÒÀÇ 2~3¹è Á¤µµ °ª)
-		// Å¬¶óÀÌ¾ğÆ® ·ÎÁ÷À» º¯°æÇÏ¿© ÇØ°á ÇØ¾ß ÇÑ´Ù.
+		// ê°€ë” ì•„ì£¼ ë†’ì€ ì†ë„ë¡œ ë“¤ì–´ì˜¤ëŠ” íŒ¨í‚·ì´ ìˆë‹¤..(í‰ì†Œì˜ 2~3ë°° ì •ë„ ê°’)
+		// í´ë¼ì´ì–¸íŠ¸ ë¡œì§ì„ ë³€ê²½í•˜ì—¬ í•´ê²° í•´ì•¼ í•œë‹¤.
 		if (dwElapsedTime < 50)	
 		{
 			fBoundRate *= 2.2f;
@@ -10881,7 +10881,7 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 		CSkillDef const* pkOldOldSkillDef = kSkillDefMgr.GetDef(pkOldActionInfo->iOldActionID);
 		CSkillDef const* pkNewSkillDef = kSkillDefMgr.GetDef(rkAction.iActionID);
 		int iMoveSpeed = pkOldSkillDef ? pkOldSkillDef->GetAbil(AT_SKILL_MAXIMUM_SPEED) : 0;
-		if(10100==rkAction.iActionID)	//ºÎÈ° Ã³¸®
+		if(10100==rkAction.iActionID)	//ë¶€í™œ ì²˜ë¦¬
 		{
 			iMoveSpeed = 9999999;
 		}
@@ -10895,7 +10895,7 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 			pkUnit->SetAbil(AT_MOVESPEED_SAVED,0);
 		}
 
-		// ¸¶À»ÀÎ °æ¿ì ¸¶À» ÀÌµ¿¼Óµµ°¡ Ãß°¡ µÈ´Ù.
+		// ë§ˆì„ì¸ ê²½ìš° ë§ˆì„ ì´ë™ì†ë„ê°€ ì¶”ê°€ ëœë‹¤.
 		if(GetAttr() & GATTR_VILLAGE)
 		{
 			fMoveSpeed += static_cast<float>(pkPlayer->GetAbil(AT_C_VILLAGE_MOVESPEED));
@@ -10925,7 +10925,7 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 
 		float fMinDistance = 100.0f;
 
-		// ¸¶À»¿¡¼­ Ãß°¡ ÀÌµ¿¼Óµµ Áõ°¡ ¾îºô °ªÀÌ ÀÖÀ» °æ¿ì ÃÖ¼Ò °ªÀ» Á» ´õ ´Ã·Á¼­ Ã¼Å© ÇÏµµ·Ï ÇÑ´Ù.
+		// ë§ˆì„ì—ì„œ ì¶”ê°€ ì´ë™ì†ë„ ì¦ê°€ ì–´ë¹Œ ê°’ì´ ìˆì„ ê²½ìš° ìµœì†Œ ê°’ì„ ì¢€ ë” ëŠ˜ë ¤ì„œ ì²´í¬ í•˜ë„ë¡ í•œë‹¤.
 		if(0 < pkPlayer->GetAbil(AT_C_VILLAGE_MOVESPEED))
 		{
 			fMinDistance = fSavedfMoveSpeed + pkPlayer->GetAbil(AT_C_VILLAGE_MOVESPEED);
@@ -10940,14 +10940,14 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 			NiPoint3 kAxis(kDeltaPosUnit.x,kDeltaPosUnit.y,0);
 			kAxis.Unitize();
 			float const fAngle = fabs(kAxis.Dot(kDeltaPosUnit));
-			if(0.766f < fAngle)//¾à 40µµº¸´Ù °æ»ç°¡ ³·À» °æ¿ì
+			if(0.766f < fAngle)//ì•½ 40ë„ë³´ë‹¤ ê²½ì‚¬ê°€ ë‚®ì„ ê²½ìš°
 			{
-				pkPlayer->SetAbil(AT_SPEED_HACK_COUNT, pkPlayer->GetAbil(AT_SPEED_HACK_COUNT)+1);	//ÇØÅ· ÀÎµ¦½º ÇÑ¹ø ´õ Áõ°¡
+				pkPlayer->SetAbil(AT_SPEED_HACK_COUNT, pkPlayer->GetAbil(AT_SPEED_HACK_COUNT)+1);	//í•´í‚¹ ì¸ë±ìŠ¤ í•œë²ˆ ë” ì¦ê°€
 			}
 
 			if(pkOldSkillDef && pkNewSkillDef)
 			{
-				if(PgGround::ms_kAntiHackCheckVariable.sMoveSpeed_HackingCount<=pkPlayer->GetAbil(AT_SPEED_HACK_COUNT))//¸îÈ¸ ÀÌ»ó
+				if(PgGround::ms_kAntiHackCheckVariable.sMoveSpeed_HackingCount<=pkPlayer->GetAbil(AT_SPEED_HACK_COUNT))//ëª‡íšŒ ì´ìƒ
 				{
 					BM::vstring kLogMsg;
 					kLogMsg << __FL__ << "[HACKING][MoveSpeed] User[" << pkPlayer->Name() << "] GUID[" << pkPlayer->GetID()
@@ -10955,7 +10955,7 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 						<< pkOldActionInfo->iOldActionID <<"/"<<pkOldOldSkillDef->GetActionName()  << _COMMA_ << pkOldActionInfo->iActionID << "/" << pkOldSkillDef->GetActionName() << "] New Action[" 
 						<< rkAction.iActionID << "/" << pkNewSkillDef->GetActionName() << "] moving DistanceQ[" << fMoveDistanceQ << "], ElpasedTime=" << dwElapsedTime
 						<< ", ReqSpeed=" << fMoveSpeed << ", UnitSpeed=" << sqrt(fMoveDistanceQ) / dwElapsedTime * 1000.0f<<"\n OldPos X: "<<pkOldActionInfo->ptPos.x<<" Y: "<<pkOldActionInfo->ptPos.y<<" Z: "<<pkOldActionInfo->ptPos.z<<" NewPos X:"<<rkAction.ptPos.x<<" Y: "<<rkAction.ptPos.y<<" Z: "<<rkAction.ptPos.z<<" HackCount : "<<pkPlayer->GetAbil(AT_SPEED_HACK_COUNT)<<" Angle: "<<fAngle;
-					//ÇØÅ· ÀÇ½É
+					//í•´í‚¹ ì˜ì‹¬
 					//VERIFY_INFO_LOG(false, BM::LOG_LV0, kLogMsg);
 					HACKING_LOG(BM::LOG_LV0, kLogMsg);
 
@@ -10965,7 +10965,7 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 					}
 					if (pkPlayer->SuspectHacking(EAHP_MoveSpeed, PgGround::ms_kAntiHackCheckVariable.sMoveSpeed_AddIndex))
 					{
-						// SpeedHackÀÌ ÀÇ½É½º·¯¿ì´Ï °­Á¦Á¢¼Ó ÇØÁ¦ ½ÃÅ²´Ù.
+						// SpeedHackì´ ì˜ì‹¬ìŠ¤ëŸ¬ìš°ë‹ˆ ê°•ì œì ‘ì† í•´ì œ ì‹œí‚¨ë‹¤.
 						BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_MoveSpeed_Hack) );
 						kDPacket.Push( pkPlayer->GetMemberGUID() );
 						SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -10990,7 +10990,7 @@ bool PgGround::CheckHackingAction(CUnit* pkUnit, SActionInfo& rkAction)
 					}
 					if(pkPlayer->SuspectHacking(EAHP_MoveSpeed, PgGround::ms_kAntiHackCheckVariable.sMoveSpeed_AddIndex))
 					{
-						// SpeedHackÀÌ ÀÇ½É½º·¯¿ì´Ï °­Á¦Á¢¼Ó ÇØÁ¦ ½ÃÅ²´Ù.
+						// SpeedHackì´ ì˜ì‹¬ìŠ¤ëŸ¬ìš°ë‹ˆ ê°•ì œì ‘ì† í•´ì œ ì‹œí‚¨ë‹¤.
 						BM::Stream kDPacket( PT_A_S_NFY_USER_DISCONNECT, static_cast<BYTE>(CDC_MoveSpeed_Hack) );
 						kDPacket.Push( pkPlayer->GetMemberGUID() );
 						SendToServer( pkPlayer->GetSwitchServer(), kDPacket );
@@ -11034,8 +11034,8 @@ void PgGround::AddUnitArray( UNIT_PTR_ARRAY &kUnitArray, EUnitType const kUnitTy
 
 bool PgGround::RecvRecentMapMove( PgPlayer *pkUser )
 {
-	// ÀÎ´ø¿¡¼­ È£Ãâ ÇÒ °æ¿ì : ÃÖ±Ù ´ëÇÊµå·Î ÀÌµ¿
-	// ´ëÇÊµå¿¡¼­ È£Ãâ ÇÒ °æ¿ì : ÃÖ±Ù ¸¶À»·Î ÀÌµ¿
+	// ì¸ë˜ì—ì„œ í˜¸ì¶œ í•  ê²½ìš° : ìµœê·¼ ëŒ€í•„ë“œë¡œ ì´ë™
+	// ëŒ€í•„ë“œì—ì„œ í˜¸ì¶œ í•  ê²½ìš° : ìµœê·¼ ë§ˆì„ë¡œ ì´ë™
 	// 
 	if ( pkUser )
 	{
@@ -11044,7 +11044,7 @@ bool PgGround::RecvRecentMapMove( PgPlayer *pkUser )
 		if ( this->GetAttr() & GATTR_INSTANCE )
 		{
 			if( this->GetAttr() & GATTR_FLAG_EXPEDITION )
-			{// ¿øÁ¤´ë ¸Ê ¾È¿¡¼­ ³ª°¡´Â °ÍÀÌ¶ó¸é ¿øÁ¤´ë Å»Åğ ½ÃÅ²´Ù.
+			{// ì›ì •ëŒ€ ë§µ ì•ˆì—ì„œ ë‚˜ê°€ëŠ” ê²ƒì´ë¼ë©´ ì›ì •ëŒ€ íƒˆí‡´ ì‹œí‚¨ë‹¤.
 				PgPlayer * pPlayer = dynamic_cast<PgPlayer*>(pkUser);
 				if( pPlayer )
 				{
@@ -11068,7 +11068,7 @@ bool PgGround::RecvRecentMapMove( PgPlayer *pkUser )
 						VEC_GUID kContGuid;
 						if( GetPartyMemberGround(pkUser, GroundKey(), kContGuid, pkUser->GetID()) )
 						{
-							//³ª°£À¯Àú¿¡ ´ëÇÑ ´Ù¸¥ ±×·ì¿ø¿¡°Ô ¸Ş½ÃÁöÀü¼Û
+							//ë‚˜ê°„ìœ ì €ì— ëŒ€í•œ ë‹¤ë¥¸ ê·¸ë£¹ì›ì—ê²Œ ë©”ì‹œì§€ì „ì†¡
 							BM::Stream kMsgData;
 							kMsgData.Push(pkUser->Name());
 
@@ -11108,7 +11108,7 @@ bool PgGround::RecvRecentMapMove( PgPlayer *pkUser )
 						return kMapMove.DoAction();
 					}
 				}break;
-			case GATTR_BATTLESQUARE: // (BattleSquare-ÀÔÀåÇß´ø ¸ÊÀ¸·Î ÀÌµ¿) ÇÏµåÄÚ¾î´øÁ¯ ÄÚµå°¡ ÀÖ¾îµµ, Public-Channel¿¡¼­ ¿ø·¡ ±×¶ó¿îµå·Î µ¹¾Æ°¥ ¶§ TargetKey°¡ ÃÊ±âÈ­ µÇ¾î¼­ µ¿ÀÏÇÑ ±â´ÉÀ» ÇÑ´Ù
+			case GATTR_BATTLESQUARE: // (BattleSquare-ì…ì¥í–ˆë˜ ë§µìœ¼ë¡œ ì´ë™) í•˜ë“œì½”ì–´ë˜ì ¼ ì½”ë“œê°€ ìˆì–´ë„, Public-Channelì—ì„œ ì›ë˜ ê·¸ë¼ìš´ë“œë¡œ ëŒì•„ê°ˆ ë•Œ TargetKeyê°€ ì´ˆê¸°í™” ë˜ì–´ì„œ ë™ì¼í•œ ê¸°ëŠ¥ì„ í•œë‹¤
 			case GATTR_HIDDEN_F:
 			case GATTR_FLAG_STATIC_DUNGEON:
 				{
@@ -11325,7 +11325,7 @@ bool PgGround::RecvTriggerAction( CUnit *pkUnit, BM::Stream * const pkPacket )
 
 	if ( m_kContTrigger.empty() )
 	{
-		// Àß¸øµÈ Æ÷Å»ÀÔ´Ï´Ù.
+		// ì˜ëª»ëœ í¬íƒˆì…ë‹ˆë‹¤.
 		pkUnit->SendWarnMessage( 18994 );
 
 		INFO_LOG( BM::LOG_LV0, __FL__<<L"ContTrigger is NULL GroundNo["<<GetGroundNo()<<L"] / User["<<pkUnit->Name()<<L"-"<<pkUnit->GetID()<<L"]" );
@@ -11339,7 +11339,7 @@ bool PgGround::RecvTriggerAction( CUnit *pkUnit, BM::Stream * const pkPacket )
 	CONT_GTRIGGER::const_iterator itr = m_kContTrigger.find( kTriggerID );
 	if ( itr == m_kContTrigger.end() )
 	{
-		// Àß¸øµÈ Æ÷Å»ÀÔ´Ï´Ù.
+		// ì˜ëª»ëœ í¬íƒˆì…ë‹ˆë‹¤.
 		pkUnit->SendWarnMessage( 18994 );
 
 		INFO_LOG( BM::LOG_LV5, __FL__<<L"NotFound Trigger["<<UNI(kTriggerID)<<L"] GroundNo["<<GetGroundNo()<<L"] / User["<<pkUnit->Name()<<L"-"<<pkUnit->GetID()<<L"]" <<"X["<<pkUnit->GetPos().x<<"] Y["<<pkUnit->GetPos().y<<"] Z["<<pkUnit->GetPos().z<<"]");
@@ -11464,12 +11464,12 @@ bool PgGround::SetPartyGuid( CUnit* pkUnit, BM::GUID const& rkNewGuid, EPartySys
 			return false;
 		}
 
-		// ¼±Ã³¸®
+		// ì„ ì²˜ë¦¬
 		BM::GUID const kOldPartyGuid = pkUnit->GetPartyGuid();
 		if( BM::GUID::IsNotNull(kOldPartyGuid)
 		&&	BM::GUID::IsNull(rkNewGuid) )
 		{
-			m_kEventItemSetMgr.LeavePartyUnit(dynamic_cast< PgPlayer* >(pkUnit)); // Null Guid µÇ±â Àü
+			m_kEventItemSetMgr.LeavePartyUnit(dynamic_cast< PgPlayer* >(pkUnit)); // Null Guid ë˜ê¸° ì „
 		}
 		if( BM::GUID::IsNull(kOldPartyGuid)
 		&&	BM::GUID::IsNotNull(rkNewGuid) )
@@ -11498,7 +11498,7 @@ bool PgGround::SetPartyGuid( CUnit* pkUnit, BM::GUID const& rkNewGuid, EPartySys
 				BM::Stream kNfyPacket(PT_M_C_NFY_PARTY_JOIN);
 				kNfyPacket.Push(pkUser->GetID());
 				kNfyPacket.Push(rkNewGuid);
-				pkUser->Send( kNfyPacket, E_SENDTYPE_BROADCAST );//ÆÄÆ¼ °¡ÀÔÀ» BroadAll
+				pkUser->Send( kNfyPacket, E_SENDTYPE_BROADCAST );//íŒŒí‹° ê°€ì…ì„ BroadAll
 
 				if ( GATTR_FLAG_HAVEPARTY & GetAttr()
 					&& (0 == GATTR_FLAG_EXPEDITION & GetAttr()) )
@@ -11510,7 +11510,7 @@ bool PgGround::SetPartyGuid( CUnit* pkUnit, BM::GUID const& rkNewGuid, EPartySys
 						{
 							if ( 1 < m_kLocalPartyMgr.GetMemberCount(pkUser->PartyGuid()) )
 							{
-								// Recent MapMove¸¦ ½ÃÅ°±âÀü¿¡ ÆÄÆ¼GUID¸¦ Áö¿öÁà¾ß ÇÑ´Ù!!!!
+								// Recent MapMoveë¥¼ ì‹œí‚¤ê¸°ì „ì— íŒŒí‹°GUIDë¥¼ ì§€ì›Œì¤˜ì•¼ í•œë‹¤!!!!
 								pkUser->PartyGuid(rkNewGuid);	
 								RecvRecentMapMove( pkUser );
 								return true;// return!!!
@@ -11518,7 +11518,7 @@ bool PgGround::SetPartyGuid( CUnit* pkUnit, BM::GUID const& rkNewGuid, EPartySys
 						}
 						else if ( PgObjectMgr2::GetUnit( UT_PLAYER, kPartyMaster ) )
 						{
-							// Recent MapMove¸¦ ½ÃÅ°±âÀü¿¡ ÆÄÆ¼GUID¸¦ Áö¿öÁà¾ß ÇÑ´Ù!!!!
+							// Recent MapMoveë¥¼ ì‹œí‚¤ê¸°ì „ì— íŒŒí‹°GUIDë¥¼ ì§€ì›Œì¤˜ì•¼ í•œë‹¤!!!!
 							pkUser->PartyGuid(rkNewGuid);					
 
 							RecvRecentMapMove( pkUser );
@@ -11545,7 +11545,7 @@ bool PgGround::SetPartyGuid( CUnit* pkUnit, BM::GUID const& rkNewGuid, EPartySys
 				BM::Stream kNfyPacket(PT_M_C_NFY_PARTY_JOIN);
 				kNfyPacket.Push(pkUser->GetID());
 				kNfyPacket.Push(rkNewGuid);
-				pkUser->Send( kNfyPacket, E_SENDTYPE_BROADCAST );//ÆÄÆ¼ °¡ÀÔÀ» BroadAll
+				pkUser->Send( kNfyPacket, E_SENDTYPE_BROADCAST );//íŒŒí‹° ê°€ì…ì„ BroadAll
 			}break;
 		case PARTY_SYS_PVP:
 			{
@@ -11601,9 +11601,9 @@ bool PgGround::GetExpeditionMemberGround(BM::GUID const & ExpeditionGuid, SGroun
 }
 
 bool PgGround::AccumulatePlayerHeal(CUnit * pHealCaster, int HealValue)
-{// Èú·® ´©Àû Á¡¼ö¸¦ °è»ê ÇÏ±â À§ÇØ
+{// íëŸ‰ ëˆ„ì  ì ìˆ˜ë¥¼ ê³„ì‚° í•˜ê¸° ìœ„í•´
 	if( !(GetAttr() & GATTR_EXPEDITION_GROUND) )
-	{// ¿øÁ¤´ë ´øÀü¿¡¼­
+	{// ì›ì •ëŒ€ ë˜ì „ì—ì„œ
 		return false;
 	}
 	if( NULL == pHealCaster )
@@ -11615,14 +11615,14 @@ bool PgGround::AccumulatePlayerHeal(CUnit * pHealCaster, int HealValue)
 	
 	BM::GUID HealerGuid;
 	switch( pHealCaster->UnitType() )
-	{// Èú·¯ÀÇ Á¾·ù¿¡ µû¶ó, ½ÇÁ¦ ÇÃ·¹ÀÌ¾î GUID¸¦ ¾ò¾î¿Í
-	case UT_ENTITY:		// ¿£Æ¼Æ¼
-	case UT_SUB_PLAYER:	// º¸Á¶Ä³¸¯ÅÍ(½ÖµÕÀÌ °°Àº)
-	case UT_SUMMONED:	// AI¼ÒÈ¯Ã¼(¼ÒÈ¯»çÀÇ)
+	{// íëŸ¬ì˜ ì¢…ë¥˜ì— ë”°ë¼, ì‹¤ì œ í”Œë ˆì´ì–´ GUIDë¥¼ ì–»ì–´ì™€
+	case UT_ENTITY:		// ì—”í‹°í‹°
+	case UT_SUB_PLAYER:	// ë³´ì¡°ìºë¦­í„°(ìŒë‘¥ì´ ê°™ì€)
+	case UT_SUMMONED:	// AIì†Œí™˜ì²´(ì†Œí™˜ì‚¬ì˜)
 		{
 			HealerGuid = pHealCaster->Caller();
 		}break;
-	case UT_PLAYER:		// ÇÃ·¹ÀÌ¾î
+	case UT_PLAYER:		// í”Œë ˆì´ì–´
 		{
 			HealerGuid = pHealCaster->GetID();
 		}break;
@@ -11633,11 +11633,11 @@ bool PgGround::AccumulatePlayerHeal(CUnit * pHealCaster, int HealValue)
 		
 	CUnit * pHealer = PgObjectMgr2::GetUnit(HealerGuid);
 	if( NULL == pHealer )
-	{// GUID·Î À¯´ÖÀ» Ã£°í
+	{// GUIDë¡œ ìœ ë‹›ì„ ì°¾ê³ 
 		return false;
 	}
 	if( UT_PLAYER != pHealer->UnitType() )
-	{// Èú·¯°¡ ÇÃ·¹ÀÌ¾î ÀÌ¸é¼­
+	{// íëŸ¬ê°€ í”Œë ˆì´ì–´ ì´ë©´ì„œ
 		return false;
 	}
 	PgPlayer * pPlayer = dynamic_cast<PgPlayer*>(pHealer);
@@ -11646,8 +11646,8 @@ bool PgGround::AccumulatePlayerHeal(CUnit * pHealCaster, int HealValue)
 		return false;
 	}
 	if( pPlayer->HaveExpedition() )
-	{// ¿øÁ¤´ë¿¡ ¼ÓÇØ ÀÖ´Ù¸é
-		pPlayer->AccumulateHeal(HealValue);	// Èú Á¡¼ö¸¦ ´©ÀûÇÑ´Ù
+	{// ì›ì •ëŒ€ì— ì†í•´ ìˆë‹¤ë©´
+		pPlayer->AccumulateHeal(HealValue);	// í ì ìˆ˜ë¥¼ ëˆ„ì í•œë‹¤
 		return true;
 	}
 	return false;
@@ -11681,7 +11681,7 @@ bool PgGround::SetExpeditionGuid( CUnit* pUnit, BM::GUID const & NewGuid, EParty
 						{
 							if ( 0 < m_kLocalPartyMgr.GetExpeditionMemberCount(pUser->ExpeditionGuid()) )
 							{
-								// Recent MapMove¸¦ ½ÃÅ°±âÀü¿¡ ÆÄÆ¼GUID¸¦ Áö¿öÁà¾ß ÇÑ´Ù!!!!
+								// Recent MapMoveë¥¼ ì‹œí‚¤ê¸°ì „ì— íŒŒí‹°GUIDë¥¼ ì§€ì›Œì¤˜ì•¼ í•œë‹¤!!!!
 								pUser->ExpeditionGuid( NewGuid );
 								RecvRecentMapMove( pUser );
 								return true;// return!!!
@@ -11689,7 +11689,7 @@ bool PgGround::SetExpeditionGuid( CUnit* pUnit, BM::GUID const & NewGuid, EParty
 						}
 						else if ( PgObjectMgr2::GetUnit( UT_PLAYER, ExpeditionMaster ) )
 						{
-							// Recent MapMove¸¦ ½ÃÅ°±âÀü¿¡ ÆÄÆ¼GUID¸¦ Áö¿öÁà¾ß ÇÑ´Ù!!!!
+							// Recent MapMoveë¥¼ ì‹œí‚¤ê¸°ì „ì— íŒŒí‹°GUIDë¥¼ ì§€ì›Œì¤˜ì•¼ í•œë‹¤!!!!
 							pUser->ExpeditionGuid(NewGuid);
 							RecvRecentMapMove( pUser );
 							return true;// return!!!
@@ -11700,7 +11700,7 @@ bool PgGround::SetExpeditionGuid( CUnit* pUnit, BM::GUID const & NewGuid, EParty
 		case PARTY_SYS_EXPEDITION_DELTE:
 			{
 				if ( BM::GUID::IsNotNull(NewGuid) )
-				{	// Àß¸ø È£ÃâÇÔ. ¿øÁ¤´ë°¡ »èÁ¦µÇ·Á¸é GUID°¡ ¾ø¾î¾ßµÊ.
+				{	// ì˜ëª» í˜¸ì¶œí•¨. ì›ì •ëŒ€ê°€ ì‚­ì œë˜ë ¤ë©´ GUIDê°€ ì—†ì–´ì•¼ë¨.
 					VERIFY_INFO_LOG( false, BM::LOG_LV0, __FL__ << L"Error Call" );
 					return false;
 				}
@@ -11769,7 +11769,7 @@ void PgGround::GetUnitTargetList(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArray, int
 		case UT_ENTITY:
 		case UT_SUMMONED:
 			{
-				if( iTeam )//°ø¼ºÀü¿¡¼­ ¸ó½ºÅÍ°¡ ÆÀÀ» °¡Áú °æ¿ì¿¡ ´ëÇÑ Ã³¸®°¡ ÇÊ¿ä. ÇÃ·¹ÀÌ¾î¿Í ¸ó½ºÅÍ µÑ ´Ù¸¦ Ã¼Å©ÇØ¾ß ÇÔ
+				if( iTeam )//ê³µì„±ì „ì—ì„œ ëª¬ìŠ¤í„°ê°€ íŒ€ì„ ê°€ì§ˆ ê²½ìš°ì— ëŒ€í•œ ì²˜ë¦¬ê°€ í•„ìš”. í”Œë ˆì´ì–´ì™€ ëª¬ìŠ¤í„° ë‘˜ ë‹¤ë¥¼ ì²´í¬í•´ì•¼ í•¨
 				{
 					FindUnit_WhenJoinedTeam( pkUnit, rkUnitArray, iTargetType, iRange, iZLimit, iTeam , (UT_PLAYER == pkUnit->UnitType()) );
 				}
@@ -11783,22 +11783,22 @@ void PgGround::GetUnitTargetList(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArray, int
 	}
 	
 	if(ESTARGET_HIDDEN & iTargetType)
-	{// È÷Æ°ÀÌ Å¸°ÙÀÌ¸é, È÷µçÀÌ ¾Æ´Ñ À¯´ÖµéÀ» Á¦°Å
+	{// íˆíŠ¼ì´ íƒ€ê²Ÿì´ë©´, íˆë“ ì´ ì•„ë‹Œ ìœ ë‹›ë“¤ì„ ì œê±°
 		RemoveNoneHiddenUnit(pkUnit, rkUnitArray, iRange, iZLimit);
 	}
 	if(ESTARGET_DEAD & iTargetType)
-	{// Á×Àº Ä³¸¯ÀÌ Å¸°ÙÀÌ¸é, »ì¾ÆÀÖ´Â À¯´ÖµéÀ» Á¦°Å
+	{// ì£½ì€ ìºë¦­ì´ íƒ€ê²Ÿì´ë©´, ì‚´ì•„ìˆëŠ” ìœ ë‹›ë“¤ì„ ì œê±°
 		RemoveAliveUnit(pkUnit, rkUnitArray, iRange, iZLimit);
 	}
 }
 
 void PgGround::FindUnit_WhenJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArray, int const iTargetType, int const iRange, int const iZLimit, int const iTeam, bool const bIfNoneRangeThenAddUnit )
-{// ÆÀÀÌ Á¸ÀçÇÒ°æ¿ì( ÇöÀç ¸ó½ºÅÍ°¡ ÆÀÀ» °¡Áú°æ¿ìÀÇ Ã³¸®´Â °í·ÁµÇ¾îÀÖÁö ¾ÊÀ½)
+{// íŒ€ì´ ì¡´ì¬í• ê²½ìš°( í˜„ì¬ ëª¬ìŠ¤í„°ê°€ íŒ€ì„ ê°€ì§ˆê²½ìš°ì˜ ì²˜ë¦¬ëŠ” ê³ ë ¤ë˜ì–´ìˆì§€ ì•ŠìŒ)
 	if( !pkUnit )
 	{
 		return;
 	}	
-	if( !iTeam )//°ø¼ºÀü¿¡¼­ ¸ó½ºÅÍ°¡ ÆÀÀ» °¡Áú °æ¿ì¿¡ ´ëÇÑ Ã³¸®°¡ ÇÊ¿ä. ÇÃ·¹ÀÌ¾î¿Í ¸ó½ºÅÍ µÑ´Ù Ã¼Å©ÇØ¾ß ÇÔ(ÇöÀç ¸ó½ºÅÍ°¡ iTeamÀ» °¡Áö´Â °æ¿ì´Â ¾øÀ½)
+	if( !iTeam )//ê³µì„±ì „ì—ì„œ ëª¬ìŠ¤í„°ê°€ íŒ€ì„ ê°€ì§ˆ ê²½ìš°ì— ëŒ€í•œ ì²˜ë¦¬ê°€ í•„ìš”. í”Œë ˆì´ì–´ì™€ ëª¬ìŠ¤í„° ë‘˜ë‹¤ ì²´í¬í•´ì•¼ í•¨(í˜„ì¬ ëª¬ìŠ¤í„°ê°€ iTeamì„ ê°€ì§€ëŠ” ê²½ìš°ëŠ” ì—†ìŒ)
 	{
 		return;
 	}
@@ -11811,7 +11811,7 @@ void PgGround::FindUnit_WhenJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArra
 		CONT_OBJECT_MGR_UNIT::iterator kItor;
 		PgObjectMgr::GetFirstUnit(UT_PLAYER, kItor);
 		while ( (pkOtherUnit = PgObjectMgr::GetNextUnit(UT_PLAYER, kItor) ) != NULL )
-		{// ÇÃ·¹ÀÌ¾î·ù Ãß°¡ÇÏ°í
+		{// í”Œë ˆì´ì–´ë¥˜ ì¶”ê°€í•˜ê³ 
 			if ( pkOtherUnit->GetAbil(AT_TEAM) != iTeam )
 			{
 				if(0 < iRange)
@@ -11829,7 +11829,7 @@ void PgGround::FindUnit_WhenJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArra
 			}
 		}
 		if(UT_MONSTER != eUnitType)
-		{// °ø°İÀÚ°¡ ¸ó½ºÅÍ°¡ ¾Æ´Ï¶ó¸é, ÇÇ°İ ´ë»óÀº ¸ó½ºÅÍµµ Æ÷ÇÔµÈ´Ù
+		{// ê³µê²©ìê°€ ëª¬ìŠ¤í„°ê°€ ì•„ë‹ˆë¼ë©´, í”¼ê²© ëŒ€ìƒì€ ëª¬ìŠ¤í„°ë„ í¬í•¨ëœë‹¤
 			GetUnitInRange(pkUnit->GetPos(), iRange, UT_MONSTER, rkUnitArray, iZLimit);
 		}
 	}
@@ -11884,7 +11884,7 @@ void PgGround::FindUnit_WhenNoneJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnit
 	if( pkUnit->IsInUnitType(static_cast<EUnitType>(UT_ENTITY|UT_SUMMONED))
 		&& BM::GUID::IsNotNull(pkUnit->Caller())
 		)
-	{// ¼ÒÈ¯Ã¼ÀÏ°æ¿ì
+	{// ì†Œí™˜ì²´ì¼ê²½ìš°
 		if(pkOwnerUnit = GetUnit(pkUnit->Caller()))
 		{
 			kGuildGuid = pkOwnerUnit->GetCoupleGuid();
@@ -11893,7 +11893,7 @@ void PgGround::FindUnit_WhenNoneJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnit
 		}
 	}
 	else
-	{// ¼ÒÈ¯Ã¼°¡ ¾Æ´Ò°æ¿ì
+	{// ì†Œí™˜ì²´ê°€ ì•„ë‹ê²½ìš°
 		pkOwnerUnit = pkUnit;
 		kGuildGuid = pkUnit->GetCoupleGuid();
 		kPartyGuid = pkUnit->GetPartyGuid();
@@ -11922,7 +11922,7 @@ void PgGround::FindUnit_WhenNoneJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnit
 			VEC_GUID::iterator itor = kPartyList.begin();
 			while(kPartyList.end() != itor)
 			{
-				//ÆÄÆ¼¿¡ ³ª´Â Æ÷ÇÔµÇÁö ¾Ê´Â´Ù.  Self´Â µû·Î ÀÖÀ½.
+				//íŒŒí‹°ì— ë‚˜ëŠ” í¬í•¨ë˜ì§€ ì•ŠëŠ”ë‹¤.  SelfëŠ” ë”°ë¡œ ìˆìŒ.
 				PgGroundUtil::GetUnitInRange(pkOwnerUnit, GetUnit(*itor), pkUnit->GetPos(), rkUnitArray, iRange, iZLimit);
 				++itor;
 			}
@@ -11930,17 +11930,17 @@ void PgGround::FindUnit_WhenNoneJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnit
 	}
 	//if(ESTARGET_LOCATION & usTargetType)
 	//{
-	//	//ÇöÀç »ç¿ëµÇÁö ¾ÊÀ½
+	//	//í˜„ì¬ ì‚¬ìš©ë˜ì§€ ì•ŠìŒ
 	//}
 	//if(ESTARGET_FRIEND & usTargetType)
 	//{
-	//	//Ä£±¸´Â ÇöÀç MapServer¿¡¼­ Å¸°ÙÀ» ÀâÀ» ¼ö ¾ø´Ù.
+	//	//ì¹œêµ¬ëŠ” í˜„ì¬ MapServerì—ì„œ íƒ€ê²Ÿì„ ì¡ì„ ìˆ˜ ì—†ë‹¤.
 	//}
 	if(ESTARGET_COUPLE & iTargetType)
 	{
 		if(BM::GUID::IsNotNull(kCoupleGuid))
 		{
-			//Ä¿ÇÃ¿¡ ³ª´Â Æ÷ÇÔµÇÁö ¾Ê´Â´Ù.  Self´Â µû·Î ÀÖÀ½.
+			//ì»¤í”Œì— ë‚˜ëŠ” í¬í•¨ë˜ì§€ ì•ŠëŠ”ë‹¤.  SelfëŠ” ë”°ë¡œ ìˆìŒ.
 			PgGroundUtil::GetUnitInRange(pkOwnerUnit, GetUnit(kCoupleGuid), pkUnit->GetPos(), rkUnitArray, iRange, iZLimit);
 		}
 	}
@@ -11958,7 +11958,7 @@ void PgGround::FindUnit_WhenNoneJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnit
 			{
 				if(pkTarget->GetGuildGuid() == kGuildGuid)
 				{
-					//±æµå¿¡ ³ª´Â Æ÷ÇÔµÇÁö ¾Ê´Â´Ù. Self´Â µû·Î ÀÖÀ½.
+					//ê¸¸ë“œì— ë‚˜ëŠ” í¬í•¨ë˜ì§€ ì•ŠëŠ”ë‹¤. SelfëŠ” ë”°ë¡œ ìˆìŒ.
 					rkUnitArray.AddToUniqe(pkTarget);
 				}
 			}
@@ -11969,7 +11969,7 @@ void PgGround::FindUnit_WhenNoneJoinedTeam(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnit
 
 void PgGround::FindUnit_DuelTarget(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArray, int const iTargetType, int const iRange, int const iZLimit)
 {
-	// Ground ÀüÃ¼¿¡¼­ Ã£´Â´Ù.
+	// Ground ì „ì²´ì—ì„œ ì°¾ëŠ”ë‹¤.
 	BM::CAutoMutex kLock(m_kRscMutex);
 	int const iZ = (iZLimit == 0) ? iRange : iZLimit;
 
@@ -12006,13 +12006,13 @@ void PgGround::FindUnit_DuelTarget(EUnitType const eUnitType, CUnit* pkUnit, UNI
 
 
 void PgGround::RemoveNoneHiddenUnit(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArray, int const iRange, int const iZLimit)
-{// È÷µçÀÌ ¾Æ´Ñ À¯´ÖµéÀ» Á¦°Å
+{// íˆë“ ì´ ì•„ë‹Œ ìœ ë‹›ë“¤ì„ ì œê±°
 	UNIT_PTR_ARRAY::iterator itor = rkUnitArray.begin();
 	while(rkUnitArray.end() != itor)
 	{
 		if((*itor).pkUnit)
 		{
-			// È÷µçÀÌ ¾Æ´Ò °æ¿ì Á¦°Å
+			// íˆë“ ì´ ì•„ë‹ ê²½ìš° ì œê±°
 			if(!((0 < (*itor).pkUnit->GetAbil(AT_HIDE)) || (0 < (*itor).pkUnit->GetAbil(AT_UNIT_HIDDEN))))
 			{
 				itor = rkUnitArray.erase(itor);
@@ -12030,12 +12030,12 @@ void PgGround::RemoveNoneHiddenUnit(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArray, 
 }
 
 void PgGround::RemoveAliveUnit(CUnit* pkUnit, UNIT_PTR_ARRAY& rkUnitArray, int const iRange, int const iZLimit)
-{// »ì¾ÆÀÖ´Â À¯´ÖµéÀ» Á¦°Å
+{// ì‚´ì•„ìˆëŠ” ìœ ë‹›ë“¤ì„ ì œê±°
 	UNIT_PTR_ARRAY::iterator itor = rkUnitArray.begin();
 	while(rkUnitArray.end() != itor)
 	{
 		if((*itor).pkUnit)
-		{//»ì¾Æ ÀÖ´Ù¸é Á¦°Å
+		{//ì‚´ì•„ ìˆë‹¤ë©´ ì œê±°
 			if((*itor).pkUnit->IsAlive())
 			{
 				itor = rkUnitArray.erase(itor);
@@ -12068,7 +12068,7 @@ void PgGround::GetSummonUnitArray( CUnit *pkUnit, UNIT_PTR_ARRAY& rkUnitArray )
 		{
 			CAUTION_LOG( BM::LOG_LV0, __FL__ << _T("Critical Error!! CallerID<") << pkUnit->GetID() << _T("> SummonGuid<") << kSummonGuid << _T(">") );
 			pkUnit->DeleteSummonUnit( kSummonGuid );
-			// ÀÎµ¦½º¸¦ Áõ°¡ÇÏÁö ¾Ê´Â´Ù.
+			// ì¸ë±ìŠ¤ë¥¼ ì¦ê°€í•˜ì§€ ì•ŠëŠ”ë‹¤.
 		}
 	}
 }
@@ -12275,7 +12275,7 @@ void PgGround::DoWorldEventCondition(int const iGroundNo, SWorldEventCondition c
 								{
 									bStatus = IsInTriggerUnit(MB(rkCondition.TargetID()), pPlayer);
 									if( !bStatus )
-									{//ºüÁ®³ª¿ÔÀ»¶§´Ï±ñ....
+									{//ë¹ ì ¸ë‚˜ì™”ì„ë•Œë‹ˆê¹....
 										SetWorldEventConditionStatus(iGroundNo, rkWorldEvent.ID(), rkCondition, bStatus);
 										break;
 									}
@@ -12361,7 +12361,7 @@ void PgGround::DoWorldEventCondition(int const iGroundNo, SWorldEventCondition c
 			}
 			else
 			{
-				bProcessed = true; // UnitÀÌ ¾ø´Â °æ¿ìµµ ÀÖ´Ù.
+				bProcessed = true; // Unitì´ ì—†ëŠ” ê²½ìš°ë„ ìˆë‹¤.
 			}
 		}break;
 	case WETT_Quest:
@@ -12405,7 +12405,7 @@ void PgGround::DoWorldEventCondition(int const iGroundNo, SWorldEventCondition c
 			}
 			else
 			{
-				 bProcessed = true; // UnitÀÌ ¾ø´Â °æ¿ìµµ ÀÖ´Ù.
+				 bProcessed = true; // Unitì´ ì—†ëŠ” ê²½ìš°ë„ ìˆë‹¤.
 			}
 		}break;
 	case WETT_MonEffect:
@@ -12667,10 +12667,10 @@ void PgGround::DoWorldEventAction(int const iGroundNo, SWorldEventAction const& 
 									PgAggroMeter* pkMeter = NULL;
 									if( GetMeter(pkMonster->GetID(), pkMeter) )
 									{
-										pkMeter->Clear(true); // °æÇèÄ¡ ¾øÀ¸
+										pkMeter->Clear(true); // ê²½í—˜ì¹˜ ì—†ìœ¼
 									}
 									pkMonster->ClearTargetList();
-									::OnDamaged(NULL, pkMonster, 0, pkMonster->GetAbil(AT_HP), this, g_kEventView.GetServerElapsedTime()); // Á×¾î¶ó
+									::OnDamaged(NULL, pkMonster, 0, pkMonster->GetAbil(AT_HP), this, g_kEventView.GetServerElapsedTime()); // ì£½ì–´ë¼
 								}
 								++mon_iter;
 							}
@@ -12729,10 +12729,10 @@ void PgGround::DoWorldEventAction(int const iGroundNo, SWorldEventAction const& 
 										PgAggroMeter* pkMeter = NULL;
 										if( GetMeter(pkMonster->GetID(), pkMeter) )
 										{
-											pkMeter->Clear(true); // °æÇèÄ¡ ¾øÀ¸
+											pkMeter->Clear(true); // ê²½í—˜ì¹˜ ì—†ìœ¼
 										}
 										pkMonster->ClearTargetList();
-										::OnDamaged(NULL, pkMonster, 0, pkMonster->GetAbil(AT_HP), this, g_kEventView.GetServerElapsedTime()); // Á×¾î¶ó
+										::OnDamaged(NULL, pkMonster, 0, pkMonster->GetAbil(AT_HP), this, g_kEventView.GetServerElapsedTime()); // ì£½ì–´ë¼
 									}
 									++mon_iter;
 								}
@@ -12812,10 +12812,10 @@ void PgGround::DoWorldEventAction(int const iGroundNo, SWorldEventAction const& 
 									PgAggroMeter* pkMeter = NULL;
 									if( GetMeter(pkMonster->GetID(), pkMeter) )
 									{
-										pkMeter->Clear(true); // °æÇèÄ¡ ¾øÀ¸
+										pkMeter->Clear(true); // ê²½í—˜ì¹˜ ì—†ìœ¼
 									}
 									pkMonster->ClearTargetList();
-									::OnDamaged(NULL, pkMonster, 0, pkMonster->GetAbil(AT_HP), this, g_kEventView.GetServerElapsedTime()); // Á×¾î¶ó
+									::OnDamaged(NULL, pkMonster, 0, pkMonster->GetAbil(AT_HP), this, g_kEventView.GetServerElapsedTime()); // ì£½ì–´ë¼
 								}
 								++mon_iter;
 							}
@@ -12935,7 +12935,7 @@ void PgGround::SendShowQuestDialog(CUnit* pkUnit, BM::GUID const &rkNpcGUID, EQu
 		return;
 	}
 
-	//Äù½ºÆ® ´ëÈ­Áß »óÅÂ
+	//í€˜ìŠ¤íŠ¸ ëŒ€í™”ì¤‘ ìƒíƒœ
 	bool const bFindDialog = PgGroundQuestUtil::IsCanShowQusetDialog(eQuestShowDialogType, iQuestID, iDialogID);
 	int const iPreQuestId = pkUnit->GetAbil(AT_QUEST_TALK);
 	int const iTalkState = (bFindDialog)? iQuestID: QTS_None;
@@ -12963,26 +12963,26 @@ void PgGround::SendShowQuestDialog(CUnit* pkUnit, BM::GUID const &rkNpcGUID, EQu
 	case QSDT_FailedDialog:
 	case QSDT_ErrorDialog:
 		{
-			pkUnit->SetAbil(AT_QUEST_TALK, iTalkState, false, true); // Äù½ºÆ® ´ëÈ­¸¦ ¼³Á¤
-			//±âÈ¹¿äÃ»À¸·Î Äù½ººz ¹Ş´Â µµÁß µ¥¹ÌÁö ¸Ôµµ·Ï º¯°æ(13.03.12)
+			pkUnit->SetAbil(AT_QUEST_TALK, iTalkState, false, true); // í€˜ìŠ¤íŠ¸ ëŒ€í™”ë¥¼ ì„¤ì •
+			//ê¸°íšìš”ì²­ìœ¼ë¡œ í€˜ìŠ¤z ë°›ëŠ” ë„ì¤‘ ë°ë¯¸ì§€ ë¨¹ë„ë¡ ë³€ê²½(13.03.12)
 			//if( bFindDialog )
 			//{
-			//	if( QTS_None == iPreQuestId ) // »õ·Î ´ëÈ­½Ã
+			//	if( QTS_None == iPreQuestId ) // ìƒˆë¡œ ëŒ€í™”ì‹œ
 			//	{
-			//		pkUnit->AddCountAbil( AT_CANNOT_DAMAGE, AT_CF_QUEST, true, E_SENDTYPE_BROADALL_EFFECTABIL );// Å¸°ÙÆÃ ¾ÈµÇµµ·Ï ¼³Á¤
-			//		pkUnit->AddCountAbil( AT_CANNOT_ATTACK, AT_CF_QUEST, true, E_SENDTYPE_BROADALL_EFFECTABIL );// °ø°İ¸øÇÏµµ·Ï ¼³Á¤
+			//		pkUnit->AddCountAbil( AT_CANNOT_DAMAGE, AT_CF_QUEST, true, E_SENDTYPE_BROADALL_EFFECTABIL );// íƒ€ê²ŸíŒ… ì•ˆë˜ë„ë¡ ì„¤ì •
+			//		pkUnit->AddCountAbil( AT_CANNOT_ATTACK, AT_CF_QUEST, true, E_SENDTYPE_BROADALL_EFFECTABIL );// ê³µê²©ëª»í•˜ë„ë¡ ì„¤ì •
 			//	}
 			//}
 			//else
 			//{
-			//	pkUnit->AddCountAbil( AT_CANNOT_DAMAGE, AT_CF_QUEST, false, E_SENDTYPE_BROADALL_EFFECTABIL );// Å¸°ÙÆÃ ¾ÈµÇµµ·Ï ¼³Á¤ ÇØÁ¦
-			//	pkUnit->AddCountAbil( AT_CANNOT_ATTACK, AT_CF_QUEST, false, E_SENDTYPE_BROADALL_EFFECTABIL );// °ø°İ¸øÇÏµµ·Ï ¼³Á¤ ÇØÁ¦
+			//	pkUnit->AddCountAbil( AT_CANNOT_DAMAGE, AT_CF_QUEST, false, E_SENDTYPE_BROADALL_EFFECTABIL );// íƒ€ê²ŸíŒ… ì•ˆë˜ë„ë¡ ì„¤ì • í•´ì œ
+			//	pkUnit->AddCountAbil( AT_CANNOT_ATTACK, AT_CF_QUEST, false, E_SENDTYPE_BROADALL_EFFECTABIL );// ê³µê²©ëª»í•˜ë„ë¡ ì„¤ì • í•´ì œ
 			//}
 		}break;
 	case QSDT_SelectDialog:
 	default:
 		{
-			pkUnit->SetAbil(AT_QUEST_TALK, QTS_None, false, true); // Äù½ºÆ® ´ëÈ­¸¦ ¼³Á¤
+			pkUnit->SetAbil(AT_QUEST_TALK, QTS_None, false, true); // í€˜ìŠ¤íŠ¸ ëŒ€í™”ë¥¼ ì„¤ì •
 		}break;
 	}
 
@@ -13015,13 +13015,13 @@ void PgGround::SyncPlayerPlayTime(BM::GUID const kCharGuid, int const iAccConSec
 
 bool PgGround::CheckTickAvailable(ETickInterval const eInterval, DWORD const dwNow, DWORD& rdwElapsedTime, bool bUpdateLastTime)
 {
-	static DWORD const asdwTickDueTime[ETICK_INTERVAL_MAX] = {MONSTER_AI_TICK_INTER-MONSTER_AI_TICK_INTER_ERROR, 30000-1000, 1000-200, 5000-1000 };	//¼­¹öÀÇ CPUÁ¡À¯À² »ó½ÂÀ¸·Î 100ms¸¦ 300ms·Î ´À¸®°Ô Á¶Á¤ÇÔ
+	static DWORD const asdwTickDueTime[ETICK_INTERVAL_MAX] = {MONSTER_AI_TICK_INTER-MONSTER_AI_TICK_INTER_ERROR, 30000-1000, 1000-200, 5000-1000 };	//ì„œë²„ì˜ CPUì ìœ ìœ¨ ìƒìŠ¹ìœ¼ë¡œ 100msë¥¼ 300msë¡œ ëŠë¦¬ê²Œ ì¡°ì •í•¨
 
 	LASTTICKTIME_VEC::value_type &kLastTickTime = m_kContLastTickTime.at(eInterval);
 
 	LASTTICKTIME_VEC::value_type kTempTickTime = kLastTickTime;
 
-	rdwElapsedTime = dwNow - kLastTickTime;//Áö³­ ½Ã°£Àº À§¿¡¼­ ±â·Ï
+	rdwElapsedTime = dwNow - kLastTickTime;//ì§€ë‚œ ì‹œê°„ì€ ìœ„ì—ì„œ ê¸°ë¡
 
 	bool const bRet = BM::TimeCheck(kTempTickTime, asdwTickDueTime[eInterval]);
 
@@ -13034,7 +13034,7 @@ bool PgGround::CheckTickAvailable(ETickInterval const eInterval, DWORD const dwN
 /*
 inline bool PgGround::CheckTickAvailable(ETickInterval eInterval, DWORD const dwNow, DWORD& rdwElapsedTime, bool bUpdateLastTime)
 {
-	static DWORD const adwTickDueTime[ETICK_INTERVAL_MAX] = {MONSTER_AI_TICK_INTER-MONSTER_AI_TICK_INTER_ERROR, 30000-1000, 1000-200, 5000-1000 };	//¼­¹öÀÇ CPUÁ¡À¯À² »ó½ÂÀ¸·Î 100ms¸¦ 300ms·Î ´À¸®°Ô Á¶Á¤ÇÔ
+	static DWORD const adwTickDueTime[ETICK_INTERVAL_MAX] = {MONSTER_AI_TICK_INTER-MONSTER_AI_TICK_INTER_ERROR, 30000-1000, 1000-200, 5000-1000 };	//ì„œë²„ì˜ CPUì ìœ ìœ¨ ìƒìŠ¹ìœ¼ë¡œ 100msë¥¼ 300msë¡œ ëŠë¦¬ê²Œ ì¡°ì •í•¨
 
 	DWORD const dwLastTime = (m_kLastTickTimeVec[eInterval] == 0) ? dwNow : m_kLastTickTimeVec[eInterval];
 	rdwElapsedTime = dwNow - dwLastTime;
@@ -13095,7 +13095,7 @@ void PgGround::CheckTickMarry()
 				{					
 					if( static_cast<BYTE>(EM_ACTION_END) == eType )
 					{
-						// ¸ó½ºÅÍ¸¦ »Ñ¸° »óÅÂ¶ó¸é... ¾ø¾îÁ³´ÂÁö Ã¼Å©ÇØº¸°í ´ÙÀ½ ´Ü°è·Î ³Ñ¾î °¡ÁÖÀÚ.
+						// ëª¬ìŠ¤í„°ë¥¼ ë¿Œë¦° ìƒíƒœë¼ë©´... ì—†ì–´ì¡ŒëŠ”ì§€ ì²´í¬í•´ë³´ê³  ë‹¤ìŒ ë‹¨ê³„ë¡œ ë„˜ì–´ ê°€ì£¼ì.
 						CUnit* pkUnit = NULL;
 						PgMonster* pkMonster = NULL;
 						CONT_OBJECT_MGR_UNIT::iterator kItor;
@@ -13103,7 +13103,7 @@ void PgGround::CheckTickMarry()
 						pkUnit = PgObjectMgr::GetNextUnit(UT_MONSTER, kItor);
 						if( !pkUnit )
 						{
-							// ¸ó½ºÅÍ°¡ ´Ù Á×°í ¾ø³×
+							// ëª¬ìŠ¤í„°ê°€ ë‹¤ ì£½ê³  ì—†ë„¤
 							m_kMarryMgr.SetActionState(EM_MARRY_ACTION);
 						}
 					}
@@ -13125,14 +13125,14 @@ void PgGround::CheckTickHidden()
 
 	if( iCheckMinTime < kNow.minute )
 	{
-		HiddenMapOut(false); // ÆÃ°Ü³»µµ µÈ´Ù ´ÙÀ½ºÎÅÍ..
+		HiddenMapOut(false); // íŒ…ê²¨ë‚´ë„ ëœë‹¤ ë‹¤ìŒë¶€í„°..
 	}
 
 	bool bResult = false;
 
-	if( false == HiddenMapOut() ) // ÆÃ°Ü³½ ÀûÀÌ ¾ø´Ù¸é...
+	if( false == HiddenMapOut() ) // íŒ…ê²¨ë‚¸ ì ì´ ì—†ë‹¤ë©´...
 	{
-		// 00ºĞÀÌ µÇ¸é...
+		// 00ë¶„ì´ ë˜ë©´...
 		if( iCheckMinTime >= kNow.minute )
 		{
 			if( this->GetAttr() & GATTR_HIDDEN_F )
@@ -13144,7 +13144,7 @@ void PgGround::CheckTickHidden()
 				{		
 					PgPlayer* pkPlayer = dynamic_cast< PgPlayer* >(pkUnit);
 					if( pkPlayer )
-					{			// È÷µç¸Ê À¯Àú´Â ÆÃ°Ü³½´Ù.
+					{			// íˆë“ ë§µ ìœ ì €ëŠ” íŒ…ê²¨ë‚¸ë‹¤.
 						if( LeaveSpecStatus(pkPlayer->GetID(), PgGroundUtil::SUST_CashShop) )
 						{
 							BM::Stream kClientPacket(PT_M_C_CS_ANS_EXIT_CASHSHOP_UNLOCK);
@@ -13220,7 +13220,7 @@ void PgGround::HiddenMapTimeLimit(CUnit* pkUnit)
 {
 	if( this->GetAttr() & GATTR_HIDDEN_F )
 	{
-		// ½Ã°£ µ¿±âÈ­
+		// ì‹œê°„ ë™ê¸°í™”
 		DWORD m_dwTotalTimeLimit = 0;
 
 		GetHiddenMapTime(m_dwTotalTimeLimit);
@@ -13290,7 +13290,7 @@ void PgGround::CheckTickCouple()
 				{
 					if( kCoupleGuid == pkCoupleUnit->GetID() )
 					{
-						// Ä¿ÇÃ¸µ
+						// ì»¤í”Œë§
 						int iRingItem[] = {60002620, 60002630, 0};
 						bool bRingEquip[] = {false, false};
 
@@ -13444,7 +13444,7 @@ bool PgGround::GetDefenceModeMatchParty(BM::GUID const& kMyPartyGuid, BM::GUID& 
 {
 	VEC_GUID kVecGuid;
 
-	m_kDefencePartyMgr.FindWaitList(kVecGuid);	// ´ë±âÁßÀÎ ÆÄÆ¼¸¸...
+	m_kDefencePartyMgr.FindWaitList(kVecGuid);	// ëŒ€ê¸°ì¤‘ì¸ íŒŒí‹°ë§Œ...
 	if( kVecGuid.empty() )
 	{
 		return false;
@@ -13524,7 +13524,7 @@ void PgGround::Defence7ItemUse(CUnit* pkUnit, BM::Stream * const pkPacket)
 		bCantUseGround = ((0 != iCanAttr)? 0 == (GetAttr() & iCanAttr): false) || bCantUseGround;
 		if( bCantUseGround )
 		{
-			// »ç¿ëÇÒ ¼ö ¾ø´Â Àå¼ÒÀÔ´Ï´Ù.
+			// ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ì¥ì†Œì…ë‹ˆë‹¤.
 			pkUnit->SendWarnMessage(20027);
 			LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return false"));
 			return;
@@ -13535,7 +13535,7 @@ void PgGround::Defence7ItemUse(CUnit* pkUnit, BM::Stream * const pkPacket)
 
 		if( UICT_MISSION_DEFENCE7_ITEM != iCustomKind )
 		{
-			// ½Å±Ô µğÆÒ½º ¾ÆÀÌÅÛÀÌ ¾Æ´Ï´Ù.
+			// ì‹ ê·œ ë””íŒ¬ìŠ¤ ì•„ì´í…œì´ ì•„ë‹ˆë‹¤.
 			return;
 		}
 
@@ -13575,13 +13575,13 @@ void PgGround::Defence7ItemUse(CUnit* pkUnit, BM::Stream * const pkPacket)
 				kCreateInfo.kClassKey.iClass = kValue.iMonsterNo;
 				kCreateInfo.kClassKey.nLv = kValue.iUpgrade_Step;
 				kCreateInfo.bUniqueClass = false;
-				//kCreateInfo.bEternalLife = true;	// ÀÌ¶§ »ı¼ºµÇ´Â °¡µğ¾ğÀº ¶óÀÌÇÁ Å¸ÀÓÀ» °¡Áø´Ù.
+				//kCreateInfo.bEternalLife = true;	// ì´ë•Œ ìƒì„±ë˜ëŠ” ê°€ë””ì–¸ì€ ë¼ì´í”„ íƒ€ì„ì„ ê°€ì§„ë‹¤.
 				kCreateInfo.iTunningNo = GetGuardianTunningNo(iGuardianNo);
 				kCreateInfo.iTunningLevel = pkUnit->GetAbil(AT_LEVEL);
 				kCreateInfo.iLifeTime = iLifeTime;
 				kCreateInfo.kGuid.Generate();
 
-				//¼ÒÈ¯ À§Ä¡ : PCÀÇ Àü¹æ
+				//ì†Œí™˜ ìœ„ì¹˜ : PCì˜ ì „ë°©
 				{
 					float fDistance = pItemDef->GetAbil(AT_CREATE_ENTITY_RANGE);
 					if( 0.f == fDistance )
@@ -13607,7 +13607,7 @@ void PgGround::Defence7ItemUse(CUnit* pkUnit, BM::Stream * const pkPacket)
 					}
 				}
 
-				// ¹Ù´Ú¿¡ ¹ĞÂø ½ÃÅ²´Ù
+				// ë°”ë‹¥ì— ë°€ì°© ì‹œí‚¨ë‹¤
 				NxRay kRay(NxVec3(kNodePos.x, kNodePos.y, kNodePos.z+20), NxVec3(0, 0, -1.0f));
 				NxRaycastHit kHit;
 				NxShape *pkHitShape = RayCast(kRay, kHit);
@@ -13815,7 +13815,7 @@ void PgGround::RecvVendorClose(CUnit* pkUnit)
 		return;
 	}
 	if(true == RecvReqVendorDelete(pkUnit, pkUnit->GetID() ) )
-	{//³»°¡ ÁÖÀÎÀÏ °æ¿ì
+	{//ë‚´ê°€ ì£¼ì¸ì¼ ê²½ìš°
 		PgPlayer *pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 		if(pkPlayer)
 		{
@@ -13837,7 +13837,7 @@ void PgGround::RecvVendorClose(CUnit* pkUnit)
 		}
 	}
 	else
-	{//¼Õ´ÔÀÏ °æ¿ì
+	{//ì†ë‹˜ì¼ ê²½ìš°
 		PgPlayer *pkPlayer = dynamic_cast<PgPlayer*>(pkUnit);
 		if(pkPlayer)
 		{
@@ -13933,7 +13933,7 @@ void PgGround::CheckTickJobSkillLocationItem()
 		Broadcast(kPacket, NULL, E_SENDTYPE_BROADCAST);
 	}
 
-	// À¯Àú ½ºÅ³ ½Ã°£Ã¼Å©
+	// ìœ ì € ìŠ¤í‚¬ ì‹œê°„ì²´í¬
 	CONT_JOBSKILL_LOCATIONITEM_RESULT kResult;
 	JobSkillLocationMgr().UserDrationSkillTime(kResult);
 
@@ -13966,19 +13966,19 @@ void PgGround::CheckTickJobSkillLocationItem()
 				int const iUseDuration = JobSkillExpertnessUtil::GetUseDuration(kUserInfo.iUseSkillNo, kUserInfo.iExpertness, pkPlayer->GetAbil(iJobSkill_AddToolUseDurationRate));
 
 				if( 0 < iUseDuration ) 
-				{//¼Ò¸ğ½ÃÅ³ ³»±¸µµ°¡ ÀÖÀ¸¸é..
+				{//ì†Œëª¨ì‹œí‚¬ ë‚´êµ¬ë„ê°€ ìˆìœ¼ë©´..
 					PgInventory * pkInv = pkPlayer->GetInven();
 					if( pkInv )
-					{//ÀÎº¥À» °¡Á®¿Í¼­
+					{//ì¸ë²¤ì„ ê°€ì ¸ì™€ì„œ
 						SItemPos kItemPos;
 						PgBase_Item kItem;
 						
 						bool bEquippedToolItem = (S_OK == pkInv->GetFirstItem(IT_FIT, kUserInfo.iUseToolItemNo, kItemPos)) ? true : (S_OK == pkInv->GetFirstItem(IT_FIT_CASH, kUserInfo.iUseToolItemNo, kItemPos));
 						if( bEquippedToolItem
 							&& S_OK == pkInv->GetItem(kItemPos, kItem) )
-						{//¾ÆÀÌÅÛ°ú À§Ä¡¸¦ °¡Á®¿Í¼­
+						{//ì•„ì´í…œê³¼ ìœ„ì¹˜ë¥¼ ê°€ì ¸ì™€ì„œ
 							if( IT_FIT == kItemPos.x || IT_FIT_CASH == kItemPos.x )
-							{//ÀåÂøÁßÀÌ¸é ³»±¸ ¼Ò¸ğ ¿À´õ ³¯¸²
+							{//ì¥ì°©ì¤‘ì´ë©´ ë‚´êµ¬ ì†Œëª¨ ì˜¤ë” ë‚ ë¦¼
 								SPMOD_Modify_Count kDelData(kItem, kItemPos, -iUseDuration);
 								SPMO kIMO(IMET_MODIFY_COUNT|IMC_DEC_DUR_BY_USE, pkPlayer->GetID(), kDelData);
 								kOrder.push_back(kIMO);
@@ -14015,11 +14015,11 @@ void PgGround::CheckTickJobSkillLocationItem()
 				size_t const iOldOrderCount = kOrder.size();
 				int const iResultCount = JobSkillToolUtil::GetResultCount(kUserInfo.iUseToolItemNo);
 				for( int iIndex=0; iIndex<iResultCount; ++iIndex)
-				{//µµ±¸ÀÇ ResultCount¸¸Å­ È®·ü °è»ê ÇÏ¿© ¾ÆÀÌÅÛÀ» Áö±Ş ÇÏµµ·Ï ÇÔ.
+				{//ë„êµ¬ì˜ ResultCountë§Œí¼ í™•ë¥  ê³„ì‚° í•˜ì—¬ ì•„ì´í…œì„ ì§€ê¸‰ í•˜ë„ë¡ í•¨.
 					PgBase_Item kResultItem;
 					ProbabilityUtil::SGetOneArguments kArg(pkPlayer->GetID(), *pkDefJobSkillSaveIdx);
 					if( JobSkillLocationMgr().GetCreateItem(kTriggerID, kArg, kUserInfo.iUseToolItemNo, kResultItem) )
-					{// ¾ÆÀÌÅÛ Áö±Ş
+					{// ì•„ì´í…œ ì§€ê¸‰
 
 						kResultItem.Count( kResultItem.Count() + pkPlayer->GetAbil(iJobSkill_AddResultItemCount) );
 
@@ -14027,7 +14027,7 @@ void PgGround::CheckTickJobSkillLocationItem()
 						SPMO kIMO(IMET_INSERT_FIXED, pkPlayer->GetID(), kAddItem);
 						kOrder.push_back(kIMO);
 
-						//¾ÆÀÌÅÛ È¹µæ ¼º°ø ¸Ş¼¼Áö Ãâ·Â
+						//ì•„ì´í…œ íšë“ ì„±ê³µ ë©”ì„¸ì§€ ì¶œë ¥
 						BM::Stream kPacket(PT_M_C_NFY_JOBSKILL_ERROR, JSEC_SUCCEED_GET_ITEM);
 						kPacket.Push( kResultItem.ItemNo() );
 						pkPlayer->Send(kPacket);
@@ -14042,7 +14042,7 @@ void PgGround::CheckTickJobSkillLocationItem()
 							pkPlayer->Send( kPacket );
 						}
 					}
-					//ÀÌº¥Æ® Ã¤Áı ±â´É
+					//ì´ë²¤íŠ¸ ì±„ì§‘ ê¸°ëŠ¥
 					CONT_DEF_JOBSKILL_EVENT_LOCATION const *pkContLocation;
 					g_kTblDataMgr.GetContDef(pkContLocation);
 					CONT_DEF_EVENT_REWARD_ITEM_GROUP const *pkEventRewardItemGroup;
@@ -14066,7 +14066,7 @@ void PgGround::CheckTickJobSkillLocationItem()
 									SPMO kIMO(IMET_INSERT_FIXED, pkPlayer->GetID(), kAddItem);
 									kOrder.push_back(kIMO);
 
-									//¾ÆÀÌÅÛ È¹µæ ¼º°ø ¸Ş¼¼Áö Ãâ·Â
+									//ì•„ì´í…œ íšë“ ì„±ê³µ ë©”ì„¸ì§€ ì¶œë ¥
 									BM::Stream kPacket(PT_M_C_NFY_JOBSKILL_ERROR, JSEC_SUCCEED_GET_ITEM);
 									kPacket.Push( kEventItem.ItemNo() );
 									pkPlayer->Send(kPacket);
@@ -14078,17 +14078,17 @@ void PgGround::CheckTickJobSkillLocationItem()
 					}
 				}
 
-				if( iOldOrderCount == kOrder.size() ) // ¿À´õ»çÀÌÁî°¡ º¯ÇÏÁö ¾ÊÀ¸¸é ¾Æ¹« ¾ÆÀÌÅÛµµ ¸ø¾òÀº°ÍÀÌ´Ù
+				if( iOldOrderCount == kOrder.size() ) // ì˜¤ë”ì‚¬ì´ì¦ˆê°€ ë³€í•˜ì§€ ì•Šìœ¼ë©´ ì•„ë¬´ ì•„ì´í…œë„ ëª»ì–»ì€ê²ƒì´ë‹¤
 				{
 					int const iFailedJobSkillResult = 25019;
 					pkPlayer->SendWarnMessage( iFailedJobSkillResult );
 				}
 				
-				{//ÇÇ·Îµµ ¼Ò¸ğ´Â ¾ÆÀÌÅÛ È¹µæ ¿À´õ¿¡ Æ÷ÇÔµÇ¸é ¾ÈµÈ´Ù. ÀÓ½ÃÀÎº¥¿¡ µé¾î°¥ °æ¿ì ¿À´õ°¡ Ãë¼ÒµÇ±â ¶§¹®.
+				{//í”¼ë¡œë„ ì†Œëª¨ëŠ” ì•„ì´í…œ íšë“ ì˜¤ë”ì— í¬í•¨ë˜ë©´ ì•ˆëœë‹¤. ì„ì‹œì¸ë²¤ì— ë“¤ì–´ê°ˆ ê²½ìš° ì˜¤ë”ê°€ ì·¨ì†Œë˜ê¸° ë•Œë¬¸.
 					CONT_PLAYER_MODIFY_ORDER kOrderExhaution;
 					int const iMinimumUseExhaustion = 1;
 					int const iResultUseExhaustion = std::max(kUserInfo.iUseExhaustion + pkPlayer->GetAbil(iJobSkill_AddUseExhaustion), iMinimumUseExhaustion);
-					SPMO kIMO(IMET_JOBSKILL_ADD_EXHAUSTION, pkPlayer->GetID(), SPMOD_JobSkillExhaustion(iResultUseExhaustion)); // ÇÇ·Îµµ ¼Ò¸ğ
+					SPMO kIMO(IMET_JOBSKILL_ADD_EXHAUSTION, pkPlayer->GetID(), SPMOD_JobSkillExhaustion(iResultUseExhaustion)); // í”¼ë¡œë„ ì†Œëª¨
 					kOrderExhaution.push_back(kIMO);
 					PgAction_ReqModifyItem kExhautionAction(CIE_JOBSKILL, GroundKey(), kOrderExhaution);
 					kExhautionAction.DoAction(pkPlayer, NULL);
@@ -14108,14 +14108,14 @@ void PgGround::CheckTickJobSkillLocationItem()
 			kLogCont.Add( kLog );
 			kLogCont.Commit();
 			
-			//Ã¤Áı ¿Ï·á, ¾×¼Ç Á¾·áÇÏ¶ó°í ÆĞÅ¶ º¸³¿
-			BM::Stream kPacket(PT_M_C_NFY_COMPLETE_JOBSKILL);// ÇÃ·¹ÀÌ¾î°¡ Æ®¸®°Å ÁøÀÔÇÒ¶§¸¶´Ù º¸³»¼­ ÀÏ´Ü Á¦°Å
+			//ì±„ì§‘ ì™„ë£Œ, ì•¡ì…˜ ì¢…ë£Œí•˜ë¼ê³  íŒ¨í‚· ë³´ëƒ„
+			BM::Stream kPacket(PT_M_C_NFY_COMPLETE_JOBSKILL);// í”Œë ˆì´ì–´ê°€ íŠ¸ë¦¬ê±° ì§„ì…í• ë•Œë§ˆë‹¤ ë³´ë‚´ì„œ ì¼ë‹¨ ì œê±°
 			kPacket.Push(bEquippedToolItemDestroy);
 			kPacket.Push(bJobSkillSuccess);
 			pkPlayer->Send(kPacket);
 		}
 
-		// À¯Àú Áö¿ì±â(¿À·ù°¡ ³ªµµ ÇÑ¹ø ½ÃµµÇÑ ÈÄ ³¡³ª¾ß µÈ´Ù.)
+		// ìœ ì € ì§€ìš°ê¸°(ì˜¤ë¥˜ê°€ ë‚˜ë„ í•œë²ˆ ì‹œë„í•œ í›„ ëë‚˜ì•¼ ëœë‹¤.)
 		CUnit* pkUnit = GetUnit( kGuid );
 		JobSkillLocationMgr().DelUser(pkUnit, kTriggerID, kGuid);
 	}
@@ -14124,7 +14124,7 @@ void PgGround::CheckTickJobSkillLocationItem()
 void PgGround::GetGenGroupKey(SGenGroupKey& rkGenGrpKey)const
 {
 	rkGenGrpKey.iMapNo = GetGroundNo();
-	rkGenGrpKey.iBalance = GetMapLevel();//ÀÌ°É ¹Ù²Ù¸é ´Ù¸¥ Á¨ Å×ÀÌºíÀÌ
+	rkGenGrpKey.iBalance = GetMapLevel();//ì´ê±¸ ë°”ê¾¸ë©´ ë‹¤ë¥¸ ì   í…Œì´ë¸”ì´
 }
 
 SRecentInfo const& PgGround::GetRecentInfo()const
@@ -14218,34 +14218,34 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 	if( bParty )
 	{
 		if( 0 < ScheduleData.PartyMemeberMin )
-		{	// ÃÖ¼Ò ÀÎ¿ø Á¤º¸°¡ ÀÖ´Ù¸é °Ë»ç.
+		{	// ìµœì†Œ ì¸ì› ì •ë³´ê°€ ìˆë‹¤ë©´ ê²€ì‚¬.
 			size_t MemberCount = m_kLocalPartyMgr.GetMemberCount(pPlayer->PartyGuid());
 
 			if( MemberCount < ScheduleData.PartyMemeberMin )
-			{	// ÃÖ¼Ò ÀÎ¿ø ¼ö¸¦ Ã¤¿ìÁö ¸øÇÔ. ÀÔÀå ºÒ°¡.
+			{	// ìµœì†Œ ì¸ì› ìˆ˜ë¥¼ ì±„ìš°ì§€ ëª»í•¨. ì…ì¥ ë¶ˆê°€.
 				return EEMM_LIMIT_MINIMUM_PARTYMEMBER;
 			}
 
 			if( MemberCount != PartyMember.size() )
-			{	// ¸ğµç ÆÄÆ¼¿øÀÌ °°Àº ¸Ê¿¡ ÀÖÁö ¾ÊÀ½. ÀÔÀå ºÒ°¡.
+			{	// ëª¨ë“  íŒŒí‹°ì›ì´ ê°™ì€ ë§µì— ìˆì§€ ì•ŠìŒ. ì…ì¥ ë¶ˆê°€.
 				return EEMM_NO_PARTY_MEMBER_SAME_GROUND;
 			}
 		}
 	}
 
 	if( 0 < ScheduleData.LevelMin )
-	{	// ÃÖ¼Ò ·¹º§ Á¦ÇÑÀÌ ÀÖ´Ù¸é °Ë»ç.
+	{	// ìµœì†Œ ë ˆë²¨ ì œí•œì´ ìˆë‹¤ë©´ ê²€ì‚¬.
 		if( bParty )
 		{
 			VEC_GUID::iterator vec_iter = PartyMember.begin();
 			for( ; vec_iter != PartyMember.end() ; ++vec_iter )
-			{	// ¸ğµç ÆÄÆ¼¿øÀ» °Ë»çÇØ¾ßÇÑ´Ù.
+			{	// ëª¨ë“  íŒŒí‹°ì›ì„ ê²€ì‚¬í•´ì•¼í•œë‹¤.
 				PgPlayer * pPartyMember = GetUser((*vec_iter));
 				if( pPartyMember )
 				{
 					int Level = pPartyMember->GetAbil(AT_LEVEL);
 					if( Level < ScheduleData.LevelMin )
-					{	// ÀÌº¥Æ® ÀÔÀå ÃÖ¼Ò ·¹º§ º¸´Ù Ä³¸¯ÅÍ ·¹º§ÀÌ ´õ ³·À½.
+					{	// ì´ë²¤íŠ¸ ì…ì¥ ìµœì†Œ ë ˆë²¨ ë³´ë‹¤ ìºë¦­í„° ë ˆë²¨ì´ ë” ë‚®ìŒ.
 						return EEMM_LIMIT_LEVEL_MIN;
 					}
 				}
@@ -14255,25 +14255,25 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 		{
 			int Level = pPlayer->GetAbil(AT_LEVEL);
 			if( Level < ScheduleData.LevelMin )
-			{	// ÀÌº¥Æ® ÀÔÀå ÃÖ¼Ò ·¹º§ º¸´Ù Ä³¸¯ÅÍ ·¹º§ÀÌ ´õ ³·À½.
+			{	// ì´ë²¤íŠ¸ ì…ì¥ ìµœì†Œ ë ˆë²¨ ë³´ë‹¤ ìºë¦­í„° ë ˆë²¨ì´ ë” ë‚®ìŒ.
 				return EEMM_LIMIT_LEVEL_MIN;
 			}
 		}
 	}
 
 	if( 0 < ScheduleData.LevelMax )
-	{	// ÃÖ´ë ·¹º§ Á¦ÇÑÀÌ ÀÖ´Ù¸é °Ë»ç.
+	{	// ìµœëŒ€ ë ˆë²¨ ì œí•œì´ ìˆë‹¤ë©´ ê²€ì‚¬.
 		if( bParty )
 		{
 			VEC_GUID::iterator vec_iter = PartyMember.begin();
 			for( ; vec_iter != PartyMember.end() ; ++vec_iter )
-			{	// ¸ğµç ÆÄÆ¼¿øÀ» °Ë»çÇØ¾ßÇÑ´Ù.
+			{	// ëª¨ë“  íŒŒí‹°ì›ì„ ê²€ì‚¬í•´ì•¼í•œë‹¤.
 				PgPlayer * pPartyMember = GetUser((*vec_iter));
 				if( pPartyMember )
 				{
 					int Level = pPartyMember->GetAbil(AT_LEVEL);
 					if( Level > ScheduleData.LevelMax )
-					{	// ÀÌº¥Æ® ÀÔÀå ÃÖ¼Ò ·¹º§ º¸´Ù Ä³¸¯ÅÍ ·¹º§ÀÌ ´õ ³·À½.
+					{	// ì´ë²¤íŠ¸ ì…ì¥ ìµœì†Œ ë ˆë²¨ ë³´ë‹¤ ìºë¦­í„° ë ˆë²¨ì´ ë” ë‚®ìŒ.
 						return EEMM_LIMIT_LEVEL_MIN;
 					}
 				}
@@ -14283,20 +14283,20 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 		{
 			int Level = pPlayer->GetAbil(AT_LEVEL);
 			if( Level > ScheduleData.LevelMax )
-			{	// ÀÌº¥Æ® ÀÔÀå ÃÖ´ë ·¹º§ º¸´Ù Ä³¸¯ÅÍ ·¹º§ÀÌ ´õ ³ôÀ½.
+			{	// ì´ë²¤íŠ¸ ì…ì¥ ìµœëŒ€ ë ˆë²¨ ë³´ë‹¤ ìºë¦­í„° ë ˆë²¨ì´ ë” ë†’ìŒ.
 				return EEMM_LIMIT_LEVEL_MAX;
 			}
 		}
 	}
 
-	//ClassLimit °Ë»ç
+	//ClassLimit ê²€ì‚¬
 	__int64 iUnionClassLimit = (ScheduleData.ClassLimitDragon << DRAGONIAN_LSHIFT_VAL);
 	iUnionClassLimit |= ScheduleData.ClassLimitHuman;
 	if(bParty)
-	{ //ÆÄÆ¼ ÁßÀÏ ¶§
+	{ //íŒŒí‹° ì¤‘ì¼ ë•Œ
 		VEC_GUID::iterator vec_iter = PartyMember.begin();
 		for( ; vec_iter != PartyMember.end() ; ++vec_iter )
-		{	// ¸ğµç ÆÄÆ¼¿øÀ» °Ë»çÇØ¾ßÇÑ´Ù.
+		{	// ëª¨ë“  íŒŒí‹°ì›ì„ ê²€ì‚¬í•´ì•¼í•œë‹¤.
 			PgPlayer * pPartyMember = GetUser((*vec_iter));
 			if( pPartyMember )
 			{
@@ -14304,14 +14304,14 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 				if( ERACE_DRAGON == PlayerRace)
 				{
 					if( ScheduleData.ClassLimitDragon == 0 || !IS_CLASS_LIMIT(iUnionClassLimit, pPartyMember->GetAbil(AT_CLASS)) )
-					{	// ClassLimit°¡ 0ÀÌ°Å³ª Å¬·¡½º Á¦ÇÑ¿¡ °É¸®¸é ÀÔÀå ºÒ°¡.
+					{	// ClassLimitê°€ 0ì´ê±°ë‚˜ í´ë˜ìŠ¤ ì œí•œì— ê±¸ë¦¬ë©´ ì…ì¥ ë¶ˆê°€.
 						return EEMM_LIMIT_CLASS;
 					}
 				}
 				else if( ERACE_HUMAN == PlayerRace)
 				{
 					if( ScheduleData.ClassLimitHuman == 0 || !IS_CLASS_LIMIT(iUnionClassLimit, pPartyMember->GetAbil(AT_CLASS)) )
-					{	// ClassLimit°¡ 0ÀÌ°Å³ª Å¬·¡½º Á¦ÇÑ¿¡ °É¸®¸é ÀÔÀå ºÒ°¡.
+					{	// ClassLimitê°€ 0ì´ê±°ë‚˜ í´ë˜ìŠ¤ ì œí•œì— ê±¸ë¦¬ë©´ ì…ì¥ ë¶ˆê°€.
 						return EEMM_LIMIT_CLASS;
 					}
 				}
@@ -14319,30 +14319,30 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 		}
 	}
 	else
-	{ //°³ÀÎ ÀÔÀåÀÏ ¶§
+	{ //ê°œì¸ ì…ì¥ì¼ ë•Œ
 		if(pPlayer->UnitRace() == ERACE_DRAGON)
 		{
 			if( ScheduleData.ClassLimitDragon == 0 || !IS_CLASS_LIMIT(iUnionClassLimit, pPlayer->GetAbil(AT_CLASS)) )
-			{	// ClassLimit°¡ 0ÀÌ°Å³ª Å¬·¡½º Á¦ÇÑ¿¡ °É¸®¸é ÀÔÀå ºÒ°¡.
+			{	// ClassLimitê°€ 0ì´ê±°ë‚˜ í´ë˜ìŠ¤ ì œí•œì— ê±¸ë¦¬ë©´ ì…ì¥ ë¶ˆê°€.
 				return EEMM_LIMIT_CLASS;
 			}
 		}
 		else if(pPlayer->UnitRace() == ERACE_HUMAN)
 		{
 			if( ScheduleData.ClassLimitHuman == 0 || !IS_CLASS_LIMIT(iUnionClassLimit, pPlayer->GetAbil(AT_CLASS)) )
-			{	// ClassLimit°¡ 0ÀÌ°Å³ª Å¬·¡½º Á¦ÇÑ¿¡ °É¸®¸é ÀÔÀå ºÒ°¡.
+			{	// ClassLimitê°€ 0ì´ê±°ë‚˜ í´ë˜ìŠ¤ ì œí•œì— ê±¸ë¦¬ë©´ ì…ì¥ ë¶ˆê°€.
 				return EEMM_LIMIT_CLASS;
 			}
 		}
 	}
 
 	if( 0 < ScheduleData.NeedQuest && 0 < ScheduleData.NeedQuestState )
-	{	// ¿ä±¸ Äù½ºÆ®°¡ ÀÖ´Ù¸é °¡Áö°í ÀÖ´ÂÁö °Ë»ç.
+	{	// ìš”êµ¬ í€˜ìŠ¤íŠ¸ê°€ ìˆë‹¤ë©´ ê°€ì§€ê³  ìˆëŠ”ì§€ ê²€ì‚¬.
 		if( bParty )
 		{
 			VEC_GUID::iterator vec_iter = PartyMember.begin();
 			for( ; vec_iter != PartyMember.end() ; ++vec_iter )
-			{	// ¸ğµç ÆÄÆ¼¿øÀ» °Ë»çÇØ¾ßÇÑ´Ù.
+			{	// ëª¨ë“  íŒŒí‹°ì›ì„ ê²€ì‚¬í•´ì•¼í•œë‹¤.
 				PgPlayer * pPartyMember = GetUser((*vec_iter));
 				if( pPartyMember )
 				{
@@ -14352,7 +14352,7 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 						if( 1 == ScheduleData.NeedQuestState )
 						{
 							if( !pQuest->IsIngQuest(ScheduleData.NeedQuest) )
-							{	// ÇÑ¸íÀÌ¶óµµ ¾øÀ¸¸é ÀÔÀå ºÒ°¡.
+							{	// í•œëª…ì´ë¼ë„ ì—†ìœ¼ë©´ ì…ì¥ ë¶ˆê°€.
 								return EEMM_LIMIT_QUEST;
 							}
 						}
@@ -14375,7 +14375,7 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 				if( 1 == ScheduleData.NeedQuestState )
 				{
 					if( !pQuest->IsIngQuest(ScheduleData.NeedQuest) )
-					{	// ÇÑ¸íÀÌ¶óµµ ¾øÀ¸¸é ÀÔÀå ºÒ°¡.
+					{	// í•œëª…ì´ë¼ë„ ì—†ìœ¼ë©´ ì…ì¥ ë¶ˆê°€.
 						return EEMM_LIMIT_QUEST;
 					}
 				}
@@ -14392,7 +14392,7 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 
 	CONT_PLAYER_MODIFY_ORDER Order;
 	if( 0 < ScheduleData.NeedItemNo )
-	{	// ¿ä±¸ ¾ÆÀÌÅÛÀÌ ÀÖ´Ù¸é °¡Áö°í ÀÖ´ÂÁö °Ë»ç.
+	{	// ìš”êµ¬ ì•„ì´í…œì´ ìˆë‹¤ë©´ ê°€ì§€ê³  ìˆëŠ”ì§€ ê²€ì‚¬.
 		if( bParty )
 		{
 			VEC_GUID::iterator vec_iter = PartyMember.begin();
@@ -14405,7 +14405,7 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 					if( pInven )
 					{
 						if( ScheduleData.NeedItemCount > pInven->GetTotalCount(ScheduleData.NeedItemNo) )
-						{	// ¿ä±¸ ¾ÆÀÌÅÛÀÌ ¾ø´Ù. ÇÑ¸íÀÌ¶óµµ ¾øÀ¸¸é ÀÔÀå ºÒ°¡.
+						{	// ìš”êµ¬ ì•„ì´í…œì´ ì—†ë‹¤. í•œëª…ì´ë¼ë„ ì—†ìœ¼ë©´ ì…ì¥ ë¶ˆê°€.
 							return EEMM_LIMIT_ITEM;
 						}
 						else
@@ -14492,11 +14492,11 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
-	// °Ë»ç Á¶°ÇÀ» ¸ğµÎ Åë°úÇßÀ¸¸é Ã¤³Î ¸ÊÀÌµ¿À» ½ÃÄÑÁÖ¾î¾ß ÇÑ´Ù(100¹øÃ¤³Î-¿øÁ¤´ë Ã¤³Î).//
+	// ê²€ì‚¬ ì¡°ê±´ì„ ëª¨ë‘ í†µê³¼í–ˆìœ¼ë©´ ì±„ë„ ë§µì´ë™ì„ ì‹œì¼œì£¼ì–´ì•¼ í•œë‹¤(100ë²ˆì±„ë„-ì›ì •ëŒ€ ì±„ë„).//
 	//////////////////////////////////////////////////////////////////////////////////////
 
 	if( BM::GUID::IsNotNull(pPlayer->PartyGuid()) )
-	{	// ÆÄÆ¼¸¦ °¡Áö°í ÀÖ´Ù.
+	{	// íŒŒí‹°ë¥¼ ê°€ì§€ê³  ìˆë‹¤.
 		BM::Stream ToCenter(PT_M_N_PRE_MAKE_PARTY_EVENT_GROUND);
 		ToCenter.Push(EXPEDITION_CHANNEL_NO);
 		ToCenter.Push(pPlayer->PartyGuid());
@@ -14505,7 +14505,7 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 		BM::GUID MasterGuid;
 		m_kLocalPartyMgr.GetPartyMasterGuid(pPlayer->PartyGuid(), MasterGuid);
 
-		// ÆÄÆ¼ ¸¶½ºÅÍ¸¦ ¸ÕÀú ÀÌµ¿½ÃÅ´.
+		// íŒŒí‹° ë§ˆìŠ¤í„°ë¥¼ ë¨¼ì € ì´ë™ì‹œí‚´.
 		MoveToEventGround(ScheduleData.EventNo, pPlayer, ScheduleData.EventGround, true, true);
 		
 		VEC_GUID::iterator vec_iter = PartyMember.begin();
@@ -14526,7 +14526,7 @@ EErrorEventMapMove PgGround::Recv_PT_C_M_REQ_MOVE_EVENT_GROUND(CUnit * pUnit, BM
 		}
 	}
 	else
-	{	// ÆÄÆ¼°¡ ¾ø´Ù.
+	{	// íŒŒí‹°ê°€ ì—†ë‹¤.
 		MoveToEventGround(ScheduleData.EventNo, pPlayer, ScheduleData.EventGround);
 
 		if( !Order.empty() )
@@ -14562,13 +14562,13 @@ void PgGround::MoveToEventGround(int EventNo, PgPlayer * pPlayer, int GroundNo, 
 	SRecentPlayerNormalMapData MapData(this->GetGroundNo(), g_kProcessCfg.ChannelNo(), pPlayer->GetPos());
 	pPlayer->SetRecentNormalMap(MapData);
 
-	// ½ºÀ§Ä¡·Î º¸³¿.
+	// ìŠ¤ìœ„ì¹˜ë¡œ ë³´ëƒ„.
 	BM::Stream Packet(PT_M_L_TRY_LOGIN_CHANNELMAPMOVE);
 	Packet.Push(pPlayer->GetID());
 	Packet.Push(MoveInfo);
 	SendToServer(pPlayer->GetSwitchServer(), Packet);
 
-	// Å¬¶ó·Î º¸³¿.
+	// í´ë¼ë¡œ ë³´ëƒ„.
 	BM::Stream UserPacket(PT_M_C_TRY_LOGIN_CHANNELMAPMOVE);
 	UserPacket.Push(MoveInfo);
 	pPlayer->Send(UserPacket);
@@ -14604,7 +14604,7 @@ void PgGround::AddJoinPartyMemberList(BM::Stream & Packet)
 	std::pair<CONT_JOIN_PARTY_MEMBER_LIST::iterator, bool> Ret = m_JoinPartyMemberList.insert( std::make_pair(CharGuid, JoinPartyMember) );
 	if( !Ret.second )
 	{
-		// Áßº¹?
+		// ì¤‘ë³µ?
 	}
 }
 
@@ -14657,7 +14657,7 @@ DWORD const PgGround::Constellation_CheckCondition(PgPlayer *pPlayer, Constellat
 	}
 
 	if( pPlayer->HaveParty() )
-	{// ÆÄÆ¼Àå¸¸ Ã¼Å©ÇÏ¸é µÈ´Ù.
+	{// íŒŒí‹°ì¥ë§Œ ì²´í¬í•˜ë©´ ëœë‹¤.
 		BM::GUID MasterGuid;
 		if( false == m_kLocalPartyMgr.GetPartyMasterGuid( pPlayer->PartyGuid(), MasterGuid ) )
 		{
@@ -14670,14 +14670,14 @@ DWORD const PgGround::Constellation_CheckCondition(PgPlayer *pPlayer, Constellat
 		}
 	}
 	else
-	{// ÆÄÆ¼°¡ ¾øÀ¸¸é ÀÔÀåÇÒ ¼ö ¾ø´Ù.
+	{// íŒŒí‹°ê°€ ì—†ìœ¼ë©´ ì…ì¥í•  ìˆ˜ ì—†ë‹¤.
 		return dwRet |= Constellation::ECE_ERROR_NO_PARTY;
 	}
 
 	if( UseCashItem )
 	{
 		if( Constellation_CheckCondition_CashItem(pPlayer, NeedItemNo, NeedItemCount ) )
-		{// Ä³½¬¾ÆÀÌÅÛ ¹öÇÁÃ¼Å©
+		{// ìºì‰¬ì•„ì´í…œ ë²„í”„ì²´í¬
 			return Constellation::ECE_OK;
 		}
 		else
@@ -14686,10 +14686,10 @@ DWORD const PgGround::Constellation_CheckCondition(PgPlayer *pPlayer, Constellat
 		}
 	}
 
-	dwRet |= Constellation_CheckCondition_DayofWeek(sub_iter->second);		// ¿äÀÏ Ã¼Å©
-	dwRet |= Constellation_CheckCondition_Level(pPlayer, sub_iter->second);	// ·¹º§ Ã¼Å©
-	dwRet |= Constellation_CheckCondition_Item(pPlayer, sub_iter->second, NeedItemNo, NeedItemCount);	// ¾ÆÀÌÅÛ Ã¼Å©
-	dwRet |= Constellation_CheckCondition_Quest(pPlayer, sub_iter->second);	// Äù½ºÆ® Ã¼Å©
+	dwRet |= Constellation_CheckCondition_DayofWeek(sub_iter->second);		// ìš”ì¼ ì²´í¬
+	dwRet |= Constellation_CheckCondition_Level(pPlayer, sub_iter->second);	// ë ˆë²¨ ì²´í¬
+	dwRet |= Constellation_CheckCondition_Item(pPlayer, sub_iter->second, NeedItemNo, NeedItemCount);	// ì•„ì´í…œ ì²´í¬
+	dwRet |= Constellation_CheckCondition_Quest(pPlayer, sub_iter->second);	// í€˜ìŠ¤íŠ¸ ì²´í¬
 
 	return dwRet;
 }
@@ -14770,18 +14770,18 @@ DWORD PgGround::Constellation_CheckCondition_Level(PgPlayer *pPlayer, Constellat
 	int const LimitMinLevel = MissionInfo.Condition.MinLevel;
 
 	if( 0 == LimitMaxLevel && 0 == LimitMinLevel )
-	{// ·¹º§Ã¼Å©¸¦ ÇÒ ÇÊ¿ä°¡ ¾ø´Ù.
+	{// ë ˆë²¨ì²´í¬ë¥¼ í•  í•„ìš”ê°€ ì—†ë‹¤.
 		return Constellation::ECE_OK;
 	}
 
 	int const MyLevel = pPlayer->GetAbil(AT_LEVEL);
 
 	if( LimitMaxLevel && LimitMaxLevel < MyLevel )
-	{// ÃÖ´ë·¹º§  Á¦ÇÑ¿¡ °É¸°´Ù.
+	{// ìµœëŒ€ë ˆë²¨  ì œí•œì— ê±¸ë¦°ë‹¤.
 		dwRet |= Constellation::ECE_ERROR_LV_MAX;
 	}
 	if( LimitMinLevel && LimitMinLevel > MyLevel )
-	{// ÃÖ¼Ò·¹º§ Á¦ÇÑ¿¡ °É¸°´Ù.
+	{// ìµœì†Œë ˆë²¨ ì œí•œì— ê±¸ë¦°ë‹¤.
 		dwRet |= Constellation::ECE_ERROR_LV_MIN;
 	}
 
@@ -14801,7 +14801,7 @@ DWORD PgGround::Constellation_CheckCondition_Item(PgPlayer *pPlayer, Constellati
 	NeedItemCount = MissionInfo.Condition.ItemCount;
 
 	if( 0 == NeedItemNo )
-	{// Ã¼Å©ÇÒ ¾ÆÀÌÅÛÀÌ ¾ø´Ù.
+	{// ì²´í¬í•  ì•„ì´í…œì´ ì—†ë‹¤.
 		return Constellation::ECE_OK;
 	}
 
@@ -14822,7 +14822,7 @@ DWORD PgGround::Constellation_CheckCondition_Item(PgPlayer *pPlayer, Constellati
 
 	CONT_DEFITEM::const_iterator def_item = pDefItem->find( NeedItemNo );
 	if( pDefItem->end() == def_item )
-	{// Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌÅÛÀÌ´Ù.
+	{// ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì•„ì´í…œì´ë‹¤.
 		return dwRet |= Constellation::ECE_ERROR_SYSTEM;
 	}
 
@@ -14853,7 +14853,7 @@ DWORD PgGround::Constellation_CheckCondition_Quest(PgPlayer *pPlayer, Constellat
 	int const NeedQuestNo = MissionInfo.Condition.QuestNo;
 
 	if( 0 == NeedQuestNo )
-	{// Ã¼Å©ÇÒ Äù½ºÆ®°¡ ¾ø´Ù.
+	{// ì²´í¬í•  í€˜ìŠ¤íŠ¸ê°€ ì—†ë‹¤.
 		return Constellation::ECE_OK;
 	}
 
@@ -14880,7 +14880,7 @@ bool PgGround::Constellation_Consume_Item(PgPlayer *pPlayer, Constellation::CONT
 	}
 
 	if( 0 == NeedItemNo )
-	{// Ã¼Å©ÇÒ ¾ÆÀÌÅÛÀÌ ¾ø´Ù.
+	{// ì²´í¬í•  ì•„ì´í…œì´ ì—†ë‹¤.
 		return true;
 	}
 
@@ -14892,7 +14892,7 @@ bool PgGround::Constellation_Consume_Item(PgPlayer *pPlayer, Constellation::CONT
 
 	int const MyItemCount = (int)pInven->GetTotalCount(NeedItemNo);	
 	if( (MyItemCount > 0) && (0 == NeedItemCount) )
-	{// ¼ÒºñÇÏÁö ¾Ê´Â´Ù.
+	{// ì†Œë¹„í•˜ì§€ ì•ŠëŠ”ë‹¤.
 		return true;
 	}
 
@@ -14935,7 +14935,7 @@ Constellation::ECE_RESULT PgGround::Constellation_MoveDungeon(PgPlayer *pPlayer,
 	Constellation::CONT_MAP ContMap = sub_iter->second.MapGroup.ContMap;
 	Constellation::CONT_MAP::iterator map_iter = ContMap.begin();
 	while( ContMap.end() != map_iter )
-	{// º¸½º¹æ Å¸ÀÔÀº Á¦°Å
+	{// ë³´ìŠ¤ë°© íƒ€ì…ì€ ì œê±°
 		if( Constellation::EMAP_BOSS == map_iter->MapType )
 		{
 			BossMap = *map_iter;
@@ -14958,15 +14958,15 @@ Constellation::ECE_RESULT PgGround::Constellation_MoveDungeon(PgPlayer *pPlayer,
 	RMM.kTargetKey.GroundNo(ContMap.begin()->ID);
 	RMM.nTargetPortal = 1;
 
-	PgReqMapMove MapMove( this, RMM, NULL );		// ¸Ê ÀÌµ¿À» ÇØ¾ß µÊ.
+	PgReqMapMove MapMove( this, RMM, NULL );		// ë§µ ì´ë™ì„ í•´ì•¼ ë¨.
 
 	VEC_GUID Guid_List;
 	if( pPlayer->HaveParty() )
-	{// ÆÄÆ¼¿ø ¸ğµÎ ÀÌµ¿½ÃÄÑ¾ß ÇÑ´Ù.
+	{// íŒŒí‹°ì› ëª¨ë‘ ì´ë™ì‹œì¼œì•¼ í•œë‹¤.
 		m_kLocalPartyMgr.GetPartyMemberGround(pPlayer->PartyGuid(), GroundKey(), Guid_List);
 	}
 	else
-	{// ÆÄÆ¼°¡ ¾øÀ¸¸é ¾ÈµÈ´Ù. °³ÀÎÀÌ¶óµµ ÆÄÆ¼»óÅÂ·Î ÀÔÀåÇØ¾ßÇÔ.
+	{// íŒŒí‹°ê°€ ì—†ìœ¼ë©´ ì•ˆëœë‹¤. ê°œì¸ì´ë¼ë„ íŒŒí‹°ìƒíƒœë¡œ ì…ì¥í•´ì•¼í•¨.
 		LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return : ECE_ERROR_SYSTEM"));
 		return Constellation::ECE_ERROR_NO_PARTY;
 	}
@@ -14982,9 +14982,9 @@ Constellation::ECE_RESULT PgGround::Constellation_MoveDungeon(PgPlayer *pPlayer,
 		PgPlayer * pUser = GetUser(*user_iter);
 		if( pUser )
 		{
-			bool const IsAdd = MapMove.Add(pUser); // ÇÃ·¹ÀÌ¾î Ãß°¡
+			bool const IsAdd = MapMove.Add(pUser); // í”Œë ˆì´ì–´ ì¶”ê°€
 			if( false == IsAdd )
-			{// ÇÑ¸íÀÌ¶óµµ ½ÇÆĞÇÏ¸é ¾ÈµÈ´Ù.
+			{// í•œëª…ì´ë¼ë„ ì‹¤íŒ¨í•˜ë©´ ì•ˆëœë‹¤.
 				LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return : ECE_ERROR_MAPMOVE"));
 				return Constellation::ECE_ERROR_MAPMOVE;
 			}
@@ -14992,7 +14992,7 @@ Constellation::ECE_RESULT PgGround::Constellation_MoveDungeon(PgPlayer *pPlayer,
 	}
 
 	if( false == Constellation_Consume_Item(pPlayer, sub_iter->second, MapMove, NeedItemNo, NeedItemCount) )
-	{// ÀÔÀå ¾ÆÀÌÅÛ »ç¿ë
+	{// ì…ì¥ ì•„ì´í…œ ì‚¬ìš©
 		LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return : ECE_ERROR_MAPMOVE"));
 		return Constellation::ECE_ERROR_MAPMOVE;
 	}
@@ -15035,7 +15035,7 @@ Constellation::ECE_RESULT PgGround::Constellation_MoveDungeon_Boss(PgPlayer *pPl
 	Constellation::CONT_MAP ContMap = sub_iter->second.MapGroup.ContMap;
 	Constellation::CONT_MAP::iterator map_iter = ContMap.begin();
 	while( ContMap.end() != map_iter )
-	{// º¸½º¹æ Å¸ÀÔÀº Á¦°Å
+	{// ë³´ìŠ¤ë°© íƒ€ì…ì€ ì œê±°
 		if( Constellation::EMAP_BOSS == map_iter->MapType )
 		{
 			BossMap = *map_iter;
@@ -15056,15 +15056,15 @@ Constellation::ECE_RESULT PgGround::Constellation_MoveDungeon_Boss(PgPlayer *pPl
 	RMM.kTargetKey.GroundNo(BossMap.ID);
 	RMM.nTargetPortal = 1;
 
-	PgReqMapMove MapMove( this, RMM, NULL );		// ¸Ê ÀÌµ¿À» ÇØ¾ß µÊ.
+	PgReqMapMove MapMove( this, RMM, NULL );		// ë§µ ì´ë™ì„ í•´ì•¼ ë¨.
 
 	VEC_GUID Guid_List;
 	if( pPlayer->HaveParty() )
-	{// ÆÄÆ¼¿ø ¸ğµÎ ÀÌµ¿½ÃÄÑ¾ß ÇÑ´Ù.
+	{// íŒŒí‹°ì› ëª¨ë‘ ì´ë™ì‹œì¼œì•¼ í•œë‹¤.
 		m_kLocalPartyMgr.GetPartyMemberGround(pPlayer->PartyGuid(), GroundKey(), Guid_List);
 	}
 	else
-	{// ÆÄÆ¼°¡ ¾øÀ¸¸é ¾ÈµÈ´Ù. °³ÀÎÀÌ¶óµµ ÆÄÆ¼»óÅÂ·Î ÀÔÀåÇØ¾ßÇÔ.
+	{// íŒŒí‹°ê°€ ì—†ìœ¼ë©´ ì•ˆëœë‹¤. ê°œì¸ì´ë¼ë„ íŒŒí‹°ìƒíƒœë¡œ ì…ì¥í•´ì•¼í•¨.
 		LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return : ECE_ERROR_SYSTEM"));
 		return Constellation::ECE_ERROR_NO_PARTY;
 	}
@@ -15080,9 +15080,9 @@ Constellation::ECE_RESULT PgGround::Constellation_MoveDungeon_Boss(PgPlayer *pPl
 		PgPlayer * pUser = GetUser(*user_iter);
 		if( pUser )
 		{
-			bool const IsAdd = MapMove.Add(pUser); // ÇÃ·¹ÀÌ¾î Ãß°¡
+			bool const IsAdd = MapMove.Add(pUser); // í”Œë ˆì´ì–´ ì¶”ê°€
 			if( false == IsAdd )
-			{// ÇÑ¸íÀÌ¶óµµ ½ÇÆĞÇÏ¸é ¾ÈµÈ´Ù.
+			{// í•œëª…ì´ë¼ë„ ì‹¤íŒ¨í•˜ë©´ ì•ˆëœë‹¤.
 				LIVE_CHECK_LOG(BM::LOG_LV1, __FL__ << _T("Return : ECE_ERROR_MAPMOVE"));
 				return Constellation::ECE_ERROR_MAPMOVE;
 			}
@@ -15115,7 +15115,7 @@ void PgGround::Constellation_NotifyResult(PgPlayer *pPlayer, DWORD const dwRet, 
 
 	VEC_GUID Guid_List;
 	if( pPlayer->HaveParty() )
-	{// ÆÄÆ¼°¡ ÀÖÀ¸¸é ÆÄÆ¼¿ø ¸ğµÎ¿¡°Ô Àü¼Û
+	{// íŒŒí‹°ê°€ ìˆìœ¼ë©´ íŒŒí‹°ì› ëª¨ë‘ì—ê²Œ ì „ì†¡
 		m_kLocalPartyMgr.GetPartyMemberGround(pPlayer->PartyGuid(), GroundKey(), Guid_List);
 	}
 	else
